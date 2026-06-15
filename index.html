@@ -1,40 +1,422 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✦ mel_sanctuary_v11_ultimate_matrix ✦</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mel_sanctuary_matrix</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        /* ==========================================================================
+           VARIABLES Y PALETA DE COLOR (CYBER GOTH / COQUETTE)
+           ========================================================================== */
+        :root {
+            --bg-deep-velvet: #0a0609;
+            --panel-shadow-goth: #140d12;
+            --barbie-pink: #ff66b2;
+            --soft-lace-pink: #ffd1dc;
+            --goth-charcoal: #1a1518;
+            --ghost-white: #f5f0f2;
+            --matrix-glow-muted: #4a283d;
+            --border-rococo: #3a2230;
+            --text-dim: #b5a4ad;
+            --system-green: #00ffcc;
+            --system-red: #ff3366;
+        }
 
-<!-- FUENTES -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght=0,400;0,700;1,400&family=Playfair+Display:ital,wght=0,400;0,600;1,400;1,600&family=Charm:wght=400;700&display=swap" rel="stylesheet">
+        [data-theme="light"] {
+            --bg-deep-velvet: #fcf8fa;
+            --panel-shadow-goth: #f3e6ed;
+            --barbie-pink: #d0417e;
+            --soft-lace-pink: #ffb6c1;
+            --goth-charcoal: #ffffff;
+            --ghost-white: #1c1217;
+            --matrix-glow-muted: #e8cad7;
+            --border-rococo: #e0b6cc;
+            --text-dim: #5c4a53;
+        }
 
-<style>
-/* ─── 𓏲ᵎ 🖤 PALETAS DE COLORES DUALES & VARIABLES ᵎ𓏲 ─── */
-:root {
-  --anime-black: #1F1F1F;
-  --goth-charcoal: #4B4B4B;
-  --barbie-pink: #FEB1C7;
-  --porcelain-pink: #FFDCE4;
-  --bg-deep-velvet: #120A10;
-  --surface-box: rgba(31, 31, 31, 0.85);
-  --text-main: #FFDCE4;
-  --input-bg: #1F1F1F;
-  --input-text: #ffffff;
-  
-  --evt-goth: #A27BCA;
-  --evt-coquette: #FEB1C7;
-  --evt-cyber: #00F0FF;
+        /* ==========================================================================
+           ESTILOS BASE E INTERFAZ
+           ========================================================================== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-deep-velvet);
+            color: var(--ghost-white);
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            font-size: 12px;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-  --font-goth: 'Courier Prime', monospace;
-  --font-vintage: 'Playfair Display', serif;
-  --font-coquette: 'Charm', cursive;
+        /* Capa de fondo para renderizar efectos visuales puros */
+        #aestheticBackgroundCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .rococo-matrix-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .matrix-header-box {
+            background: var(--goth-charcoal);
+            border: 2px dashed var(--border-rococo);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 5px 5px 0px var(--panel-shadow-goth);
+            background-size: cover;
+            background-position: center;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+
+        .main-terminal-title {
+            color: var(--barbie-pink);
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .rococo-tabs-nav-bar { display: flex; gap: 10px; border-bottom: 2px solid var(--border-rococo); padding-bottom: 5px; }
+        .rococo-menu-link {
+            background: var(--goth-charcoal); border: 1px solid var(--border-rococo);
+            color: var(--text-dim); padding: 8px 16px; cursor: pointer; user-select: none;
+        }
+        .rococo-menu-link.active-tab {
+            background: var(--barbie-pink); color: var(--goth-charcoal); font-weight: bold;
+        }
+
+        .rococo-layout-grid { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
+        .rococo-side-panel { display: flex; flex-direction: column; gap: 20px; width: 300px; }
+        .rococo-center-panel {
+            background: var(--goth-charcoal); border: 1px solid var(--border-rococo);
+            padding: 20px; box-shadow: 5px 5px 0px var(--panel-shadow-goth); min-height: 500px;
+        }
+
+        .rococo-card-module { background: var(--goth-charcoal); border: 1px solid var(--border-rococo); padding: 15px; box-shadow: 4px 4px 0px var(--panel-shadow-goth); }
+        .module-title { color: var(--barbie-pink); font-size: 11px; font-weight: bold; text-transform: uppercase; border-bottom: 1px dotted var(--border-rococo); padding-bottom: 4px; margin-bottom: 10px; }
+
+        .avatar-frame-box { width: 110px; height: 110px; border: 2px double var(--barbie-pink); margin: 0 auto 10px auto; display: flex; align-items: center; justify-content: center; background: var(--bg-deep-velvet); overflow: hidden; }
+        .avatar-frame-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .tab-view { display: none; }
+        .tab-view.active-view { display: block; }
+
+        .rococo-post-node { background: var(--bg-deep-velvet); border: 1px solid var(--border-rococo); padding: 12px; margin-bottom: 15px; }
+        input[type="text"], textarea, select { background: var(--bg-deep-velvet); border: 1px solid var(--border-rococo); color: var(--ghost-white); padding: 5px; font-family: monospace; font-size: 11px; width: 100%; }
+        
+        .rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--barbie-pink); padding: 5px 10px; cursor: pointer; font-family: monospace; font-size: 11px; }
+        .rococo-btn:hover { background: var(--barbie-pink); color: var(--goth-charcoal); }
+
+        /* GALERÍA DE FOTOS */
+        .stellar-photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; margin-top: 10px; }
+        .stellar-photo-card { background: var(--bg-deep-velvet); border: 1px solid var(--border-rococo); padding: 5px; text-align: center; }
+        .stellar-photo-card img { width: 100%; height: auto; border: 1px solid var(--border-rococo); }
+        
+        /* PANEL DE MODERACIÓN */
+        .mod-photo-item { display: flex; align-items: center; gap: 10px; background: var(--bg-deep-velvet); padding: 6px; border: 1px dotted var(--border-rococo); margin-bottom: 6px; }
+        .mod-photo-item img { width: 40px; height: 40px; object-fit: cover; border: 1px solid var(--barbie-pink); }
+        .btn-approve { border-color: var(--system-green); color: var(--system-green); }
+        .btn-approve:hover { background: var(--system-green); color: #000; }
+        .btn-reject { border-color: var(--system-red); color: var(--system-red); }
+        .btn-reject:hover { background: var(--system-red); color: #000; }
+
+        /* CHAT FLOTANTE */
+        #chatRetroTab { position: fixed; bottom: 15px; right: 20px; background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--barbie-pink); padding: 6px 12px; cursor: pointer; z-index: 9999; }
+        #chatRetroWindow { position: fixed; bottom: 15px; right: 20px; width: 320px; height: 400px; background: var(--goth-charcoal); border: 2px solid var(--border-rococo); z-index: 9999; display: flex; flex-direction: column; }
+        .chat-title-top { background: var(--border-rococo); color: var(--soft-lace-pink); padding: 6px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .chat-body-stream { flex-grow: 1; padding: 10px; overflow-y: auto; background: var(--bg-deep-velvet); display: flex; flex-direction: column; gap: 8px; }
+        .chat-footer-inputs { padding: 6px; border-top: 1px solid var(--border-rococo); display: flex; flex-direction: column; gap: 4px; }
+        .hidden { display: none !important; }
+
+        @media (max-width: 1024px) { .rococo-layout-grid { display: flex; flex-direction: column; } .rococo-side-panel { width: 100%; } }
+    </style>
+</head>
+<body>
+
+<canvas id="aestheticBackgroundCanvas"></canvas>
+
+<div class="rococo-matrix-container">
+    
+    <header class="matrix-header-box" id="matrixHeader">
+        <div class="main-terminal-title" id="liveTitle">mel_sanctuary_matrix</div>
+        <div style="color: var(--soft-lace-pink); font-size:11px;" id="liveBio">505 // @_tomate_4</div>
+        <div style="margin-top:10px; font-size:9px; color: var(--text-dim);">[ Filtro de Seguridad de Contenido Activo ]</div>
+    </header>
+
+    <nav class="rococo-tabs-nav-bar">
+        <div class="rococo-menu-link active-tab" id="tabMainLink" onclick="switchVirtualTab('main')">[-] nucleo_principal</div>
+        <div class="rococo-menu-link" id="tabStellarLink" onclick="switchVirtualTab('stellar')">[-] registros_estelares</div>
+    </nav>
+
+    <div class="rococo-layout-grid">
+        
+        <aside class="rococo-side-panel">
+            
+            <div class="rococo-card-module">
+                <div class="module-title">[-] firmware_identidad</div>
+                <div class="avatar-frame-box" onclick="triggerClick('avatarUploaderField')" style="cursor:pointer;">
+                    <span id="txtAvatarPlace" style="font-size:9px; color:var(--text-dim); text-align:center;">[ Cambiar Avatar ]</span>
+                    <img id="imgAvatarView" src="" alt="Avatar" style="display:none;">
+                </div>
+                <input type="file" id="avatarUploaderField" style="display:none;" accept="image/*" onchange="loadPersonalAvatar(this)">
+            </div>
+
+            <div class="rococo-card-module">
+                <div class="module-title" onclick="toggleAdminPanel()" style="cursor:pointer;">[+] configuracion_y_moderacion</div>
+                <div id="secretPanel" style="display:none; margin-top:10px; border-top:1px dashed var(--border-rococo); padding-top:10px;">
+                    
+                    <div style="margin-bottom:15px;">
+                        <span style="color:var(--barbie-pink); font-size:10px; font-weight:bold; display:block; margin-bottom:6px;">⚠️ FOTOS PENDIENTES DE ACEPTAR:</span>
+                        <div id="moderationQueueZone" style="max-height:160px; overflow-y:auto; background:#110b0f; padding:4px;">
+                            <span style="color:var(--text-dim); font-size:10px;">No hay fotos esperando aprobación.</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:10px;">
+                        <label style="font-size:10px; display:block; margin-bottom:4px;">Foto de Portada (Banner):</label>
+                        <button class="rococo-btn" style="width:100%;" onclick="triggerClick('bannerUploaderField')">Subir Nueva Portada</button>
+                        <input type="file" id="bannerUploaderField" style="display:none;" accept="image/*" onchange="loadPersonalBanner(this)">
+                    </div>
+                    <div style="margin-bottom:6px;">
+                        <label style="font-size:10px; display:block;">Titulo:</label>
+                        <input type="text" id="cfgTitle">
+                    </div>
+                    <button class="rococo-btn" style="width:100%;" onclick="saveConfigChanges()">Guardar Ajustes</button>
+                </div>
+            </div>
+
+        </aside>
+
+        <main class="rococo-center-panel">
+            
+            <div id="viewMainGrid" class="tab-view active-view">
+                <div class="module-title">[-] muro_de_fragmentos</div>
+                <div style="background: var(--bg-deep-velvet); padding:12px; border:1px solid var(--border-rococo); margin-bottom:20px;">
+                    <textarea id="postTextIn" rows="3" placeholder="Escribe algo aquí..." style="width:100%; resize:none; margin-bottom:8px;"></textarea>
+                    <button class="rococo-btn" onclick="publishUserPostNode()">[ Publicar ]</button>
+                </div>
+                <div id="boardScrollerZone"></div>
+            </div>
+
+            <div id="viewStellarGrid" class="tab-view">
+                <div class="module-title">[-] album_de_reliquias_estelares</div>
+                <p style="color: var(--text-dim); margin-bottom:12px;">
+                    Las imágenes subidas por amigos pasarán por un proceso de revisión antes de ser públicas.
+                </p>
+                <div style="margin-bottom:20px;">
+                    <button class="rococo-btn" onclick="triggerClick('stellarFileInput')">[ Enviar Imagen al Álbum ]</button>
+                    <input type="file" id="stellarFileInput" style="display:none;" accept="image/*" onchange="uploadStellarPhoto(this)">
+                    <span id="uploadNotice" style="color:var(--barbie-pink); margin-left:10px; font-size:11px;"></span>
+                </div>
+                <div id="stellarPhotoGridZone" class="stellar-photo-grid"></div>
+            </div>
+
+        </main>
+
+    </div>
+</div>
+
+<div id="chatRetroTab" onclick="toggleRetroChatWindow(true)">[-] Chat_Amigos</div>
+<div id="chatRetroWindow" class="hidden">
+    <div class="chat-title-top">
+        <span>[ Sala_De_Chat ]</span>
+        <span style="cursor:pointer;" onclick="toggleRetroChatWindow(false)">[X]</span>
+    </div>
+    <div class="chat-body-stream" id="chatRetroMessages"></div>
+    <div class="chat-footer-inputs">
+        <input type="text" id="chatNick" placeholder="Tu Apodo...">
+        <input type="text" id="chatRetroInput" placeholder="Mensaje... [Enter]" onkeypress="handleChatEnter(event)">
+    </div>
+</div>
+
+<script>
+// ==========================================================================
+// INTEGRACIÓN SUPABASE & CONFIG LOCAL
+// ==========================================================================
+const SUPABASE_URL = "https://tu-proyecto.supabase.co";
+const SUPABASE_ANON_KEY = "tu-anon-key-de-supabase";
+
+let supabaseEnabled = false;
+let supabase = null;
+
+if (SUPABASE_URL !== "https://tu-proyecto.supabase.co") {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    supabaseEnabled = true;
 }
 
-[data-theme="pastel"] {
-  --anime-black: #FFF0F5;
-  --goth-charcoal: #FFDCE4;
+let appConfig = { title: "mel_sanctuary_matrix", bio: "505 // @_tomate_4", avatar: "", banner: "" };
+let userPosts = []; let chatMessages = [];
+let databasePhotos = []; 
+
+// Variables globales para la animación limpia de partículas
+let canvas, ctx;
+let dynamicParticles = [];
+let matrixDrops = [];
+
+window.onload = async function() {
+    loadLocalFallbacks();
+    applyMelChanges();
+    initAestheticEngine();
+    
+    if (supabaseEnabled) {
+        await syncDataWithCloud();
+        listenRealtime();
+    } else {
+        renderBoardPosts();
+        renderStellarPhotos();
+        renderModerationQueue();
+        loadPersistentMessages();
+    }
+};
+
+function loadLocalFallbacks() {
+    try { let sc = localStorage.getItem("mel_config"); if(sc) appConfig = JSON.parse(sc); } catch(e){}
+    try { let sp = localStorage.getItem("mel_posts"); userPosts = sp ? JSON.parse(sp) : []; } catch(e){}
+    try { let sch = localStorage.getItem("mel_chat"); chatMessages = sch ? JSON.parse(sch) : []; } catch(e){}
+    try { let sf = localStorage.getItem("mel_photos_v2"); databasePhotos = sf ? JSON.parse(sf) : []; } catch(e){}
+    
+    let nick = localStorage.getItem("mel_chat_nick");
+    if(nick) document.getElementById("chatNick").value = nick;
+}
+
+async function syncDataWithCloud() {
+    let { data: posts } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
+    if(posts) userPosts = posts;
+    let { data: chats } = await supabase.from('chats').select('*').order('created_at', { ascending: true });
+    if(chats) chatMessages = chats;
+    let { data: photos } = await supabase.from('photos_v2').select('*').order('created_at', { ascending: false });
+    if(photos) databasePhotos = photos;
+
+    renderBoardPosts();
+    renderStellarPhotos();
+    renderModerationQueue();
+    loadPersistentMessages();
+}
+
+function listenRealtime() {
+    supabase.channel('room_moderada')
+      .on('postgres_changes', { event: '*', filter: 'table=eq.chats' }, () => { syncDataWithCloud(); })
+      .on('postgres_changes', { event: '*', filter: 'table=eq.posts' }, () => { syncDataWithCloud(); })
+      .on('postgres_changes', { event: '*', filter: 'table=eq.photos_v2' }, () => { syncDataWithCloud(); })
+      .subscribe();
+}
+
+function uploadStellarPhoto(input) {
+    if (input.files && input.files[0]) {
+        let reader = new FileReader();
+        reader.onload = async function(e) {
+            let srcData = e.target.result;
+            let newPhotoObj = { id: Date.now().toString(), src: srcData, status: 'pendiente' };
+
+            if (supabaseEnabled) {
+                await supabase.from('photos_v2').insert([newPhotoObj]);
+            } else {
+                databasePhotos.unshift(newPhotoObj);
+                localStorage.setItem("mel_photos_v2", JSON.stringify(databasePhotos));
+                renderStellarPhotos();
+                renderModerationQueue();
+            }
+            
+            let notice = document.getElementById("uploadNotice");
+            notice.textContent = "[Foto enviada a revisión. Esperando aprobación de Mel]";
+            setTimeout(() => { notice.textContent = ""; }, 5000);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function renderStellarPhotos() {
+    let zone = document.getElementById("stellarPhotoGridZone"); if(!zone) return; zone.innerHTML = "";
+    let approvedPhotos = databasePhotos.filter(p => p.status === 'aprobada');
+    
+    if(approvedPhotos.length === 0) {
+        zone.innerHTML = `<span style="color:var(--text-dim);">No hay reliquias públicas aún.</span>`;
+        return;
+    }
+    
+    approvedPhotos.forEach((photo, idx) => {
+        zone.innerHTML += `
+          <div class="stellar-photo-card">
+            <img src="${photo.src}">
+            <div class="stellar-photo-meta">reliquia_#${idx+1}</div>
+          </div>`;
+    });
+}
+
+function renderModerationQueue() {
+    let queueZone = document.getElementById("moderationQueueZone"); if(!queueZone) return; queueZone.innerHTML = "";
+    let pendingPhotos = databasePhotos.filter(p => p.status === 'pendiente');
+
+    if(pendingPhotos.length === 0) {
+        queueZone.innerHTML = `<span style="color:var(--text-dim); font-size:10px;">No hay fotos por aprobar.</span>`;
+        return;
+    }
+
+    pendingPhotos.forEach((photo) => {
+        queueZone.innerHTML += `
+          <div class="mod-photo-item" id="mod-item-${photo.id}">
+            <img src="${photo.src}">
+            <div style="display:flex; flex-direction:column; gap:2px;">
+                <button class="rococo-btn btn-approve" style="font-size:9px; padding:2px 4px;" onclick="approvePhoto('${photo.id}')">Aprobar</button>
+                <button class="rococo-btn btn-reject" style="font-size:9px; padding:2px 4px;" onclick="rejectPhoto('${photo.id}')">Eliminar</button>
+            </div>
+          </div>`;
+    });
+}
+
+async function approvePhoto(id) {
+    if (supabaseEnabled) {
+        await supabase.from('photos_v2').update({ status: 'aprobada' }).eq('id', id);
+        await syncDataWithCloud();
+    } else {
+        let index = databasePhotos.findIndex(p => p.id === id);
+        if(index !== -1) {
+            databasePhotos[index].status = 'aprobada';
+            localStorage.setItem("mel_photos_v2", JSON.stringify(databasePhotos));
+            renderStellarPhotos();
+            renderModerationQueue();
+        }
+    }
+}
+
+async function rejectPhoto(id) {
+    if (supabaseEnabled) {
+        await supabase.from('photos_v2').delete().eq('id', id);
+        await syncDataWithCloud();
+    } else {
+        databasePhotos = databasePhotos.filter(p => p.id !== id);
+        localStorage.setItem("mel_photos_v2", JSON.stringify(databasePhotos));
+        renderStellarPhotos();
+        renderModerationQueue();
+    }
+}
+
+function applyMelChanges() {
+    document.getElementById("liveTitle").textContent = appConfig.title;
+    document.getElementById("cfgTitle").value = appConfig.title;
+    if (appConfig.avatar) {
+        document.getElementById("txtAvatarPlace").style.display = "none";
+        let img = document.getElementById("imgAvatarView");
+        img.src = appConfig.avatar; img.style.display = "block";
+    }
+    if (appConfig.banner) {
+        document.getElementById("matrixHeader").style.backgroundImage = `url('${appConfig.banner}')`;
+    }
+}
+
+async function publi  --goth-charcoal: #FFDCE4;
   --barbie-pink: #FEB1C7;
   --porcelain-pink: #4B4B4B;
   --bg-deep-velvet: #FFFDF9;
