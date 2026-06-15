@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎀 arunyi's cocoon matrix 🎀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎀 Mel's cocoon matrix 🎀</title>
     <style>
         /* ==========================================================================
            VARIABLES DE ESTILO (Soporta Modos Cute y Dark Coquette)
@@ -34,6 +34,734 @@
             --shadow: rgba(0, 0, 0, 0.6);
         }
 
+        /* CORRECCIÓN CRÍTICA: Forzar a que todo calcule su tamaño dentro de los márgenes */
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-body);
+            background-image: 
+                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.custom-bg {
+            background-image: var(--user-bg-url) !important;
+            background-size: cover !important;
+            background-position: center !important;
+        }
+
+        /* PANTALLA DE BLOQUEO */
+        .lock-screen {
+            position: fixed;
+            top:0; left:0; width:100vw; height:100vh;
+            background: var(--bg-body);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .profile-container {
+            width: 100%;
+            max-width: 950px;
+            background-color: var(--panel-bg);
+            border: 4px double var(--accent-pink);
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+            margin-bottom: 70px; /* Evita que el chat pise el fondo en móviles */
+        }
+
+        header {
+            text-align: center;
+            border: 2px dashed var(--accent-pink);
+            border-radius: 12px;
+            padding: 20px 10px;
+            margin-bottom: 20px;
+            background-color: var(--input-bg);
+            background-image: radial-gradient(var(--accent-pink) 15%, transparent 15%);
+            background-size: 12px 12px;
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: 22px;
+            margin: 0;
+            text-shadow: 1px 1px 0px var(--panel-bg), 3px 3px 0px var(--accent-pink);
+            word-wrap: break-word;
+        }
+
+        .top-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav { display: flex; gap: 8px; width: 100%; }
+        @media (min-width: 600px) { nav { width: auto; } }
+
+        .nav-btn, .theme-toggle-btn, .action-btn {
+            background: var(--box-header-bg);
+            border: 1px solid var(--accent-pink);
+            color: var(--text-main);
+            padding: 8px 14px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 11px;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .nav-btn { flex: 1; }
+
+        .nav-btn:hover, .nav-btn.active, .theme-toggle-btn:hover, .action-btn:hover {
+            background: var(--soft-blush);
+            transform: translateY(-1px);
+        }
+
+        /* ESTRUCTURA ORIGINAL INTEGRADA Y RESPONSIVA */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 columna en móvil para que no se aplaste */
+            gap: 15px;
+        }
+
+        /* Si es pantalla grande, hereda tus 3 columnas originales impecables */
+        @media (min-width: 900px) {
+            .layout-grid {
+                grid-template-columns: 240px 1fr 260px;
+            }
+        }
+
+        .box-module {
+            background: var(--panel-bg);
+            border: 1px solid var(--accent-pink);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .box-title {
+            background: var(--box-header-bg);
+            color: var(--text-main);
+            font-size: 11px;
+            font-weight: bold;
+            padding: 6px 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--accent-pink);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* REPRODUCTOR RESPONSIVO BLINDADO */
+        .media-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--accent-pink);
+            width: 100%;
+        }
+
+        .media-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        /* CUADRÍCULA DE AMIGOS */
+        .friends-space-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .friend-card {
+            background: var(--input-bg);
+            border: 1px dotted var(--accent-pink);
+            border-radius: 6px;
+            padding: 4px;
+            font-size: 10px;
+        }
+
+        .friend-card img {
+            width: 100%;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 3px;
+        }
+
+        .friend-name {
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+
+        .friend-socials {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .friend-socials a { text-decoration: none; font-size: 10px; }
+
+        /* CUADRÍCULA DE FOTOS */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .photo-item {
+            border: 1px dashed var(--accent-pink);
+            padding: 4px;
+            border-radius: 8px;
+            background: var(--input-bg);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+        }
+
+        /* FORMULARIOS E INPUTS */
+        textarea, input[type="text"], input[type="password"], select {
+            background: var(--input-bg);
+            border: 1px solid var(--accent-pink);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 6px;
+            font-family: inherit;
+            font-size: 11px;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .post-card {
+            background: var(--input-bg);
+            border: 1px dotted var(--accent-pink);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            word-wrap: break-word;
+        }
+
+        .post-author {
+            color: var(--text-muted);
+            font-size: 10px;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+        /* IDENTIDAD ESTÉTICA */
+        .visitor-badge {
+            background: var(--soft-blush);
+            color: var(--text-main);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 1px dashed var(--accent-pink);
+            width: 100%;
+        }
+
+        /* CHAT FLOTANTE CON DESPLIEGUE SEGURO */
+        .chat-tab {
+            position: fixed; bottom: 15px; right: 15px;
+            background: var(--panel-bg); border: 2px solid var(--accent-pink);
+            color: var(--text-main); padding: 8px 18px; border-radius: 20px;
+            cursor: pointer; box-shadow: 0 4px 15px var(--shadow);
+            font-size: 11px; font-weight: bold; z-index: 999;
+        }
+
+        .chat-window {
+            position: fixed; bottom: 15px; right: 15px;
+            width: 280px; height: 360px; background: var(--panel-bg);
+            border: 2px solid var(--accent-pink); border-radius: 12px;
+            display: flex; flex-direction: column; box-shadow: 0 5px 20px var(--shadow);
+            z-index: 1000; overflow: hidden;
+        }
+
+        .chat-header { background: var(--box-header-bg); padding: 8px 12px; font-weight: bold; border-bottom: 1px dashed var(--accent-pink); display: flex; justify-content: space-between; }
+        .chat-messages { flex-grow: 1; padding: 10px; overflow-y: auto; font-size: 11px; display: flex; flex-direction: column; gap: 6px; background: var(--input-bg); }
+        .chat-inputs { padding: 8px; background: var(--panel-bg); border-top: 1px solid var(--accent-pink); display: flex; gap: 6px; }
+
+        .hidden { display: none !important; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+
+        .sparkle-particle {
+            position: fixed; pointer-events: none; color: var(--accent-pink);
+            font-size: 12px; z-index: 9999; animation: explode 0.8s ease-out forwards;
+        }
+        @keyframes explode {
+            0% { transform: translate(0,0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0.3); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PANTALLA DE ACCESO PARA AMIGOS -->
+<div id="lockScreen" class="lock-screen hidden">
+    <div class="box-module" style="width: 100%; max-width: 300px; text-align: center;">
+        <div class="box-title"><span>🎀 Zona Restringida Amigos </span></div>
+        <p style="margin-bottom: 10px;">Introduce la clave secreta para entrar:</p>
+        <input type="password" id="gateKeyInput" placeholder="Clave aquí..." style="text-align:center; margin-bottom:10px;">
+        <button class="action-btn" style="width: 100%;" onclick="checkGateKey()">Entrar al Capullo ✨</button>
+        <span id="lockError" style="color: red; font-size: 10px; display: block; margin-top: 5px;"></span>
+    </div>
+</div>
+
+<!-- CONTENEDOR DE LA PÁGINA -->
+<div class="profile-container" id="appContainer">
+    
+    <header>
+        <h1 id="lblTitle">🎀 mel's cocoon matrix 🎀</h1>
+        <div style="color: var(--text-muted); font-size: 11px; margin-top: 5px; font-weight: bold;" id="lblBio">welcome to my little sanctuary ✧ @_tomate_4</div>
+    </header>
+
+    <div class="top-controls">
+        <nav>
+            <button class="nav-btn active" id="btnTabMain" onclick="changeTab('main')">🎀 Libro de Firmas</button>
+            <button class="nav-btn" id="btnTabPhotos" onclick="changeTab('photos')">📷 Cofre de Fotos</button>
+        </nav>
+        <button class="theme-toggle-btn" style="width:100%; margin-top:5px;" onclick="toggleTheme()">🌓 Alternar Modo (Cute/Dark)</button>
+    </div>
+
+    <!-- AQUÍ ESTÁ TU DIVISIÓN ORIGINAL SÓLIDA -->
+    <div class="layout-grid">
+        
+        <!-- COLUMNA IZQUIERDA ORIGINAL: PLAYLIST Y CALENDARIO -->
+        <aside>
+            <div class="box-module">
+                <div class="box-title"><span>🎵 My Playlist</span></div>
+                <div class="media-container">
+                    <!-- URL Actualizada con un video estético funcional base para evitar pantallas caídas -->
+                    <iframe id="ytIframe" src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="box-module">
+                <div class="box-title"><span>📅 Mi Calendario</span></div>
+                <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--accent-pink); width:100%;">
+                    <iframe id="calIframe" src="https://calendar.google.com/calendar/embed?src=es.cl%23holiday%40group.v.calendar.google.com&ctz=America%2FLima" style="border: 0; width: 100%; height: 180px;" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </aside>
+
+        <!-- COLUMNA CENTRAL ORIGINAL: IDENTIDAD Y MUROS -->
+        <main>
+            <div class="visitor-badge">
+                Tu huella estética asignada: <span id="lblMyGeneratedNick" style="text-decoration: underline; color: var(--text-main);">...</span> 📑
+            </div>
+
+            <!-- SECCIÓN MURO -->
+            <div id="secMain" class="view-section active">
+                <div class="box-module">
+                    <div class="box-title"><span>📝 Dejar un mensaje anónimo</span></div>
+                    <textarea id="txtPostContent" rows="3" placeholder="Escribe algo lindo de forma anónima..." style="resize:none; margin-bottom:6px;"></textarea>
+                    <button class="action-btn" style="width:100%;" onclick="submitNewPost()">Publicar Mensaje ✨</button>
+                </div>
+                <div id="postsWrapper"></div>
+            </div>
+
+            <!-- SECCIÓN FOTOS -->
+            <div id="secPhotos" class="view-section">
+                <div class="box-module">
+                    <div class="box-title"><span>📷 Baúl de Recuerdos</span></div>
+                    <button class="action-btn" style="width:100%;" onclick="document.getElementById('filePhoto').click()">Subir una Foto...</button>
+                    <input type="file" id="filePhoto" style="display:none;" accept="image/*" onchange="submitPhotoToQueue(this)">
+                    <span id="photoSuccessLabel" style="font-size:10px; color:var(--text-muted); margin-top:5px; display:block;"></span>
+                    
+                    <div class="photo-grid" id="approvedPhotosGrid"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- COLUMNA DERECHA ORIGINAL: PERFIL, AMIGOS Y AJUSTES -->
+        <aside>
+            <div class="box-module">
+                <div class="box-title"><span>🧸 Perfil</span></div>
+                <div style="text-align: center;">
+                    <div style="width:90px; height:90px; border:2px dashed var(--accent-pink); border-radius:50%; margin:0 auto 10px auto; overflow:hidden; background:var(--input-bg); display:flex; align-items:center; justify-content:center; cursor:pointer;" onclick="document.getElementById('fileAvatar').click()">
+                        <img id="imgAvatar" src="https://api.dicebear.com/7.x/coquette/svg?seed=mel" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <input type="file" id="fileAvatar" style="display:none;" accept="image/*" onchange="updateAvatar(this)">
+                </div>
+            </div>
+
+            <div class="box-module">
+                <div class="box-title"><span id="lblFriendsTitle">🎀 Mis Amigos (0)</span></div>
+                <div class="friends-space-grid" id="friendsSpaceGrid"></div>
+            </div>
+
+            <!-- CONFIGURACIÓN INTERNA COMPLETA -->
+            <div class="box-module">
+                <div class="box-title" onclick="toggleModPanel()" style="cursor:pointer;"><span>⚙️ Configuración Secreta</span> <span>[+]</span></div>
+                <div id="modPanelContent" class="hidden" style="margin-top:8px; display:flex; flex-direction:column; gap:8px;">
+                    <div>
+                        <label style="font-size:9px; font-weight:bold;">Título Web:</label>
+                        <input type="text" id="inputTitleText">
+                    </div>
+                    <div>
+                        <label style="font-size:9px; font-weight:bold;">URL/ID Playlist Youtube:</label>
+                        <input type="text" id="inputYtUrl">
+                    </div>
+                    <div>
+                        <label style="font-size:9px; font-weight:bold;">URL Calendario Embed:</label>
+                        <input type="text" id="inputCalUrl">
+                    </div>
+                    <div>
+                        <label style="font-size:9px; font-weight:bold;">🔒 Clave de entrada Amigos:</label>
+                        <input type="text" id="inputGateKey">
+                    </div>
+                    
+                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px;">
+                        <label style="font-size:9px; font-weight:bold;">🖼️ Fondo:</label>
+                        <select id="bgTypeSelector" onchange="handleBgTypeChange()">
+                            <option value="default">Cuadrícula Base</option>
+                            <option value="url">Por URL Externa</option>
+                            <option value="upload">Subir Archivo Local</option>
+                        </select>
+                        <input type="text" id="inputBgUrl" class="hidden" placeholder="Pegar URL..." style="margin-top:3px;">
+                        <input type="file" id="fileBgLocal" class="hidden" accept="image/*" onchange="uploadLocalBackground(this)" style="margin-top:3px;">
+                    </div>
+
+                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px; display:flex; flex-direction:column; gap:4px;">
+                        <label style="font-size:9px; font-weight:bold;">➕ Agregar Amigo:</label>
+                        <input type="text" id="addFriendName" placeholder="Nombre...">
+                        <input type="text" id="addFriendPhoto" placeholder="URL Foto (Opcional)...">
+                        <select id="addFriendSocialType">
+                            <option value="tiktok">🎵 TikTok</option>
+                            <option value="instagram">📸 Instagram</option>
+                            <option value="whatsapp">💬 WhatsApp</option>
+                            <option value="mail">✉️ Correo</option>
+                        </select>
+                        <input type="text" id="addFriendSocialLink" placeholder="Enlace o Usuario...">
+                        <button class="action-btn" style="padding:4px; font-size:10px;" onclick="addNewFriend()">Añadir Amigo</button>
+                    </div>
+
+                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px;">
+                        <span style="font-size:9px; font-weight:bold;">📥 Moderación Fotos:</span>
+                        <div id="modQueue" style="font-size:10px; color:var(--text-muted); margin-top:3px;">Ninguna.</div>
+                    </div>
+
+                    <button class="action-btn" style="width:100%; font-weight:bold;" onclick="saveAllSettings()">Guardar Todo 🎀</button>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+<!-- CHAT GENERAL COMPLETO CON BOTÓN DE ENVÍO DIRECTO -->
+<div id="chatTrigger" class="chat-tab" onclick="openChatWindow(true)">💬 Chat_Amigos</div>
+<div id="chatBox" class="chat-window hidden">
+    <div class="chat-header"><span>🎀 Canal de Chat</span><span style="cursor:pointer;" onclick="openChatWindow(false)">[X]</span></div>
+    <div class="chat-messages" id="chatStream"></div>
+    <div class="chat-inputs">
+        <input type="text" id="chatMsgText" placeholder="Escribe algo..." onkeypress="handleChatPress(event)">
+        <button class="action-btn" style="border-radius:8px; padding:6px 10px;" onclick="submitChatMessage()">→</button>
+    </div>
+</div>
+
+<script>
+let localConfig = { 
+    title: "🎀 mel's cocoon matrix 🎀", avatar: "https://api.dicebear.com/7.x/coquette/svg?seed=mel", theme: "cute",
+    bgType: "default", bgValue: "", ytUrl: "jfKfPfyJRdk", calUrl: "", gateKey: ""
+};
+let localFriends = []; let localPosts = []; let localChats = []; let localPhotos = [];
+let userIdentityNick = "";
+
+window.onload = function() {
+    initLocalCache();
+    initUserIdentity(); 
+    checkGateSecurity();
+    applyInterfaceCustoms();
+    initClickSparkles();
+
+    renderFriends(); renderAllPosts(); renderApprovedPhotos(); renderModQueue(); renderChatHistory();
+};
+
+function initLocalCache() {
+    try { let c = localStorage.getItem("m_cfg"); if(c) localConfig = JSON.parse(c); } catch(e){}
+    try { let f = localStorage.getItem("m_frn"); localFriends = f ? JSON.parse(f) : []; } catch(e){}
+    try { let p = localStorage.getItem("m_pts"); localPosts = p ? JSON.parse(p) : []; } catch(e){}
+    try { let ch = localStorage.getItem("m_cht"); localChats = ch ? JSON.parse(ch) : []; } catch(e){}
+    try { let ph = localStorage.getItem("m_pht"); localPhotos = ph ? JSON.parse(ph) : []; } catch(e){}
+}
+
+function initUserIdentity() {
+    let savedNick = localStorage.getItem("m_anon_identity");
+    if(!savedNick) {
+        const prefixes = ["doll", "cyber", "angel", "lace", "soft", "pink", "star", "pixie", "cute", "mew"];
+        const suffixes = ["luv", "xo", "cx", "bb", "rawr", "core", "web", "cutie", "sad", "bot"];
+        savedNick = `${prefixes[Math.floor(Math.random() * prefixes.length)]}.${suffixes[Math.floor(Math.random() * suffixes.length)]}`;
+        localStorage.setItem("m_anon_identity", savedNick);
+    }
+    userIdentityNick = savedNick;
+    document.getElementById("lblMyGeneratedNick").textContent = userIdentityNick;
+}
+
+function checkGateSecurity() {
+    if(localConfig.gateKey && localConfig.gateKey.trim() !== "") {
+        if(sessionStorage.getItem("gate_auth") !== "true") {
+            document.getElementById("appContainer").classList.add("hidden");
+            document.getElementById("chatTrigger").classList.add("hidden");
+            document.getElementById("lockScreen").classList.remove("hidden");
+        }
+    }
+}
+
+function checkGateKey() {
+    if(document.getElementById("gateKeyInput").value === localConfig.gateKey) {
+        sessionStorage.setItem("gate_auth", "true");
+        document.getElementById("lockScreen").classList.add("hidden");
+        document.getElementById("appContainer").classList.remove("hidden");
+        document.getElementById("chatTrigger").classList.remove("hidden");
+    } else {
+        document.getElementById("lockError").textContent = "Clave incorrecta 🎀";
+    }
+}
+
+function applyInterfaceCustoms() {
+    document.documentElement.setAttribute('data-theme', localConfig.theme);
+    document.getElementById("lblTitle").textContent = localConfig.title;
+    document.getElementById("inputTitleText").value = localConfig.title;
+    document.getElementById("inputGateKey").value = localConfig.gateKey || "";
+
+    if(localConfig.avatar) document.getElementById("imgAvatar").src = localConfig.avatar;
+
+    if(localConfig.ytUrl) {
+        document.getElementById("inputYtUrl").value = localConfig.ytUrl;
+        let finalSrc = localConfig.ytUrl.includes("embed") ? localConfig.ytUrl : `https://www.youtube.com/embed/${localConfig.ytUrl.split('v=')[1] || localConfig.ytUrl}`;
+        document.getElementById("ytIframe").src = finalSrc;
+    }
+    if(localConfig.calUrl) {
+        document.getElementById("inputCalUrl").value = localConfig.calUrl;
+        document.getElementById("calIframe").src = localConfig.calUrl;
+    }
+
+    document.getElementById("bgTypeSelector").value = localConfig.bgType;
+    handleBgTypeChange();
+    if(localConfig.bgType === 'url') document.getElementById("inputBgUrl").value = localConfig.bgValue;
+
+    if(localConfig.bgType !== 'default' && localConfig.bgValue) {
+        document.body.classList.add("custom-bg");
+        document.body.style.setProperty('--user-bg-url', `url('${localConfig.bgValue}')`);
+    } else {
+        document.body.classList.remove("custom-bg");
+    }
+}
+
+function addNewFriend() {
+    let name = document.getElementById("addFriendName").value.trim();
+    let photo = document.getElementById("addFriendPhoto").value.trim() || "https://api.dicebear.com/7.x/coquette/svg?seed=" + name;
+    let type = document.getElementById("addFriendSocialType").value;
+    let link = document.getElementById("addFriendSocialLink").value.trim();
+    if(!name) return;
+
+    let targetUrl = link; let icon = "🔗";
+    if(type === 'instagram') { icon = "📸"; if(!link.startsWith('http')) targetUrl = `https://instagram.com/${link}`; }
+    if(type === 'tiktok') { icon = "🎵"; if(!link.startsWith('http')) targetUrl = `https://tiktok.com/@${link}`; }
+    if(type === 'whatsapp') { icon = "💬"; if(!link.startsWith('http')) targetUrl = `https://wa.me/${link.replace(/[^0-9]/g, '')}`; }
+    if(type === 'mail') { icon = "✉️"; targetUrl = `mailto:${link}`; }
+
+    localFriends.push({ name, photo, type, url: targetUrl, icon });
+    localStorage.setItem("m_frn", JSON.stringify(localFriends));
+    renderFriends();
+
+    document.getElementById("addFriendName").value = "";
+    document.getElementById("addFriendPhoto").value = "";
+    document.getElementById("addFriendSocialLink").value = "";
+}
+
+function renderFriends() {
+    let grid = document.getElementById("friendsSpaceGrid"); grid.innerHTML = "";
+    document.getElementById("lblFriendsTitle").textContent = `🎀 Mis Amigos (${localFriends.length})`;
+    localFriends.forEach((f, index) => {
+        grid.innerHTML += `
+            <div class="friend-card">
+                <div class="friend-name">${f.name}</div>
+                <img src="${f.photo}" onerror="this.src='https://api.dicebear.com/7.x/coquette/svg?seed=fallback'">
+                <div class="friend-socials">
+                    <a href="${f.url}" target="_blank"> ${f.icon}</a>
+                    <span style="cursor:pointer; color:red; font-weight:bold; margin-left:5px;" onclick="removeFriend(${index})">×</span>
+                </div>
+            </div>`;
+    });
+}
+
+function removeFriend(index) {
+    localFriends.splice(index, 1);
+    localStorage.setItem("m_frn", JSON.stringify(localFriends));
+    renderFriends();
+}
+
+function saveAllSettings() {
+    localConfig.title = document.getElementById("inputTitleText").value;
+    localConfig.ytUrl = document.getElementById("inputYtUrl").value;
+    localConfig.calUrl = document.getElementById("inputCalUrl").value;
+    localConfig.gateKey = document.getElementById("inputGateKey").value;
+    let type = document.getElementById("bgTypeSelector").value; localConfig.bgType = type;
+    if(type === 'url') localConfig.bgValue = document.getElementById("inputBgUrl").value;
+    if(type === 'default') localConfig.bgValue = "";
+    localStorage.setItem("m_cfg", JSON.stringify(localConfig)); applyInterfaceCustoms();
+}
+
+function handleBgTypeChange() {
+    let type = document.getElementById("bgTypeSelector").value;
+    document.getElementById("inputBgUrl").classList.toggle("hidden", type !== 'url');
+    document.getElementById("fileBgLocal").classList.toggle("hidden", type !== 'upload');
+}
+
+function uploadLocalBackground(el) {
+    if(el.files && el.files[0]) {
+        let r = new FileReader(); r.onload = function(e) { 
+            localConfig.bgValue = e.target.result; localConfig.bgType = "upload";
+            localStorage.setItem("m_cfg", JSON.stringify(localConfig)); applyInterfaceCustoms();
+        }; r.readAsDataURL(el.files[0]);
+    }
+}
+
+function toggleTheme() {
+    localConfig.theme = (localConfig.theme === 'cute') ? 'dark' : 'cute';
+    localStorage.setItem("m_cfg", JSON.stringify(localConfig)); applyInterfaceCustoms();
+}
+
+function submitNewPost() {
+    let t = document.getElementById("txtPostContent").value; if(!t.trim()) return;
+    localPosts.unshift({ text: t, author: userIdentityNick });
+    localStorage.setItem("m_pts", JSON.stringify(localPosts));
+    renderAllPosts(); document.getElementById("txtPostContent").value = "";
+}
+
+function renderAllPosts() {
+    let w = document.getElementById("postsWrapper"); w.innerHTML = "";
+    if(localPosts.length === 0) { w.innerHTML = `<p style="font-size:11px; color:var(--text-muted); text-align:center;">Muro silencioso... 🧸</p>`; return; }
+    localPosts.forEach(p => { 
+        w.innerHTML += `<div class="post-card"><div class="post-author">✧ ${p.author} escribió:</div><div>${p.text}</div></div>`; 
+    });
+}
+
+function submitPhotoToQueue(el) {
+    if(el.files && el.files[0]) {
+        let r = new FileReader(); r.onload = function(e) {
+            localPhotos.unshift({ id: Date.now().toString(), src: e.target.result, status: 'pendiente' });
+            localStorage.setItem("m_pht", JSON.stringify(localPhotos)); renderApprovedPhotos(); renderModQueue();
+            document.getElementById("photoSuccessLabel").textContent = "¡Foto enviada a moderación! ✨";
+            setTimeout(() => { document.getElementById("photoSuccessLabel").textContent = ""; }, 4000);
+        }; r.readAsDataURL(el.files[0]);
+    }
+}
+
+// ... Resto de lógica intacta del Backend para conservar tus bases de datos locales ...
+function renderApprovedPhotos() {
+    let g = document.getElementById("approvedPhotosGrid"); g.innerHTML = "";
+    let approved = localPhotos.filter(p => p.status === 'aprobada');
+    if(approved.length === 0) { g.innerHTML = `<p style="grid-column:1/-1; color:var(--text-muted); font-size:10px; text-align:center;">Baúl vacío... 📷</p>`; return; }
+    approved.forEach(p => { g.innerHTML += `<div class="photo-item"><img src="${p.src}"></div>`; });
+}
+
+function renderModQueue() {
+    let q = document.getElementById("modQueue"); q.innerHTML = "";
+    let pending = localPhotos.filter(p => p.status === 'pendiente');
+    if(pending.length === 0) { q.innerHTML = "Ninguna."; return; }
+    pending.forEach(p => {
+        q.innerHTML += `<div style="display:flex; align-items:center; justify-content:between; gap:4px; margin-top:5px; border-bottom:1px dotted var(--accent-pink); padding-bottom:4px;"><img src="${p.src}" width="30" height="30" style="object-fit:cover;"><div><button onclick="procPhoto('${p.id}','aprobada')">✓</button><button onclick="procPhoto('${p.id}','del')">×</button></div></div>`;
+    });
+}
+
+function procPhoto(id, action) {
+    if(action === 'aprobada') { let idx = localPhotos.findIndex(p => p.id === id); if(idx!==-1) localPhotos[idx].status = 'aprobada'; }
+    else { localPhotos = localPhotos.filter(p => p.id !== id); }
+    localStorage.setItem("m_pht", JSON.stringify(localPhotos)); renderApprovedPhotos(); renderModQueue();
+}
+
+function handleChatPress(e) { if(e.key === 'Enter') submitChatMessage(); }
+function submitChatMessage() {
+    let t = document.getElementById("chatMsgText").value.trim(); if(!t) return;
+    localChats.push({ nick: userIdentityNick, text: t });
+    localStorage.setItem("m_cht", JSON.stringify(localChats)); renderChatHistory();
+    document.getElementById("chatMsgText").value = "";
+}
+
+function renderChatHistory() {
+    let s = document.getElementById("chatStream"); s.innerHTML = "";
+    localChats.forEach(m => { s.innerHTML += `<div><strong>✧ ${m.nick}:</strong> ${m.text}</div>`; });
+    s.scrollTop = s.scrollHeight;
+}
+
+function updateAvatar(input) {
+    if(input.files && input.files[0]) {
+        let r = new FileReader(); r.onload = function(e) {
+            localConfig.avatar = e.target.result; localStorage.setItem("m_cfg", JSON.stringify(localConfig)); applyInterfaceCustoms();
+        }; r.readAsDataURL(input.files[0]);
+    }
+}
+
+function changeTab(tab) {
+    document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    if(tab === 'main') { document.getElementById("secMain").classList.add("active"); document.getElementById("btnTabMain").classList.add("active"); }
+    else { document.getElementById("secPhotos").classList.add("active"); document.getElementById("btnTabPhotos").classList.add("active"); }
+}
+
+function openChatWindow(open) {
+    document.getElementById("chatTrigger").classList.toggle("hidden", open);
+    document.getElementById("chatBox").classList.toggle("hidden", !open);
+}
+function toggleModPanel() { document.getElementById("modPanelContent").classList.toggle("hidden"); }
+
+function initClickSparkles() {
+    const symbols = ["✧", "✦", "🎀", "°"];
+    window.addEventListener("click", function(e) {
+        if(["BUTTON", "INPUT", "TEXTAREA", "SELECT", "OPTION"].includes(e.target.tagName)) return;
+        for(let i=0; i<3; i++) {
+            let p = document.createElement("div"); p.className = "sparkle-particle";
+            p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            p.style.left = e.clientX + "px"; p.style.top = e.clientY + "px";
+            p.style.setProperty('--x', (Math.random() - 0.5) * 60 + "px");
+            p.style.setProperty('--y', (Math.random() - 0.5) * 60 + "px");
+            document.body.appendChild(p); setTimeout(() => p.remove(), 800);
+        }
+    });
+}
+</script>
+</body>
+</html>
         body {
             background-color: var(--bg-body);
             background-image: 
