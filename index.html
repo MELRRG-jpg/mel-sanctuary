@@ -1,40 +1,477 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mel_sanctuary_matrix</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>🎀 arunyi's cocoon matrix 🎀</title>
     <style>
         /* ==========================================================================
-           VARIABLES Y PALETA DE COLOR (CYBER GOTH / COQUETTE SELECCIONADA)
+           VARIABLES DE ESTILO (Soporta Modos Cute y Dark Coquette)
            ========================================================================== */
         :root {
-            --bg-dark: #181717;          /* Midnight Forest de 51635.jpg */
-            --panel-dark: #241a22;       /* Fondo profundo de 51633.jpg */
-            --barbie-pink: #e5a9bf;      /* Tono medio rosa de 51633.jpg */
-            --soft-lace-pink: #fdd6dd;   /* Soft Blush de 51633.jpg / 51638.jpg */
-            --muted-mauve: #977272;      /* Muted Hearth de 51635.jpg */
-            --woodsmoke: #594e4c;        /* Woodsmoke Shadow de 51635.jpg */
-            --ghost-white: #f5f0f2;
-            --border-rococo: #3a2230;
-            --text-dim: #b5a4ad;
-            --system-green: #00ffcc;
-            --system-red: #ff3366;
+            --bg-body: #fff5f6;
+            --grid-color: rgba(235, 202, 212, 0.4);
+            --panel-bg: #ffffff;
+            --accent-pink: #ebcad4;
+            --soft-blush: #fdd6dd;
+            --text-main: #7a6268;
+            --text-muted: #bda6aa;
+            --box-header-bg: #fff0f2;
+            --input-bg: #fffbfb;
+            --shadow: rgba(235, 202, 212, 0.4);
         }
 
-        [data-theme="light"] {
-            --bg-dark: #fcf8fa;
-            --panel-dark: #f3e6ed;
-            --barbie-pink: #d0417e;
-            --soft-lace-pink: #ffb6c1;
-            --muted-mauve: #e0b6cc;
-            --woodsmoke: #5c4a53;
-            --ghost-white: #1c1217;
-            --border-rococo: #e0b6cc;
-            --text-dim: #5c4a53;
+        [data-theme="dark"] {
+            --bg-body: #161214;
+            --grid-color: rgba(235, 202, 212, 0.08);
+            --panel-bg: #211b1e;
+            --accent-pink: #d49ba8;
+            --soft-blush: #423136;
+            --text-main: #fceef1;
+            --text-muted: #9c8287;
+            --box-header-bg: #2e2427;
+            --input-bg: #1a1417;
+            --shadow: rgba(0, 0, 0, 0.6);
         }
 
+        body {
+            background-color: var(--bg-body);
+            background-image: 
+                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.custom-bg {
+            background-image: var(--user-bg-url) !important;
+            background-size: cover !important;
+            background-position: center !important;
+        }
+
+        /* PANTALLA DE BLOQUEO */
+        .lock-screen {
+            position: fixed;
+            top:0; left:0; width:100vw; height:100vh;
+            background: var(--bg-body);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .profile-container {
+            width: 100%;
+            max-width: 950px;
+            background-color: var(--panel-bg);
+            border: 4px double var(--accent-pink);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            border: 2px dashed var(--accent-pink);
+            border-radius: 12px;
+            padding: 25px 15px;
+            margin-bottom: 20px;
+            background-color: var(--input-bg);
+            background-image: radial-gradient(var(--accent-pink) 15%, transparent 15%);
+            background-size: 12px 12px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+            text-shadow: 2px 2px 0px var(--panel-bg), 4px 4px 0px var(--accent-pink);
+        }
+
+        .top-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav { display: flex; gap: 12px; }
+
+        .nav-btn, .theme-toggle-btn, .action-btn {
+            background: var(--box-header-bg);
+            border: 1px solid var(--accent-pink);
+            color: var(--text-main);
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 11px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover, .nav-btn.active, .theme-toggle-btn:hover, .action-btn:hover {
+            background: var(--soft-blush);
+            transform: translateY(-1px);
+        }
+
+        /* GRID DE LAYOUT */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr 260px;
+            gap: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .layout-grid { grid-template-columns: 1fr; }
+        }
+
+        .box-module {
+            background: var(--panel-bg);
+            border: 1px solid var(--accent-pink);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .box-title {
+            background: var(--box-header-bg);
+            color: var(--text-main);
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--accent-pink);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* CUADRÍCULA DE AMIGOS */
+        .friends-space-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .friend-card {
+            background: var(--input-bg);
+            border: 1px dotted var(--accent-pink);
+            border-radius: 6px;
+            padding: 4px;
+            font-size: 10px;
+        }
+
+        .friend-card img {
+            width: 100%;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 3px;
+        }
+
+        .friend-name {
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 2px;
+        }
+
+        .friend-socials {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .friend-socials a { text-decoration: none; font-size: 10px; }
+
+        /* NUEVA CUADRÍCULA DE FOTOS CORREGIDA */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .photo-item {
+            border: 1px dashed var(--accent-pink);
+            padding: 4px;
+            border-radius: 8px;
+            background: var(--input-bg);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+        }
+
+        /* FORMULARIOS E INPUTS */
+        textarea, input[type="text"], input[type="password"], select {
+            background: var(--input-bg);
+            border: 1px solid var(--accent-pink);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 6px;
+            font-family: inherit;
+            font-size: 11px;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .post-card {
+            background: var(--input-bg);
+            border: 1px dotted var(--accent-pink);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+        }
+
+        .post-author {
+            color: var(--text-muted);
+            font-size: 10px;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+        /* IDENTIDAD ESTÉTICA */
+        .visitor-badge {
+            background: var(--soft-blush);
+            color: var(--text-main);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 1px dashed var(--accent-pink);
+        }
+
+        /* CHAT FLOTANTE CORREGIDO */
+        .chat-tab {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--panel-bg); border: 2px solid var(--accent-pink);
+            color: var(--text-main); padding: 8px 18px; border-radius: 20px;
+            cursor: pointer; box-shadow: 0 4px 15px var(--shadow);
+            font-size: 11px; font-weight: bold; z-index: 999;
+        }
+
+        .chat-window {
+            position: fixed; bottom: 20px; right: 20px;
+            width: 290px; height: 380px; background: var(--panel-bg);
+            border: 2px solid var(--accent-pink); border-radius: 12px;
+            display: flex; flex-direction: column; box-shadow: 0 5px 20px var(--shadow);
+            z-index: 1000; overflow: hidden;
+        }
+
+        .chat-header { background: var(--box-header-bg); padding: 8px 12px; font-weight: bold; border-bottom: 1px dashed var(--accent-pink); display: flex; justify-content: space-between; }
+        .chat-messages { flex-grow: 1; padding: 10px; overflow-y: auto; font-size: 11px; display: flex; flex-direction: column; gap: 6px; background: var(--input-bg); }
+        .chat-inputs { padding: 8px; background: var(--panel-bg); border-top: 1px solid var(--accent-pink); display: flex; gap: 6px; }
+
+        .hidden { display: none !important; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+
+        .sparkle-particle {
+            position: fixed; pointer-events: none; color: var(--accent-pink);
+            font-size: 12px; z-index: 9999; animation: explode 0.8s ease-out forwards;
+        }
+        @keyframes explode {
+            0% { transform: translate(0,0) scale(1); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(0.3); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PANTALLA SECRETA DE ACCESO PARA AMIGOS -->
+<div id="lockScreen" class="lock-screen hidden">
+    <div class="box-module" style="width: 300px; text-align: center;">
+        <div class="box-title"><span>🎀 Zona Restringida Amigos </span></div>
+        <p style="margin-bottom: 10px;">Introduce la clave secreta para entrar:</p>
+        <input type="password" id="gateKeyInput" placeholder="Escribe la clave aquí..." style="text-align:center; margin-bottom:10px;">
+        <button class="action-btn" style="width: 100%;" onclick="checkGateKey()">Entrar al Capullo ✨</button>
+        <span id="lockError" style="color: red; font-size: 10px; display: block; margin-top: 5px;"></span>
+    </div>
+</div>
+
+<!-- CONTENEDOR DE LA PAGINA -->
+<div class="profile-container" id="appContainer">
+    
+    <header>
+        <h1 id="lblTitle">🎀 arunyi's cocoon matrix 🎀</h1>
+        <div style="color: var(--text-muted); font-size: 11px; margin-top: 5px; font-weight: bold;" id="lblBio">welcome to my little sanctuary ✧ @_tomate_4</div>
+    </header>
+
+    <div class="top-controls">
+        <nav>
+            <button class="nav-btn active" id="btnTabMain" onclick="changeTab('main')">🎀 Libro de Firmas</button>
+            <button class="nav-btn" id="btnTabPhotos" onclick="changeTab('photos')">📷 Cofre de Fotos</button>
+        </nav>
+        <button class="theme-toggle-btn" onclick="toggleTheme()">🌓 Alternar Modo (Cute/Dark)</button>
+    </div>
+
+    <div class="layout-grid">
+        
+        <!-- COLUMNA IZQUIERDA: MULTIMEDIA -->
+        <aside>
+            <div class="box-module">
+                <div class="box-title"><span>🎵 My Playlist</span></div>
+                <div id="ytVideoContainer" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius:8px; border:1px solid var(--accent-pink);">
+                    <iframe id="ytIframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/videoseries?list=PL4fGSI1pDJn5kI81J1u57S7E84t0V_L7A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="box-module">
+                <div class="box-title"><span>📅 Mi Calendario</span></div>
+                <div id="calendarContainer" style="border-radius: 8px; overflow: hidden; border: 1px solid var(--accent-pink);">
+                    <iframe id="calIframe" src="https://calendar.google.com/calendar/embed?src=es.cl%23holiday%40group.v.calendar.google.com&ctz=America%2FLima" style="border: 0; width: 100%; height: 180px;" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </aside>
+
+        <!-- COLUMNA CENTRAL: INTERACTIVIDAD -->
+        <main>
+            <!-- TU IDENTIFICADOR ANÓNIMO ACTUAL -->
+            <div class="visitor-badge">
+                Tu huella estética asignada: <span id="lblMyGeneratedNick" style="text-decoration: underline; color: var(--text-main);">...</span> 📑
+            </div>
+
+            <!-- SECCIÓN MURO -->
+            <div id="secMain" class="view-section active">
+                <div class="box-module">
+                    <div class="box-title"><span>📝 Dejar un mensaje anónimo</span></div>
+                    <textarea id="txtPostContent" rows="3" placeholder="Escribe algo lindo de forma anónima..." style="resize:none; margin-bottom:6px;"></textarea>
+                    <button class="action-btn" onclick="submitNewPost()">Publicar Mensaje ✨</button>
+                </div>
+                <div id="postsWrapper"></div>
+            </div>
+
+            <!-- SECCIÓN FOTOS -->
+            <div id="secPhotos" class="view-section">
+                <div class="box-module">
+                    <div class="box-title"><span>📷 Baúl de Recuerdos</span></div>
+                    <button class="action-btn" onclick="document.getElementById('filePhoto').click()">Subir una Foto...</button>
+                    <input type="file" id="filePhoto" style="display:none;" accept="image/*" onchange="submitPhotoToQueue(this)">
+                    <span id="photoSuccessLabel" style="font-size:10px; color:var(--text-muted); margin-left:8px;"></span>
+                    
+                    <!-- Cuadrícula estética de fotos -->
+                    <div class="photo-grid" id="approvedPhotosGrid"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- COLUMNA DERECHA: IDENTIDAD, AMIGOS Y AJUSTES -->
+        <aside>
+            <div class="box-module">
+                <div class="box-title"><span>🧸 Perfil</span></div>
+                <div style="text-align: center;">
+                    <div style="width:90px; height:90px; border:2px dashed var(--accent-pink); border-radius:50%; margin:0 auto 10px auto; overflow:hidden; background:var(--input-bg); display:flex; align-items:center; justify-content:center; cursor:pointer;" onclick="document.getElementById('fileAvatar').click()">
+                        <img id="imgAvatar" src="https://api.dicebear.com/7.x/coquette/svg?seed=arunyi" style="width:100%; height:100%; object-fit:cover;">
+                    </div>
+                    <input type="file" id="fileAvatar" style="display:none;" accept="image/*" onchange="updateAvatar(this)">
+                </div>
+            </div>
+
+            <div class="box-module">
+                <div class="box-title"><span id="lblFriendsTitle">🎀 Mis Amigos (0)</span></div>
+                <div class="friends-space-grid" id="friendsSpaceGrid"></div>
+            </div>
+
+            <!-- CONFIGURACIÓN INTERNA AVANZADA -->
+            <div class="box-module">
+                <div class="box-title" onclick="toggleModPanel()" style="cursor:pointer;"><span>⚙️ Configuración Secreta</span> <span>[+]</span></div>
+                <div id="modPanelContent" class="hidden" style="margin-top:8px; display:flex; flex-direction:column; gap:8px;">
+                    <div>
+                        <label style="font-size:9px; font-weight:bold;">Título Web:</label>
+                        <input type="text" id="inputTitleText">
+                    </div>
+                    <div>
+                        <label style="font-size:9px; font-weight:bold;">URL Playlist Youtube:</label>
+                        <input type="text" id="inputYtUrl">
+                    </div>
+                    <div>
+                        <label style="font-size:9px; font-weight:bold;">URL Calendario Embed:</label>
+                        <input type="text" id="inputCalUrl">
+                    </div>
+                    <div>
+                        <label style="font-size:9px; font-weight:bold;">🔒 Clave de entrada Amigos:</label>
+                        <input type="text" id="inputGateKey">
+                    </div>
+                    
+                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px;">
+                        <label style="font-size:9px; font-weight:bold;">🖼️ Fondo:</label>
+                        <select id="bgTypeSelector" onchange="handleBgTypeChange()">
+                            <option value="default">Cuadrícula Base</option>
+                            <option value="url">Por URL Externa</option>
+                            <option value="upload">Subir Archivo Local</option>
+                        </select>
+                        <input type="text" id="inputBgUrl" class="hidden" placeholder="Pegar URL..." style="margin-top:3px;">
+                        <input type="file" id="fileBgLocal" class="hidden" accept="image/*" onchange="uploadLocalBackground(this)" style="margin-top:3px;">
+                    </div>
+
+                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px; display:flex; flex-direction:column; gap:4px;">
+                        <label style="font-size:9px; font-weight:bold;">➕ Agregar Amigo:</label>
+                        <input type="text" id="addFriendName" placeholder="Nombre...">
+                        <input type="text" id="addFriendPhoto" placeholder="URL Foto...">
+                        <select id="addFriendSocialType">
+                            <option value="tiktok">🎵 TikTok</option>
+                            <option value="instagram">📸 Instagram</option>
+                            <option value="whatsapp">💬 WhatsApp</option>
+                            <option value="mail">✉️ Correo</option>
+                        </select>
+                        <input type="text" id="addFriendSocialLink" placeholder="Enlace o Usuario...">
+                        <button class="action-btn" style="padding:2px; font-size:10px;" onclick="addNewFriend()">Añadir</button>
+                    </div>
+
+                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px;">
+                        <span style="font-size:9px; font-weight:bold;">📥 Moderación Fotos:</span>
+                        <div id="modQueue" style="font-size:10px; color:var(--text-muted); margin-top:3px;">Ninguna.</div>
+                    </div>
+
+                    <button class="action-btn" style="width:100%; font-weight:bold;" onclick="saveAllSettings()">Guardar Todo 🎀</button>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+<!-- CHAT GENERAL -->
+<div id="chatTrigger" class="chat-tab" onclick="openChatWindow(true)">💬 Chat_Amigos</div>
+<div id="chatBox" class="chat-window hidden">
+    <div class="chat-header"><span>🎀 Canal de Chat</span><span style="cursor:pointer;" onclick="openChatWindow(false)">[X]</span></div>
+    <div class="chat-messages" id="chatStream"></div>
+    <div class="chat-inputs">
+        <input type="text" id="chatMsgText" placeholder="Escribe algo..." onkeypress="handleChatPress(event)">
+        <button class="action-btn" style="border-radius:8px; padding:6px 10px;" onclick="submitChatMessage()">→</button>
+    </div>
+</div>
+
+<script>
+let localConfig = { 
+    title: "🎀 arunyi's cocoon matrix 🎀", avatar: "https://api.dicebear.com/7.x/coquette/svg?seed=arunyi", theme: "cute",
+    bgType: "default", bgValue: "", ytUrl: "", calUrl: "", gateKey: ""
+};
+let localFriends = []; let localPosts = []; let localChats = []; let localPhotos = [];
+let 
         /* ==========================================================================
            ESTILOS BASE E INTERFAZ (Estilo Bloques SpaceHey/Carrd)
            ========================================================================== */
