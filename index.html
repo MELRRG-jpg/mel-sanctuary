@@ -21,6 +21,7 @@
   --text-main: #FFDCE4;
   --input-bg: #1F1F1F;
   --input-text: #ffffff;
+  --fb-old-blue: #3b5998;
   
   /* Colores dinámicos para los motivos del calendario */
   --evt-goth: #A27BCA;
@@ -64,10 +65,12 @@ body::before, body::after {
   content: "𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂";
   position: fixed; left: 0; width: 100%; text-align: center;
   font-size: 11px; color: var(--barbie-pink); pointer-events: none; opacity: 0.4;
+  z-index: 50;
 }
 body::before { top: 10px; }
 body::after { bottom: 10px; }
 
+/* 1. BORDES SEMIREDONDOS INTEGRADOS */
 .rococo-cocoon-container {
   width: 880px;
   background: var(--anime-black);
@@ -76,7 +79,7 @@ body::after { bottom: 10px; }
   box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(254,177,199,0.15);
   position: relative;
   padding: 24px;
-  border-radius: 8px;
+  border-radius: 16px; /* Semiredondo */
 }
 .rococo-cocoon-container::before {
   content: "🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀";
@@ -92,7 +95,7 @@ body::after { bottom: 10px; }
   border: 2px solid var(--barbie-pink);
   position: relative; overflow: hidden;
   display: flex; flex-direction: column; justify-content: center; align-items: center;
-  border-radius: 4px;
+  border-radius: 12px; /* Semiredondo */
 }
 .banner-title-frame {
   background: var(--surface-box);
@@ -116,13 +119,13 @@ body::after { bottom: 10px; }
 .mel-secret-panel {
   display: none; background: var(--bg-deep-velvet);
   border: 2px dashed var(--barbie-pink); padding: 20px; margin: 15px 0;
-  border-radius: 6px; font-size: 12px;
+  border-radius: 12px; font-size: 12px;
 }
 .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .panel-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
 .panel-row input, .panel-row textarea, .panel-row select {
   background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  color: var(--input-text); padding: 6px; font-family: var(--font-goth); font-size: 11px; border-radius: 4px;
+  color: var(--input-text); padding: 6px; font-family: var(--font-goth); font-size: 11px; border-radius: 6px;
 }
 
 /* MENÚ INTERNO DE PESTAÑAS */
@@ -131,7 +134,7 @@ body::after { bottom: 10px; }
   flex: 1; text-align: center; padding: 9px; background: var(--goth-charcoal);
   border: 1px solid var(--barbie-pink); color: var(--text-main);
   font-family: var(--font-vintage); font-style: italic; font-size: 12px;
-  text-decoration: none; border-radius: 4px; cursor: pointer; white-space: nowrap;
+  text-decoration: none; border-radius: 8px; cursor: pointer; white-space: nowrap;
 }
 .rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; font-weight: bold; }
 
@@ -140,12 +143,13 @@ body::after { bottom: 10px; }
 
 .rococo-grid { display: grid; grid-template-columns: 210px 390px 220px; gap: 15px; }
 
+/* 1. BORDES SEMIREDONDOS EN CONTENEDORES EXTRAS */
 .rococo-frame-box {
   background: var(--surface-box);
   border: 1px solid var(--goth-charcoal);
   outline: 1px solid var(--barbie-pink); outline-offset: -5px;
   padding: 14px; position: relative; margin-bottom: 20px;
-  border-radius: 4px;
+  border-radius: 14px; /* Semiredondo */
 }
 .rococo-frame-box::after {
   content: "⊹ ✧ ⊹ ✧ ⊹";
@@ -171,7 +175,7 @@ body::after { bottom: 10px; }
 .music-user-input-row { display: flex; gap: 4px; margin-bottom: 8px; }
 .music-user-input-row input {
   flex: 1; background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  color: var(--input-text); font-family: var(--font-goth); font-size: 10px; padding: 4px; border-radius: 3px;
+  color: var(--input-text); font-family: var(--font-goth); font-size: 10px; padding: 4px; border-radius: 4px;
 }
 
 /* QUAD HOLOGRAMAS */
@@ -180,52 +184,52 @@ body::after { bottom: 10px; }
   gap: 6px; width: 100%; min-height: 240px;
 }
 .holo-slot {
-  background: #000000; border: 1px dashed var(--barbie-pink);
-  border-radius: 3px; overflow: hidden; display: flex;
+  background: #000000; border: 1px solid var(--barbie-pink);
+  border-radius: 8px; overflow: hidden; display: flex;
   align-items: center; justify-content: center; padding: 2px; font-size: 20px;
 }
-.holo-slot img, .holo-slot iframe { width: 100%; height: 100%; object-fit: contain; border: 0; }
+.holo-slot img, .holo-slot iframe, .holo-slot svg { width: 100%; height: 100%; object-fit: cover; border: 0; display: block; }
 
 /* FEED DEL MURO */
 .rococo-board-scroller { max-height: 380px; overflow-y: auto; padding-right: 4px; }
 .rococo-post-node {
   background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  padding: 12px; margin-bottom: 16px; font-size: 11px; border-radius: 4px;
+  padding: 12px; margin-bottom: 16px; font-size: 11px; border-radius: 10px;
 }
 .post-social-bar { display: flex; gap: 8px; margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--barbie-pink); }
-.react-btn { background: none; border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 2px 6px; cursor: pointer; border-radius: 3px; }
+.react-btn { background: none; border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 2px 6px; cursor: pointer; border-radius: 4px; }
 .comment-box { margin-top: 8px; }
 .comment-stream { font-size: 10px; display: flex; flex-direction: column; gap: 4px; max-height: 90px; overflow-y: auto; margin-bottom: 5px; }
-.comment-line { padding: 3px; border-radius: 2px; background: rgba(0,0,0,0.15); border-left: 3px solid var(--barbie-pink); }
+.comment-line { padding: 3px; border-radius: 4px; background: rgba(0,0,0,0.15); border-left: 3px solid var(--barbie-pink); }
 .comment-input-row { display: flex; gap: 4px; }
-.comment-in { flex: 1; background: var(--anime-black); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 4px; font-family: var(--font-goth); }
+.comment-in { flex: 1; background: var(--anime-black); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 4px; font-family: var(--font-goth); border-radius: 4px; }
 
 /* CAJA DE CONFESIONES ANÓNIMAS */
 .confession-scroller { max-height: 140px; overflow-y: auto; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
-.confession-card { background: rgba(254,177,199,0.05); border: 1px dashed var(--goth-charcoal); padding: 8px; border-radius: 4px; font-size: 10px; line-height: 1.4; }
+.confession-card { background: rgba(254,177,199,0.05); border: 1px dashed var(--goth-charcoal); padding: 8px; border-radius: 8px; font-size: 10px; line-height: 1.4; }
 
 /* REJILLA DE FOTOS (ARCHIVO ESTELAR) */
 .stellar-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-height: 500px; overflow-y: auto; padding: 10px; }
-.stellar-photo-card { background: var(--input-bg); border: 1px solid var(--barbie-pink); padding: 6px; border-radius: 4px; text-align: center; }
-.stellar-photo-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 2px; border: 1px solid var(--goth-charcoal); }
+.stellar-photo-card { background: var(--input-bg); border: 1px solid var(--barbie-pink); padding: 6px; border-radius: 10px; text-align: center; }
+.stellar-photo-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 6px; border: 1px solid var(--goth-charcoal); }
 .stellar-photo-meta { font-size: 10px; margin-top: 4px; color: var(--barbie-pink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ALMAS VINCULADAS */
 .friends-scroll-zone { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
-.friend-card { background: rgba(75, 75, 75, 0.1); border: 1px solid var(--barbie-pink); padding: 8px; border-radius: 4px; }
+.friend-card { background: rgba(75, 75, 75, 0.1); border: 1px solid var(--barbie-pink); padding: 8px; border-radius: 8px; }
 .friend-name { color: var(--barbie-pink); font-weight: bold; font-size: 11px; display: flex; justify-content: space-between; }
-.friend-meta-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 9px; padding: 3px; text-align: center; text-decoration: none; display: block; margin-top: 4px; border-radius: 2px; }
+.friend-meta-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 9px; padding: 3px; text-align: center; text-decoration: none; display: block; margin-top: 4px; border-radius: 4px; }
 
 /* ESTILOS EXCLUSIVOS DEL CALENDARIO KAOMOJI INTERACTIVO */
 .victorian-calendar-wrapper {
-  max-width: 520px; margin: 0 auto; background: rgba(0,0,0,0.2); border: 2px double var(--barbie-pink); padding: 20px; border-radius: 12px;
+  max-width: 520px; margin: 0 auto; background: rgba(0,0,0,0.2); border: 2px double var(--barbie-pink); padding: 20px; border-radius: 16px;
 }
 .calendar-header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-family: var(--font-vintage); }
 .calendar-grid-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
 .calendar-day-header { font-size: 10px; font-weight: bold; color: var(--barbie-pink); padding-bottom: 5px; border-bottom: 1px dashed var(--goth-charcoal); }
 
 .calendar-cell-node {
-  background: var(--input-bg); border: 1px solid var(--goth-charcoal); padding: 12px 0; font-size: 10px; border-radius: 4px; cursor: pointer; position: relative;
+  background: var(--input-bg); border: 1px solid var(--goth-charcoal); padding: 12px 0; font-size: 10px; border-radius: 6px; cursor: pointer; position: relative;
 }
 .calendar-cell-node:hover { background: var(--goth-charcoal); border-color: var(--barbie-pink); }
 .calendar-cell-node.empty-cell { background: transparent; border: none; cursor: default; }
@@ -242,15 +246,141 @@ body::after { bottom: 10px; }
 }
 
 .event-display-scroll {
-  background: var(--input-bg); border: 1px dashed var(--barbie-pink); padding: 12px; margin-top: 15px; border-radius: 6px; font-size: 11px; font-family: var(--font-goth); text-align: center;
+  background: var(--input-bg); border: 1px dashed var(--barbie-pink); padding: 12px; margin-top: 15px; border-radius: 10px; font-size: 11px; font-family: var(--font-goth); text-align: center;
 }
 
-.rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-family: var(--font-goth); font-size: 11px; padding: 5px; cursor: pointer; width: 100%; border-radius: 4px; }
+.rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-family: var(--font-goth); font-size: 11px; padding: 5px; cursor: pointer; width: 100%; border-radius: 6px; }
 .rococo-btn:hover { background: var(--barbie-pink); color: #000; }
 .hidden-uploader { display: none; }
+
+/* --- 3. NUEVOS ESTILOS: MINI IMÁGENES EN BUCLE (COSTADOS) --- */
+.side-gif {
+  position: fixed;
+  top: 62%;
+  transform: translateY(-50%);
+  z-index: 40;
+  width: 65px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.left-gif { left: 20px; }
+.right-gif { right: 20px; }
+
+@media (max-width: 1024px) {
+  .side-gif { display: none; } /* Se ocultan en pantallas chicas para no estorbar */
+}
+
+/* --- 4. NUEVOS ESTILOS: PLAYLISTS DESPLEGABLES --- */
+.genre-dropdown {
+  background: rgba(31, 31, 31, 0.5);
+  margin-bottom: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px dashed var(--barbie-pink);
+}
+.genre-dropdown summary {
+  padding: 10px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.genre-dropdown summary::-webkit-details-marker { display: none; }
+.genre-dropdown summary:hover { background: rgba(254, 177, 199, 0.15); }
+.genre-dropdown summary::after { content: "▼"; font-size: 0.7rem; color: var(--barbie-pink); }
+.genre-dropdown[open] summary::after { transform: rotate(180deg); }
+.dropdown-content { padding: 10px; background: rgba(0,0,0,0.2); border-top: 1px dashed var(--barbie-pink); }
+.dropdown-content ul { list-style: "🌸 "; padding-left: 15px; margin: 0; }
+.dropdown-content li { margin-bottom: 6px; font-size: 11px; }
+.dropdown-content a { color: var(--text-main); text-decoration: none; }
+.dropdown-content a:hover { text-decoration: underline; color: var(--barbie-pink); }
+
+/* --- PARTÍCULAS KAOMOJI (LLUVIA Y CLICS) --- */
+.kaomoji-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
+  font-family: Arial, sans-serif;
+}
+@keyframes fall {
+  to { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+}
+@keyframes burst {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--mx), var(--my)) scale(0.4); opacity: 0; }
+}
+
+/* --- 2. NUEVOS ESTILOS: CHAT BURBUJAS RETRO FACEBOOK OLD --- */
+.chat-dock {
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  z-index: 10000;
+}
+.chat-tab {
+  background: var(--fb-old-blue);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px 8px 0 0;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #29447e;
+  box-shadow: 0px -2px 6px rgba(0,0,0,0.3);
+}
+.chat-window {
+  width: 240px;
+  background: white;
+  border: 1px solid #3b5998;
+  border-radius: 8px 8px 0 0;
+  font-family: Tahoma, Arial, sans-serif;
+  box-shadow: -2px -2px 12px rgba(0,0,0,0.4);
+}
+.chat-header {
+  background: var(--fb-old-blue);
+  color: white;
+  padding: 8px;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+}
+.chat-body { height: 210px; padding: 8px; overflow-y: auto; font-size: 11px; background: #e9edf4; color: #333; display: flex; flex-direction: column; gap: 6px; }
+.chat-msg-line { margin: 0; padding: 4px 6px; border-radius: 4px; line-height: 1.3; }
+.chat-msg-line.friend { background: #fff; border: 1px solid #ccc; align-self: flex-start; max-width: 85%; }
+.chat-msg-line.user { background: #d2dbed; border: 1px solid #b4c4e1; align-self: flex-end; max-width: 85%; }
+.chat-input { width: 100%; padding: 8px; border: none; border-top: 1px solid #bdc7d8; font-size: 11px; font-family: Tahoma, sans-serif; background: #fff; color: #000; outline: none; }
+.hidden { display: none; }
+
+/* ESTILOS DE LA BARRA DE PROGRESO TAMAGOTCHI */
+progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  margin-top: 4px;
+}
+progress::-webkit-progress-bar { background-color: rgba(0,0,0,0.3); border-radius: 4px; }
+progress::-webkit-progress-val { background-color: var(--barbie-pink); border-radius: 4px; }
 </style>
 </head>
 <body>
+
+<!-- 3. MINI IMÁGENES EN BUCLE DEBAJO DE LA ALTURA DE MÚSICA (COSTADOS DE PANTALLA) -->
+<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif left-gif" alt="decoración loop">
+<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif right-gif" alt="decoración loop">
 
 <div class="rococo-cocoon-container">
   
@@ -289,7 +419,7 @@ body::after { bottom: 10px; }
       <div>
         <h4 style="margin:5px 0; color:var(--barbie-pink);">Inyección de Hologramas</h4>
         <div class="panel-row">
-          <label>Holograma 1:</label><input type="text" id="cfgHolo1" value="👾">
+          <label>Holograma 1 (Código SVG/Emoji):</label><input type="text" id="cfgHolo1" value="PROPIO">
         </div>
         <div class="panel-row">
           <label>Holograma 2:</label><input type="text" id="cfgHolo2" value="✨">
@@ -379,63 +509,123 @@ body::after { bottom: 10px; }
           <div id="oracleResultBox" style="font-size:9px; text-align:center; color:var(--barbie-pink); margin-top:6px; font-weight:bold;"></div>
         </div>
 
+        <!-- 4. LISTA DESPLEGABLE DE MIS PLAYLISTS FAVORITAS -->
         <div class="rococo-frame-box">
-          <div class="rococo-frame-title">reproductor_yt</div>
-          <div class="music-user-input-row">
-            <input type="text" id="publicMusicUrl" placeholder="Pega link de canción aquí...">
-            <button class="rococo-btn" style="width: auto; padding: 2px 6px; font-size: 9px;" onclick="loadPublicSong()">Cargar</button>
-            <button class="rococo-btn" style="width: auto; padding: 2px 6px; font-size: 9px; background:#4B4B4B;" onclick="mutePlayerToggle()">🔇</button>
-          </div>
-          <div style="width:100%; aspect-ratio:16/9; background:#000; border:1px solid var(--barbie-pink); border-radius:2px; overflow:hidden;">
-            <iframe id="youtubePlayerFrame" src="" style="width:100%; height:100%; border:0;" allow="autoplay; encrypted-media"></iframe>
+          <div class="rococo-frame-title">playlists favoritas</div>
+          
+          <details class="genre-dropdown">
+            <summary>🎸 Rock</summary>
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#" target="_blank">Rock Essentials</a></li>
+                <li><a href="#" target="_blank">Alternative Vibe</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="genre-dropdown">
+            <summary>🌹 Visual Kei (V-kei)</summary>
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#" target="_blank">Malice Mizer & Classic Goth</a></li>
+                <li><a href="#" target="_blank">The Gazette / J-Rock</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="genre-dropdown">
+            <summary>✨ K-Pop</summary>
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#" target="_blank">Girl Groups Anthems</a></li>
+                <li><a href="#" target="_blank">Chill K-Pop Playlist</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="genre-dropdown">
+            <summary>🍂 Baladas</summary>
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#" target="_blank">Baladas Nostálgicas J-Pop</a></li>
+                <li><a href="#" target="_blank">Melancolía Acústica</a></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="genre-dropdown">
+            <summary>🎤 Vocaloid</summary>
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#" target="_blank">Hatsune Miku Tragic Hits</a></li>
+                <li><a href="#" target="_blank">Vocaloid Classical Core</a></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <!-- SISTEMA MEJORADO: TAMAGOTCHI CON VARIABLES DE ESTADO REALES -->
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">tamagotchi v2</div>
+          <div style="text-align: center;">
+            <div id="tamoAvatar" style="font-size: 28px; margin-bottom: 5px; font-weight: bold; letter-spacing: 2px;">(•‿•)</div>
+            <div id="tamoStatus" style="font-size: 9px; margin-bottom: 8px; font-style: italic;">Estado: ¡Feliz y lleno! ✨</div>
+            <div style="font-size: 9px; text-align: left; color: var(--barbie-pink);">Nivel de Nutrición:</div>
+            <progress id="tamoProgress" value="100" max="100"></progress>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 8px;">
+              <button class="rococo-btn" style="font-size: 9px; padding: 3px;" onclick="feedTamo()">🍎 Comer</button>
+              <button class="rococo-btn" style="font-size: 9px; padding: 3px;" onclick="playTamo()">🧸 Jugar</button>
+            </div>
           </div>
         </div>
       </aside>
 
-      <!-- COLUMNA 2 -->
+      <!-- COLUMNA 2: MURO PÚBLICO -->
       <main>
         <div class="rococo-frame-box">
-          <div class="rococo-frame-title">escribir_en_diario</div>
-          <textarea id="postContentArea" style="width:100%; background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); font-family:var(--font-goth); font-size:11px; padding:7px; resize:none;" rows="2" placeholder="Escribe algo en la matriz..."></textarea>
-          <div style="margin-top:6px; display:flex; gap:4px;">
-            <button class="rococo-btn" onclick="triggerClick('filePostImg')">❀ Subir Imagen</button>
-            <input type="file" id="filePostImg" class="hidden-uploader" accept="image/*" onchange="cachePostImg(this)">
-            <button class="rococo-btn" style="background:var(--barbie-pink); color:#000; font-weight:bold;" onclick="publishNewTextNode()">Fijar</button>
+          <div class="rococo-frame-title">bitácora & transmisiones del muro</div>
+          <div class="music-user-input-row">
+            <input type="text" id="postTextIn" placeholder="¿Qué secreto cruza la red hoy?">
+            <button class="rococo-btn" style="width:75px;" onclick="publishUserPostNode()">Enviar</button>
           </div>
-          <div id="lblFileStatus" style="font-size:9px; color:var(--barbie-pink); margin-top:3px; text-align:center;"></div>
-        </div>
-
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">pergaminos_muro</div>
-          <div class="rococo-board-scroller" id="mainTimelineStream"></div>
-        </div>
-
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">confesionario_anonimo</div>
-          <div style="display:flex; gap:4px;">
-            <input type="text" id="txtConfession" class="comment-in" style="font-size:11px;" placeholder="Deja un secreto o deseo anónimo aquí...">
-            <button class="rococo-btn" style="width:60px; font-weight:bold;" onclick="sendAnonymousConfession()">Enviar</button>
+          <div class="rococo-board-scroller" id="boardScrollerZone">
+            <!-- Los posts se inyectan dinámicamente -->
           </div>
-          <div class="confession-scroller" id="confessionBoxStream"></div>
         </div>
       </main>
 
-      <!-- COLUMNA 3 -->
+      <!-- COLUMNA 3: HOLOGRAMAS Y CONFESIONES -->
       <aside>
         <div class="rococo-frame-box">
-          <div class="rococo-frame-title">cuatro_hologramas</div>
-          <div class="holo-matrix-4x4">
-            <div class="holo-slot" id="hSlot1"></div>
-            <div class="holo-slot" id="hSlot2"></div>
-            <div class="holo-slot" id="hSlot3"></div>
-            <div class="holo-slot" id="hSlot4"></div>
+          <div class="rococo-frame-title">matriz sónica (música)</div>
+          <div class="music-user-input-row">
+            <input type="text" id="liveMusicLinkIn" placeholder="Pega URL de YouTube...">
+            <button class="rococo-btn" style="width:65px; font-size:9px;" onclick="injectCustomMusicEmbed()">Inyectar</button>
           </div>
-          <div style="font-size:9px; text-align:center; margin-top:6px; color:var(--barbie-pink); font-style:italic;">✦ Sistema Quad-Holo ✦</div>
+          <div id="musicContainerFrame" style="border:1px solid var(--barbie-pink); border-radius:6px; overflow:hidden; height:110px; background:#000;">
+            <!-- Reproductor de YouTube -->
+          </div>
         </div>
 
         <div class="rococo-frame-box">
-          <div class="rococo-frame-title">almas_vinculadas</div>
-          <div class="friends-scroll-zone" id="friendsContainer"></div>
+          <div class="rococo-frame-title">reliquias_hologramas_4x4</div>
+          <div class="holo-matrix-4x4" id="holoMatrixBox">
+            <div class="holo-slot" id="slotHolo1"></div>
+            <div class="holo-slot" id="slotHolo2">✨</div>
+            <div class="holo-slot" id="slotHolo3">🎀</div>
+            <div class="holo-slot" id="slotHolo4">🌸</div>
+          </div>
+        </div>
+
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">confesionario anónimo</div>
+          <div class="comment-input-row">
+            <input type="text" class="comment-in" id="confessIn" placeholder="Deja caer tu susurro anónimo...">
+            <button class="rococo-btn" style="width:45px; font-size:9px;" onclick="sendAnonymousConfession()">Soltar</button>
+          </div>
+          <div class="confession-scroller" id="confessScrollerZone">
+            <div class="confession-card">"A veces me quedo mirando el reflejo del santuario esperando que el código responda..." - anón</div>
+          </div>
         </div>
       </aside>
 
@@ -444,379 +634,242 @@ body::after { bottom: 10px; }
 
   <!-- ================= PESTAÑA 2: ARCHIVO ESTELAR ================= -->
   <div id="viewStellarGrid" class="tab-view">
-    <div class="rococo-frame-box" style="width: 100%;">
-      <div class="rococo-frame-title">archivo_estelar_galeria</div>
-      <p style="font-size:11px; text-align:center; font-style:italic; margin-top:-5px; color:var(--barbie-pink);">✦ Fragmentos visuales extraídos del diario de Mel ✦</p>
-      <div class="stellar-photo-grid" id="stellarPhotoContainer"></div>
+    <div class="rococo-frame-box" style="max-width:100%;">
+      <div class="rococo-frame-title">archivo de capturas estelares & reliquias</div>
+      <div style="text-align:center; margin-bottom:15px; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px; border:1px dashed var(--barbie-pink);">
+        <span style="font-size:11px; color:var(--barbie-pink);">Sube una reliquia visual al archivo cósmico:</span>
+        <input type="file" id="fileStellar" accept="image/*" style="font-size:11px; font-family:var(--font-goth); margin-left:10px;" onchange="uploadStellarPhoto(this)">
+      </div>
+      <div class="stellar-photo-grid" id="stellarPhotoGridZone">
+        <!-- Fotos inyectadas por JS -->
+      </div>
     </div>
   </div>
 
-  <!-- ================= PESTAÑA 3: CALENDARIO KAOMOJI VICTORIANO (ACTUALIZADO) ================= -->
+  <!-- ================= PESTAÑA 3: FECHAS MÍSTICAS ================= -->
   <div id="viewCalendarGrid" class="tab-view">
-    <div class="rococo-frame-box" style="width: 100%;">
-      <div class="rococo-frame-title">(︶▽︶) efemerides_y_destinos</div>
+    <div class="rococo-frame-box" style="max-width:100%;">
+      <div class="rococo-frame-title">relicario cronológico_calendario de destinos</div>
       
       <div class="victorian-calendar-wrapper">
         <div class="calendar-header-nav">
-          <button class="rococo-btn" style="width:80px;" onclick="shiftCalendarMonth(-1)">(︶︹︶) ◀</button>
-          <h3 id="calendarMonthYearLabel" style="margin:0; color:var(--barbie-pink); font-style:italic; font-family:var(--font-vintage);">Junio 2026</h3>
-          <button class="rococo-btn" style="width:80px;" onclick="shiftCalendarMonth(1)">▶ (っ^‿^)っ</button>
+          <button class="rococo-btn" style="width:40px;" onclick="moveCalendarMonth(-1)">◀</button>
+          <span id="calendarMonthTitle" style="font-weight:bold; color:var(--barbie-pink); letter-spacing:1px;">Junio 2026</span>
+          <button class="rococo-btn" style="width:40px;" onclick="moveCalendarMonth(1)">▶</button>
+        </div>
+        
+        <div class="calendar-grid-days" id="calendarGridZone">
+          <!-- Celdas del calendario generadas dinámicamente -->
         </div>
 
-        <div class="calendar-grid-days" id="calendarDaysGridBody">
-          <!-- Inyectado dinámicamente con puros Kaomojis -->
+        <div class="event-display-scroll" id="eventDetailOutput">
+          (⭒_⭒) Pasa o haz clic sobre un día iluminado para leer el destino grabado.
         </div>
+      </div>
 
-        <div class="event-display-scroll" id="calendarEventScrollAlert">
-          (⚕_⚕) El oráculo espera... Toca un kaomoji iluminado para revelar su motivo secreto...
+      <!-- ALMAS VINCULADAS (AMIGOS) ABAJO DEL CALENDARIO -->
+      <div style="margin-top:25px; display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+        <div class="rococo-frame-box" style="margin-bottom:0;">
+          <div class="rococo-frame-title">almas vinculadas (red)</div>
+          <div class="friends-scroll-zone" id="friendsScrollZone">
+            <!-- Amigos inyectados por JS -->
+          </div>
+        </div>
+        <div class="rococo-frame-box" style="margin-bottom:0; display:flex; flex-direction:column; justify-content:center; text-align:center; font-size:11px; line-height:1.6;">
+          <p>✦ Cada alma listada posee un nexo directo inyectado en el tejido central de mel_sanctuary. Actualizaciones automáticas vía consola local. ✦</p>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- PIE DE PÁGINA -->
-  <footer style="text-align:center; font-size:10px; margin-top:15px; color:var(--barbie-pink); opacity:0.6;">
-    ⏳ Has estado en esta dimensión por: <span id="starTimer">0s</span>
-  </footer>
+</div>
 
+<!-- --- 2. NUEVA ESTRUCTURA: BURBUJAS DE CHAT ESTILO FACEBOOK OLD --- -->
+<div class="chat-dock">
+  <div id="chatRetroTab" class="chat-tab" onclick="toggleRetroChatWindow(true)">💬 Chat de Amigos (1)</div>
+  
+  <div id="chatRetroWindow" class="chat-window hidden">
+    <div class="chat-header" onclick="toggleRetroChatWindow(false)">
+      <span>Conversación / Sala Mel</span>
+      <span style="font-size:9px;">▼</span>
+    </div>
+    <div class="chat-body" id="chatRetroMessages">
+      <p style="color:#777; font-size:9px; text-align:center; margin:3px 0;">Sala de mensajería simulada del Santuario</p>
+      <div class="chat-msg-line friend"><b>Amigo:</b> ¡Hola Mel! Qué increíble está quedando la nueva actualización de tu santuario. 🌸✨</div>
+    </div>
+    <input type="text" class="chat-input" id="chatRetroInput" placeholder="Escribe un mensaje y presiona Enter..." onkeypress="handleRetroChatSubmit(event)">
+  </div>
 </div>
 
 <script>
-let tempPostImgBase64 = "";
-let customPosts = JSON.parse(localStorage.getItem('mel_posts')) || [];
-let anonymousConfessions = JSON.parse(localStorage.getItem('mel_confessions')) || [
-  { text: "A veces la matriz se siente demasiado pacífica... (☄_☄)", id: 1 }
+/* LOGICA DE ALMACENAMIENTO LOCAL (CONFIGURACIÓN) */
+let currentView = 'main';
+let currentTheme = 'dark';
+let activeMonth = 5; // Junio (Index 5)
+let activeYear = 2026;
+
+let appConfig = {
+  title: "mel_sanctuary_matrix",
+  bio: "𓏲ᵎ Rococó Goth // @_tomate_4",
+  youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  holo1: "PROPIO", holo2: "✨", holo3: "🎀", holo4: "🌸"
+};
+
+let userPosts = [
+  { text: "Iniciando el despliegue estético v7... Las flores caen y el reloj místico se sincroniza.", likes: 4, comments: ["Me encanta la lluvia de estrellas ✨"] },
+  { text: "Pacto de medianoche grabado en el código. No mires los hologramas fijamente.", likes: 7, comments: [] }
 ];
-let connectedFriends = JSON.parse(localStorage.getItem('mel_friends')) || [
-  { id: 1, name: "amane_misa 🎀", type: "Instagram", link: "#" }
+
+let anonymousConfessions = [
+  "A veces me quedo mirando el reflejo del santuario esperando que el código responda... - anón"
 ];
 
-// FECHAS INTERACTIVAS BASE CON MOTIVOS ASIGNADOS
-let specialDates = JSON.parse(localStorage.getItem('mel_calendar_events')) || [
-  { day: 14, month: 5, reason: "coquette", text: "(｡>﹏<｡) ¡Un día ultra especial coquette fijado en la eternidad!" },
-  { day: 31, month: 9, reason: "goth", text: "(⚕_⚕) Luna de sangre gótica. Noche de conjuros y encaje oscuro." }
+let stellarPhotos = [
+  "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&width=200",
+  "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&width=200"
 ];
 
-const commentColors = ["#FEB1C7", "#FFDCE4", "#4B4B4B"];
-const oracleMoods = [
-  "[ ✧ Alma Coquette Radiante ✧ ]", 
-  "[ 🖤 Goth Melancólico +100% ]", 
-  "[ 🌸 Aura Pastel Protegida ]", 
-  "[ ⛓️ Energía Rebelde Barroca ]",
-  "[ 🎀 Destino Encantado Conectado ]"
+let customEvents = {
+  "2026-5-5": { reason: "goth", text: "Eclipse de Luna Negra: Pacto silencioso de las Almas Rococó." },
+  "2026-5-14": { reason: "coquette", text: "Aniversario del Santuario: Intercambio de listones y kaomojis tiernos." },
+  "2026-5-25": { reason: "destiny", text: "Alineación Astral Central: Destino de Mel revelado." }
+};
+
+let linkedFriends = [
+  { name: "Sora ✧", type: "Instagram", link: "https://instagram.com" },
+  { name: "Luna_Goth", type: "TikTok", link: "https://tiktok.com" }
 ];
-const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-let timeCounter = 0;
-let currentDisplayedDate = new Date();
-
-function initSystem() {
-  const savedTheme = localStorage.getItem('mel_theme') || 'dark';
-  switchThemeMode(savedTheme);
-  document.getElementById('cfgThemeSelector').value = savedTheme;
-
-  loadConfig();
-  renderTimeline();
-  renderFriendsList();
-  renderStellarGallery();
-  renderConfessions();
-  buildVictorianCalendar();
-
-  setInterval(() => {
-    timeCounter++;
-    let minutes = Math.floor(timeCounter / 60);
-    let seconds = timeCounter % 60;
-    document.getElementById('starTimer').innerText = minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
-  }, 1000);
-}
-
-function triggerClick(id) { document.getElementById(id).click(); }
-function toggleAdminPanel() {
-  const panel = document.getElementById('secretPanel');
-  panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
-}
-
-function switchThemeMode(mode) {
-  document.documentElement.setAttribute('data-theme', mode);
-  localStorage.setItem('mel_theme', mode);
-  // Redibujar calendario para aplicar los cambios de iluminación inteligente de inmediato
-  if(document.getElementById('viewCalendarGrid').classList.contains('active-view')) {
-    buildVictorianCalendar();
-  }
-}
-
-function switchVirtualTab(tabName) {
-  document.getElementById('viewMainGrid').classList.remove('active-view');
-  document.getElementById('viewStellarGrid').classList.remove('active-view');
-  document.getElementById('viewCalendarGrid').classList.remove('active-view');
-  
-  document.getElementById('tabMainLink').classList.remove('active-tab');
-  document.getElementById('tabStellarLink').classList.remove('active-tab');
-  document.getElementById('tabCalendarLink').classList.remove('active-tab');
-
-  if(tabName === 'main') {
-    document.getElementById('viewMainGrid').classList.add('active-view');
-    document.getElementById('tabMainLink').classList.add('active-tab');
-  } else if(tabName === 'stellar') {
-    document.getElementById('viewStellarGrid').classList.add('active-view');
-    document.getElementById('tabStellarLink').classList.add('active-tab');
-    renderStellarGallery();
-  } else if(tabName === 'calendar') {
-    document.getElementById('viewCalendarGrid').classList.add('active-view');
-    document.getElementById('tabCalendarLink').classList.add('active-tab');
-    buildVictorianCalendar();
-  }
-}
-
-/* SISTEMA MASTER DE CALENDARIO TOTALMENTE KAOMOJI */
-function buildVictorianCalendar() {
-  const grid = document.getElementById('calendarDaysGridBody');
-  const label = document.getElementById('calendarMonthYearLabel');
-  
-  const year = currentDisplayedDate.getFullYear();
-  const month = currentDisplayedDate.getMonth();
-  
-  label.innerText = `𐐪𐑂 ${monthNames[month]} ${year} 𐐪𐑂`;
-  grid.innerHTML = "";
-
-  const daysLetters = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
-  daysLetters.forEach(d => {
-    grid.innerHTML += `<div class="calendar-day-header">${d}</div>`;
-  });
-
-  const firstDayIndex = new Date(year, month, 1).getDay();
-  const totalDays = new Date(year, month + 1, 0).getDate();
-
-  for (let i = 0; i < firstDayIndex; i++) {
-    grid.innerHTML += `<div class="calendar-cell-node empty-cell"></div>`;
-  }
-
-  for (let day = 1; day <= totalDays; day++) {
-    // Verificar si el día tiene un evento configurado
-    const foundEvent = specialDates.find(e => e.day === day && e.month === month);
-    
-    let styleClass = "";
-    let faceMarker = day; // Por defecto muestra el número del día
-
-    if (foundEvent) {
-      // Elegir la clase CSS de iluminación según el motivo del evento
-      styleClass = `evt-${foundEvent.reason}-style`;
-      
-      // Cambiar el rostro del Kaomoji en la celda según el motivo
-      if (foundEvent.reason === "goth") faceMarker = "(⚕_⚕)";
-      else if (foundEvent.reason === "coquette") faceMarker = "(⭒_⭒)";
-      else faceMarker = "(✧_✧)";
-    }
-
-    grid.innerHTML += `
-      <div class="calendar-cell-node ${styleClass}" onclick="selectCalendarDay(${day}, ${month}, '${foundEvent ? foundEvent.reason : ''}', '${foundEvent ? foundEvent.text : ''}')">
-        ${faceMarker}
-      </div>
-    `;
-  }
-}
-
-function shiftCalendarMonth(direction) {
-  currentDisplayedDate.setMonth(currentDisplayedDate.getMonth() + direction);
-  buildVictorianCalendar();
-}
-
-function selectCalendarDay(day, month, reason, eventText) {
-  const alertBox = document.getElementById('calendarEventScrollAlert');
-  if(eventText) {
-    let typeDecor = "✨ [Destino]";
-    if(reason === "goth") typeDecor = "🖤 [Pacto Oscuro Secreto]";
-    if(reason === "coquette") typeDecor = "🎀 [Fragmento Coquette Romántico]";
-
-    alertBox.innerHTML = `<h3>${typeDecor}</h3><b>Día ${day} de ${monthNames[month]}:</b><br>"${eventText}"`;
-  } else {
-    alertBox.innerHTML = `(๑•́__•̀๑) Día ${day} de ${monthNames[month]}. No se han dictado conjuros ni secretos para esta fecha...`;
-  }
-}
-
-function addCustomCalendarEvent() {
-  const day = parseInt(document.getElementById('calInDay').value);
-  const month = parseInt(document.getElementById('calInMonth').value);
-  const reason = document.getElementById('calInReason').value;
-  const text = document.getElementById('calInText').value.trim();
-
-  if(!day || day < 1 || day > 31 || !text) {
-    alert("(｡>﹏<｡) ¡Inserta un día válido y el texto del motivo!");
-    return;
-  }
-
-  specialDates.push({ day, month, reason, text });
-  localStorage.setItem('mel_calendar_events', JSON.stringify(specialDates));
-  
-  document.getElementById('calInDay').value = "";
-  document.getElementById('calInText').value = "";
-  
-  buildVictorianCalendar();
-  alert("＼(≧▽≦)／ ¡Destino estético inyectado correctamente!");
-}
-
-/* NÚCLEO DE YOUTUBE E INTERACCIONES */
-function parseYoutubeEmbedUrl(urlStr) {
-  let videoId = "dQw4w9WgXcQ"; 
-  if (!urlStr) return `https://www.youtube.com/embed/${videoId}`;
-  if (urlStr.includes("list=")) {
-    let match = urlStr.match(/[?&]list=([^#\&\?]+)/);
-    if(match) return `https://www.youtube.com/embed/videoseries?list=${match[1]}`;
-  }
-  let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-  let match = urlStr.match(regExp);
-  if (match && match[2].length == 11) { videoId = match[2]; }
-  return `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
-}
-
-function loadPublicSong() {
-  const url = document.getElementById('publicMusicUrl').value.trim();
-  if(!url) return;
-  document.getElementById('youtubePlayerFrame').src = parseYoutubeEmbedUrl(url);
-}
-
-function mutePlayerToggle() {
-  const frame = document.getElementById('youtubePlayerFrame');
-  let currentSrc = frame.src;
-  frame.src = currentSrc.includes("autoplay=1") ? currentSrc.replace("autoplay=1", "autoplay=0") : currentSrc;
-}
-
-function triggerMatrixOracle() {
-  const randomMood = oracleMoods[Math.floor(Math.random() * oracleMoods.length)];
-  document.getElementById('oracleResultBox').innerText = randomMood;
-}
-
-function sendAnonymousConfession() {
-  const input = document.getElementById('txtConfession');
-  if(!input.value.trim()) return;
-  const kaomojis = ["(⪿_⪿)", "(⭒_⭒)", "(•̥́_•̥̀)", "(๑•́__•̀๑)", "(⚕_⚕)"];
-  const finalKaomoji = kaomojis[Math.floor(Math.random() * kaomojis.length)];
-
-  anonymousConfessions.unshift({ id: Date.now(), text: `${input.value.trim()} ${finalKaomoji}` });
-  localStorage.setItem('mel_confessions', JSON.stringify(anonymousConfessions));
-  input.value = "";
-  renderConfessions();
-}
-
-function renderConfessions() {
-  const container = document.getElementById('confessionBoxStream');
-  container.innerHTML = "";
-  anonymousConfessions.forEach(c => {
-    container.innerHTML += `<div class="confession-card">🔮 <i>Anónimo dictó:</i> "${c.text}"</div>`;
-  });
-}
-
-function saveConfigChanges() {
-  localStorage.setItem('mel_title', document.getElementById('cfgTitle').value);
-  localStorage.setItem('mel_bio', document.getElementById('cfgBio').value);
-  localStorage.setItem('mel_yt_url', document.getElementById('cfgYoutubeId').value.trim());
+// INICIALIZADOR AL CARGAR LA PÁGINA
+window.onload = function() {
+  loadDataFromLocalStorage();
   applyMelChanges();
-}
+  renderBoardPosts();
+  renderConfessions();
+  renderStellarPhotos();
+  renderLinkedFriendsZone();
+  buildInteractiveCalendar();
+};
 
-function saveHoloChanges() {
-  localStorage.setItem('mel_h1', document.getElementById('cfgHolo1').value);
-  localStorage.setItem('mel_h2', document.getElementById('cfgHolo2').value);
-  localStorage.setItem('mel_h3', document.getElementById('cfgHolo3').value);
-  localStorage.setItem('mel_h4', document.getElementById('cfgHolo4').value);
-  applyMelChanges();
+function loadDataFromLocalStorage() {
+  if(localStorage.getItem("mel_config")) appConfig = JSON.parse(localStorage.getItem("mel_config"));
+  if(localStorage.getItem("mel_posts")) userPosts = JSON.parse(localStorage.getItem("mel_posts"));
+  if(localStorage.getItem("mel_confessions")) anonymousConfessions = JSON.parse(localStorage.getItem("mel_confessions"));
+  if(localStorage.getItem("mel_photos")) stellarPhotos = JSON.parse(localStorage.getItem("mel_photos"));
+  if(localStorage.getItem("mel_events")) customEvents = JSON.parse(localStorage.getItem("mel_events"));
+  if(localStorage.getItem("mel_friends")) linkedFriends = JSON.parse(localStorage.getItem("mel_friends"));
+  if(localStorage.getItem("mel_theme")) {
+    currentTheme = localStorage.getItem("mel_theme");
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    document.getElementById("cfgThemeSelector").value = currentTheme;
+  }
 }
 
 function applyMelChanges() {
-  document.getElementById('liveTitle').innerText = localStorage.getItem('mel_title') || "mel_sanctuary_matrix";
-  document.getElementById('liveBio').innerText = localStorage.getItem('mel_bio') || "𓏲ᵎ Rococó Goth // @_tomate_4";
+  document.getElementById("liveTitle").textContent = appConfig.title;
+  document.getElementById("liveBio").textContent = appConfig.bio;
   
-  document.getElementById('hSlot1').innerHTML = localStorage.getItem('mel_h1') || "👾";
-  document.getElementById('hSlot2').innerHTML = localStorage.getItem('mel_h2') || "✨";
-  document.getElementById('hSlot3').innerHTML = localStorage.getItem('mel_h3') || "🎀";
-  document.getElementById('hSlot4').innerHTML = localStorage.getItem('mel_h4') || "🌸";
+  // Rellenar inputs de la consola
+  document.getElementById("cfgTitle").value = appConfig.title;
+  document.getElementById("cfgBio").value = appConfig.bio;
+  document.getElementById("cfgYoutubeId").value = appConfig.youtubeUrl;
+  document.getElementById("cfgHolo1").value = appConfig.holo1;
+  document.getElementById("cfgHolo2").value = appConfig.holo2;
+  document.getElementById("cfgHolo3").value = appConfig.holo3;
+  document.getElementById("cfgHolo4").value = appConfig.holo4;
 
-  const rawYt = localStorage.getItem('mel_yt_url') || "dQw4w9WgXcQ";
-  document.getElementById('youtubePlayerFrame').src = parseYoutubeEmbedUrl(rawYt);
+  // Inyección del Reproductor de Música
+  let ytId = extractYoutubeIdToken(appConfig.youtubeUrl);
+  document.getElementById("musicContainerFrame").innerHTML = `
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${ytId}?autoplay=0&playlist=${ytId}&loop=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  `;
+
+  // Inyección de Hologramas
+  let h1 = document.getElementById("slotHolo1");
+  if(appConfig.holo1 === "PROPIO" || appConfig.holo1 === "") {
+    h1.innerHTML = `<svg viewBox="0 0 100 100" style="background:#0a0508;"><circle cx="50" cy="45" r="18" stroke="#FEB1C7" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/><path d="M25 80 C 30 55, 70 55, 75 80" stroke="#FEB1C7" stroke-width="1.5" fill="none"/><circle cx="43" cy="42" r="2" fill="#FEB1C7"/><circle cx="57" cy="42" r="2" fill="#FEB1C7"/><path d="M48 48 Q50 50 52 48" stroke="#FEB1C7" stroke-width="1" fill="none"/><path d="M15 20 L25 25 M85 20 L75 25 M50 10 L50 20" stroke="rgba(254,177,199,0.4)" stroke-width="1"/></svg>`;
+  } else {
+    h1.innerHTML = appConfig.holo1;
+  }
+  document.getElementById("slotHolo2").textContent = appConfig.holo2;
+  document.getElementById("slotHolo3").textContent = appConfig.holo3;
+  document.getElementById("slotHolo4").textContent = appConfig.holo4;
 }
 
-function loadConfig() {
-  document.getElementById('cfgTitle').value = localStorage.getItem('mel_title') || "mel_sanctuary_matrix";
-  document.getElementById('cfgBio').value = localStorage.getItem('mel_bio') || "𓏲ᵎ Rococó Goth // @_tomate_4";
-  document.getElementById('cfgYoutubeId').value = localStorage.getItem('mel_yt_url') || "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+function extractYoutubeIdToken(url) {
+  let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  let match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : "dQw4w9WgXcQ";
+}
+
+/* SISTEMA MULTI-PESTAÑAS VIRTUALES */
+function switchVirtualTab(target) {
+  currentView = target;
+  document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active-view'));
+  document.querySelectorAll('.rococo-menu-link').forEach(el => el.classList.remove('active-tab'));
   
-  document.getElementById('cfgHolo1').value = localStorage.getItem('mel_h1') || "👾";
-  document.getElementById('cfgHolo2').value = localStorage.getItem('mel_h2') || "✨";
-  document.getElementById('cfgHolo3').value = localStorage.getItem('mel_h3') || "🎀";
-  document.getElementById('cfgHolo4').value = localStorage.getItem('mel_h4') || "🌸";
-  
+  if(target === 'main') {
+    document.getElementById("viewMainGrid").classList.add("active-view");
+    document.getElementById("tabMainLink").classList.add("active-tab");
+  } else if(target === 'stellar') {
+    document.getElementById("viewStellarGrid").classList.add("active-view");
+    document.getElementById("tabStellarLink").classList.add("active-tab");
+  } else if(target === 'calendar') {
+    document.getElementById("viewCalendarGrid").classList.add("active-view");
+    document.getElementById("tabCalendarLink").classList.add("active-tab");
+  }
+}
+
+function toggleAdminPanel() {
+  let p = document.getElementById("secretPanel");
+  p.style.display = (p.style.display === "block") ? "none" : "block";
+}
+
+function switchThemeMode(mode) {
+  currentTheme = mode;
+  document.documentElement.setAttribute("data-theme", mode);
+  localStorage.setItem("mel_theme", mode);
+}
+
+/* ACCIONES DE GUARDADO CON CONSOLA */
+function saveConfigChanges() {
+  appConfig.title = document.getElementById("cfgTitle").value;
+  appConfig.bio = document.getElementById("cfgBio").value;
+  appConfig.youtubeUrl = document.getElementById("cfgYoutubeId").value;
+  localStorage.setItem("mel_config", JSON.stringify(appConfig));
   applyMelChanges();
-
-  const avatar = localStorage.getItem('mel_avatar');
-  if(avatar) {
-    document.getElementById('imgAvatarView').src = avatar;
-    document.getElementById('imgAvatarView').style.display = 'block';
-    document.getElementById('txtAvatarPlace').style.display = 'none';
-  }
+  alert("Tejido central reprogramado exitosamente ✦");
 }
 
-function loadPersonalAvatar(input) {
-  if (input.files && input.files[0]) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      document.getElementById('imgAvatarView').src = e.target.result;
-      document.getElementById('imgAvatarView').style.display = 'block';
-      document.getElementById('txtAvatarPlace').style.display = 'none';
-      localStorage.setItem('mel_avatar', e.target.result);
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
+function saveHoloChanges() {
+  appConfig.holo1 = document.getElementById("cfgHolo1").value;
+  appConfig.holo2 = document.getElementById("cfgHolo2").value;
+  appConfig.holo3 = document.getElementById("cfgHolo3").value;
+  appConfig.holo4 = document.getElementById("cfgHolo4").value;
+  localStorage.setItem("mel_config", JSON.stringify(appConfig));
+  applyMelChanges();
+  alert("Inyección cuántica de los 4 hologramas completada 🔮");
 }
 
-function cachePostImg(input) {
-  if (input.files && input.files[0]) {
-    document.getElementById('lblFileStatus').innerText = "✓ Imagen lista";
-    const reader = new FileReader();
-    reader.onload = function(e) { tempPostImgBase64 = e.target.result; };
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-function publishNewTextNode() {
-  const text = document.getElementById('postContentArea').value.trim();
-  if(!text && !tempPostImgBase64) return;
-
-  customPosts.unshift({ id: Date.now(), content: text, img: tempPostImgBase64, reactions: 0, comments: [] });
-  localStorage.setItem('mel_posts', JSON.stringify(customPosts));
-  document.getElementById('postContentArea').value = "";
-  document.getElementById('lblFileStatus').innerText = "";
-  tempPostImgBase64 = "";
-  renderTimeline();
-  renderStellarGallery();
-}
-
-function renderTimeline() {
-  const container = document.getElementById('mainTimelineStream');
-  if(customPosts.length === 0) {
-    container.innerHTML = '<div class="rococo-post-node" style="text-align:center;">No hay proyecciones en este ciclo...</div>';
-    return;
-  }
-  container.innerHTML = "";
-  customPosts.forEach(p => {
-    let imgTag = p.img ? `<img src="${p.img}" style="width:100%; border:1px solid var(--barbie-pink); margin-top:8px; border-radius:2px;">` : "";
-    let commentsHtml = "";
-    p.comments.forEach((c, index) => {
-      let color = commentColors[index % commentColors.length];
-      commentsHtml += `<div class="comment-line" style="color:${color}; border-left-color:${color};"><b>𐀔 ${c.author}</b>: ${c.text}</div>`;
-    });
-
-    container.innerHTML += `
+/* TRANSMISIONES DEL MURO */
+function renderBoardPosts() {
+  let box = document.getElementById("boardScrollerZone");
+  box.innerHTML = "";
+  userPosts.forEach((post, i) => {
+    let commsHtml = post.comments.map(c => `<div class="comment-line">${c}</div>`).join('');
+    box.innerHTML += `
       <div class="rococo-post-node">
-        <div><b>𐀔 @_tomate_4</b>: ${p.content || ""}</div>
-        ${imgTag}
+        <div style="color:var(--barbie-pink); font-size:10px; font-weight:bold; margin-bottom:4px;">✦ Enlace Transmitido #${i+1}</div>
+        <div style="line-height:1.4;">${post.text}</div>
         <div class="post-social-bar">
-          <button class="react-btn" onclick="reactToPost(${p.id})">（๑•ᴗ•๑） [${p.reactions}]</button>
+          <button class="react-btn" onclick="likePostNode(${i})">🖤 Reaccionar (${post.likes})</button>
         </div>
         <div class="comment-box">
-          <div class="comment-stream">${commentsHtml}</div>
+          <div class="comment-stream">${commsHtml}</div>
           <div class="comment-input-row">
-            <input type="text" id="comment-in-${p.id}" class="comment-in" placeholder="Tu amigo comenta...">
-            <button class="react-btn" onclick="addCommentToPost(${p.id})">✉</button>
+            <input type="text" class="comment-in" id="commIn-${i}" placeholder="Añadir comentario místico...">
+            <button class="rococo-btn" style="width:50px; font-size:9px;" onclick="addCommentToNode(${i})">Unir</button>
           </div>
         </div>
       </div>
@@ -824,69 +877,337 @@ function renderTimeline() {
   });
 }
 
-function renderStellarGallery() {
-  const container = document.getElementById('stellarPhotoContainer');
-  const photosOnly = customPosts.filter(p => p.img && p.img.trim() !== "");
-  
-  if(photosOnly.length === 0) {
-    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; font-style:italic;">El Archivo Estelar está vacío...</div>';
-    return;
-  }
-  container.innerHTML = "";
-  photosOnly.forEach(p => {
-    container.innerHTML += `
-      <div class="stellar-photo-card">
-        <img src="${p.img}">
-        <div class="stellar-photo-meta">${p.content ? p.content : "✦ Sin título ✦"}</div>
-      </div>
-    `;
-  });
+function publishUserPostNode() {
+  let txt = document.getElementById("postTextIn").value;
+  if(!txt.trim()) return;
+  userPosts.unshift({ text: txt, likes: 0, comments: [] });
+  localStorage.setItem("mel_posts", JSON.stringify(userPosts));
+  document.getElementById("postTextIn").value = "";
+  renderBoardPosts();
 }
 
-function reactToPost(postId) {
-  const post = customPosts.find(p => p.id === postId);
-  if(post) { post.reactions++; localStorage.setItem('mel_posts', JSON.stringify(customPosts)); renderTimeline(); }
+function likePostNode(i) {
+  userPosts[i].likes++;
+  localStorage.setItem("mel_posts", JSON.stringify(userPosts));
+  renderBoardPosts();
 }
 
-function addCommentToPost(postId) {
-  const input = document.getElementById(`comment-in-${postId}`);
+function addCommentToNode(i) {
+  let input = document.getElementById(`commIn-${i}`);
   if(!input.value.trim()) return;
-  const post = customPosts.find(p => p.id === postId);
-  if(post) {
-    post.comments.push({ author: `Amigo_${Math.floor(Math.random()*90+10)} ⚔`, text: input.value.trim() });
-    localStorage.setItem('mel_posts', JSON.stringify(customPosts));
-    renderTimeline();
+  userPosts[i].comments.push(input.value);
+  localStorage.setItem("mel_posts", JSON.stringify(userPosts));
+  input.value = "";
+  renderBoardPosts();
+}
+
+/* CONFESIONES */
+function renderConfessions() {
+  let box = document.getElementById("confessScrollerZone");
+  box.innerHTML = anonymousConfessions.map(c => `<div class="confession-card">${c}</div>`).join('');
+}
+
+function sendAnonymousConfession() {
+  let input = document.getElementById("confessIn");
+  if(!input.value.trim()) return;
+  anonymousConfessions.unshift(`"${input.value}" - anón`);
+  localStorage.setItem("mel_confessions", JSON.stringify(anonymousConfessions));
+  input.value = "";
+  renderConfessions();
+}
+
+/* ARCHIVO ESTELAR (IMÁGENES) */
+function renderStellarPhotos() {
+  let box = document.getElementById("stellarPhotoGridZone");
+  box.innerHTML = stellarPhotos.map(p => `
+    <div class="stellar-photo-card">
+      <img src="${p}" alt="Reliquia">
+      <div class="stellar-photo-meta">reliquia_core</div>
+    </div>
+  `).join('');
+}
+
+function uploadStellarPhoto(input) {
+  if (input.files && input.files[0]) {
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      stellarPhotos.unshift(e.target.result);
+      localStorage.setItem("mel_photos", JSON.stringify(stellarPhotos));
+      renderStellarPhotos();
+    };
+    reader.readAsDataURL(input.files[0]);
   }
+}
+
+/* GESTIÓN DE AVATAR CAMAFEO */
+function triggerClick(id) { document.getElementById(id).click(); }
+function loadPersonalAvatar(uploader) {
+  if (uploader.files && uploader.files[0]) {
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById("txtAvatarPlace").style.display = "none";
+      let img = document.getElementById("imgAvatarView");
+      img.src = e.target.result;
+      img.style.display = "block";
+    };
+    reader.readAsDataURL(uploader.files[0]);
+  }
+}
+
+/* ORÁCULO DE LA MATRIZ */
+function triggerMatrixOracle() {
+  const responses = [
+    "Los hologramas revelan hilos rosas en tu destino.",
+    "Un pacto rococó oculto florecerá esta semana.",
+    "El código advierte: sincronía mística alta con @_tomate_4",
+    "Estrellas kaomoji caen a tu favor. Sigue creando.",
+    "El oráculo divisa un secreto revelado en el calendario místico."
+  ];
+  let choice = responses[Math.floor(Math.random() * responses.length)];
+  document.getElementById("oracleResultBox").textContent = `✦ ${choice}`;
+}
+
+/* ALMAS VINCULADAS */
+function renderLinkedFriendsZone() {
+  let box = document.getElementById("friendsScrollZone");
+  box.innerHTML = linkedFriends.map(f => `
+    <div class="friend-card">
+      <div class="friend-name"><span>🔮 ${f.name}</span> <span style="font-size:8px; opacity:0.6;">${f.type}</span></div>
+      <a href="${f.link}" target="_blank" class="friend-meta-btn">Cruzar al Perfil</a>
+    </div>
+  `).join('');
 }
 
 function addNewFriendNode() {
-  const name = document.getElementById('newFriendName').value.trim();
-  const type = document.getElementById('newFriendType').value;
-  let link = document.getElementById('newFriendLink').value.trim();
-  if(!name || !link) return;
-  if(type === "Correo" && !link.startsWith("mailto:")) link = "mailto:" + link;
-
-  connectedFriends.push({ id: Date.now(), name, type, link });
-  localStorage.setItem('mel_friends', JSON.stringify(connectedFriends));
-  document.getElementById('newFriendName').value = "";
-  document.getElementById('newFriendLink').value = "";
-  renderFriendsList();
+  let name = document.getElementById("newFriendName").value;
+  let type = document.getElementById("newFriendType").value;
+  let link = document.getElementById("newFriendLink").value;
+  if(!name.trim() || !link.trim()) return;
+  linkedFriends.push({ name, type, link });
+  localStorage.setItem("mel_friends", JSON.stringify(linkedFriends));
+  document.getElementById("newFriendName").value = "";
+  document.getElementById("newFriendLink").value = "";
+  renderLinkedFriendsZone();
 }
 
-function renderFriendsList() {
-  const container = document.getElementById('friendsContainer');
-  container.innerHTML = "";
-  connectedFriends.forEach(f => {
-    container.innerHTML += `
-      <div class="friend-card">
-        <div class="friend-name"><span>${f.name}</span><small style="color:var(--barbie-pink);">${f.type}</small></div>
-        <a href="${f.link}" target="_blank" class="friend-meta-btn">Ver ${f.type}</a>
+/* CALENDARIO KAOMOJI INTERACTIVO */
+const monthLabels = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+function buildInteractiveCalendar() {
+  document.getElementById("calendarMonthTitle").textContent = `${monthLabels[activeMonth]} ${activeYear}`;
+  let grid = document.getElementById("calendarGridZone");
+  grid.innerHTML = "";
+
+  // Cabeceras de días
+  const headers = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+  headers.forEach(h => grid.innerHTML += `<div class="calendar-day-header">${h}</div>`);
+
+  let firstDayIndex = new Date(activeYear, activeMonth, 1).getDay();
+  let totalDays = new Date(activeYear, activeMonth + 1, 0).getDate();
+
+  // Celdas vacías iniciales
+  for(let i = 0; i < firstDayIndex; i++) {
+    grid.innerHTML += `<div class="calendar-cell-node empty-cell"></div>`;
+  }
+
+  // Generación de días con iluminación inteligente basada en motivos estéticos
+  for(let day = 1; day <= totalDays; day++) {
+    let dateKey = `${activeYear}-${activeMonth}-${day}`;
+    let extraClass = "";
+    
+    if(customEvents[dateKey]) {
+      let r = customEvents[dateKey].reason;
+      if(r === "goth") extraClass = " evt-goth-style";
+      if(r === "coquette") extraClass = " evt-coquette-style";
+      if(r === "destiny") extraClass = " evt-destiny-style";
+    }
+
+    grid.innerHTML += `
+      <div class="calendar-cell-node${extraClass}" onclick="focusCalendarCellNode(${day})" onmouseover="focusCalendarCellNode(${day})">
+        ${day}
       </div>
     `;
-  });
+  }
 }
 
-window.addEventListener('DOMContentLoaded', initSystem);
+function moveCalendarMonth(dir) {
+  activeMonth += dir;
+  if(activeMonth > 11) { activeMonth = 0; activeYear++; }
+  if(activeMonth < 0) { activeMonth = 11; activeYear--; }
+  buildInteractiveCalendar();
+}
+
+function focusCalendarCellNode(day) {
+  let dateKey = `${activeYear}-${activeMonth}-${day}`;
+  let out = document.getElementById("eventDetailOutput");
+  if(customEvents[dateKey]) {
+    out.innerHTML = `<strong>Día ${day} - Motivo: ${customEvents[dateKey].reason.toUpperCase()}</strong><br>✧ ${customEvents[dateKey].text}`;
+  } else {
+    out.innerHTML = `Día ${day} de ${monthLabels[activeMonth]}.<br><span style="opacity:0.5;">(Ningún destino fijado en esta coordenada)</span>`;
+  }
+}
+
+function addCustomCalendarEvent() {
+  let d = parseInt(document.getElementById("calInDay").value);
+  let m = parseInt(document.getElementById("calInMonth").value);
+  let reason = document.getElementById("calInReason").value;
+  let text = document.getElementById("calInText").value;
+  
+  if(!d || !text.trim()) { alert("Ingresa un día válido y un texto."); return; }
+  
+  let key = `2026-${m}-${d}`;
+  customEvents[key] = { reason, text };
+  localStorage.setItem("mel_events", JSON.stringify(customEvents));
+  
+  document.getElementById("calInDay").value = "";
+  document.getElementById("calInText").value = "";
+  
+  buildInteractiveCalendar();
+  alert("Coordenada cronológica inyectada al Relicario.");
+}
+
+/* ==========================================
+   ✦ EFECTO 1: LLUVIA CONTINUA DE ESTRELLAS Y CORAZONES KAOMOJI
+   ========================================== */
+const rainSymbols = ["★", "♡", "✧", "☆", "♥", "✨"];
+setInterval(() => {
+  const el = document.createElement("div");
+  el.className = "kaomoji-particle";
+  el.textContent = rainSymbols[Math.floor(Math.random() * rainSymbols.length)];
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.top = "-25px";
+  el.style.color = Math.random() > 0.5 ? "var(--barbie-pink)" : "#ffffff";
+  el.style.fontSize = Math.random() * 16 + 10 + "px";
+  el.style.animation = `fall ${Math.random() * 4 + 3}s linear forwards`;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 6000);
+}, 500);
+
+/* ==========================================
+   ✦ EFECTO 2: BROTE/BURST DE FLORES DE CEREZO KAOMOJI AL CLIC
+   ========================================== */
+const burstBlossoms = ["🌸", ".*:🌸:*.", "✧🌸✧", "🌸✨"];
+window.addEventListener("click", (e) => {
+  // Ignorar clics en botones, menús, enlaces o inputs para no interferir con la navegación
+  if(e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.tagName === 'SUMMARY' || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+
+  for (let i = 0; i < 7; i++) {
+    const flower = document.createElement("div");
+    flower.className = "kaomoji-particle";
+    flower.textContent = burstBlossoms[Math.floor(Math.random() * burstBlossoms.length)];
+    flower.style.left = e.clientX + "px";
+    flower.style.top = e.clientY + "px";
+    flower.style.fontSize = "15px";
+    
+    // Calcular dispersión aleatoria
+    const mx = (Math.random() - 0.5) * 160 + "px";
+    const my = (Math.random() - 0.5) * 160 + "px";
+    flower.style.setProperty('--mx', mx);
+    flower.style.setProperty('--my', my);
+    flower.style.animation = "burst 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) forwards";
+    
+    document.body.appendChild(flower);
+    setTimeout(() => flower.remove(), 1300);
+  }
+});
+
+/* ==========================================
+   ✦ MEJORA LOGICA: TAMAGOTCHI CON VARIABLES DE ESTADO REALES
+   ========================================== */
+let tamoHunger = 100;
+const tamoAvatarEl = document.getElementById("tamoAvatar");
+const tamoStatusEl = document.getElementById("tamoStatus");
+const tamoProgressEl = document.getElementById("tamoProgress");
+
+// Drenado de nutrición cada 4.5 segundos
+setInterval(() => {
+  if(tamoHunger > 0) tamoHunger -= 5;
+  tamoProgressEl.value = tamoHunger;
+
+  if(tamoHunger <= 0) {
+    tamoAvatarEl.textContent = "(✖╭╮✖)";
+    tamoStatusEl.textContent = "Estado: Se ha desmayado por falta de mimos y manzanas... 😢";
+  } else if(tamoHunger < 35) {
+    tamoAvatarEl.textContent = "(｡•́︿•̀｡)";
+    tamoStatusEl.textContent = "Estado: ¡Tengo mucha hambre! Necesito comer 🍎";
+  } else if(tamoHunger < 70) {
+    tamoAvatarEl.textContent = "(❛‿❛✿)";
+    tamoStatusEl.textContent = "Estado: Tengo espacio para unos pastelillos.";
+  }
+}, 4500);
+
+function feedTamo() {
+  if(tamoHunger <= 0) tamoHunger = 25; // Revivir
+  tamoHunger = Math.min(tamoHunger + 20, 100);
+  tamoProgressEl.value = tamoHunger;
+  tamoAvatarEl.textContent = "(๑´ڡ`๑)";
+  tamoStatusEl.textContent = "Estado: ¡Nom nom nom! Delicioso dulce.";
+  resetTamoFaceDelay();
+}
+
+function playTamo() {
+  if(tamoHunger > 10) {
+    tamoHunger = Math.max(tamoHunger - 5, 0); // Jugar consume un poco de energía
+    tamoProgressEl.value = tamoHunger;
+    tamoAvatarEl.textContent = "＼(≧▽≦)／";
+    tamoStatusEl.textContent = "Estado: ¡Yaaay! Dando saltos de felicidad.";
+    resetTamoFaceDelay();
+  } else {
+    alert("Tu mascota está demasiado débil para jugar, aliméntala primero.");
+  }
+}
+
+function resetTamoFaceDelay() {
+  setTimeout(() => {
+    if(tamoHunger >= 70) {
+      tamoAvatarEl.textContent = "(•‿•)";
+      tamoStatusEl.textContent = "Estado: ¡Feliz y lleno! ✨";
+    }
+  }, 2500);
+}
+
+/* ==========================================
+   ✦ INTERFAZ: BURBUJAS DE CHAT SIMULADAS RETRO (FACEBOOK OLD)
+   ========================================== */
+function toggleRetroChatWindow(isOpen) {
+  if(isOpen) {
+    document.getElementById("chatRetroTab").classList.add("hidden");
+    document.getElementById("chatRetroWindow").classList.remove("hidden");
+    let b = document.getElementById("chatRetroMessages");
+    b.scrollTop = b.scrollHeight;
+  } else {
+    document.getElementById("chatRetroWindow").classList.add("hidden");
+    document.getElementById("chatRetroTab").classList.remove("hidden");
+  }
+}
+
+function handleRetroChatSubmit(event) {
+  if(event.key === 'Enter') {
+    const input = document.getElementById("chatRetroInput");
+    const val = input.value.trim();
+    if(val === "") return;
+    
+    const body = document.getElementById("chatRetroMessages");
+    
+    // Inyectar mensaje de usuario
+    body.innerHTML += `<div class="chat-msg-line user"><b>Tú:</b> ${val}</div>`;
+    input.value = "";
+    body.scrollTop = body.scrollHeight;
+    
+    // Simular respuesta automática nostálgica a los 1.5 segundos
+    setTimeout(() => {
+      const responses = [
+        "¡Qué lindo leer eso! Siempre me encanta pasarme por mel_sanctuary. (*＾▽＾*)",
+        "Totalmente de acuerdo. Ese género musical encaja a la perfección con el diseño rococó goth.",
+        "¡Oye, avísame cuando inyectes un nuevo destino místico en el calendario para revisarlo! 🔮",
+        "Súper retro todo por aquí. ¡Me fascina la barra de mensajes antigua! ✨"
+      ];
+      const reply = responses[Math.floor(Math.random() * responses.length)];
+      body.innerHTML += `<div class="chat-msg-line friend"><b>Amigo:</b> ${reply}</div>`;
+      body.scrollTop = body.scrollHeight;
+    }, 1500);
+  }
+}
 </script>
 
 </body>
