@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✦ mel_sanctuary_rococo_v7_kaomoji_calendar ✦</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Charm:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* VARIABLES CON SOPORTE DE TEMAS DUALES */
+:root {
+  --anime-black: #1F1F1F;
+  --goth-charcoal: #4B4B4B;
+  --barbie-pink: #FEB1C7;
+  --porcelain-pink: #FFDCE4;
+  --bg-deep-velvet: #120A10;
+  --surface-box: rgba(31, 31, 31, 0.85);
+  --text-main: #FFDCE4;
+  --input-bg: #1F1F1F;
+  --input-text: #ffffff;
+  
+  /* Colores dinámicos para los motivos del calendario */
+  --evt-goth: #A27BCA;
+  --evt-coquette: #FEB1C7;
+  --evt-destiny: #F3E5AB;
+
+  --font-goth: 'Courier Prime', monospace;
+  --font-vintage: 'Playfair Display', serif;
+  --font-coquette: 'Charm', cursive;
+}
+
+[data-theme="pastel"] {
+  --anime-black: #FFF0F5;
+  --goth-charcoal: #FFDCE4;
+  --barbie-pink: #FEB1C7;
+  --porcelain-pink: #4B4B4B;
+  --bg-deep-velvet: #FFFDF9;
+  --surface-box: rgba(255, 240, 245, 0.9);
+  --text-main: #4B4B4B;
+  --input-bg: #FFFFFF;
+  --input-text: #4B4B4B;
+
+  /* Tonos pastel más suaves para el modo coquette */
+  --evt-goth: #D3BBDD;
+  --evt-coquette: #FFC0CB;
+  --evt-destiny: #FFFACD;
+}
+
+* { box-sizing: border-box; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+body {
+  margin: 0; padding: 50px 0; 
+  background-color: var(--anime-black);
+  color: var(--text-main); 
+  font-family: var(--font-goth);
+  background-image: radial-gradient(circle at center, var(--goth-charcoal) 0%, var(--bg-deep-velvet) 100%);
+  display: flex; justify-content: center; overflow-x: hidden;
+}
+
+/* MARCOS DE ENCAJE KAOMOJI */
+body::before, body::after {
+  content: "𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂";
+  position: fixed; left: 0; width: 100%; text-align: center;
+  font-size: 11px; color: var(--barbie-pink); pointer-events: none; opacity: 0.4;
+}
+body::before { top: 10px; }
+body::after { bottom: 10px; }
+
+.rococo-cocoon-container {
+  width: 880px;
+  background: var(--anime-black);
+  border: 4px solid var(--barbie-pink);
+  outline: 8px solid var(--anime-black);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(254,177,199,0.15);
+  position: relative;
+  padding: 24px;
+  border-radius: 8px;
+}
+.rococo-cocoon-container::before {
+  content: "🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀";
+  position: absolute; top: -18px; left: 0; width: 100%;
+  text-align: center; font-size: 11px; color: var(--barbie-pink);
+  letter-spacing: 4px; pointer-events: none;
+}
+
+/* PORTADA */
+.sanctuary-header-banner {
+  width: 100%; height: 210px;
+  background-color: var(--goth-charcoal);
+  border: 2px solid var(--barbie-pink);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  border-radius: 4px;
+}
+.banner-title-frame {
+  background: var(--surface-box);
+  border: 1px dashed var(--barbie-pink);
+  outline: 5px solid var(--surface-box);
+  padding: 12px 30px; text-align: center;
+  border-radius: 24px;
+}
+.banner-title-frame h1 {
+  margin: 0; font-family: var(--font-coquette); font-size: 34px;
+  color: var(--barbie-pink); text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+/* CONSOLA SECRETA */
+.mel-admin-trigger {
+  position: absolute; top: 12px; right: 12px; z-index: 100;
+  background: var(--anime-black); border: 1px solid var(--barbie-pink);
+  color: var(--barbie-pink); padding: 6px 12px; font-size: 11px; cursor: pointer;
+  border-radius: 20px; font-family: var(--font-goth); font-weight: bold;
+}
+.mel-secret-panel {
+  display: none; background: var(--bg-deep-velvet);
+  border: 2px dashed var(--barbie-pink); padding: 20px; margin: 15px 0;
+  border-radius: 6px; font-size: 12px;
+}
+.panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.panel-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+.panel-row input, .panel-row textarea, .panel-row select {
+  background: var(--input-bg); border: 1px solid var(--barbie-pink);
+  color: var(--input-text); padding: 6px; font-family: var(--font-goth); font-size: 11px; border-radius: 4px;
+}
+
+/* MENÚ INTERNO DE PESTAÑAS */
+.rococo-menu-bar { display: flex; justify-content: space-between; margin: 20px 0; gap: 6px; }
+.rococo-menu-link {
+  flex: 1; text-align: center; padding: 9px; background: var(--goth-charcoal);
+  border: 1px solid var(--barbie-pink); color: var(--text-main);
+  font-family: var(--font-vintage); font-style: italic; font-size: 12px;
+  text-decoration: none; border-radius: 4px; cursor: pointer; white-space: nowrap;
+}
+.rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; font-weight: bold; }
+
+.tab-view { display: none; }
+.tab-view.active-view { display: block; }
+
+.rococo-grid { display: grid; grid-template-columns: 210px 390px 220px; gap: 15px; }
+
+.rococo-frame-box {
+  background: var(--surface-box);
+  border: 1px solid var(--goth-charcoal);
+  outline: 1px solid var(--barbie-pink); outline-offset: -5px;
+  padding: 14px; position: relative; margin-bottom: 20px;
+  border-radius: 4px;
+}
+.rococo-frame-box::after {
+  content: "⊹ ✧ ⊹ ✧ ⊹";
+  position: absolute; bottom: -8px; left: 0; width: 100%; text-align: center;
+  font-size: 9px; color: var(--barbie-pink); opacity: 0.7;
+}
+.rococo-frame-title {
+  font-family: var(--font-vintage); font-style: italic; font-weight: bold;
+  text-align: center; color: var(--barbie-pink); font-size: 13px;
+  margin: 0 0 12px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 5px;
+}
+
+/* AVATAR CAMAFEO */
+.cameo-avatar-wrapper {
+  width: 110px; height: 110px; margin: 0 auto 10px auto;
+  border-radius: 50%; border: 3px double var(--barbie-pink); overflow: hidden;
+  background: var(--bg-deep-velvet); display: flex; align-items: center; justify-content: center; cursor: pointer;
+}
+.cameo-avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; display: none; }
+.cameo-avatar-wrapper .placeholder { font-size: 10px; text-align: center; color: var(--barbie-pink); }
+
+/* CONTROL DE MÚSICA PÚBLICO */
+.music-user-input-row { display: flex; gap: 4px; margin-bottom: 8px; }
+.music-user-input-row input {
+  flex: 1; background: var(--input-bg); border: 1px solid var(--barbie-pink);
+  color: var(--input-text); font-family: var(--font-goth); font-size: 10px; padding: 4px; border-radius: 3px;
+}
+
+/* QUAD HOLOGRAMAS */
+.holo-matrix-4x4 {
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 6px; width: 100%; min-height: 240px;
+}
+.holo-slot {
+  background: #000000; border: 1px dashed var(--barbie-pink);
+  border-radius: 3px; overflow: hidden; display: flex;
+  align-items: center; justify-content: center; padding: 2px; font-size: 20px;
+}
+.holo-slot img, .holo-slot iframe { width: 100%; height: 100%; object-fit: contain; border: 0; }
+
+/* FEED DEL MURO */
+.rococo-board-scroller { max-height: 380px; overflow-y: auto; padding-right: 4px; }
+.rococo-post-node {
+  background: var(--input-bg); border: 1px solid var(--barbie-pink);
+  padding: 12px; margin-bottom: 16px; font-size: 11px; border-radius: 4px;
+}
+.post-social-bar { display: flex; gap: 8px; margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--barbie-pink); }
+.react-btn { background: none; border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 2px 6px; cursor: pointer; border-radius: 3px; }
+.comment-box { margin-top: 8px; }
+.comment-stream { font-size: 10px; display: flex; flex-direction: column; gap: 4px; max-height: 90px; overflow-y: auto; margin-bottom: 5px; }
+.comment-line { padding: 3px; border-radius: 2px; background: rgba(0,0,0,0.15); border-left: 3px solid var(--barbie-pink); }
+.comment-input-row { display: flex; gap: 4px; }
+.comment-in { flex: 1; background: var(--anime-black); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 4px; font-family: var(--font-goth); }
+
+/* CAJA DE CONFESIONES ANÓNIMAS */
+.confession-scroller { max-height: 140px; overflow-y: auto; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+.confession-card { background: rgba(254,177,199,0.05); border: 1px dashed var(--goth-charcoal); padding: 8px; border-radius: 4px; font-size: 10px; line-height: 1.4; }
+
+/* REJILLA DE FOTOS (ARCHIVO ESTELAR) */
+.stellar-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-height: 500px; overflow-y: auto; padding: 10px; }
+.stellar-photo-card { background: var(--input-bg); border: 1px solid var(--barbie-pink); padding: 6px; border-radius: 4px; text-align: center; }
+.stellar-photo-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 2px; border: 1px solid var(--goth-charcoal); }
+.stellar-photo-meta { font-size: 10px; margin-top: 4px; color: var(--barbie-pink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ALMAS VINCULADAS */
+.friends-scroll-zone { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+.friend-card { background: rgba(75, 75, 75, 0.1); border: 1px solid var(--barbie-pink); padding: 8px; border-radius: 4px; }
+.friend-name { color: var(--barbie-pink); font-weight: bold; font-size: 11px; display: flex; justify-content: space-between; }
+.friend-meta-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 9px; padding: 3px; text-align: center; text-decoration: none; display: block; margin-top: 4px; border-radius: 2px; }
+
+/* ESTILOS EXCLUSIVOS DEL CALENDARIO KAOMOJI INTERACTIVO */
+.victorian-calendar-wrapper {
+  max-width: 520px; margin: 0 auto; background: rgba(0,0,0,0.2); border: 2px double var(--barbie-pink); padding: 20px; border-radius: 12px;
+}
+.calendar-header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-family: var(--font-vintage); }
+.calendar-grid-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
+.calendar-day-header { font-size: 10px; font-weight: bold; color: var(--barbie-pink); padding-bottom: 5px; border-bottom: 1px dashed var(--goth-charcoal); }
+
+.calendar-cell-node {
+  background: var(--input-bg); border: 1px solid var(--goth-charcoal); padding: 12px 0; font-size: 10px; border-radius: 4px; cursor: pointer; position: relative;
+}
+.calendar-cell-node:hover { background: var(--goth-charcoal); border-color: var(--barbie-pink); }
+.calendar-cell-node.empty-cell { background: transparent; border: none; cursor: default; }
+
+/* ILUMINACIÓN INTELIGENTE DE MOTIVOS POR VARIABLE CSS */
+.calendar-cell-node.evt-goth-style {
+  background: rgba(162, 123, 202, 0.25); border: 1px solid var(--evt-goth); font-weight: bold; box-shadow: 0 0 8px var(--evt-goth);
+}
+.calendar-cell-node.evt-coquette-style {
+  background: rgba(254, 177, 199, 0.25); border: 1px solid var(--evt-coquette); font-weight: bold; box-shadow: 0 0 8px var(--evt-coquette);
+}
+.calendar-cell-node.evt-destiny-style {
+  background: rgba(243, 229, 171, 0.25); border: 1px solid var(--evt-destiny); font-weight: bold; box-shadow: 0 0 8px var(--evt-destiny);
+}
+
+.event-display-scroll {
+  background: var(--input-bg); border: 1px dashed var(--barbie-pink); padding: 12px; margin-top: 15px; border-radius: 6px; font-size: 11px; font-family: var(--font-goth); text-align: center;
+}
+
+.rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-family: var(--font-goth); font-size: 11px; padding: 5px; cursor: pointer; width: 100%; border-radius: 4px; }
+.rococo-btn:hover { background: var(--barbie-pink); color: #000; }
+.hidden-uploader { display: none; }
+</style>
+</head>
+<body>
+
+<div class="rococo-cocoon-container">
+  
+  <button class="mel-admin-trigger" onclick="toggleAdminPanel()">⚙ Panel de Control Mel</button>
+
+  <!-- PANEL SECRETO DE CONFIGURACIÓN -->
+  <div class="mel-secret-panel" id="secretPanel">
+    <h3 style="margin:0 0 12px 0; font-family:var(--font-vintage); color:var(--barbie-pink); text-align:center;">🌸 Consola de Inyección & Modos Duales</h3>
+    
+    <div style="text-align: center; margin-bottom: 15px; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px;">
+      <span style="color:var(--barbie-pink); font-weight:bold; margin-right:10px;">Cambiar Estética Visual:</span>
+      <select id="cfgThemeSelector" onchange="switchThemeMode(this.value)" style="background:var(--input-bg); color:var(--input-text); border:1px solid var(--barbie-pink); padding:3px;">
+        <option value="dark">🖤 Estilo Dark Goth</option>
+        <option value="pastel">🌸 Estilo Pastel Coquette</option>
+      </select>
+    </div>
+
+    <div class="panel-grid">
+      <div>
+        <h4 style="margin:5px 0; color:var(--barbie-pink);">Configuración Base</h4>
+        <div class="panel-row">
+          <label>Título de la Matriz:</label>
+          <input type="text" id="cfgTitle" value="mel_sanctuary_matrix">
+        </div>
+        <div class="panel-row">
+          <label>Biografía:</label>
+          <textarea id="cfgBio" rows="2">𓏲ᵎ Rococó Goth & Pastel Dual // @_tomate_4</textarea>
+        </div>
+        <div class="panel-row">
+          <label>Música Base (YouTube Link):</label>
+          <input type="text" id="cfgYoutubeId" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+        </div>
+        <button class="rococo-btn" style="background:var(--barbie-pink); color:#000; font-weight:bold;" onclick="saveConfigChanges()">Guardar Configuración Base</button>
+      </div>
+
+      <div>
+        <h4 style="margin:5px 0; color:var(--barbie-pink);">Inyección de Hologramas</h4>
+        <div class="panel-row">
+          <label>Holograma 1:</label><input type="text" id="cfgHolo1" value="👾">
+        </div>
+        <div class="panel-row">
+          <label>Holograma 2:</label><input type="text" id="cfgHolo2" value="✨">
+        </div>
+        <div class="panel-row">
+          <label>Holograma 3:</label><input type="text" id="cfgHolo3" value="🎀">
+        </div>
+        <div class="panel-row">
+          <label>Holograma 4:</label><input type="text" id="cfgHolo4" value="🌸">
+        </div>
+        <button class="rococo-btn" onclick="saveHoloChanges()">Inyectar los 4 Hologramas</button>
+      </div>
+    </div>
+
+    <hr style="border:0; border-top:1px dashed var(--barbie-pink); margin:15px 0;">
+    
+    <!-- CONSOLA PARA FECHAS CON MOTIVOS INTERACTIVOS -->
+    <h4 style="margin:5px 0; color:var(--barbie-pink);">📆 Fijar Fecha con Motivo Estético</h4>
+    <div style="display:grid; grid-template-columns: 80px 100px 1fr; gap:6px; margin-bottom:8px;">
+      <input type="number" id="calInDay" placeholder="Día" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
+      <select id="calInMonth" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
+        <option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option>
+        <option value="3">Abril</option><option value="4">Mayo</option><option value="5">Junio</option>
+        <option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option>
+        <option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option>
+      </select>
+      <select id="calInReason" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
+        <option value="goth">🖤 Secreto / Pacto Goth</option>
+        <option value="coquette">🎀 Romance / Coquette</option>
+        <option value="destiny">✨ Destino / Cumpleaños</option>
+      </select>
+    </div>
+    <div style="display:flex; gap:6px; margin-bottom:15px;">
+      <input type="text" id="calInText" placeholder="Escribe el fragmento del recuerdo aquí..." style="flex:1; background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
+      <button class="rococo-btn" style="width:auto; padding:4px 15px;" onclick="addCustomCalendarEvent()">Inyectar Destino</button>
+    </div>
+
+    <h4 style="margin:5px 0; color:var(--text-main);">🎀 Vincular Nuevo Amigo</h4>
+    <div style="display:flex; gap:8px; align-items:flex-end;">
+      <div class="panel-row" style="flex:1;"><input type="text" id="newFriendName" placeholder="Nick Amigo"></div>
+      <div class="panel-row" style="flex:1">
+        <select id="newFriendType">
+          <option value="Instagram">Instagram</option>
+          <option value="TikTok">TikTok</option>
+          <option value="Correo">Correo</option>
+        </select>
+      </div>
+      <div class="panel-row" style="flex:2;"><input type="text" id="newFriendLink" placeholder="Link de perfil..."></div>
+      <button class="rococo-btn" style="width:auto; padding:7px 15px; margin-bottom:10px; background:var(--barbie-pink); color:#000;" onclick="addNewFriendNode()">Vincular</button>
+    </div>
+  </div>
+
+  <!-- CABECERA BANNER -->
+  <header class="sanctuary-header-banner" id="mainBanner">
+    <div class="banner-title-frame">
+      <h1 id="liveTitle">mel_sanctuary_matrix</h1>
+      <span style="font-size:10px; letter-spacing:2px; color:var(--barbie-pink);">✦ Kaomoji Relic Matrix v7 ✦</span>
+    </div>
+  </header>
+
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR CON PESTAÑAS -->
+  <nav class="rococo-menu-bar">
+    <div id="tabMainLink" class="rococo-menu-link active-tab" onclick="switchVirtualTab('main')">✦ Cuaderno Central</div>
+    <a href="https://www.instagram.com/its.mell456?igsh=OHBsMWdhcXZtczJm" target="_blank" class="rococo-menu-link">Instagram</a>
+    <a href="https://www.tiktok.com/@_tomate_4?_r=1&_t=ZS-97DcZ6o3U6X" target="_blank" class="rococo-menu-link">TikTok</a>
+    <div id="tabStellarLink" class="rococo-menu-link" onclick="switchVirtualTab('stellar')">✦ Archivo Estelar</div>
+    <div id="tabCalendarLink" class="rococo-menu-link" onclick="switchVirtualTab('calendar')">🔮 (⭒_⭒) Fechas Místicas</div>
+  </nav>
+
+  <!-- ================= PESTAÑA 1: CUADERNO CENTRAL ================= -->
+  <div id="viewMainGrid" class="tab-view active-view">
+    <div class="rococo-grid">
+      
+      <!-- COLUMNA 1 -->
+      <aside>
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">identidad</div>
+          <div class="cameo-avatar-wrapper" onclick="triggerClick('fileAvatar')">
+            <span class="placeholder" id="txtAvatarPlace">[ Rostro ]</span>
+            <img id="imgAvatarView" src="" alt="Avatar">
+          </div>
+          <input type="file" id="fileAvatar" class="hidden-uploader" accept="image/*" onchange="loadPersonalAvatar(this)">
+          <div style="text-align:center; font-size:12px; font-weight:bold; color:var(--barbie-pink);">its.mell456</div>
+          <div style="text-align:center; font-size:10px; font-style:italic; margin-top:4px; margin-bottom:8px;" id="liveBio">𓏲ᵎ Rococó Goth // @_tomate_4</div>
+          
+          <button class="rococo-btn" style="font-size:9px; padding:4px;" onclick="triggerMatrixOracle()">🔮 Consultar Oráculo</button>
+          <div id="oracleResultBox" style="font-size:9px; text-align:center; color:var(--barbie-pink); margin-top:6px; font-weight:bold;"></div>
+        </div>
+
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">reproductor_yt</div>
+          <div class="music-user-input-row">
+            <input type="text" id="publicMusicUrl" placeholder="Pega link de canción aquí...">
+            <button class="rococo-btn" style="width: auto; padding: 2px 6px; font-size: 9px;" onclick="loadPublicSong()">Cargar</button>
+            <button class="rococo-btn" style="width: auto; padding: 2px 6px; font-size: 9px; background:#4B4B4B;" onclick="mutePlayerToggle()">🔇</button>
+          </div>
+          <div style="width:100%; aspect-ratio:16/9; background:#000; border:1px solid var(--barbie-pink); border-radius:2px; overflow:hidden;">
+            <iframe id="youtubePlayerFrame" src="" style="width:100%; height:100%; border:0;" allow="autoplay; encrypted-media"></iframe>
+          </div>
+        </div>
+      </aside>
+
+      <!-- COLUMNA 2 -->
+      <main>
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">escribir_en_diario</div>
+          <textarea id="postContentArea" style="width:100%; background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); font-family:var(--font-goth); font-size:11px; padding:7px; resize:none;" rows="2" placeholder="Escribe algo en la matriz..."></textarea>
+          <div style="margin-top:6px; display:flex; gap:4px;">
+            <button class="rococo-btn" onclick="triggerClick('filePostImg')">❀ Subir Imagen</button>
+            <input type="file" id="filePostImg" class="hidden-uploader" accept="image/*" onchange="cachePostImg(this)">
+            <button class="rococo-btn" style="background:var(--barbie-pink); color:#000; font-weight:bold;" onclick="publishNewTextNode()">Fijar</button>
+          </div>
+          <div id="lblFileStatus" style="font-size:9px; color:var(--barbie-pink); margin-top:3px; text-align:center;"></div>
+        </div>
+
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">pergaminos_muro</div>
+          <div class="rococo-board-scroller" id="mainTimelineStream"></div>
+        </div>
+
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">confesionario_anonimo</div>
+          <div style="display:flex; gap:4px;">
+            <input type="text" id="txtConfession" class="comment-in" style="font-size:11px;" placeholder="Deja un secreto o deseo anónimo aquí...">
+            <button class="rococo-btn" style="width:60px; font-weight:bold;" onclick="sendAnonymousConfession()">Enviar</button>
+          </div>
+          <div class="confession-scroller" id="confessionBoxStream"></div>
+        </div>
+      </main>
+
+      <!-- COLUMNA 3 -->
+      <aside>
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">cuatro_hologramas</div>
+          <div class="holo-matrix-4x4">
+            <div class="holo-slot" id="hSlot1"></div>
+            <div class="holo-slot" id="hSlot2"></div>
+            <div class="holo-slot" id="hSlot3"></div>
+            <div class="holo-slot" id="hSlot4"></div>
+          </div>
+          <div style="font-size:9px; text-align:center; margin-top:6px; color:var(--barbie-pink); font-style:italic;">✦ Sistema Quad-Holo ✦</div>
+        </div>
+
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">almas_vinculadas</div>
+          <div class="friends-scroll-zone" id="friendsContainer"></div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ================= PESTAÑA 2: ARCHIVO ESTELAR ================= -->
+  <div id="viewStellarGrid" class="tab-view">
+    <div class="rococo-frame-box" style="width: 100%;">
+      <div class="rococo-frame-title">archivo_estelar_galeria</div>
+      <p style="font-size:11px; text-align:center; font-style:italic; margin-top:-5px; color:var(--barbie-pink);">✦ Fragmentos visuales extraídos del diario de Mel ✦</p>
+      <div class="stellar-photo-grid" id="stellarPhotoContainer"></div>
+    </div>
+  </div>
+
+  <!-- ================= PESTAÑA 3: CALENDARIO KAOMOJI VICTORIANO (ACTUALIZADO) ================= -->
+  <div id="viewCalendarGrid" class="tab-view">
+    <div class="rococo-frame-box" style="width: 100%;">
+      <div class="rococo-frame-title">(︶▽︶) efemerides_y_destinos</div>
+      
+      <div class="victorian-calendar-wrapper">
+        <div class="calendar-header-nav">
+          <button class="rococo-btn" style="width:80px;" onclick="shiftCalendarMonth(-1)">(︶︹︶) ◀</button>
+          <h3 id="calendarMonthYearLabel" style="margin:0; color:var(--barbie-pink); font-style:italic; font-family:var(--font-vintage);">Junio 2026</h3>
+          <button class="rococo-btn" style="width:80px;" onclick="shiftCalendarMonth(1)">▶ (っ^‿^)っ</button>
+        </div>
+
+        <div class="calendar-grid-days" id="calendarDaysGridBody">
+          <!-- Inyectado dinámicamente con puros Kaomojis -->
+        </div>
+
+        <div class="event-display-scroll" id="calendarEventScrollAlert">
+          (⚕_⚕) El oráculo espera... Toca un kaomoji iluminado para revelar su motivo secreto...
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer style="text-align:center; font-size:10px; margin-top:15px; color:var(--barbie-pink); opacity:0.6;">
+    ⏳ Has estado en esta dimensión por: <span id="starTimer">0s</span>
+  </footer>
+
+</div>
+
+<script>
+let tempPostImgBase64 = "";
+let customPosts = JSON.parse(localStorage.getItem('mel_posts')) || [];
+let anonymousConfessions = JSON.parse(localStorage.getItem('mel_confessions')) || [
+  { text: "A veces la matriz se siente demasiado pacífica... (☄_☄)", id: 1 }
+];
+let connectedFriends = JSON.parse(localStorage.getItem('mel_friends')) || [
+  { id: 1, name: "amane_misa 🎀", type: "Instagram", link: "#" }
+];
+
+// FECHAS INTERACTIVAS BASE CON MOTIVOS ASIGNADOS
+let specialDates = JSON.parse(localStorage.getItem('mel_calendar_events')) || [
+  { day: 14, month: 5, reason: "coquette", text: "(｡>﹏<｡) ¡Un día ultra especial coquette fijado en la eternidad!" },
+  { day: 31, month: 9, reason: "goth", text: "(⚕_⚕) Luna de sangre gótica. Noche de conjuros y encaje oscuro." }
+];
+
+const commentColors = ["#FEB1C7", "#FFDCE4", "#4B4B4B"];
+const oracleMoods = [
+  "[ ✧ Alma Coquette Radiante ✧ ]", 
+  "[ 🖤 Goth Melancólico +100% ]", 
+  "[ 🌸 Aura Pastel Protegida ]", 
+  "[ ⛓️ Energía Rebelde Barroca ]",
+  "[ 🎀 Destino Encantado Conectado ]"
+];
+const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+let timeCounter = 0;
+let currentDisplayedDate = new Date();
+
+function initSystem() {
+  const savedTheme = localStorage.getItem('mel_theme') || 'dark';
+  switchThemeMode(savedTheme);
+  document.getElementById('cfgThemeSelector').value = savedTheme;
+
+  loadConfig();
+  renderTimeline();
+  renderFriendsList();
+  renderStellarGallery();
+  renderConfessions();
+  buildVictorianCalendar();
+
+  setInterval(() => {
+    timeCounter++;
+    let minutes = Math.floor(timeCounter / 60);
+    let seconds = timeCounter % 60;
+    document.getElementById('starTimer').innerText = minutes > 0 ? `${minutes}m ${seconds}s` : `${seconds}s`;
+  }, 1000);
+}
+
+function triggerClick(id) { document.getElementById(id).click(); }
+function toggleAdminPanel() {
+  const panel = document.getElementById('secretPanel');
+  panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+}
+
+function switchThemeMode(mode) {
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem('mel_theme', mode);
+  // Redibujar calendario para aplicar los cambios de iluminación inteligente de inmediato
+  if(document.getElementById('viewCalendarGrid').classList.contains('active-view')) {
+    buildVictorianCalendar();
+  }
+}
+
+function switchVirtualTab(tabName) {
+  document.getElementById('viewMainGrid').classList.remove('active-view');
+  document.getElementById('viewStellarGrid').classList.remove('active-view');
+  document.getElementById('viewCalendarGrid').classList.remove('active-view');
+  
+  document.getElementById('tabMainLink').classList.remove('active-tab');
+  document.getElementById('tabStellarLink').classList.remove('active-tab');
+  document.getElementById('tabCalendarLink').classList.remove('active-tab');
+
+  if(tabName === 'main') {
+    document.getElementById('viewMainGrid').classList.add('active-view');
+    document.getElementById('tabMainLink').classList.add('active-tab');
+  } else if(tabName === 'stellar') {
+    document.getElementById('viewStellarGrid').classList.add('active-view');
+    document.getElementById('tabStellarLink').classList.add('active-tab');
+    renderStellarGallery();
+  } else if(tabName === 'calendar') {
+    document.getElementById('viewCalendarGrid').classList.add('active-view');
+    document.getElementById('tabCalendarLink').classList.add('active-tab');
+    buildVictorianCalendar();
+  }
+}
+
+/* SISTEMA MASTER DE CALENDARIO TOTALMENTE KAOMOJI */
+function buildVictorianCalendar() {
+  const grid = document.getElementById('calendarDaysGridBody');
+  const label = document.getElementById('calendarMonthYearLabel');
+  
+  const year = currentDisplayedDate.getFullYear();
+  const month = currentDisplayedDate.getMonth();
+  
+  label.innerText = `𐐪𐑂 ${monthNames[month]} ${year} 𐐪𐑂`;
+  grid.innerHTML = "";
+
+  const daysLetters = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+  daysLetters.forEach(d => {
+    grid.innerHTML += `<div class="calendar-day-header">${d}</div>`;
+  });
+
+  const firstDayIndex = new Date(year, month, 1).getDay();
+  const totalDays = new Date(year, month + 1, 0).getDate();
+
+  for (let i = 0; i < firstDayIndex; i++) {
+    grid.innerHTML += `<div class="calendar-cell-node empty-cell"></div>`;
+  }
+
+  for (let day = 1; day <= totalDays; day++) {
+    // Verificar si el día tiene un evento configurado
+    const foundEvent = specialDates.find(e => e.day === day && e.month === month);
+    
+    let styleClass = "";
+    let faceMarker = day; // Por defecto muestra el número del día
+
+    if (foundEvent) {
+      // Elegir la clase CSS de iluminación según el motivo del evento
+      styleClass = `evt-${foundEvent.reason}-style`;
+      
+      // Cambiar el rostro del Kaomoji en la celda según el motivo
+      if (foundEvent.reason === "goth") faceMarker = "(⚕_⚕)";
+      else if (foundEvent.reason === "coquette") faceMarker = "(⭒_⭒)";
+      else faceMarker = "(✧_✧)";
+    }
+
+    grid.innerHTML += `
+      <div class="calendar-cell-node ${styleClass}" onclick="selectCalendarDay(${day}, ${month}, '${foundEvent ? foundEvent.reason : ''}', '${foundEvent ? foundEvent.text : ''}')">
+        ${faceMarker}
+      </div>
+    `;
+  }
+}
+
+function shiftCalendarMonth(direction) {
+  currentDisplayedDate.setMonth(currentDisplayedDate.getMonth() + direction);
+  buildVictorianCalendar();
+}
+
+function selectCalendarDay(day, month, reason, eventText) {
+  const alertBox = document.getElementById('calendarEventScrollAlert');
+  if(eventText) {
+    let typeDecor = "✨ [Destino]";
+    if(reason === "goth") typeDecor = "🖤 [Pacto Oscuro Secreto]";
+    if(reason === "coquette") typeDecor = "🎀 [Fragmento Coquette Romántico]";
+
+    alertBox.innerHTML = `<h3>${typeDecor}</h3><b>Día ${day} de ${monthNames[month]}:</b><br>"${eventText}"`;
+  } else {
+    alertBox.innerHTML = `(๑•́__•̀๑) Día ${day} de ${monthNames[month]}. No se han dictado conjuros ni secretos para esta fecha...`;
+  }
+}
+
+function addCustomCalendarEvent() {
+  const day = parseInt(document.getElementById('calInDay').value);
+  const month = parseInt(document.getElementById('calInMonth').value);
+  const reason = document.getElementById('calInReason').value;
+  const text = document.getElementById('calInText').value.trim();
+
+  if(!day || day < 1 || day > 31 || !text) {
+    alert("(｡>﹏<｡) ¡Inserta un día válido y el texto del motivo!");
+    return;
+  }
+
+  specialDates.push({ day, month, reason, text });
+  localStorage.setItem('mel_calendar_events', JSON.stringify(specialDates));
+  
+  document.getElementById('calInDay').value = "";
+  document.getElementById('calInText').value = "";
+  
+  buildVictorianCalendar();
+  alert("＼(≧▽≦)／ ¡Destino estético inyectado correctamente!");
+}
+
+/* NÚCLEO DE YOUTUBE E INTERACCIONES */
+function parseYoutubeEmbedUrl(urlStr) {
+  let videoId = "dQw4w9WgXcQ"; 
+  if (!urlStr) return `https://www.youtube.com/embed/${videoId}`;
+  if (urlStr.includes("list=")) {
+    let match = urlStr.match(/[?&]list=([^#\&\?]+)/);
+    if(match) return `https://www.youtube.com/embed/videoseries?list=${match[1]}`;
+  }
+  let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  let match = urlStr.match(regExp);
+  if (match && match[2].length == 11) { videoId = match[2]; }
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
+}
+
+function loadPublicSong() {
+  const url = document.getElementById('publicMusicUrl').value.trim();
+  if(!url) return;
+  document.getElementById('youtubePlayerFrame').src = parseYoutubeEmbedUrl(url);
+}
+
+function mutePlayerToggle() {
+  const frame = document.getElementById('youtubePlayerFrame');
+  let currentSrc = frame.src;
+  frame.src = currentSrc.includes("autoplay=1") ? currentSrc.replace("autoplay=1", "autoplay=0") : currentSrc;
+}
+
+function triggerMatrixOracle() {
+  const randomMood = oracleMoods[Math.floor(Math.random() * oracleMoods.length)];
+  document.getElementById('oracleResultBox').innerText = randomMood;
+}
+
+function sendAnonymousConfession() {
+  const input = document.getElementById('txtConfession');
+  if(!input.value.trim()) return;
+  const kaomojis = ["(⪿_⪿)", "(⭒_⭒)", "(•̥́_•̥̀)", "(๑•́__•̀๑)", "(⚕_⚕)"];
+  const finalKaomoji = kaomojis[Math.floor(Math.random() * kaomojis.length)];
+
+  anonymousConfessions.unshift({ id: Date.now(), text: `${input.value.trim()} ${finalKaomoji}` });
+  localStorage.setItem('mel_confessions', JSON.stringify(anonymousConfessions));
+  input.value = "";
+  renderConfessions();
+}
+
+function renderConfessions() {
+  const container = document.getElementById('confessionBoxStream');
+  container.innerHTML = "";
+  anonymousConfessions.forEach(c => {
+    container.innerHTML += `<div class="confession-card">🔮 <i>Anónimo dictó:</i> "${c.text}"</div>`;
+  });
+}
+
+function saveConfigChanges() {
+  localStorage.setItem('mel_title', document.getElementById('cfgTitle').value);
+  localStorage.setItem('mel_bio', document.getElementById('cfgBio').value);
+  localStorage.setItem('mel_yt_url', document.getElementById('cfgYoutubeId').value.trim());
+  applyMelChanges();
+}
+
+function saveHoloChanges() {
+  localStorage.setItem('mel_h1', document.getElementById('cfgHolo1').value);
+  localStorage.setItem('mel_h2', document.getElementById('cfgHolo2').value);
+  localStorage.setItem('mel_h3', document.getElementById('cfgHolo3').value);
+  localStorage.setItem('mel_h4', document.getElementById('cfgHolo4').value);
+  applyMelChanges();
+}
+
+function applyMelChanges() {
+  document.getElementById('liveTitle').innerText = localStorage.getItem('mel_title') || "mel_sanctuary_matrix";
+  document.getElementById('liveBio').innerText = localStorage.getItem('mel_bio') || "𓏲ᵎ Rococó Goth // @_tomate_4";
+  
+  document.getElementById('hSlot1').innerHTML = localStorage.getItem('mel_h1') || "👾";
+  document.getElementById('hSlot2').innerHTML = localStorage.getItem('mel_h2') || "✨";
+  document.getElementById('hSlot3').innerHTML = localStorage.getItem('mel_h3') || "🎀";
+  document.getElementById('hSlot4').innerHTML = localStorage.getItem('mel_h4') || "🌸";
+
+  const rawYt = localStorage.getItem('mel_yt_url') || "dQw4w9WgXcQ";
+  document.getElementById('youtubePlayerFrame').src = parseYoutubeEmbedUrl(rawYt);
+}
+
+function loadConfig() {
+  document.getElementById('cfgTitle').value = localStorage.getItem('mel_title') || "mel_sanctuary_matrix";
+  document.getElementById('cfgBio').value = localStorage.getItem('mel_bio') || "𓏲ᵎ Rococó Goth // @_tomate_4";
+  document.getElementById('cfgYoutubeId').value = localStorage.getItem('mel_yt_url') || "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  
+  document.getElementById('cfgHolo1').value = localStorage.getItem('mel_h1') || "👾";
+  document.getElementById('cfgHolo2').value = localStorage.getItem('mel_h2') || "✨";
+  document.getElementById('cfgHolo3').value = localStorage.getItem('mel_h3') || "🎀";
+  document.getElementById('cfgHolo4').value = localStorage.getItem('mel_h4') || "🌸";
+  
+  applyMelChanges();
+
+  const avatar = localStorage.getItem('mel_avatar');
+  if(avatar) {
+    document.getElementById('imgAvatarView').src = avatar;
+    document.getElementById('imgAvatarView').style.display = 'block';
+    document.getElementById('txtAvatarPlace').style.display = 'none';
+  }
+}
+
+function loadPersonalAvatar(input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('imgAvatarView').src = e.target.result;
+      document.getElementById('imgAvatarView').style.display = 'block';
+      document.getElementById('txtAvatarPlace').style.display = 'none';
+      localStorage.setItem('mel_avatar', e.target.result);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function cachePostImg(input) {
+  if (input.files && input.files[0]) {
+    document.getElementById('lblFileStatus').innerText = "✓ Imagen lista";
+    const reader = new FileReader();
+    reader.onload = function(e) { tempPostImgBase64 = e.target.result; };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function publishNewTextNode() {
+  const text = document.getElementById('postContentArea').value.trim();
+  if(!text && !tempPostImgBase64) return;
+
+  customPosts.unshift({ id: Date.now(), content: text, img: tempPostImgBase64, reactions: 0, comments: [] });
+  localStorage.setItem('mel_posts', JSON.stringify(customPosts));
+  document.getElementById('postContentArea').value = "";
+  document.getElementById('lblFileStatus').innerText = "";
+  tempPostImgBase64 = "";
+  renderTimeline();
+  renderStellarGallery();
+}
+
+function renderTimeline() {
+  const container = document.getElementById('mainTimelineStream');
+  if(customPosts.length === 0) {
+    container.innerHTML = '<div class="rococo-post-node" style="text-align:center;">No hay proyecciones en este ciclo...</div>';
+    return;
+  }
+  container.innerHTML = "";
+  customPosts.forEach(p => {
+    let imgTag = p.img ? `<img src="${p.img}" style="width:100%; border:1px solid var(--barbie-pink); margin-top:8px; border-radius:2px;">` : "";
+    let commentsHtml = "";
+    p.comments.forEach((c, index) => {
+      let color = commentColors[index % commentColors.length];
+      commentsHtml += `<div class="comment-line" style="color:${color}; border-left-color:${color};"><b>𐀔 ${c.author}</b>: ${c.text}</div>`;
+    });
+
+    container.innerHTML += `
+      <div class="rococo-post-node">
+        <div><b>𐀔 @_tomate_4</b>: ${p.content || ""}</div>
+        ${imgTag}
+        <div class="post-social-bar">
+          <button class="react-btn" onclick="reactToPost(${p.id})">（๑•ᴗ•๑） [${p.reactions}]</button>
+        </div>
+        <div class="comment-box">
+          <div class="comment-stream">${commentsHtml}</div>
+          <div class="comment-input-row">
+            <input type="text" id="comment-in-${p.id}" class="comment-in" placeholder="Tu amigo comenta...">
+            <button class="react-btn" onclick="addCommentToPost(${p.id})">✉</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function renderStellarGallery() {
+  const container = document.getElementById('stellarPhotoContainer');
+  const photosOnly = customPosts.filter(p => p.img && p.img.trim() !== "");
+  
+  if(photosOnly.length === 0) {
+    container.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; font-style:italic;">El Archivo Estelar está vacío...</div>';
+    return;
+  }
+  container.innerHTML = "";
+  photosOnly.forEach(p => {
+    container.innerHTML += `
+      <div class="stellar-photo-card">
+        <img src="${p.img}">
+        <div class="stellar-photo-meta">${p.content ? p.content : "✦ Sin título ✦"}</div>
+      </div>
+    `;
+  });
+}
+
+function reactToPost(postId) {
+  const post = customPosts.find(p => p.id === postId);
+  if(post) { post.reactions++; localStorage.setItem('mel_posts', JSON.stringify(customPosts)); renderTimeline(); }
+}
+
+function addCommentToPost(postId) {
+  const input = document.getElementById(`comment-in-${postId}`);
+  if(!input.value.trim()) return;
+  const post = customPosts.find(p => p.id === postId);
+  if(post) {
+    post.comments.push({ author: `Amigo_${Math.floor(Math.random()*90+10)} ⚔`, text: input.value.trim() });
+    localStorage.setItem('mel_posts', JSON.stringify(customPosts));
+    renderTimeline();
+  }
+}
+
+function addNewFriendNode() {
+  const name = document.getElementById('newFriendName').value.trim();
+  const type = document.getElementById('newFriendType').value;
+  let link = document.getElementById('newFriendLink').value.trim();
+  if(!name || !link) return;
+  if(type === "Correo" && !link.startsWith("mailto:")) link = "mailto:" + link;
+
+  connectedFriends.push({ id: Date.now(), name, type, link });
+  localStorage.setItem('mel_friends', JSON.stringify(connectedFriends));
+  document.getElementById('newFriendName').value = "";
+  document.getElementById('newFriendLink').value = "";
+  renderFriendsList();
+}
+
+function renderFriendsList() {
+  const container = document.getElementById('friendsContainer');
+  container.innerHTML = "";
+  connectedFriends.forEach(f => {
+    container.innerHTML += `
+      <div class="friend-card">
+        <div class="friend-name"><span>${f.name}</span><small style="color:var(--barbie-pink);">${f.type}</small></div>
+        <a href="${f.link}" target="_blank" class="friend-meta-btn">Ver ${f.type}</a>
+      </div>
+    `;
+  });
+}
+
+window.addEventListener('DOMContentLoaded', initSystem);
+</script>
+
+</body>
+</html>
