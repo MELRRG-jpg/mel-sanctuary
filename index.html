@@ -1,540 +1,386 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>♪° Mel's cocoon matrix °♪</title>
-    <style>
-        /* ==========================================================================
-           VARIABLES DE ESTILO (Maximalista Coquette / Dark Victorian)
-           ========================================================================== */
-        :root {
-            --bg-body: #fff5f6;
-            --grid-color: rgba(235, 202, 212, 0.55);
-            --panel-bg: #ffffff;
-            --accent-pink: #ebcad4;
-            --soft-blush: #fdd6dd;
-            --text-main: #7a6268;
-            --text-muted: #bda6aa;
-            --box-header-bg: #fff0f2;
-            --input-bg: #fffbfb;
-            --shadow: rgba(235, 202, 212, 0.5);
-            --border-style: 3px double var(--accent-pink);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>+ mel_sanctuary_rococo_v11_matrix +</title>
 
-        [data-theme="dark"] {
-            --bg-body: #161214;
-            --grid-color: rgba(235, 202, 212, 0.15);
-            --panel-bg: #211b1e;
-            --accent-pink: #d49ba8;
-            --soft-blush: #423136;
-            --text-main: #fceef1;
-            --text-muted: #9c8287;
-            --box-header-bg: #2e2427;
-            --input-bg: #1a1417;
-            --shadow: rgba(0, 0, 0, 0.75);
-            --border-style: 3px double var(--accent-pink);
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Charm:wght@400;700&display=swap" rel="stylesheet">
 
-        * { box-sizing: border-box; }
+<!-- Firebase para conexión en tiempo real -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-        body {
-            background-color: var(--bg-body);
-            background-image: 
-                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-            background-size: 15px 15px;
-            background-attachment: fixed;
-            color: var(--text-main);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 12px;
-            margin: 0;
-            padding: 15px;
-            display: flex;
-            justify-content: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+<style>
+/* --- [++ Goth / Pastel Coquette Matrix Core ++] --- */
+:root {
+  --anime-black: #1F1F1F;
+  --goth-charcoal: #4B4B4B;
+  --barbie-pink: #FEB1C7;
+  --porcelain-pink: #FFDCE4;
+  --bg-deep-velvet: #120A10;
+  --surface-box: rgba(31, 31, 31, 0.85);
+  --text-main: #FFDCE4;
+  --input-bg: #1F1F1F;
+  --input-text: #ffffff;
+  
+  --font-goth: 'Courier Prime', monospace;
+  --font-vintage: 'Playfair Display', serif;
+  --font-coquette: 'Charm', cursive;
+}
 
-        body.custom-bg {
-            background-image: var(--user-bg-url) !important;
-            background-size: cover !important;
-            background-position: center !important;
-        }
+[data-theme="pastel"] {
+  --anime-black: #FFF0F5;
+  --goth-charcoal: #FFDCE4;
+  --barbie-pink: #FEB1C7;
+  --porcelain-pink: #4B4B4B;
+  --bg-deep-velvet: #FFFDF9;
+  --surface-box: rgba(255, 240, 245, 0.9);
+  --text-main: #4B4B4B;
+  --input-bg: #FFFFFF;
+  --input-text: #4B4B4B;
+}
 
-        /* PANTALLA DE BLOQUEO */
-        .lock-screen {
-            position: fixed;
-            top:0; left:0; width:100vw; height:100vh;
-            background: var(--bg-body);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 20px;
-        }
+* { box-sizing: border-box; transition: all 0.3s ease; }
+body {
+  margin: 0; padding: 50px 0; 
+  background-color: var(--anime-black);
+  color: var(--text-main); 
+  font-family: var(--font-goth);
+  background-image: radial-gradient(circle at center, var(--goth-charcoal) 0%, var(--bg-deep-velvet) 100%);
+  display: flex; justify-content: center; overflow-x: hidden;
+  position: relative;
+}
 
-        /* CONTENEDOR PRINCIPAL BARROCO */
-        .profile-container {
-            width: 100%;
-            max-width: 980px;
-            background-color: var(--panel-bg);
-            border: 5px double var(--accent-pink);
-            outline: 2px dashed var(--accent-pink);
-            outline-offset: -8px;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 40px var(--shadow);
-            margin-bottom: 70px;
-        }
+body::before, body::after {
+  content: "(--) +++ (--) +++ (--) +++ (--) +++ (--) +++ (--) +++ (--) +++ (--)";
+  position: fixed; left: 0; width: 100%; text-align: center;
+  font-size: 11px; color: var(--barbie-pink); pointer-events: none; opacity: 0.4;
+  z-index: 50;
+}
+body::before { top: 10px; }
+body::after { bottom: 10px; }
 
-        header {
-            text-align: center;
-            border: 3px double var(--accent-pink);
-            border-radius: 15px;
-            padding: 25px 15px;
-            margin-bottom: 25px;
-            background-color: var(--input-bg);
-            background-image: radial-gradient(var(--accent-pink) 20%, transparent 20%);
-            background-size: 10px 10px;
-            position: relative;
-        }
+/* --- EFECTO DE PARTICULAS FLOTANTES --- */
+.ambient-particle {
+  position: fixed; pointer-events: none; opacity: 0.6; z-index: 1;
+  color: var(--barbie-pink); font-size: 14px;
+  animation: floatParticle 8s linear infinite;
+}
+@keyframes floatParticle {
+  0% { transform: translateY(110vh) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
+}
 
-        header::before, header::after {
-            content: "🔱 ⚜️ 🔱";
-            position: absolute;
-            font-size: 14px;
-            color: var(--accent-pink);
-            width: 100%;
-            left: 0;
-        }
-        header::before { top: 4px; }
-        header::after { bottom: 4px; }
+.rococo-cocoon-container {
+  width: 900px; background: var(--anime-black);
+  border: 4px solid var(--barbie-pink); outline: 8px solid var(--anime-black);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+  position: relative; padding: 24px; border-radius: 16px; z-index: 10;
+}
 
-        header h1 {
-            font-size: 24px;
-            margin: 5px 0;
-            text-shadow: 2px 2px 0px var(--panel-bg), 4px 4px 0px var(--accent-pink);
-            word-wrap: break-word;
-            font-weight: bold;
-        }
+.sanctuary-header-banner {
+  width: 100%; height: 200px;
+  background-color: var(--goth-charcoal); background-size: cover; background-position: center;
+  border: 2px solid var(--barbie-pink);
+  position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  border-radius: 12px; box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+.banner-title-frame {
+  background: var(--surface-box); border: 1px dashed var(--barbie-pink);
+  outline: 5px solid var(--surface-box); padding: 12px 30px; text-align: center; border-radius: 24px;
+}
+.banner-title-frame h1 {
+  margin: 0; font-family: var(--font-coquette); font-size: 34px;
+  color: var(--barbie-pink); text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
 
-        .top-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
+.rococo-menu-bar { display: flex; justify-content: space-between; margin: 25px 0 15px 0; gap: 8px; }
+.rococo-menu-link {
+  flex: 1; text-align: center; padding: 12px; background: var(--goth-charcoal);
+  border: 1px solid var(--barbie-pink); color: var(--text-main);
+  font-family: var(--font-vintage); font-style: italic; font-size: 13px;
+  border-radius: 8px; cursor: pointer; font-weight: bold;
+}
+.rococo-menu-link:hover { background: rgba(254,177,199,0.2); }
+.rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; box-shadow: 0 0 10px var(--barbie-pink); }
 
-        nav { display: flex; gap: 10px; width: 100%; }
-        @media (min-width: 600px) { nav { width: auto; } }
+.tab-content-view { display: none; animation: fadeIn 0.4s ease-in-out; }
+.tab-content-view.active-view { display: block; }
 
-        .nav-btn, .theme-toggle-btn, .action-btn {
-            background: var(--box-header-bg);
-            border: 2px double var(--accent-pink);
-            color: var(--text-main);
-            padding: 10px 16px;
-            cursor: pointer;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 11px;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            text-align: center;
-            box-shadow: 2px 2px 0px var(--accent-pink);
-        }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-        .nav-btn { flex: 1; }
+.rococo-grid-three { display: grid; grid-template-columns: 220px 420px 210px; gap: 15px; }
+.gallery-grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
 
-        .nav-btn:hover, .nav-btn.active, .theme-toggle-btn:hover, .action-btn:hover {
-            background: var(--soft-blush);
-            transform: translate(-1px, -1px);
-            box-shadow: 4px 4px 0px var(--accent-pink);
-        }
+.rococo-frame-box {
+  background: var(--surface-box); border: 1px solid var(--goth-charcoal);
+  outline: 1px solid var(--barbie-pink); outline-offset: -5px;
+  padding: 14px; position: relative; margin-bottom: 15px; border-radius: 14px;
+}
+.rococo-frame-title {
+  font-family: var(--font-vintage); font-style: italic; font-weight: bold;
+  text-align: center; color: var(--barbie-pink); font-size: 13px;
+  margin: 0 0 12px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 5px;
+}
 
-        /* DISEÑO DE COLUMNAS ORIGINAL */
-        .layout-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
+.cameo-avatar-wrapper {
+  width: 110px; height: 110px; margin: 0 auto 10px auto;
+  border-radius: 50%; border: 3px double var(--barbie-pink); overflow: hidden;
+  background: var(--bg-deep-velvet); display: flex; align-items: center; justify-content: center;
+}
+.cameo-avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-        @media (min-width: 900px) {
-            .layout-grid {
-                grid-template-columns: 260px 1fr 270px;
-            }
-        }
+.social-button-links { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+.social-button-links a {
+  display: block; text-align: center; font-size: 11px; padding: 6px;
+  background: rgba(0,0,0,0.3); border: 1px dashed var(--barbie-pink);
+  color: var(--text-main); text-decoration: none; border-radius: 6px;
+}
+.social-button-links a:hover { background: var(--barbie-pink); color: #000; }
 
-        .box-module {
-            background: var(--panel-bg);
-            border: 2px dashed var(--accent-pink);
-            border-radius: 14px;
-            padding: 15px;
-            margin-bottom: 20px;
-            position: relative;
-            box-shadow: 3px 3px 0px var(--grid-color);
-        }
+.music-user-input-row { display: flex; gap: 6px; margin-bottom: 8px; }
+.music-user-input-row input, .music-user-input-row textarea {
+  flex: 1; background: var(--input-bg); border: 1px solid var(--barbie-pink);
+  color: var(--input-text); font-family: var(--font-goth); font-size: 11px; padding: 6px; border-radius: 6px;
+}
+.rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-family: var(--font-goth); font-size: 11px; padding: 6px; cursor: pointer; width: 100%; border-radius: 6px; }
+.rococo-btn:hover { background: var(--barbie-pink); color: #000; }
 
-        .box-title {
-            background: var(--box-header-bg);
-            color: var(--text-main);
-            font-size: 11px;
-            font-weight: bold;
-            padding: 8px 10px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            border: 1px dashed var(--accent-pink);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            letter-spacing: 0.5px;
-        }
+.photo-card {
+  background: var(--input-bg); border: 1px solid var(--barbie-pink);
+  padding: 10px; border-radius: 12px; text-align: center;
+  box-shadow: 3px 3px 0px var(--goth-charcoal);
+}
+.photo-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(254,177,199,0.3); }
+.photo-caption { font-size: 11px; margin-top: 8px; font-style: italic; color: var(--porcelain-pink); }
 
-        /* REPRODUCTOR MULTIMEDIA MEJORADO */
-        .media-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            border: 2px double var(--accent-pink);
-            width: 100%;
-            background: var(--input-bg);
-        }
+.playlist-scroller { max-height: 120px; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; }
+.playlist-item {
+  background: rgba(0,0,0,0.2); border: 1px dashed var(--barbie-pink);
+  padding: 5px 8px; border-radius: 6px; font-size: 10px; display: flex; justify-content: space-between;
+}
+.playlist-item a { color: var(--text-main); text-decoration: none; }
 
-        .media-container iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
+.social-post-wall { max-height: 500px; overflow-y: auto; padding-right: 5px; }
+.friend-post-node {
+  background: rgba(254,177,199,0.04); border: 1px solid var(--barbie-pink);
+  padding: 14px; margin-bottom: 15px; border-radius: 12px;
+  position: relative; outline: 3px solid var(--anime-black);
+}
+.friend-badge-tag { font-weight: bold; color: var(--barbie-pink); font-size: 11px; margin-bottom: 5px; letter-spacing: 1px; }
 
-        .media-input-zone {
-            display: flex;
-            gap: 6px;
-            margin-top: 10px;
-        }
+.chat-dock { position: fixed; bottom: 0; right: 40px; display: flex; align-items: flex-end; gap: 12px; z-index: 10000; }
+.chat-tab { background: var(--anime-black); color: var(--barbie-pink); padding: 8px 16px; border-radius: 8px 8px 0 0; font-family: var(--font-goth); font-size: 11px; font-weight: bold; cursor: pointer; border: 1px solid var(--barbie-pink); border-bottom: none; }
+.chat-window { width: 290px; background: var(--anime-black); border: 2px solid var(--barbie-pink); border-radius: 12px 12px 0 0; }
+.chat-header { background: var(--goth-charcoal); border-bottom: 1px solid var(--barbie-pink); color: var(--barbie-pink); padding: 10px; font-size: 11px; display: flex; justify-content: space-between; cursor: pointer; }
+.chat-body { height: 240px; padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; background: var(--bg-deep-velvet); }
+.chat-msg-line { display: flex; flex-direction: column; max-width: 80%; border-radius: 14px; padding: 6px 10px; font-size: 11px; word-wrap: break-word; }
+.chat-msg-line.friend { background: var(--goth-charcoal); color: var(--text-main); align-self: flex-start; border-bottom-left-radius: 2px; }
+.chat-msg-line.user { background: var(--barbie-pink); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }
+.chat-input { width: 100%; padding: 10px; border: none; border-top: 1px solid var(--barbie-pink); font-size: 11px; background: var(--input-bg); color: #fff; outline: none; }
 
-        /* CALENDARIO VICTORIANO RECARGADO */
-        .coquette-calendar {
-            background: var(--input-bg);
-            border: 2px double var(--accent-pink);
-            border-radius: 12px;
-            padding: 10px;
-            text-align: center;
-            box-shadow: inset 0 0 8px var(--soft-blush);
-        }
-
-        .cal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            font-weight: bold;
-            background: var(--box-header-bg);
-            padding: 6px;
-            border-radius: 8px;
-            border: 1px dotted var(--accent-pink);
-            font-size: 11px;
-        }
-
-        .cal-nav-btn {
-            background: var(--panel-bg);
-            border: 1px solid var(--accent-pink);
-            color: var(--text-main);
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
-            border-radius: 4px;
-            padding: 0 6px;
-        }
-
-        .cal-weekdays {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            font-weight: bold;
-            color: var(--text-main);
-            font-size: 10px;
-            margin-bottom: 6px;
-            border-bottom: 1px dashed var(--accent-pink);
-            padding-bottom: 4px;
-        }
-
-        .cal-days-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-        }
-
-        .cal-day {
-            padding: 6px 0;
-            border-radius: 6px;
-            font-size: 11px;
-            border: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-
-        .cal-day.current {
-            background: var(--soft-blush);
-            border: 1px double var(--accent-pink);
-            font-weight: bold;
-            color: var(--text-main);
-            box-shadow: 0 0 5px var(--accent-pink);
-            position: relative;
-        }
-        .cal-day.current::after {
-            content: "🎀";
-            position: absolute;
-            font-size: 7px;
-            top: -4px;
-            right: -2px;
-        }
-
-        .cal-day.empty { background: transparent; border: none; }
-        .cal-day:not(.empty):hover { background: var(--box-header-bg); border-color: var(--accent-pink); cursor: default; }
-
-        /* CUADRÍCULA DE AMIGOS */
-        .friends-space-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            text-align: center;
-        }
-
-        .friend-card {
-            background: var(--input-bg);
-            border: 1px dashed var(--accent-pink);
-            border-radius: 8px;
-            padding: 6px;
-            font-size: 10px;
-            position: relative;
-        }
-
-        .friend-card img {
-            width: 100%;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 5px;
-            border: 1px solid var(--accent-pink);
-        }
-
-        .friend-name {
-            font-weight: bold;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 3px;
-        }
-
-        .friend-socials {
-            display: flex;
-            justify-content: center;
-            gap: 4px;
-        }
-
-        .friend-socials a { text-decoration: none; font-size: 11px; }
-
-        /* CUADRÍCULA DE FOTOS */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .photo-item {
-            border: 2px double var(--accent-pink);
-            padding: 5px;
-            border-radius: 10px;
-            background: var(--input-bg);
-            box-shadow: 2px 2px 0px var(--grid-color);
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 6px;
-            display: block;
-        }
-
-        /* FORMULARIOS, INPUTS Y MUROS */
-        textarea, input[type="text"], input[type="password"], select {
-            background: var(--input-bg);
-            border: 1px solid var(--accent-pink);
-            color: var(--text-main);
-            border-radius: 8px;
-            padding: 8px;
-            font-family: inherit;
-            font-size: 11px;
-            width: 100%;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
-            border: 1px dashed var(--accent-pink);
-            background: var(--panel-bg);
-        }
-
-        .post-card {
-            background: var(--input-bg);
-            border: 1px dashed var(--accent-pink);
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            word-wrap: break-word;
-            box-shadow: 2px 2px 0px var(--box-header-bg);
-        }
-
-        .post-author {
-            color: var(--text-muted);
-            font-size: 10px;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-
-        .visitor-badge {
-            background: var(--soft-blush);
-            color: var(--text-main);
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 11px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-            border: 2px double var(--accent-pink);
-            width: 100%;
-        }
-
-        /* CHAT FLOTANTE RECARGADO */
-        .chat-tab {
-            position: fixed; bottom: 15px; right: 15px;
-            background: var(--panel-bg); border: 2px double var(--accent-pink);
-            color: var(--text-main); padding: 10px 20px; border-radius: 14px;
-            cursor: pointer; box-shadow: 4px 4px 0px var(--shadow);
-            font-size: 11px; font-weight: bold; z-index: 999;
-        }
-
-        .chat-window {
-            position: fixed; bottom: 15px; right: 15px;
-            width: 290px; height: 380px; background: var(--panel-bg);
-            border: 3px double var(--accent-pink); border-radius: 16px;
-            display: flex; flex-direction: column; box-shadow: 5px 5px 15px var(--shadow);
-            z-index: 1000; overflow: hidden;
-        }
-
-        .chat-header { background: var(--box-header-bg); padding: 10px 12px; font-weight: bold; border-bottom: 1px dashed var(--accent-pink); display: flex; justify-content: space-between; }
-        .chat-messages { flex-grow: 1; padding: 12px; overflow-y: auto; font-size: 11px; display: flex; flex-direction: column; gap: 8px; background: var(--input-bg); }
-        .chat-inputs { padding: 10px; background: var(--panel-bg); border-top: 1px solid var(--accent-pink); display: flex; gap: 6px; }
-
-        .hidden { display: none !important; }
-        .view-section { display: none; }
-        .view-section.active { display: block; }
-
-        /* PARTICULAS MÁGICAS */
-        .sparkle-particle {
-            position: fixed; pointer-events: none; color: var(--accent-pink);
-            font-size: 14px; z-index: 9999; animation: explode 0.8s ease-out forwards;
-        }
-        @keyframes explode {
-            0% { transform: translate(0,0) scale(1); opacity: 1; }
-            100% { transform: translate(var(--x), var(--y)) scale(0.3); opacity: 0; }
-        }
-    </style>
+.admin-trigger-btn { position: absolute; top: 10px; right: 10px; font-size: 10px; background: none; border: 1px solid var(--barbie-pink); color: var(--barbie-pink); cursor: pointer; padding: 3px 8px; border-radius: 10px; }
+.hidden-panel { display: none; background: rgba(0,0,0,0.4); padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px dashed var(--barbie-pink); }
+.hidden { display: none; }
+</style>
 </head>
 <body>
 
-<!-- PANTALLA DE ACCESO PARA AMIGOS -->
-<div id="lockScreen" class="lock-screen hidden">
-    <div class="box-module" style="width: 100%; max-width: 320px; text-align: center;">
-        <div class="box-title"><span>⚔️ (◣_◢) Zona Restringida ⚔️</span></div>
-        <p style="margin-bottom: 12px; font-weight: bold;">✦•┈ Introduce la clave secreta ┈•✦</p>
-        <input type="password" id="gateKeyInput" placeholder="(っ. .ς) Clave aquí..." style="text-align:center; margin-bottom:12px;">
-        <button class="action-btn" style="width: 100%;" onclick="checkGateKey()">Entrar al Santuario ⚜️</button>
-        <span id="lockError" style="color: red; font-size: 10px; display: block; margin-top: 6px;"></span>
+<!-- GENERACIÓN AUTOMÁTICA DE LA LLUVIA DE LAZOS/ESTRELLAS -->
+<div id="ambientParticlesContainer"></div>
+
+<div class="rococo-cocoon-container">
+  <button class="admin-trigger-btn" onclick="toggleSettingsPanel()">[⚙️ Ajustes Estéticos]</button>
+
+  <!-- PANEL DE CONFIGURACIÓN AMPLIADO -->
+  <div id="settingsPanel" class="hidden-panel">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:11px;">
+      <div>
+        <label>Tema de Interfaz:</label>
+        <select id="themeStyleSelect" onchange="changeThemeConfig(this.value)" style="width:100%; padding:4px; margin-bottom:6px;">
+          <option value="dark">Goth Místico</option>
+          <option value="pastel">Pastel Coquette</option>
+        </select>
+        <label>Frecuencia Emocional Actual:</label>
+        <select id="inputMoodSet" style="width:100%; padding:4px; margin-bottom:6px;">
+          <option value="🎀 Encaje de Medianoche">🎀 Encaje de Medianoche</option>
+          <option value="🕯️ Melancolía Rococó">🕯️ Melancolía Rococó</option>
+          <option value="🪞 Espejo Nublado">🪞 Espejo Nublado</option>
+          <option value="⛓️ Caos Elegante">⛓️ Caos Elegante</option>
+          <option value="🩰 Distorsión de Seda">🩰 Distorsión de Seda</option>
+        </select>
+        <label>Subir Nueva Portada:</label>
+        <input type="file" accept="image/*" onchange="uploadVisualFile(this, 'banner')" style="margin-bottom:6px; font-size:10px;">
+      </div>
+      <div>
+        <label>Subir Foto de Perfil:</label>
+        <input type="file" accept="image/*" onchange="uploadVisualFile(this, 'avatar')" style="margin-bottom:6px; font-size:10px;">
+        <label>Título del Santuario:</label>
+        <input type="text" id="inputTitleSet" value="mel_sanctuary_matrix" style="width:100%; padding:4px;">
+      </div>
     </div>
+    <button class="rococo-btn" style="margin-top:8px; font-size:10px;" onclick="saveVisualSettings()">Fijar Estética</button>
+  </div>
+
+  <!-- PORTADA -->
+  <header class="sanctuary-header-banner" id="bannerDisplay" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&width=800');">
+    <div class="banner-title-frame">
+      <h1 id="textTitleDisplay">mel_sanctuary_matrix</h1>
+      <span style="font-size:10px; letter-spacing:2px; color:var(--barbie-pink);">+++ Nexus Coquette Communication Network +++</span>
+    </div>
+  </header>
+
+  <!-- PESTAÑAS -->
+  <nav class="rococo-menu-bar">
+    <div class="rococo-menu-link active-tab" id="tab-home" onclick="switchTab('home')">+++ [01] El Capullo</div>
+    <div class="rococo-menu-link" id="tab-gallery" onclick="switchTab('gallery')">+++ [02] Fragmentos Visuales</div>
+    <div class="rococo-menu-link" id="tab-social" onclick="switchTab('social')">+++ [03] Eco de Almas</div>
+  </nav>
+
+  <!-- ================= PESTAÑA 1: EL CAPULLO ================= -->
+  <div id="view-home" class="tab-content-view active-view">
+    <div class="rococo-grid-three">
+      <aside>
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">identidad</div>
+          <div class="cameo-avatar-wrapper">
+            <img id="avatarDisplay" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&width=200" alt="Profile">
+          </div>
+          <div style="text-align:center; font-size:12px; font-weight:bold; color:var(--barbie-pink);">its.mell456</div>
+          
+          <!-- DISPLAY DE FRECUENCIA EMOCIONAL -->
+          <div id="moodDisplay" style="text-align:center; font-size:10px; margin-top:6px; font-style:italic; color:var(--porcelain-pink);">frecuencia: 🎀 Encaje de Medianoche</div>
+          
+          <div class="social-button-links">
+            <a href="https://www.instagram.com/its.mell456" target="_blank">Instagram ♡</a>
+            <a href="https://www.tiktok.com/@_tomate_4" target="_blank">TikTok ✦</a>
+          </div>
+        </div>
+
+        <div class="rococo-frame-box" style="text-align:center;">
+          <div class="rococo-frame-title">tu apodo red</div>
+          <b id="uniqueUserTag" style="color:var(--barbie-pink); font-size:12px;">Generando...</b>
+        </div>
+      </aside>
+
+      <main>
+        <div class="rococo-frame-box" style="text-align:center; padding: 20px 15px;">
+          <div class="rococo-frame-title">Santuario Virtual</div>
+          <p style="font-size:12px; font-style:italic; line-height:1.5;">"Bienvenida a la central rococó. Navega por las pestañas superiores para ver mis publicaciones de fotos exclusivas o para dejar un rastro de tu esencia en mi zona social."</p>
+        </div>
+
+        <!-- COFRE DEL ORÁCULO DIARIO (NUEVO PLUS INTERACTIVO) -->
+        <div class="rococo-frame-box" style="text-align:center;">
+          <div class="rococo-frame-title">🔮 el oráculo de la matriz</div>
+          <p id="oracleText" style="font-size:11px; font-style:italic; min-height:32px; color:var(--porcelain-pink);">"Haz clic abajo para sintonizar el destino de tu aura hoy..."</p>
+          <button class="rococo-btn" style="width:auto; padding:5px 15px;" onclick="consultMatrixOracle()">Consultar Oráculo</button>
+        </div>
+      </main>
+
+      <aside>
+        <div class="rococo-frame-box" style="text-align:center;">
+          <div class="rococo-frame-title">tamagotchi</div>
+          <img src="https://fontmeme.com/permalink/240320/0fb97136365a6e87f2da516109f29883.png" style="width:45px; margin-bottom:5px; filter:hue-rotate(300deg);">
+          <div style="font-size:10px; background:rgba(0,0,0,0.3); padding:6px; border-radius:6px; border:1px solid var(--barbie-pink);">
+            <span>Status: 🎀 Feliz</span><br>
+            <span>Animo: 100% Coquette</span>
+          </div>
+        </div>
+
+        <div class="rococo-frame-box">
+          <div class="rococo-frame-title">Libertad Viviente</div>
+          <div class="music-user-input-row" style="flex-direction:column; gap:4px;">
+            <input type="text" id="songTitle" placeholder="Canción...">
+            <input type="text" id="songUrl" placeholder="Link...">
+            <button class="rococo-btn" style="font-size:9px; padding:3px;" onclick="addTrackToPlaylist()">+ Agregar</button>
+          </div>
+          <div class="playlist-scroller" id="playlistBox"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ================= PESTAÑA 2: FRAGMENTOS VISUALES ================= -->
+  <div id="view-gallery" class="tab-content-view">
+    <div class="rococo-frame-box">
+      <div class="rococo-frame-title">Fragmentos Visuales</div>
+      <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:10px; border:1px dashed var(--barbie-pink); margin-bottom:20px;">
+        <span style="font-size:11px; display:block; margin-bottom:6px; color:var(--barbie-pink);">[+] Revelar nuevo fragmento desde tu galería:</span>
+        <div class="music-user-input-row">
+          <input type="file" id="galleryFileInput" accept="image/*" style="font-size:11px;">
+          <input type="text" id="galleryCaptionInput" placeholder="Escribe un pie de foto estético...">
+          <button class="rococo-btn" style="width:90px;" onclick="publishPhotoToGallery()">Publicar</button>
+        </div>
+      </div>
+      <div class="gallery-grid-layout" id="galleryContainer"></div>
+    </div>
+  </div>
+
+  <!-- ================= PESTAÑA 3: ECO DE ALMAS ================= -->
+  <div id="view-social" class="tab-content-view">
+    <div class="rococo-frame-box">
+      <div class="rococo-frame-title">Muro Social: Eco de Almas</div>
+      <div class="music-user-input-row" style="align-items: flex-end;">
+        <textarea id="socialWallInput" rows="2" placeholder="Deja un destello de tu mente en el eco..."></textarea>
+        <button class="rococo-btn" style="width:100px; height:42px;" onclick="postToSocialWall()">Dejar Nota</button>
+      </div>
+      <hr style="border:none; border-top:1px double var(--barbie-pink); margin:15px 0;">
+      <div class="social-post-wall" id="socialWallContainer"></div>
+    </div>
+  </div>
+
 </div>
 
-<div class="profile-container" id="appContainer">
-    
-    <header>
-        <h1 id="lblTitle">🔱 🎀 mel's cocoon matrix 🎀 ⚜️</h1>
-        <div style="color: var(--text-muted); font-size: 11px; margin-top: 6px; font-weight: bold;" id="lblBio">✦•┈๑⋅⋯ welcome to my little sanctuary ( ꈍᴗꈍ) @_tomate_4 ⋯⋅๑┈•✦</div>
-    </header>
-
-    <div class="top-controls">
-        <nav>
-            <button class="nav-btn active" id="btnTabMain" onclick="changeTab('main')">📖 (｡♥‿♥｡) Libro de Firmas</button>
-            <button class="nav-btn" id="btnTabPhotos" onclick="changeTab('photos')">📷 (✧*。) Cofre de Fotos</button>
-        </nav>
-        <button class="theme-toggle-btn" style="width:100%; margin-top:5px;" onclick="toggleTheme()">🌓 🔱 Mudanza Cósmica (Cute/Dark)</button>
+<!-- CHAT FLOTANTE -->
+<div class="chat-dock">
+  <div id="chatTriggerBtn" class="chat-tab" onclick="toggleChatDisplay(true)">[-] Mensajes de la Red (<span id="chatCount">0</span>)</div>
+  <div id="chatBoxWindow" class="chat-window hidden">
+    <div class="chat-header" onclick="toggleChatDisplay(false)">
+      <span>Matrix Direct Chat</span>
+      <span style="font-size:9px; color:var(--barbie-pink);">[Ocultar]</span>
     </div>
+    <div class="chat-body" id="chatMessageDisplay"></div>
+    <input type="text" class="chat-input" id="chatRawInput" placeholder="Enviar susurro estilo IG..." onkeypress="submitChatMessage(event)">
+  </div>
+</div>
 
-    <div class="layout-grid">
-        
-        <!-- COLUMNA IZQUIERDA: REPRODUCTOR INTELIGENTE Y CALENDARIO MEJORADO -->
-        <aside>
-            <div class="box-module">
-                <div class="box-title"><span>🎵 (🎧_🎧) Jukebox Matrix</span></div>
-                <div class="media-container" id="playerTargetContainer">
-                    <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
-                <div class="media-input-zone">
-                    <input type="text" id="customMediaUrl" placeholder="🎵 Pegar Link de YouTube/Spotify... 🎀">
-                    <button class="action-btn" style="padding: 4px 12px; border-radius: 8px;" onclick="loadCustomMedia()">Cargar ✨</button>
-                </div>
-            </div>
+<script>
+// CONFIGURACIÓN DE FIREBASE (Simulada o Real)
+const firebaseConfig = { databaseURL: "https://TU-PROPIO-PROYECTO.firebaseio.com" };
 
-            <div class="box-module">
-                <div class="box-title"><span>📅 ⚜️ Calendario Barroco ⚜️</span></div>
-                <div class="coquette-calendar">
-                    <div class="cal-header">
-                        <button class="cal-nav-btn" onclick="adjustMonth(-1)">🔱</button>
-                        <span id="calLabelMonthYear" style="font-weight: bold; letter-spacing: 0.5px;">Junio 2026</span>
-                        <button class="cal-nav-btn" onclick="adjustMonth(1)">🔱</button>
-                    </div>
-                    <div class="cal-weekdays">
-                        <div>DO</div><div>LU</div><div>MA</div><div>MI</div><div>JU</div><div>VI</div><div>SÁ</div>
-                    </div>
-                    <div class="cal-days-grid" id="calGridDaysTarget"></div>
-                </div>
-            </div>
-        </aside>
+let database; let isFirebaseActive = false;
+try {
+  if (!firebaseConfig.databaseURL.includes("TU-PROPIO-PROYECTO")) {
+    firebase.initializeApp(firebaseConfig); database = firebase.database(); isFirebaseActive = true;
+  }
+} catch(e) { console.log("Modo local simulado activo."); }
 
-        <!-- COLUMNA CENTRAL: IDENTIDAD Y MUROS -->
-        <main>
-            <div class="visitor-badge">
-                🔱 (๑•ᴗ•๑) Tu huella asignada: <span id="lblMyGeneratedNick" style="text-decoration: underline; color: var(--text-main);">...</span> 📑
-            </div>
+let myNick = "";
+let customConfig = {
+  title: "mel_sanctuary_matrix",
+  avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&width=200",
+  banner: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&width=800",
+  mood: "🎀 Encaje de Medianoche"
+};
 
-            <div id="secMain" class="view-section active">
-                <div class="box-module">
-                    <div class="box-title"><span>📝 (✒️_✒️) Dejar un mensaje anónimo</span></div>
-                    <textarea id="txtPostContent" rows="3" placeholder="✦•┈ Escribe algo lindo en el muro... (˘ ³˘)♥" style="resize:none; margin-bottom:8px;"></textarea>
-                    <button class="action-btn" style="width:100%;" onclick="submitNewPost()">Publicar Mensaje ✦*。</button>
-                </div>
-                <div id="postsWrapper"></div>
-            </div>
+let memoryChat = [];
+let memorySongs = [{title:"Malice Mizer - Illuminati", link:"#"}];
+let memorySocial = [{sender:"+GothDoll01", text:"¡Me encantan los nuevos módulos del oráculo y la lluvia de lazos flotando!"}];
+let memoryGallery = [{img:"https://images.unsplash.com/photo-1516062423079-7ca13cca99a8?q=80&width=300", caption:"Aesthetic lace room vibe."}];
 
-            <div id="secPhotos" class="view-section">
-                <div class="box-module">
-                    <div class="box-title"><span>📷 (🎞️_🎞️) Baúl de Recuerdos</span></div>
-                    <button class="action-btn" style="width:100%;" onclick="document.getElementById('filePhoto').click()">Subir una Foto al Cofre...</button>
-                    <input type="file" id="filePhoto" style="display:none;" accept="image/*" onchange="submitPhotoToQueue(this)">
-                    <span id="photoSuccessLabel" style="font-size:10px; color:var(--text-muted); margin-top:6px; display:block; text-align: center;"></span>
-                    
-                    <div class="photo-grid" id="approvedPhotosGrid"></div>
-                </div>
-            </div>
-        </main>
-
-        <!-- COLUMNA DERECHA: PERFIL, AMIGOS Y AJUSTES -->
-        <aside>
-            <div class="box-module">
-                <div class="box-title"><span>🧸 (∗˃̶ 🍪 ˂̶∗) Perfil</span></div>
-                <div style="text-align: center;">
-                    <div style="width:95px; height:95px; border:2px dashed var(--accent-pink); border-radius:50%; margin:0 auto 10px auto; overflow:hidden; background:var(--input-bg); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow: 0 0 8px var(--accent-pink);" onclick="document.getElementById('fileAvatar').click()">
-                        <img id="imgAvatar" src="https://api.dicebear.com/7.x/coquette/svg?seed=mel" style="width:100%; height:100%; object-fit:cover;">
-           
+// Respuestas estéticas para el oráculo
+const oraclePhrases = [
+  "Hoy tu aura brilla en rosa pastel, pero tus pensamientos visten de terciopelo negro. Alguien te piensa.",
+  "El laberinto digital hoy te favorece. Ve a 'Fragmentos Visuales' y comparte tu mística.",
+  "Una sintonía melancólica te rodea. Alguien con inicial oculta cruzará tu red pronto.",
+  "Frecuencia protegida. Los lazos de tu corset cibernético contienen un secreto importante hoy.",
+  "Espejo nublado: No busques respuestas en el exterior hoy, tu propio capullo tiene la clave.",
+  "Advertencia de la ma
