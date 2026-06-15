@@ -383,4 +383,231 @@ const oraclePhrases = [
   "Una sintonía melancólica te rodea. Alguien con inicial oculta cruzará tu red pronto.",
   "Frecuencia protegida. Los lazos de tu corset cibernético contienen un secreto importante hoy.",
   "Espejo nublado: No busques respuestas en el exterior hoy, tu propio capullo tiene la clave.",
-  "Advertencia de la ma
+  "Advertencia de la matriz: Un susurro del pasado intenta reescribir tus códigos. Mantente coquette."
+];
+
+window.onload = function() {
+  initNicknameSystem();
+  loadVisualsFromMemory();
+  syncAllDataStreams();
+  startAmbientParticleRain();
+};
+
+function initNicknameSystem() {
+  if (localStorage.getItem("mel_saved_nick")) {
+    myNick = localStorage.getItem("mel_saved_nick");
+  } else {
+    const pre = ["+Vamp", "*Coquette", "-Doll", "+Lace", "*Rose", "-Velvet", "+Angel"];
+    const suf = ["Void", "Soft", "Goth", "Rococo", "Pixie", "Cyber", "Witch"];
+    myNick = pre[Math.floor(Math.random()*pre.length)] + suf[Math.floor(Math.random()*suf.length)] + Math.floor(Math.random()*89+10);
+    localStorage.setItem("mel_saved_nick", myNick);
+  }
+  document.getElementById("uniqueUserTag").innerText = myNick;
+}
+
+/* PLUS: LLUVIA DE ELEMENTOS FLOTANTES */
+function startAmbientParticleRain() {
+  const container = document.getElementById("ambientParticlesContainer");
+  const items = ["🎀", "✦", "🌸", "🖤", "✧"];
+  setInterval(() => {
+    const p = document.createElement("div");
+    p.className = "ambient-particle";
+    p.innerText = items[Math.floor(Math.random() * items.length)];
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (Math.random() * 4 + 6) + "s";
+    container.appendChild(p);
+    setTimeout(() => p.remove(), 10000);
+  }, 1200);
+}
+
+/* PLUS: CONSULTA DEL ORÁCULO MÍSTICO */
+function consultMatrixOracle() {
+  const display = document.getElementById("oracleText");
+  display.innerText = "Sintonizando las frecuencias del destino...";
+  setTimeout(() => {
+    const randomPhrase = oraclePhrases[Math.floor(Math.random() * oraclePhrases.length)];
+    display.innerText = `"${randomPhrase}"`;
+  }, 800);
+}
+
+function switchTab(tabId) {
+  document.querySelectorAll('.rococo-menu-link').forEach(link => link.classList.remove('active-tab'));
+  document.querySelectorAll('.tab-content-view').forEach(view => view.classList.remove('active-view'));
+  document.getElementById(`tab-${tabId}`).classList.add('active-tab');
+  document.getElementById(`view-${tabId}`).classList.add('active-view');
+}
+
+function uploadVisualFile(inputElement, target) {
+  const file = inputElement.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onloadend = function() {
+    if (target === 'avatar') customConfig.avatar = reader.result;
+    if (target === 'banner') customConfig.banner = reader.result;
+  }
+  reader.readAsDataURL(file);
+}
+
+function saveVisualSettings() {
+  customConfig.title = document.getElementById("inputTitleSet").value;
+  customConfig.mood = document.getElementById("inputMoodSet").value;
+  
+  localStorage.setItem("mel_v11_visuals", JSON.stringify(customConfig));
+  
+  document.getElementById("textTitleDisplay").innerText = customConfig.title;
+  document.getElementById("avatarDisplay").src = customConfig.avatar;
+  document.getElementById("bannerDisplay").style.backgroundImage = `url('${customConfig.banner}')`;
+  document.getElementById("moodDisplay").innerText = `frecuencia: ${customConfig.mood}`;
+  alert("¡Estética y Frecuencias actualizadas!");
+}
+
+function loadVisualsFromMemory() {
+  if(localStorage.getItem("mel_v11_visuals")) {
+    customConfig = JSON.parse(localStorage.getItem("mel_v11_visuals"));
+  }
+  document.getElementById("textTitleDisplay").innerText = customConfig.title;
+  document.getElementById("avatarDisplay").src = customConfig.avatar;
+  document.getElementById("bannerDisplay").style.backgroundImage = `url('${customConfig.banner}')`;
+  document.getElementById("moodDisplay").innerText = `frecuencia: ${customConfig.mood || "🎀 Encaje de Medianoche"}`;
+  
+  if(localStorage.getItem("local_gal")) memoryGallery = JSON.parse(localStorage.getItem("local_gal"));
+  if(localStorage.getItem("local_soc")) memorySocial = JSON.parse(localStorage.getItem("local_soc"));
+}
+
+function publishPhotoToGallery() {
+  const fileInput = document.getElementById("galleryFileInput");
+  const captionInput = document.getElementById("galleryCaptionInput");
+  const file = fileInput.files[0];
+  if(!file) return;
+  
+  const reader = new FileReader();
+  reader.onloadend = function() {
+    let photoObj = { img: reader.result, caption: captionInput.value || "Fragmento sin título +++" };
+    if(isFirebaseActive) {
+      database.ref("gallery").push(photoObj);
+    } else {
+      memoryGallery.unshift(photoObj);
+      localStorage.setItem("local_gal", JSON.stringify(memoryGallery));
+      renderGalleryUI(memoryGallery);
+    }
+    fileInput.value = ""; captionInput.value = "";
+  }
+  reader.readAsDataURL(file);
+}
+
+function renderGalleryUI(arr) {
+  let container = document.getElementById("galleryContainer"); container.innerHTML = "";
+  arr.forEach(p => {
+    container.innerHTML += `<div class="photo-card"><img src="${p.img}"><div class="photo-caption">${p.caption}</div></div>`;
+  });
+}
+
+function postToSocialWall() {
+  let input = document.getElementById("socialWallInput"); let text = input.value.trim();
+  if(!text) return;
+  let postObj = { sender: myNick, text: text };
+  if(isFirebaseActive) {
+    database.ref("social_wall").push(postObj);
+  } else {
+    memorySocial.unshift(postObj);
+    localStorage.setItem("local_soc", JSON.stringify(memorySocial));
+    renderSocialWallUI(memorySocial);
+  }
+  input.value = "";
+}
+
+function renderSocialWallUI(arr) {
+  let container = document.getElementById("socialWallContainer"); container.innerHTML = "";
+  arr.forEach(s => {
+    container.innerHTML += `
+      <div class="friend-post-node">
+        <div class="friend-badge-tag">✦ ${s.sender} transmitió:</div>
+        <div style="font-size:12px; line-height:1.4;">${s.text}</div>
+      </div>`;
+  });
+}
+
+function toggleChatDisplay(open) {
+  if(open) {
+    document.getElementById("chatTriggerBtn").classList.add("hidden");
+    document.getElementById("chatBoxWindow").classList.remove("hidden");
+  } else {
+    document.getElementById("chatBoxWindow").classList.add("hidden");
+    document.getElementById("chatTriggerBtn").classList.remove("hidden");
+  }
+}
+
+function submitChatMessage(event) {
+  if(event.key === 'Enter') {
+    let input = document.getElementById("chatRawInput"); let text = input.value.trim();
+    if(!text) return;
+    let msg = { sender: myNick, text: text };
+    if(isFirebaseActive) {
+      database.ref("chat_matrix").push(msg);
+    } else {
+      memoryChat.push(msg); renderChatBubblesUI(memoryChat);
+      setTimeout(() => {
+        memoryChat.push({sender: "+MelMatrixBot", text: "Susurro recibido en la frecuencia actual."});
+        renderChatBubblesUI(memoryChat);
+      }, 900);
+    }
+    input.value = "";
+  }
+}
+
+function renderChatBubblesUI(arr) {
+  let container = document.getElementById("chatMessageDisplay"); container.innerHTML = "";
+  document.getElementById("chatCount").innerText = arr.length;
+  arr.forEach(m => {
+    let isMe = (m.sender === myNick);
+    container.innerHTML += `
+      <div class="chat-msg-line ${isMe ? 'user' : 'friend'}">
+        <span style="font-size:7px; opacity:0.5; font-weight:bold; margin-bottom:2px;">${m.sender}</span>
+        <div>${m.text}</div>
+      </div>`;
+  });
+  container.scrollTop = container.scrollHeight;
+}
+
+function addTrackToPlaylist() {
+  let t = document.getElementById("songTitle").value.trim();
+  let u = document.getElementById("songUrl").value.trim();
+  if(!t || !u) return;
+  let song = { title: t, link: u };
+  if(isFirebaseActive) {
+    database.ref("songs").push(song);
+  } else {
+    memorySongs.push(song); renderPlaylistUI(memorySongs);
+  }
+  document.getElementById("songTitle").value = ""; document.getElementById("songUrl").value = "";
+}
+
+function renderPlaylistUI(arr) {
+  let b = document.getElementById("playlistBox"); b.innerHTML = "";
+  arr.forEach(s => {
+    b.innerHTML += `<div class="playlist-item"><a href="${s.link}" target="_blank">♫ ${s.title}</a></div>`;
+  });
+}
+
+function toggleSettingsPanel() {
+  let p = document.getElementById("settingsPanel"); p.style.display = (p.style.display==='block')?'none':'block';
+}
+function changeThemeConfig(val) {
+  if(val==='pastel') document.documentElement.setAttribute("data-theme", "pastel");
+  else document.documentElement.removeAttribute("data-theme");
+}
+
+function syncAllDataStreams() {
+  if(isFirebaseActive) {
+    database.ref("chat_matrix").on("value", s => { let d = s.val(); renderChatBubblesUI(d ? Object.values(d) : []); });
+    database.ref("songs").on("value", s => { let d = s.val(); renderPlaylistUI(d ? Object.values(d) : []); });
+    database.ref("social_wall").on("value", s => { let d = s.val(); renderSocialWallUI(d ? Object.values(d).reverse() : []); });
+    database.ref("gallery").on("value", s => { let d = s.val(); renderGalleryUI(d ? Object.values(d).reverse() : []); });
+  } else {
+    renderChatBubblesUI(memoryChat); renderPlaylistUI(memorySongs);
+    renderSocialWallUI(memorySocial); renderGalleryUI(memoryGallery);
+  }
+}
+</script>
+</body>
+</html>
