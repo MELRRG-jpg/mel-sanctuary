@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🎀 Mel's cocoon matrix 🎀</title>
+    <title>♪° Mel's cocoon matrix °♪</title>
     <style>
         /* ==========================================================================
-           VARIABLES DE ESTILO (Soporta Modos Cute y Dark Coquette)
+           VARIABLES DE ESTILO (Maximalista Coquette / Dark Victorian)
            ========================================================================== */
         :root {
             --bg-body: #fff5f6;
-            --grid-color: rgba(235, 202, 212, 0.4);
+            --grid-color: rgba(235, 202, 212, 0.55);
             --panel-bg: #ffffff;
             --accent-pink: #ebcad4;
             --soft-blush: #fdd6dd;
@@ -18,12 +18,13 @@
             --text-muted: #bda6aa;
             --box-header-bg: #fff0f2;
             --input-bg: #fffbfb;
-            --shadow: rgba(235, 202, 212, 0.4);
+            --shadow: rgba(235, 202, 212, 0.5);
+            --border-style: 3px double var(--accent-pink);
         }
 
         [data-theme="dark"] {
             --bg-body: #161214;
-            --grid-color: rgba(235, 202, 212, 0.08);
+            --grid-color: rgba(235, 202, 212, 0.15);
             --panel-bg: #211b1e;
             --accent-pink: #d49ba8;
             --soft-blush: #423136;
@@ -31,10 +32,10 @@
             --text-muted: #9c8287;
             --box-header-bg: #2e2427;
             --input-bg: #1a1417;
-            --shadow: rgba(0, 0, 0, 0.6);
+            --shadow: rgba(0, 0, 0, 0.75);
+            --border-style: 3px double var(--accent-pink);
         }
 
-        /* CORRECCIÓN CRÍTICA: Forzar a que todo calcule su tamaño dentro de los márgenes */
         * { box-sizing: border-box; }
 
         body {
@@ -42,7 +43,7 @@
             background-image: 
                 linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
                 linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-size: 15px 15px;
             background-attachment: fixed;
             color: var(--text-main);
             font-family: 'Courier New', Courier, monospace;
@@ -73,90 +74,107 @@
             padding: 20px;
         }
 
-        /* CONTENEDOR PRINCIPAL */
+        /* CONTENEDOR PRINCIPAL BARROCO */
         .profile-container {
             width: 100%;
-            max-width: 950px;
+            max-width: 980px;
             background-color: var(--panel-bg);
-            border: 4px double var(--accent-pink);
-            border-radius: 16px;
-            padding: 15px;
-            box-shadow: 0 10px 30px var(--shadow);
-            margin-bottom: 70px; /* Evita que el chat pise el fondo en móviles */
+            border: 5px double var(--accent-pink);
+            outline: 2px dashed var(--accent-pink);
+            outline-offset: -8px;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 40px var(--shadow);
+            margin-bottom: 70px;
         }
 
         header {
             text-align: center;
-            border: 2px dashed var(--accent-pink);
-            border-radius: 12px;
-            padding: 20px 10px;
-            margin-bottom: 20px;
+            border: 3px double var(--accent-pink);
+            border-radius: 15px;
+            padding: 25px 15px;
+            margin-bottom: 25px;
             background-color: var(--input-bg);
-            background-image: radial-gradient(var(--accent-pink) 15%, transparent 15%);
-            background-size: 12px 12px;
-            width: 100%;
+            background-image: radial-gradient(var(--accent-pink) 20%, transparent 20%);
+            background-size: 10px 10px;
+            position: relative;
         }
 
+        header::before, header::after {
+            content: "🔱 ⚜️ 🔱";
+            position: absolute;
+            font-size: 14px;
+            color: var(--accent-pink);
+            width: 100%;
+            left: 0;
+        }
+        header::before { top: 4px; }
+        header::after { bottom: 4px; }
+
         header h1 {
-            font-size: 22px;
-            margin: 0;
-            text-shadow: 1px 1px 0px var(--panel-bg), 3px 3px 0px var(--accent-pink);
+            font-size: 24px;
+            margin: 5px 0;
+            text-shadow: 2px 2px 0px var(--panel-bg), 4px 4px 0px var(--accent-pink);
             word-wrap: break-word;
+            font-weight: bold;
         }
 
         .top-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            gap: 10px;
+            margin-bottom: 25px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
-        nav { display: flex; gap: 8px; width: 100%; }
+        nav { display: flex; gap: 10px; width: 100%; }
         @media (min-width: 600px) { nav { width: auto; } }
 
         .nav-btn, .theme-toggle-btn, .action-btn {
             background: var(--box-header-bg);
-            border: 1px solid var(--accent-pink);
+            border: 2px double var(--accent-pink);
             color: var(--text-main);
-            padding: 8px 14px;
+            padding: 10px 16px;
             cursor: pointer;
-            border-radius: 20px;
+            border-radius: 12px;
             font-family: inherit;
             font-size: 11px;
+            font-weight: bold;
             transition: all 0.2s ease;
             text-align: center;
+            box-shadow: 2px 2px 0px var(--accent-pink);
         }
 
         .nav-btn { flex: 1; }
 
         .nav-btn:hover, .nav-btn.active, .theme-toggle-btn:hover, .action-btn:hover {
             background: var(--soft-blush);
-            transform: translateY(-1px);
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px var(--accent-pink);
         }
 
-        /* ESTRUCTURA ORIGINAL INTEGRADA Y RESPONSIVA */
+        /* DISEÑO DE COLUMNAS ORIGINAL */
         .layout-grid {
             display: grid;
-            grid-template-columns: 1fr; /* 1 columna en móvil para que no se aplaste */
-            gap: 15px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
-        /* Si es pantalla grande, hereda tus 3 columnas originales impecables */
         @media (min-width: 900px) {
             .layout-grid {
-                grid-template-columns: 240px 1fr 260px;
+                grid-template-columns: 260px 1fr 270px;
             }
         }
 
         .box-module {
             background: var(--panel-bg);
-            border: 1px solid var(--accent-pink);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 15px;
-            width: 100%;
+            border: 2px dashed var(--accent-pink);
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 3px 3px 0px var(--grid-color);
         }
 
         .box-title {
@@ -164,24 +182,26 @@
             color: var(--text-main);
             font-size: 11px;
             font-weight: bold;
-            padding: 6px 8px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--accent-pink);
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px dashed var(--accent-pink);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            letter-spacing: 0.5px;
         }
 
-        /* REPRODUCTOR RESPONSIVO BLINDADO */
+        /* REPRODUCTOR MULTIMEDIA MEJORADO */
         .media-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
-            border-radius: 8px;
-            border: 1px solid var(--accent-pink);
+            border-radius: 10px;
+            border: 2px double var(--accent-pink);
             width: 100%;
+            background: var(--input-bg);
         }
 
         .media-container iframe {
@@ -189,28 +209,114 @@
             top: 0; left: 0; width: 100%; height: 100%;
         }
 
+        .media-input-zone {
+            display: flex;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        /* CALENDARIO VICTORIANO RECARGADO */
+        .coquette-calendar {
+            background: var(--input-bg);
+            border: 2px double var(--accent-pink);
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: inset 0 0 8px var(--soft-blush);
+        }
+
+        .cal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            background: var(--box-header-bg);
+            padding: 6px;
+            border-radius: 8px;
+            border: 1px dotted var(--accent-pink);
+            font-size: 11px;
+        }
+
+        .cal-nav-btn {
+            background: var(--panel-bg);
+            border: 1px solid var(--accent-pink);
+            color: var(--text-main);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            border-radius: 4px;
+            padding: 0 6px;
+        }
+
+        .cal-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            font-weight: bold;
+            color: var(--text-main);
+            font-size: 10px;
+            margin-bottom: 6px;
+            border-bottom: 1px dashed var(--accent-pink);
+            padding-bottom: 4px;
+        }
+
+        .cal-days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .cal-day {
+            padding: 6px 0;
+            border-radius: 6px;
+            font-size: 11px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .cal-day.current {
+            background: var(--soft-blush);
+            border: 1px double var(--accent-pink);
+            font-weight: bold;
+            color: var(--text-main);
+            box-shadow: 0 0 5px var(--accent-pink);
+            position: relative;
+        }
+        .cal-day.current::after {
+            content: "🎀";
+            position: absolute;
+            font-size: 7px;
+            top: -4px;
+            right: -2px;
+        }
+
+        .cal-day.empty { background: transparent; border: none; }
+        .cal-day:not(.empty):hover { background: var(--box-header-bg); border-color: var(--accent-pink); cursor: default; }
+
         /* CUADRÍCULA DE AMIGOS */
         .friends-space-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 10px;
             text-align: center;
         }
 
         .friend-card {
             background: var(--input-bg);
-            border: 1px dotted var(--accent-pink);
-            border-radius: 6px;
-            padding: 4px;
+            border: 1px dashed var(--accent-pink);
+            border-radius: 8px;
+            padding: 6px;
             font-size: 10px;
+            position: relative;
         }
 
         .friend-card img {
             width: 100%;
-            height: 55px;
+            height: 60px;
             object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 3px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            border: 1px solid var(--accent-pink);
         }
 
         .friend-name {
@@ -218,7 +324,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .friend-socials {
@@ -227,38 +333,39 @@
             gap: 4px;
         }
 
-        .friend-socials a { text-decoration: none; font-size: 10px; }
+        .friend-socials a { text-decoration: none; font-size: 11px; }
 
         /* CUADRÍCULA DE FOTOS */
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 10px;
-            margin-top: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .photo-item {
-            border: 1px dashed var(--accent-pink);
-            padding: 4px;
-            border-radius: 8px;
+            border: 2px double var(--accent-pink);
+            padding: 5px;
+            border-radius: 10px;
             background: var(--input-bg);
+            box-shadow: 2px 2px 0px var(--grid-color);
         }
 
         .photo-item img {
             width: 100%;
-            height: 80px;
+            height: 90px;
             object-fit: cover;
             border-radius: 6px;
             display: block;
         }
 
-        /* FORMULARIOS E INPUTS */
+        /* FORMULARIOS, INPUTS Y MUROS */
         textarea, input[type="text"], input[type="password"], select {
             background: var(--input-bg);
             border: 1px solid var(--accent-pink);
             color: var(--text-main);
             border-radius: 8px;
-            padding: 6px;
+            padding: 8px;
             font-family: inherit;
             font-size: 11px;
             width: 100%;
@@ -266,64 +373,70 @@
             outline: none;
         }
 
+        textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
+            border: 1px dashed var(--accent-pink);
+            background: var(--panel-bg);
+        }
+
         .post-card {
             background: var(--input-bg);
-            border: 1px dotted var(--accent-pink);
-            padding: 10px;
-            margin-bottom: 8px;
-            border-radius: 8px;
+            border: 1px dashed var(--accent-pink);
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 10px;
             word-wrap: break-word;
+            box-shadow: 2px 2px 0px var(--box-header-bg);
         }
 
         .post-author {
             color: var(--text-muted);
             font-size: 10px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             font-weight: bold;
         }
 
-        /* IDENTIDAD ESTÉTICA */
         .visitor-badge {
             background: var(--soft-blush);
             color: var(--text-main);
-            padding: 8px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 10px;
             font-size: 11px;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 15px;
-            border: 1px dashed var(--accent-pink);
+            margin-bottom: 20px;
+            border: 2px double var(--accent-pink);
             width: 100%;
         }
 
-        /* CHAT FLOTANTE CON DESPLIEGUE SEGURO */
+        /* CHAT FLOTANTE RECARGADO */
         .chat-tab {
             position: fixed; bottom: 15px; right: 15px;
-            background: var(--panel-bg); border: 2px solid var(--accent-pink);
-            color: var(--text-main); padding: 8px 18px; border-radius: 20px;
-            cursor: pointer; box-shadow: 0 4px 15px var(--shadow);
+            background: var(--panel-bg); border: 2px double var(--accent-pink);
+            color: var(--text-main); padding: 10px 20px; border-radius: 14px;
+            cursor: pointer; box-shadow: 4px 4px 0px var(--shadow);
             font-size: 11px; font-weight: bold; z-index: 999;
         }
 
         .chat-window {
             position: fixed; bottom: 15px; right: 15px;
-            width: 280px; height: 360px; background: var(--panel-bg);
-            border: 2px solid var(--accent-pink); border-radius: 12px;
-            display: flex; flex-direction: column; box-shadow: 0 5px 20px var(--shadow);
+            width: 290px; height: 380px; background: var(--panel-bg);
+            border: 3px double var(--accent-pink); border-radius: 16px;
+            display: flex; flex-direction: column; box-shadow: 5px 5px 15px var(--shadow);
             z-index: 1000; overflow: hidden;
         }
 
-        .chat-header { background: var(--box-header-bg); padding: 8px 12px; font-weight: bold; border-bottom: 1px dashed var(--accent-pink); display: flex; justify-content: space-between; }
-        .chat-messages { flex-grow: 1; padding: 10px; overflow-y: auto; font-size: 11px; display: flex; flex-direction: column; gap: 6px; background: var(--input-bg); }
-        .chat-inputs { padding: 8px; background: var(--panel-bg); border-top: 1px solid var(--accent-pink); display: flex; gap: 6px; }
+        .chat-header { background: var(--box-header-bg); padding: 10px 12px; font-weight: bold; border-bottom: 1px dashed var(--accent-pink); display: flex; justify-content: space-between; }
+        .chat-messages { flex-grow: 1; padding: 12px; overflow-y: auto; font-size: 11px; display: flex; flex-direction: column; gap: 8px; background: var(--input-bg); }
+        .chat-inputs { padding: 10px; background: var(--panel-bg); border-top: 1px solid var(--accent-pink); display: flex; gap: 6px; }
 
         .hidden { display: none !important; }
         .view-section { display: none; }
         .view-section.active { display: block; }
 
+        /* PARTICULAS MÁGICAS */
         .sparkle-particle {
             position: fixed; pointer-events: none; color: var(--accent-pink);
-            font-size: 12px; z-index: 9999; animation: explode 0.8s ease-out forwards;
+            font-size: 14px; z-index: 9999; animation: explode 0.8s ease-out forwards;
         }
         @keyframes explode {
             0% { transform: translate(0,0) scale(1); opacity: 1; }
@@ -335,2970 +448,93 @@
 
 <!-- PANTALLA DE ACCESO PARA AMIGOS -->
 <div id="lockScreen" class="lock-screen hidden">
-    <div class="box-module" style="width: 100%; max-width: 300px; text-align: center;">
-        <div class="box-title"><span>🎀 Zona Restringida Amigos </span></div>
-        <p style="margin-bottom: 10px;">Introduce la clave secreta para entrar:</p>
-        <input type="password" id="gateKeyInput" placeholder="Clave aquí..." style="text-align:center; margin-bottom:10px;">
-        <button class="action-btn" style="width: 100%;" onclick="checkGateKey()">Entrar al Capullo ✨</button>
-        <span id="lockError" style="color: red; font-size: 10px; display: block; margin-top: 5px;"></span>
+    <div class="box-module" style="width: 100%; max-width: 320px; text-align: center;">
+        <div class="box-title"><span>⚔️ (◣_◢) Zona Restringida ⚔️</span></div>
+        <p style="margin-bottom: 12px; font-weight: bold;">✦•┈ Introduce la clave secreta ┈•✦</p>
+        <input type="password" id="gateKeyInput" placeholder="(っ. .ς) Clave aquí..." style="text-align:center; margin-bottom:12px;">
+        <button class="action-btn" style="width: 100%;" onclick="checkGateKey()">Entrar al Santuario ⚜️</button>
+        <span id="lockError" style="color: red; font-size: 10px; display: block; margin-top: 6px;"></span>
     </div>
 </div>
 
-<!-- CONTENEDOR DE LA PÁGINA -->
 <div class="profile-container" id="appContainer">
     
     <header>
-        <h1 id="lblTitle">🎀 mel's cocoon matrix 🎀</h1>
-        <div style="color: var(--text-muted); font-size: 11px; margin-top: 5px; font-weight: bold;" id="lblBio">welcome to my little sanctuary ✧ @_tomate_4</div>
+        <h1 id="lblTitle">🔱 🎀 mel's cocoon matrix 🎀 ⚜️</h1>
+        <div style="color: var(--text-muted); font-size: 11px; margin-top: 6px; font-weight: bold;" id="lblBio">✦•┈๑⋅⋯ welcome to my little sanctuary ( ꈍᴗꈍ) @_tomate_4 ⋯⋅๑┈•✦</div>
     </header>
 
     <div class="top-controls">
         <nav>
-            <button class="nav-btn active" id="btnTabMain" onclick="changeTab('main')">🎀 Libro de Firmas</button>
-            <button class="nav-btn" id="btnTabPhotos" onclick="changeTab('photos')">📷 Cofre de Fotos</button>
+            <button class="nav-btn active" id="btnTabMain" onclick="changeTab('main')">📖 (｡♥‿♥｡) Libro de Firmas</button>
+            <button class="nav-btn" id="btnTabPhotos" onclick="changeTab('photos')">📷 (✧*。) Cofre de Fotos</button>
         </nav>
-        <button class="theme-toggle-btn" style="width:100%; margin-top:5px;" onclick="toggleTheme()">🌓 Alternar Modo (Cute/Dark)</button>
+        <button class="theme-toggle-btn" style="width:100%; margin-top:5px;" onclick="toggleTheme()">🌓 🔱 Mudanza Cósmica (Cute/Dark)</button>
     </div>
 
-    <!-- AQUÍ ESTÁ TU DIVISIÓN ORIGINAL SÓLIDA -->
     <div class="layout-grid">
         
-        <!-- COLUMNA IZQUIERDA ORIGINAL: PLAYLIST Y CALENDARIO -->
+        <!-- COLUMNA IZQUIERDA: REPRODUCTOR INTELIGENTE Y CALENDARIO MEJORADO -->
         <aside>
             <div class="box-module">
-                <div class="box-title"><span>🎵 My Playlist</span></div>
-                <div class="media-container">
-                    <!-- URL Actualizada con un video estético funcional base para evitar pantallas caídas -->
-                    <iframe id="ytIframe" src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div class="box-title"><span>🎵 (🎧_🎧) Jukebox Matrix</span></div>
+                <div class="media-container" id="playerTargetContainer">
+                    <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <div class="media-input-zone">
+                    <input type="text" id="customMediaUrl" placeholder="🎵 Pegar Link de YouTube/Spotify... 🎀">
+                    <button class="action-btn" style="padding: 4px 12px; border-radius: 8px;" onclick="loadCustomMedia()">Cargar ✨</button>
                 </div>
             </div>
 
             <div class="box-module">
-                <div class="box-title"><span>📅 Mi Calendario</span></div>
-                <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--accent-pink); width:100%;">
-                    <iframe id="calIframe" src="https://calendar.google.com/calendar/embed?src=es.cl%23holiday%40group.v.calendar.google.com&ctz=America%2FLima" style="border: 0; width: 100%; height: 180px;" frameborder="0" scrolling="no"></iframe>
+                <div class="box-title"><span>📅 ⚜️ Calendario Barroco ⚜️</span></div>
+                <div class="coquette-calendar">
+                    <div class="cal-header">
+                        <button class="cal-nav-btn" onclick="adjustMonth(-1)">🔱</button>
+                        <span id="calLabelMonthYear" style="font-weight: bold; letter-spacing: 0.5px;">Junio 2026</span>
+                        <button class="cal-nav-btn" onclick="adjustMonth(1)">🔱</button>
+                    </div>
+                    <div class="cal-weekdays">
+                        <div>DO</div><div>LU</div><div>MA</div><div>MI</div><div>JU</div><div>VI</div><div>SÁ</div>
+                    </div>
+                    <div class="cal-days-grid" id="calGridDaysTarget"></div>
                 </div>
             </div>
         </aside>
 
-        <!-- COLUMNA CENTRAL ORIGINAL: IDENTIDAD Y MUROS -->
+        <!-- COLUMNA CENTRAL: IDENTIDAD Y MUROS -->
         <main>
             <div class="visitor-badge">
-                Tu huella estética asignada: <span id="lblMyGeneratedNick" style="text-decoration: underline; color: var(--text-main);">...</span> 📑
+                🔱 (๑•ᴗ•๑) Tu huella asignada: <span id="lblMyGeneratedNick" style="text-decoration: underline; color: var(--text-main);">...</span> 📑
             </div>
 
-            <!-- SECCIÓN MURO -->
             <div id="secMain" class="view-section active">
                 <div class="box-module">
-                    <div class="box-title"><span>📝 Dejar un mensaje anónimo</span></div>
-                    <textarea id="txtPostContent" rows="3" placeholder="Escribe algo lindo de forma anónima..." style="resize:none; margin-bottom:6px;"></textarea>
-                    <button class="action-btn" style="width:100%;" onclick="submitNewPost()">Publicar Mensaje ✨</button>
+                    <div class="box-title"><span>📝 (✒️_✒️) Dejar un mensaje anónimo</span></div>
+                    <textarea id="txtPostContent" rows="3" placeholder="✦•┈ Escribe algo lindo en el muro... (˘ ³˘)♥" style="resize:none; margin-bottom:8px;"></textarea>
+                    <button class="action-btn" style="width:100%;" onclick="submitNewPost()">Publicar Mensaje ✦*。</button>
                 </div>
                 <div id="postsWrapper"></div>
             </div>
 
-            <!-- SECCIÓN FOTOS -->
             <div id="secPhotos" class="view-section">
                 <div class="box-module">
-                    <div class="box-title"><span>📷 Baúl de Recuerdos</span></div>
-                    <button class="action-btn" style="width:100%;" onclick="document.getElementById('filePhoto').click()">Subir una Foto...</button>
+                    <div class="box-title"><span>📷 (🎞️_🎞️) Baúl de Recuerdos</span></div>
+                    <button class="action-btn" style="width:100%;" onclick="document.getElementById('filePhoto').click()">Subir una Foto al Cofre...</button>
                     <input type="file" id="filePhoto" style="display:none;" accept="image/*" onchange="submitPhotoToQueue(this)">
-                    <span id="photoSuccessLabel" style="font-size:10px; color:var(--text-muted); margin-top:5px; display:block;"></span>
+                    <span id="photoSuccessLabel" style="font-size:10px; color:var(--text-muted); margin-top:6px; display:block; text-align: center;"></span>
                     
                     <div class="photo-grid" id="approvedPhotosGrid"></div>
                 </div>
             </div>
         </main>
 
-        <!-- COLUMNA DERECHA ORIGINAL: PERFIL, AMIGOS Y AJUSTES -->
+        <!-- COLUMNA DERECHA: PERFIL, AMIGOS Y AJUSTES -->
         <aside>
             <div class="box-module">
-                <div class="box-title"><span>🧸 Perfil</span></div>
+                <div class="box-title"><span>🧸 (∗˃̶ 🍪 ˂̶∗) Perfil</span></div>
                 <div style="text-align: center;">
-                    <div style="width:90px; height:90px; border:2px dashed var(--accent-pink); border-radius:50%; margin:0 auto 10px auto; overflow:hidden; background:var(--input-bg); display:flex; align-items:center; justify-content:center; cursor:pointer;" onclick="document.getElementById('fileAvatar').click()">
+                    <div style="width:95px; height:95px; border:2px dashed var(--accent-pink); border-radius:50%; margin:0 auto 10px auto; overflow:hidden; background:var(--input-bg); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow: 0 0 8px var(--accent-pink);" onclick="document.getElementById('fileAvatar').click()">
                         <img id="imgAvatar" src="https://api.dicebear.com/7.x/coquette/svg?seed=mel" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                    <input type="file" id="fileAvatar" style="display:none;" accept="image/*" onchange="updateAvatar(this)">
-                </div>
-            </div>
-
-            <div class="box-module">
-                <div class="box-title"><span id="lblFriendsTitle">🎀 Mis Amigos (0)</span></div>
-                <div class="friends-space-grid" id="friendsSpaceGrid"></div>
-            </div>
-
-            <!-- CONFIGURACIÓN INTERNA COMPLETA -->
-            <div class="box-module">
-                <div class="box-title" onclick="toggleModPanel()" style="cursor:pointer;"><span>⚙️ Configuración Secreta</span> <span>[+]</span></div>
-                <div id="modPanelContent" class="hidden" style="margin-top:8px; display:flex; flex-direction:column; gap:8px;">
-                    <div>
-                        <label style="font-size:9px; font-weight:bold;">Título Web:</label>
-                        <input type="text" id="inputTitleText">
-                    </div>
-                    <div>
-                        <label style="font-size:9px; font-weight:bold;">URL/ID Playlist Youtube:</label>
-                        <input type="text" id="inputYtUrl">
-                    </div>
-                    <div>
-                        <label style="font-size:9px; font-weight:bold;">URL Calendario Embed:</label>
-                        <input type="text" id="inputCalUrl">
-                    </div>
-                    <div>
-                        <label style="font-size:9px; font-weight:bold;">🔒 Clave de entrada Amigos:</label>
-                        <input type="text" id="inputGateKey">
-                    </div>
-                    
-                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px;">
-                        <label style="font-size:9px; font-weight:bold;">🖼️ Fondo:</label>
-                        <select id="bgTypeSelector" onchange="handleBgTypeChange()">
-                            <option value="default">Cuadrícula Base</option>
-                            <option value="url">Por URL Externa</option>
-                            <option value="upload">Subir Archivo Local</option>
-                        </select>
-                        <input type="text" id="inputBgUrl" class="hidden" placeholder="Pegar URL..." style="margin-top:3px;">
-                        <input type="file" id="fileBgLocal" class="hidden" accept="image/*" onchange="uploadLocalBackground(this)" style="margin-top:3px;">
-                    </div>
-
-                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px; display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:9px; font-weight:bold;">➕ Agregar Amigo:</label>
-                        <input type="text" id="addFriendName" placeholder="Nombre...">
-                        <input type="text" id="addFriendPhoto" placeholder="URL Foto (Opcional)...">
-                        <select id="addFriendSocialType">
-                            <option value="tiktok">🎵 TikTok</option>
-                            <option value="instagram">📸 Instagram</option>
-                            <option value="whatsapp">💬 WhatsApp</option>
-                            <option value="mail">✉️ Correo</option>
-                        </select>
-                        <input type="text" id="addFriendSocialLink" placeholder="Enlace o Usuario...">
-                        <button class="action-btn" style="padding:4px; font-size:10px;" onclick="addNewFriend()">Añadir Amigo</button>
-                    </div>
-
-                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px;">
-                        <span style="font-size:9px; font-weight:bold;">📥 Moderación Fotos:</span>
-                        <div id="modQueue" style="font-size:10px; color:var(--text-muted); margin-top:3px;">Ninguna.</div>
-                    </div>
-
-                    <button class="action-btn" style="width:100%; font-weight:bold;" onclick="saveAllSettings()">Guardar Todo 🎀</button>
-                </div>
-            </div>
-        </aside>
-
-    </div>
-</div>
-
-<!-- CHAT GENERAL COMPLETO CON BOTÓN DE ENVÍO DIRECTO -->
-<div id="chatTrigger" class="chat-tab" onclick="openChatWindow(true)">💬 Chat_Amigos</div>
-<div id="chatBox" class="chat-window hidden">
-    <div class="chat-header"><span>🎀 Canal de Chat</span><span style="cursor:pointer;" onclick="openChatWindow(false)">[X]</span></div>
-    <div class="chat-messages" id="chatStream"></div>
-    <div class="chat-inputs">
-        <input type="text" id="chatMsgText" placeholder="Escribe algo..." onkeypress="handleChatPress(event)">
-        <button class="action-btn" style="border-radius:8px; padding:6px 10px;" onclick="submitChatMessage()">→</button>
-    </div>
-</div>
-
-<script>
-let localConfig = { 
-    title: "🎀 mel's cocoon matrix 🎀", avatar: "https://api.dicebear.com/7.x/coquette/svg?seed=mel", theme: "cute",
-    bgType: "default", bgValue: "", ytUrl: "jfKfPfyJRdk", calUrl: "", gateKey: ""
-};
-let localFriends = []; let localPosts = []; let localChats = []; let localPhotos = [];
-let userIdentityNick = "";
-
-window.onload = function() {
-    initLocalCache();
-    initUserIdentity(); 
-    checkGateSecurity();
-    applyInterfaceCustoms();
-    initClickSparkles();
-
-    renderFriends(); renderAllPosts(); renderApprovedPhotos(); renderModQueue(); renderChatHistory();
-};
-
-function initLocalCache() {
-    try { let c = localStorage.getItem("m_cfg"); if(c) localConfig = JSON.parse(c); } catch(e){}
-    try { let f = localStorage.getItem("m_frn"); localFriends = f ? JSON.parse(f) : []; } catch(e){}
-    try { let p = localStorage.getItem("m_pts"); localPosts = p ? JSON.parse(p) : []; } catch(e){}
-    try { let ch = localStorage.getItem("m_cht"); localChats = ch ? JSON.parse(ch) : []; } catch(e){}
-    try { let ph = localStorage.getItem("m_pht"); localPhotos = ph ? JSON.parse(ph) : []; } catch(e){}
-}
-
-function initUserIdentity() {
-    let savedNick = localStorage.getItem("m_anon_identity");
-    if(!savedNick) {
-        const prefixes = ["doll", "cyber", "angel", "lace", "soft", "pink", "star", "pixie", "cute", "mew"];
-        const suffixes = ["luv", "xo", "cx", "bb", "rawr", "core", "web", "cutie", "sad", "bot"];
-        savedNick = `${prefixes[Math.floor(Math.random() * prefixes.length)]}.${suffixes[Math.floor(Math.random() * suffixes.length)]}`;
-        localStorage.setItem("m_anon_identity", savedNick);
-    }
-    userIdentityNick = savedNick;
-    document.getElementById("lblMyGeneratedNick").textContent = userIdentityNick;
-}
-
-function checkGateSecurity() {
-    if(localConfig.gateKey && localConfig.gateKey.trim() !== "") {
-        if(sessionStorage.getItem("gate_auth") !== "true") {
-            document.getElementById("appContainer").classList.add("hidden");
-            document.getElementById("chatTrigger").classList.add("hidden");
-            document.getElementById("lockScreen").classList.remove("hidden");
-        }
-    }
-}
-
-function checkGateKey() {
-    if(document.getElementById("gateKeyInput").value === localConfig.gateKey) {
-        sessionStorage.setItem("gate_auth", "true");
-        document.getElementById("lockScreen").classList.add("hidden");
-        document.getElementById("appContainer").classList.remove("hidden");
-        document.getElementById("chatTrigger").classList.remove("hidden");
-    } else {
-        document.getElementById("lockError").textContent = "Clave incorrecta 🎀";
-    }
-}
-
-function applyInterfaceCustoms() {
-    document.documentElement.setAttribute('data-theme', localConfig.theme);
-    document.getElementById("lblTitle").textContent = localConfig.title;
-    document.getElementById("inputTitleText").value = localConfig.title;
-    document.getElementById("inputGateKey").value = localConfig.gateKey || "";
-
-    if(localConfig.avatar) document.getElementById("imgAvatar").src = localConfig.avatar;
-
-    if(localConfig.ytUrl) {
-        document.getElementById("inputYtUrl").value = localConfig.ytUrl;
-        let finalSrc = localConfig.ytUrl.includes("embed") ? localConfig.ytUrl : `https://www.youtube.com/embed/${localConfig.ytUrl.split('v=')[1] || localConfig.ytUrl}`;
-        document.getElementById("ytIframe").src = finalSrc;
-    }
-    if(localConfig.calUrl) {
-        document.getElementById("inputCalUrl").value = localConfig.calUrl;
-        document.getElementById("calIframe").src = localConfig.calUrl;
-    }
-
-    document.getElementById("bgTypeSelector").value = localConfig.bgType;
-    handleBgTypeChange();
-    if(localConfig.bgType === 'url') document.getElementById("inputBgUrl").value = localConfig.bgValue;
-
-    if(localConfig.bgType !== 'default' && localConfig.bgValue) {
-        document.body.classList.add("custom-bg");
-        document.body.style.setProperty('--user-bg-url', `url('${localConfig.bgValue}')`);
-    } else {
-        document.body.classList.remove("custom-bg");
-    }
-}
-
-function addNewFriend() {
-    let name = document.getElementById("addFriendName").value.trim();
-    let photo = document.getElementById("addFriendPhoto").value.trim() || "https://api.dicebear.com/7.x/coquette/svg?seed=" + name;
-    let type = document.getElementById("addFriendSocialType").value;
-    let link = document.getElementById("addFriendSocialLink").value.trim();
-    if(!name) return;
-
-    let targetUrl = link; let icon = "🔗";
-    if(type === 'instagram') { icon = "📸"; if(!link.startsWith('http')) targetUrl = `https://instagram.com/${link}`; }
-    if(type === 'tiktok') { icon = "🎵"; if(!link.startsWith('http')) targetUrl = `https://tiktok.com/@${link}`; }
-    if(type === 'whatsapp') { icon = "💬"; if(!link.startsWith('http')) targetUrl = `https://wa.me/${link.replace(/[^0-9]/g, '')}`; }
-    if(type === 'mail') { icon = "✉️"; targetUrl = `mailto:${link}`; }
-
-    localFriends.push({ name, photo, type, url: targetUrl, icon });
-    localStorage.setItem("m_frn", JSON.stringify(localFriends));
-    renderFriends();
-
-    document.getElementById("addFriendName").value = "";
-    document.getElementById("addFriendPhoto").value = "";
-    document.getElementById("addFriendSocialLink").value = "";
-}
-
-function renderFriends() {
-    let grid = document.getElementById("friendsSpaceGrid"); grid.innerHTML = "";
-    document.getElementById("lblFriendsTitle").textContent = `🎀 Mis Amigos (${localFriends.length})`;
-    localFriends.forEach((f, index) => {
-        grid.innerHTML += `
-            <div class="friend-card">
-                <div class="friend-name">${f.name}</div>
-                <img src="${f.photo}" onerror="this.src='https://api.dicebear.com/7.x/coquette/svg?seed=fallback'">
-                <div class="friend-socials">
-                    <a href="${f.url}" target="_blank"> ${f.icon}</a>
-                    <span style="cursor:pointer; color:red; font-weight:bold; margin-left:5px;" onclick="removeFriend(${index})">×</span>
-                </div>
-            </div>`;
-    });
-}
-
-function removeFriend(index) {
-    localFriends.splice(index, 1);
-    localStorage.setItem("m_frn", JSON.stringify(localFriends));
-    renderFriends();
-}
-
-function saveAllSettings() {
-    localConfig.title = document.getElementById("inputTitleText").value;
-    localConfig.ytUrl = document.getElementById("inputYtUrl").value;
-    localConfig.calUrl = document.getElementById("inputCalUrl").value;
-    localConfig.gateKey = document.getElementById("inputGateKey").value;
-    let type = document.getElementById("bgTypeSelector").value; localConfig.bgType = type;
-    if(type === 'url') localConfig.bgValue = document.getElementById("inputBgUrl").value;
-    if(type === 'default') localConfig.bgValue = "";
-    localStorage.setItem("m_cfg", JSON.stringify(localConfig)); applyInterfaceCustoms();
-}
-
-function handleBgTypeChange() {
-    let type = document.getElementById("bgTypeSelector").value;
-    document.getElementById("inputBgUrl").classList.toggle("hidden", type !== 'url');
-    document.getElementById("fileBgLocal").classList.toggle("hidden", type !== 'upload');
-}
-
-function uploadLocalBackground(el) {
-    if(el.files && el.files[0]) {
-        let r = new FileReader(); r.onload = function(e) { 
-            localConfig.bgValue = e.target.result; localConfig.bgType = "upload";
-            localStorage.setItem("m_cfg", JSON.stringify(localConfig)); applyInterfaceCustoms();
-        }; r.readAsDataURL(el.files[0]);
-    }
-}
-
-function toggleTheme() {
-    localConfig.theme = (localConfig.theme === 'cute') ? 'dark' : 'cute';
-    localStorage.setItem("m_cfg", JSON.stringify(localConfig)); applyInterfaceCustoms();
-}
-
-function submitNewPost() {
-    let t = document.getElementById("txtPostContent").value; if(!t.trim()) return;
-    localPosts.unshift({ text: t, author: userIdentityNick });
-    localStorage.setItem("m_pts", JSON.stringify(localPosts));
-    renderAllPosts(); document.getElementById("txtPostContent").value = "";
-}
-
-function renderAllPosts() {
-    let w = document.getElementById("postsWrapper"); w.innerHTML = "";
-    if(localPosts.length === 0) { w.innerHTML = `<p style="font-size:11px; color:var(--text-muted); text-align:center;">Muro silencioso... 🧸</p>`; return; }
-    localPosts.forEach(p => { 
-        w.innerHTML += `<div class="post-card"><div class="post-author">✧ ${p.author} escribió:</div><div>${p.text}</div></div>`; 
-    });
-}
-
-function submitPhotoToQueue(el) {
-    if(el.files && el.files[0]) {
-        let r = new FileReader(); r.onload = function(e) {
-            localPhotos.unshift({ id: Date.now().toString(), src: e.target.result, status: 'pendiente' });
-            localStorage.setItem("m_pht", JSON.stringify(localPhotos)); renderApprovedPhotos(); renderModQueue();
-            document.getElementById("photoSuccessLabel").textContent = "¡Foto enviada a moderación! ✨";
-            setTimeout(() => { document.getElementById("photoSuccessLabel").textContent = ""; }, 4000);
-        }; r.readAsDataURL(el.files[0]);
-    }
-}
-
-// ... Resto de lógica intacta del Backend para conservar tus bases de datos locales ...
-function renderApprovedPhotos() {
-    let g = document.getElementById("approvedPhotosGrid"); g.innerHTML = "";
-    let approved = localPhotos.filter(p => p.status === 'aprobada');
-    if(approved.length === 0) { g.innerHTML = `<p style="grid-column:1/-1; color:var(--text-muted); font-size:10px; text-align:center;">Baúl vacío... 📷</p>`; return; }
-    approved.forEach(p => { g.innerHTML += `<div class="photo-item"><img src="${p.src}"></div>`; });
-}
-
-function renderModQueue() {
-    let q = document.getElementById("modQueue"); q.innerHTML = "";
-    let pending = localPhotos.filter(p => p.status === 'pendiente');
-    if(pending.length === 0) { q.innerHTML = "Ninguna."; return; }
-    pending.forEach(p => {
-        q.innerHTML += `<div style="display:flex; align-items:center; justify-content:between; gap:4px; margin-top:5px; border-bottom:1px dotted var(--accent-pink); padding-bottom:4px;"><img src="${p.src}" width="30" height="30" style="object-fit:cover;"><div><button onclick="procPhoto('${p.id}','aprobada')">✓</button><button onclick="procPhoto('${p.id}','del')">×</button></div></div>`;
-    });
-}
-
-function procPhoto(id, action) {
-    if(action === 'aprobada') { let idx = localPhotos.findIndex(p => p.id === id); if(idx!==-1) localPhotos[idx].status = 'aprobada'; }
-    else { localPhotos = localPhotos.filter(p => p.id !== id); }
-    localStorage.setItem("m_pht", JSON.stringify(localPhotos)); renderApprovedPhotos(); renderModQueue();
-}
-
-function handleChatPress(e) { if(e.key === 'Enter') submitChatMessage(); }
-function submitChatMessage() {
-    let t = document.getElementById("chatMsgText").value.trim(); if(!t) return;
-    localChats.push({ nick: userIdentityNick, text: t });
-    localStorage.setItem("m_cht", JSON.stringify(localChats)); renderChatHistory();
-    document.getElementById("chatMsgText").value = "";
-}
-
-function renderChatHistory() {
-    let s = document.getElementById("chatStream"); s.innerHTML = "";
-    localChats.forEach(m => { s.innerHTML += `<div><strong>✧ ${m.nick}:</strong> ${m.text}</div>`; });
-    s.scrollTop = s.scrollHeight;
-}
-
-function updateAvatar(input) {
-    if(input.files && input.files[0]) {
-        let r = new FileReader(); r.onload = function(e) {
-            localConfig.avatar = e.target.result; localStorage.setItem("m_cfg", JSON.stringify(localConfig)); applyInterfaceCustoms();
-        }; r.readAsDataURL(input.files[0]);
-    }
-}
-
-function changeTab(tab) {
-    document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    if(tab === 'main') { document.getElementById("secMain").classList.add("active"); document.getElementById("btnTabMain").classList.add("active"); }
-    else { document.getElementById("secPhotos").classList.add("active"); document.getElementById("btnTabPhotos").classList.add("active"); }
-}
-
-function openChatWindow(open) {
-    document.getElementById("chatTrigger").classList.toggle("hidden", open);
-    document.getElementById("chatBox").classList.toggle("hidden", !open);
-}
-function toggleModPanel() { document.getElementById("modPanelContent").classList.toggle("hidden"); }
-
-function initClickSparkles() {
-    const symbols = ["✧", "✦", "🎀", "°"];
-    window.addEventListener("click", function(e) {
-        if(["BUTTON", "INPUT", "TEXTAREA", "SELECT", "OPTION"].includes(e.target.tagName)) return;
-        for(let i=0; i<3; i++) {
-            let p = document.createElement("div"); p.className = "sparkle-particle";
-            p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-            p.style.left = e.clientX + "px"; p.style.top = e.clientY + "px";
-            p.style.setProperty('--x', (Math.random() - 0.5) * 60 + "px");
-            p.style.setProperty('--y', (Math.random() - 0.5) * 60 + "px");
-            document.body.appendChild(p); setTimeout(() => p.remove(), 800);
-        }
-    });
-}
-</script>
-</body>
-</html>
-        body {
-            background-color: var(--bg-body);
-            background-image: 
-                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
-                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-attachment: fixed;
-            color: var(--text-main);
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 12px;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        body.custom-bg {
-            background-image: var(--user-bg-url) !important;
-            background-size: cover !important;
-            background-position: center !important;
-        }
-
-        /* PANTALLA DE BLOQUEO */
-        .lock-screen {
-            position: fixed;
-            top:0; left:0; width:100vw; height:100vh;
-            background: var(--bg-body);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        /* CONTENEDOR PRINCIPAL */
-        .profile-container {
-            width: 100%;
-            max-width: 950px;
-            background-color: var(--panel-bg);
-            border: 4px double var(--accent-pink);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 10px 30px var(--shadow);
-            box-sizing: border-box;
-        }
-
-        header {
-            text-align: center;
-            border: 2px dashed var(--accent-pink);
-            border-radius: 12px;
-            padding: 25px 15px;
-            margin-bottom: 20px;
-            background-color: var(--input-bg);
-            background-image: radial-gradient(var(--accent-pink) 15%, transparent 15%);
-            background-size: 12px 12px;
-        }
-
-        header h1 {
-            font-size: 24px;
-            margin: 0;
-            text-shadow: 2px 2px 0px var(--panel-bg), 4px 4px 0px var(--accent-pink);
-        }
-
-        .top-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        nav { display: flex; gap: 12px; }
-
-        .nav-btn, .theme-toggle-btn, .action-btn {
-            background: var(--box-header-bg);
-            border: 1px solid var(--accent-pink);
-            color: var(--text-main);
-            padding: 6px 14px;
-            cursor: pointer;
-            border-radius: 20px;
-            font-family: inherit;
-            font-size: 11px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-btn:hover, .nav-btn.active, .theme-toggle-btn:hover, .action-btn:hover {
-            background: var(--soft-blush);
-            transform: translateY(-1px);
-        }
-
-        /* GRID DE LAYOUT */
-        .layout-grid {
-            display: grid;
-            grid-template-columns: 240px 1fr 260px;
-            gap: 15px;
-        }
-
-        @media (max-width: 900px) {
-            .layout-grid { grid-template-columns: 1fr; }
-        }
-
-        .box-module {
-            background: var(--panel-bg);
-            border: 1px solid var(--accent-pink);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-        }
-
-        .box-title {
-            background: var(--box-header-bg);
-            color: var(--text-main);
-            font-size: 11px;
-            font-weight: bold;
-            padding: 5px 8px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            border-left: 3px solid var(--accent-pink);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* CUADRÍCULA DE AMIGOS */
-        .friends-space-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            text-align: center;
-        }
-
-        .friend-card {
-            background: var(--input-bg);
-            border: 1px dotted var(--accent-pink);
-            border-radius: 6px;
-            padding: 4px;
-            font-size: 10px;
-        }
-
-        .friend-card img {
-            width: 100%;
-            height: 55px;
-            object-fit: cover;
-            border-radius: 4px;
-            margin-bottom: 3px;
-        }
-
-        .friend-name {
-            font-weight: bold;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 2px;
-        }
-
-        .friend-socials {
-            display: flex;
-            justify-content: center;
-            gap: 4px;
-        }
-
-        .friend-socials a { text-decoration: none; font-size: 10px; }
-
-        /* NUEVA CUADRÍCULA DE FOTOS CORREGIDA */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .photo-item {
-            border: 1px dashed var(--accent-pink);
-            padding: 4px;
-            border-radius: 8px;
-            background: var(--input-bg);
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 6px;
-            display: block;
-        }
-
-        /* FORMULARIOS E INPUTS */
-        textarea, input[type="text"], input[type="password"], select {
-            background: var(--input-bg);
-            border: 1px solid var(--accent-pink);
-            color: var(--text-main);
-            border-radius: 8px;
-            padding: 6px;
-            font-family: inherit;
-            font-size: 11px;
-            width: 100%;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        .post-card {
-            background: var(--input-bg);
-            border: 1px dotted var(--accent-pink);
-            padding: 10px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-        }
-
-        .post-author {
-            color: var(--text-muted);
-            font-size: 10px;
-            margin-bottom: 4px;
-            font-weight: bold;
-        }
-
-        /* IDENTIDAD ESTÉTICA */
-        .visitor-badge {
-            background: var(--soft-blush);
-            color: var(--text-main);
-            padding: 8px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 15px;
-            border: 1px dashed var(--accent-pink);
-        }
-
-        /* CHAT FLOTANTE CORREGIDO */
-        .chat-tab {
-            position: fixed; bottom: 20px; right: 20px;
-            background: var(--panel-bg); border: 2px solid var(--accent-pink);
-            color: var(--text-main); padding: 8px 18px; border-radius: 20px;
-            cursor: pointer; box-shadow: 0 4px 15px var(--shadow);
-            font-size: 11px; font-weight: bold; z-index: 999;
-        }
-
-        .chat-window {
-            position: fixed; bottom: 20px; right: 20px;
-            width: 290px; height: 380px; background: var(--panel-bg);
-            border: 2px solid var(--accent-pink); border-radius: 12px;
-            display: flex; flex-direction: column; box-shadow: 0 5px 20px var(--shadow);
-            z-index: 1000; overflow: hidden;
-        }
-
-        .chat-header { background: var(--box-header-bg); padding: 8px 12px; font-weight: bold; border-bottom: 1px dashed var(--accent-pink); display: flex; justify-content: space-between; }
-        .chat-messages { flex-grow: 1; padding: 10px; overflow-y: auto; font-size: 11px; display: flex; flex-direction: column; gap: 6px; background: var(--input-bg); }
-        .chat-inputs { padding: 8px; background: var(--panel-bg); border-top: 1px solid var(--accent-pink); display: flex; gap: 6px; }
-
-        .hidden { display: none !important; }
-        .view-section { display: none; }
-        .view-section.active { display: block; }
-
-        .sparkle-particle {
-            position: fixed; pointer-events: none; color: var(--accent-pink);
-            font-size: 12px; z-index: 9999; animation: explode 0.8s ease-out forwards;
-        }
-        @keyframes explode {
-            0% { transform: translate(0,0) scale(1); opacity: 1; }
-            100% { transform: translate(var(--x), var(--y)) scale(0.3); opacity: 0; }
-        }
-    </style>
-</head>
-<body>
-
-<!-- PANTALLA SECRETA DE ACCESO PARA AMIGOS -->
-<div id="lockScreen" class="lock-screen hidden">
-    <div class="box-module" style="width: 300px; text-align: center;">
-        <div class="box-title"><span>🎀 Zona Restringida Amigos </span></div>
-        <p style="margin-bottom: 10px;">Introduce la clave secreta para entrar:</p>
-        <input type="password" id="gateKeyInput" placeholder="Escribe la clave aquí..." style="text-align:center; margin-bottom:10px;">
-        <button class="action-btn" style="width: 100%;" onclick="checkGateKey()">Entrar al Capullo ✨</button>
-        <span id="lockError" style="color: red; font-size: 10px; display: block; margin-top: 5px;"></span>
-    </div>
-</div>
-
-<!-- CONTENEDOR DE LA PAGINA -->
-<div class="profile-container" id="appContainer">
-    
-    <header>
-        <h1 id="lblTitle">🎀 arunyi's cocoon matrix 🎀</h1>
-        <div style="color: var(--text-muted); font-size: 11px; margin-top: 5px; font-weight: bold;" id="lblBio">welcome to my little sanctuary ✧ @_tomate_4</div>
-    </header>
-
-    <div class="top-controls">
-        <nav>
-            <button class="nav-btn active" id="btnTabMain" onclick="changeTab('main')">🎀 Libro de Firmas</button>
-            <button class="nav-btn" id="btnTabPhotos" onclick="changeTab('photos')">📷 Cofre de Fotos</button>
-        </nav>
-        <button class="theme-toggle-btn" onclick="toggleTheme()">🌓 Alternar Modo (Cute/Dark)</button>
-    </div>
-
-    <div class="layout-grid">
-        
-        <!-- COLUMNA IZQUIERDA: MULTIMEDIA -->
-        <aside>
-            <div class="box-module">
-                <div class="box-title"><span>🎵 My Playlist</span></div>
-                <div id="ytVideoContainer" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius:8px; border:1px solid var(--accent-pink);">
-                    <iframe id="ytIframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/videoseries?list=PL4fGSI1pDJn5kI81J1u57S7E84t0V_L7A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
-            </div>
-
-            <div class="box-module">
-                <div class="box-title"><span>📅 Mi Calendario</span></div>
-                <div id="calendarContainer" style="border-radius: 8px; overflow: hidden; border: 1px solid var(--accent-pink);">
-                    <iframe id="calIframe" src="https://calendar.google.com/calendar/embed?src=es.cl%23holiday%40group.v.calendar.google.com&ctz=America%2FLima" style="border: 0; width: 100%; height: 180px;" frameborder="0" scrolling="no"></iframe>
-                </div>
-            </div>
-        </aside>
-
-        <!-- COLUMNA CENTRAL: INTERACTIVIDAD -->
-        <main>
-            <!-- TU IDENTIFICADOR ANÓNIMO ACTUAL -->
-            <div class="visitor-badge">
-                Tu huella estética asignada: <span id="lblMyGeneratedNick" style="text-decoration: underline; color: var(--text-main);">...</span> 📑
-            </div>
-
-            <!-- SECCIÓN MURO -->
-            <div id="secMain" class="view-section active">
-                <div class="box-module">
-                    <div class="box-title"><span>📝 Dejar un mensaje anónimo</span></div>
-                    <textarea id="txtPostContent" rows="3" placeholder="Escribe algo lindo de forma anónima..." style="resize:none; margin-bottom:6px;"></textarea>
-                    <button class="action-btn" onclick="submitNewPost()">Publicar Mensaje ✨</button>
-                </div>
-                <div id="postsWrapper"></div>
-            </div>
-
-            <!-- SECCIÓN FOTOS -->
-            <div id="secPhotos" class="view-section">
-                <div class="box-module">
-                    <div class="box-title"><span>📷 Baúl de Recuerdos</span></div>
-                    <button class="action-btn" onclick="document.getElementById('filePhoto').click()">Subir una Foto...</button>
-                    <input type="file" id="filePhoto" style="display:none;" accept="image/*" onchange="submitPhotoToQueue(this)">
-                    <span id="photoSuccessLabel" style="font-size:10px; color:var(--text-muted); margin-left:8px;"></span>
-                    
-                    <!-- Cuadrícula estética de fotos -->
-                    <div class="photo-grid" id="approvedPhotosGrid"></div>
-                </div>
-            </div>
-        </main>
-
-        <!-- COLUMNA DERECHA: IDENTIDAD, AMIGOS Y AJUSTES -->
-        <aside>
-            <div class="box-module">
-                <div class="box-title"><span>🧸 Perfil</span></div>
-                <div style="text-align: center;">
-                    <div style="width:90px; height:90px; border:2px dashed var(--accent-pink); border-radius:50%; margin:0 auto 10px auto; overflow:hidden; background:var(--input-bg); display:flex; align-items:center; justify-content:center; cursor:pointer;" onclick="document.getElementById('fileAvatar').click()">
-                        <img id="imgAvatar" src="https://api.dicebear.com/7.x/coquette/svg?seed=arunyi" style="width:100%; height:100%; object-fit:cover;">
-                    </div>
-                    <input type="file" id="fileAvatar" style="display:none;" accept="image/*" onchange="updateAvatar(this)">
-                </div>
-            </div>
-
-            <div class="box-module">
-                <div class="box-title"><span id="lblFriendsTitle">🎀 Mis Amigos (0)</span></div>
-                <div class="friends-space-grid" id="friendsSpaceGrid"></div>
-            </div>
-
-            <!-- CONFIGURACIÓN INTERNA AVANZADA -->
-            <div class="box-module">
-                <div class="box-title" onclick="toggleModPanel()" style="cursor:pointer;"><span>⚙️ Configuración Secreta</span> <span>[+]</span></div>
-                <div id="modPanelContent" class="hidden" style="margin-top:8px; display:flex; flex-direction:column; gap:8px;">
-                    <div>
-                        <label style="font-size:9px; font-weight:bold;">Título Web:</label>
-                        <input type="text" id="inputTitleText">
-                    </div>
-                    <div>
-                        <label style="font-size:9px; font-weight:bold;">URL Playlist Youtube:</label>
-                        <input type="text" id="inputYtUrl">
-                    </div>
-                    <div>
-                        <label style="font-size:9px; font-weight:bold;">URL Calendario Embed:</label>
-                        <input type="text" id="inputCalUrl">
-                    </div>
-                    <div>
-                        <label style="font-size:9px; font-weight:bold;">🔒 Clave de entrada Amigos:</label>
-                        <input type="text" id="inputGateKey">
-                    </div>
-                    
-                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px;">
-                        <label style="font-size:9px; font-weight:bold;">🖼️ Fondo:</label>
-                        <select id="bgTypeSelector" onchange="handleBgTypeChange()">
-                            <option value="default">Cuadrícula Base</option>
-                            <option value="url">Por URL Externa</option>
-                            <option value="upload">Subir Archivo Local</option>
-                        </select>
-                        <input type="text" id="inputBgUrl" class="hidden" placeholder="Pegar URL..." style="margin-top:3px;">
-                        <input type="file" id="fileBgLocal" class="hidden" accept="image/*" onchange="uploadLocalBackground(this)" style="margin-top:3px;">
-                    </div>
-
-                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px; display:flex; flex-direction:column; gap:4px;">
-                        <label style="font-size:9px; font-weight:bold;">➕ Agregar Amigo:</label>
-                        <input type="text" id="addFriendName" placeholder="Nombre...">
-                        <input type="text" id="addFriendPhoto" placeholder="URL Foto...">
-                        <select id="addFriendSocialType">
-                            <option value="tiktok">🎵 TikTok</option>
-                            <option value="instagram">📸 Instagram</option>
-                            <option value="whatsapp">💬 WhatsApp</option>
-                            <option value="mail">✉️ Correo</option>
-                        </select>
-                        <input type="text" id="addFriendSocialLink" placeholder="Enlace o Usuario...">
-                        <button class="action-btn" style="padding:2px; font-size:10px;" onclick="addNewFriend()">Añadir</button>
-                    </div>
-
-                    <div style="border-top:1px dashed var(--accent-pink); padding-top:5px;">
-                        <span style="font-size:9px; font-weight:bold;">📥 Moderación Fotos:</span>
-                        <div id="modQueue" style="font-size:10px; color:var(--text-muted); margin-top:3px;">Ninguna.</div>
-                    </div>
-
-                    <button class="action-btn" style="width:100%; font-weight:bold;" onclick="saveAllSettings()">Guardar Todo 🎀</button>
-                </div>
-            </div>
-        </aside>
-
-    </div>
-</div>
-
-<!-- CHAT GENERAL -->
-<div id="chatTrigger" class="chat-tab" onclick="openChatWindow(true)">💬 Chat_Amigos</div>
-<div id="chatBox" class="chat-window hidden">
-    <div class="chat-header"><span>🎀 Canal de Chat</span><span style="cursor:pointer;" onclick="openChatWindow(false)">[X]</span></div>
-    <div class="chat-messages" id="chatStream"></div>
-    <div class="chat-inputs">
-        <input type="text" id="chatMsgText" placeholder="Escribe algo..." onkeypress="handleChatPress(event)">
-        <button class="action-btn" style="border-radius:8px; padding:6px 10px;" onclick="submitChatMessage()">→</button>
-    </div>
-</div>
-
-<script>
-let localConfig = { 
-    title: "🎀 arunyi's cocoon matrix 🎀", avatar: "https://api.dicebear.com/7.x/coquette/svg?seed=arunyi", theme: "cute",
-    bgType: "default", bgValue: "", ytUrl: "", calUrl: "", gateKey: ""
-};
-let localFriends = []; let localPosts = []; let localChats = []; let localPhotos = [];
-let 
-        /* ==========================================================================
-           ESTILOS BASE E INTERFAZ (Estilo Bloques SpaceHey/Carrd)
-           ========================================================================== */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background-color: var(--bg-dark);
-            color: var(--ghost-white);
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            font-size: 12px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Canvas para lluvia de signos de fondo */
-        #aestheticBackgroundCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Partículas flotantes para los clics */
-        .cherry-particle {
-            position: fixed;
-            pointer-events: none;
-            font-size: 14px;
-            z-index: 9999;
-            user-select: none;
-            color: var(--barbie-pink);
-            animation: fadeScatter 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeScatter {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
-            100% { transform: translate(var(--mx), var(--my)) scale(0.3) rotate(var(--mr)); opacity: 0; }
-        }
-
-        .rococo-matrix-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .matrix-header-box {
-            background: var(--panel-dark);
-            border: 2px dashed var(--muted-mauve);
-            padding: 35px 20px;
-            text-align: center;
-            box-shadow: 4px 4px 0px var(--bg-dark);
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        /* Decoración de esquinas estilo encaje/retro retro-carrd */
-        .matrix-header-box::before {
-            content: "✦ ─── ❖ ─── ✦";
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--muted-mauve);
-            font-size: 10px;
-            letter-spacing: 3px;
-        }
-
-        .main-terminal-title {
-            color: var(--soft-lace-pink);
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 0px var(--bg-dark);
-        }
-
-        .rococo-tabs-nav-bar { 
-            display: flex; 
-            gap: 8px; 
-            border-bottom: 2px dotted var(--muted-mauve); 
-            padding-bottom: 8px; 
-        }
-        
-        .rococo-menu-link {
-            background: var(--panel-dark); 
-            border: 1px solid var(--woodsmoke);
-            color: var(--text-dim); 
-            padding: 6px 14px; 
-            cursor: pointer; 
-            user-select: none;
-            font-size: 11px;
-        }
-        .rococo-menu-link.active-tab {
-            background: var(--muted-mauve); 
-            color: var(--ghost-white); 
-            border-color: var(--soft-lace-pink);
-            font-weight: bold;
-        }
-
-        .rococo-layout-grid { display: grid; grid-template-columns: 280px 1fr; gap: 20px; }
-        .rococo-side-panel { display: flex; flex-direction: column; gap: 20px; width: 280px; }
-        
-        .rococo-center-panel {
-            background: var(--panel-dark); 
-            border: 1px solid var(--muted-mauve);
-            padding: 20px; 
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.15); 
-            min-height: 500px;
-        }
-
-        .rococo-card-module { 
-            background: var(--panel-dark); 
-            border: 1px solid var(--muted-mauve); 
-            padding: 15px; 
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.1); 
-        }
-        
-        .module-title { 
-            color: var(--barbie-pink); 
-            font-size: 11px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            border-bottom: 1px dashed var(--woodsmoke); 
-            padding-bottom: 6px; 
-            margin-bottom: 12px; 
-            letter-spacing: 1px;
-        }
-
-        .avatar-frame-box { 
-            width: 120px; 
-            height: 120px; 
-            border: 2px double var(--muted-mauve); 
-            margin: 0 auto 12px auto; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            background: var(--bg-dark); 
-            overflow: hidden; 
-        }
-        .avatar-frame-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        .tab-view { display: none; }
-        .tab-view.active-view { display: block; }
-
-        .rococo-post-node { 
-            background: var(--bg-dark); 
-            border: 1px solid var(--woodsmoke); 
-            padding: 12px; 
-            margin-bottom: 15px; 
-        }
-        
-        input[type="text"], textarea, select { 
-            background: var(--bg-dark); 
-            border: 1px solid var(--woodsmoke); 
-            color: var(--ghost-white); 
-            padding: 6px; 
-            font-family: monospace; 
-            font-size: 11px; 
-            width: 100%; 
-        }
-        input[type="text"]:focus, textarea:focus {
-            border-color: var(--barbie-pink);
-            outline: none;
-        }
-        
-        .rococo-btn { 
-            background: var(--panel-dark); 
-            border: 1px solid var(--muted-mauve); 
-            color: var(--barbie-pink); 
-            padding: 5px 12px; 
-            cursor: pointer; 
-            font-family: monospace; 
-            font-size: 11px; 
-        }
-        .rococo-btn:hover { 
-            background: var(--muted-mauve); 
-            color: var(--ghost-white); 
-            border-color: var(--soft-lace-pink);
-        }
-
-        /* GALERÍA DE FOTOS */
-        .stellar-photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; margin-top: 10px; }
-        .stellar-photo-card { background: var(--bg-dark); border: 1px solid var(--woodsmoke); padding: 6px; text-align: center; }
-        .stellar-photo-card img { width: 100%; height: auto; border: 1px solid var(--woodsmoke); }
-        .stellar-photo-meta { font-size: 9px; color: var(--text-dim); margin-top: 4px; }
-        
-        /* PANEL DE MODERACIÓN INTERNO */
-        .mod-photo-item { display: flex; align-items: center; gap: 10px; background: var(--bg-dark); padding: 6px; border: 1px dotted var(--muted-mauve); margin-bottom: 6px; }
-        .mod-photo-item img { width: 40px; height: 40px; object-fit: cover; border: 1px solid var(--muted-mauve); }
-        .btn-approve { border-color: var(--system-green); color: var(--system-green); }
-        .btn-approve:hover { background: var(--system-green); color: #000; }
-        .btn-reject { border-color: var(--system-red); color: var(--system-red); }
-        .btn-reject:hover { background: var(--system-red); color: #000; }
-
-        /* CHAT FLOTANTE */
-        #chatRetroTab { position: fixed; bottom: 15px; right: 20px; background: var(--panel-dark); border: 1px solid var(--muted-mauve); color: var(--barbie-pink); padding: 6px 12px; cursor: pointer; z-index: 9999; box-shadow: 2px 2px 0px rgba(0,0,0,0.2); }
-        #chatRetroWindow { position: fixed; bottom: 15px; right: 20px; width: 320px; height: 400px; background: var(--panel-dark); border: 2px solid var(--muted-mauve); z-index: 9999; display: flex; flex-direction: column; box-shadow: 4px 4px 0px rgba(0,0,0,0.3); }
-        .chat-title-top { background: var(--woodsmoke); color: var(--soft-lace-pink); padding: 6px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
-        .chat-body-stream { flex-grow: 1; padding: 10px; overflow-y: auto; background: var(--bg-dark); display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--woodsmoke); }
-        .chat-footer-inputs { padding: 8px; display: flex; flex-direction: column; gap: 6px; background: var(--panel-dark); }
-        .hidden { display: none !important; }
-
-        @media (max-width: 1024px) { .rococo-layout-grid { display: flex; flex-direction: column; } .rococo-side-panel { width: 100%; } }
-    </style>
-</head>
-<body>
-
-<!-- Matriz de fondo interactiva sin emojis -->
-<canvas id="aestheticBackgroundCanvas"></canvas>
-
-<div class="rococo-matrix-container">
-    
-    <header class="matrix-header-box" id="matrixHeader">
-        <div class="main-terminal-title" id="liveTitle">mel_sanctuary_matrix</div>
-        <div style="color: var(--barbie-pink); font-size:11px; margin-top: 5px;" id="liveBio">505 // @_tomate_4</div>
-        <div style="margin-top:12px; font-size:9px; color: var(--text-dim);">[ Filtro de Seguridad de Contenido Activo ]</div>
-    </header>
-
-    <nav class="rococo-tabs-nav-bar">
-        <div class="rococo-menu-link active-tab" id="tabMainLink" onclick="switchVirtualTab('main')">[-] nucleo_principal</div>
-        <div class="rococo-menu-link" id="tabStellarLink" onclick="switchVirtualTab('stellar')">[-] registros_estelares</div>
-    </nav>
-
-    <div class="rococo-layout-grid">
-        
-        <!-- SIDEBAR IZQUIERDO -->
-        <aside class="rococo-side-panel">
-            
-            <div class="rococo-card-module">
-                <div class="module-title">[-] firmware_identidad</div>
-                <div class="avatar-frame-box" onclick="triggerClick('avatarUploaderField')" style="cursor:pointer;">
-                    <span id="txtAvatarPlace" style="font-size:9px; color:var(--text-dim); text-align:center;">[ Cambiar Avatar ]</span>
-                    <img id="imgAvatarView" src="" alt="Avatar" style="display:none;">
-                </div>
-                <input type="file" id="avatarUploaderField" style="display:none;" accept="image/*" onchange="loadPersonalAvatar(this)">
-            </div>
-
-            <!-- CONFIGURACIÓN Y PANEL DE CONTROL DE MEL (MODERADOR) -->
-            <div class="rococo-card-module">
-                <div class="module-title" onclick="toggleAdminPanel()" style="cursor:pointer;">[+] configuracion_y_moderacion</div>
-                <div id="secretPanel" style="display:none; margin-top:10px; border-top:1px dashed var(--woodsmoke); padding-top:10px;">
-                    
-                    <!-- REVISIÓN DE FOTOS SUBIDAS POR AMIGOS -->
-                    <div style="margin-bottom:15px;">
-                        <span style="color:var(--barbie-pink); font-size:10px; font-weight:bold; display:block; margin-bottom:6px;">⚠️ FOTOS PENDIENTES DE ACEPTAR:</span>
-                        <div id="moderationQueueZone" style="max-height:160px; overflow-y:auto; background:#110b0f; padding:4px;">
-                            <span style="color:var(--text-dim); font-size:10px;">No hay fotos esperando aprobación.</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom:10px;">
-                        <label style="font-size:10px; display:block; margin-bottom:4px;">Foto de Portada (Banner):</label>
-                        <button class="rococo-btn" style="width:100%;" onclick="triggerClick('bannerUploaderField')">Subir Nueva Portada</button>
-                        <input type="file" id="bannerUploaderField" style="display:none;" accept="image/*" onchange="loadPersonalBanner(this)">
-                    </div>
-                    <div style="margin-bottom:6px;">
-                        <label style="font-size:10px; display:block;">Titulo:</label>
-                        <input type="text" id="cfgTitle">
-                    </div>
-                    <button class="rococo-btn" style="width:100%;" onclick="saveConfigChanges()">Guardar Ajustes</button>
-                </div>
-            </div>
-
-        </aside>
-
-        <!-- PANEL CENTRAL -->
-        <main class="rococo-center-panel">
-            
-            <!-- REGISTROS (MURO) -->
-            <div id="viewMainGrid" class="tab-view active-view">
-                <div class="module-title">[-] muro_de_fragmentos</div>
-                <div style="background: var(--bg-dark); padding:12px; border:1px solid var(--woodsmoke); margin-bottom:20px;">
-                    <textarea id="postTextIn" rows="3" placeholder="Escribe algo aquí..." style="width:100%; resize:none; margin-bottom:8px;"></textarea>
-                    <button class="rococo-btn" onclick="publishUserPostNode()">[ Publicar ]</button>
-                </div>
-                <div id="boardScrollerZone"></div>
-            </div>
-
-            <!-- REGISTROS ESTELARES (ALBUM CON FILTRO) -->
-            <div id="viewStellarGrid" class="tab-view">
-                <div class="module-title">[-] album_de_reliquias_estelares</div>
-                <p style="color: var(--text-dim); margin-bottom:12px;">
-                    Las imágenes subidas por amigos pasarán por un proceso de revisión antes de ser públicas.
-                </p>
-                <div style="margin-bottom:20px;">
-                    <button class="rococo-btn" onclick="triggerClick('stellarFileInput')">[ Enviar Imagen al Álbum ]</button>
-                    <input type="file" id="stellarFileInput" style="display:none;" accept="image/*" onchange="uploadStellarPhoto(this)">
-                    <span id="uploadNotice" style="color:var(--barbie-pink); margin-left:10px; font-size:11px;"></span>
-                </div>
-                <div id="stellarPhotoGridZone" class="stellar-photo-grid"></div>
-            </div>
-
-        </main>
-
-    </div>
-</div>
-
-<!-- CHAT -->
-<div id="chatRetroTab" onclick="toggleRetroChatWindow(true)">[-] Chat_Amigos</div>
-<div id="chatRetroWindow" class="hidden">
-    <div class="chat-title-top">
-        <span>[ Sala_De_Chat ]</span>
-        <span style="cursor:pointer;" onclick="toggleRetroChatWindow(false)">[X]</span>
-    </div>
-    <div class="chat-body-stream" id="chatRetroMessages"></div>
-    <div class="chat-footer-inputs">
-        <input type="text" id="chatNick" placeholder="Tu Apodo...">
-        <input type="text" id="chatRetroInput" placeholder="Mensaje... [Enter]" onkeypress="handleChatEnter(event)">
-    </div>
-</div>
-
-<script>
-// ==========================================================================
-// CONFIGURACIÓN DE CONEXIONES EN TIEMPO REAL
-// ==========================================================================
-const SUPABASE_URL = "https://tu-proyecto.supabase.co";
-const SUPABASE_ANON_KEY = "tu-anon-key-de-supabase";
-
-let supabaseEnabled = false;
-let supabase = null;
-
-if (SUPABASE_URL !== "https://tu-proyecto.supabase.co") {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    supabaseEnabled = true;
-}
-
-let appConfig = { title: "mel_sanctuary_matrix", bio: "505 // @_tomate_4", avatar: "", banner: "" };
-let userPosts = []; let chatMessages = [];
-let databasePhotos = []; 
-
-window.onload = async function() {
-    loadLocalFallbacks();
-    applyMelChanges();
-    initAestheticBackground(); 
-    initClickBurstEffect();     
-    
-    if (supabaseEnabled) {
-        await syncDataWithCloud();
-        listenRealtime();
-    } else {
-        renderBoardPosts();
-        renderStellarPhotos();
-        renderModerationQueue();
-        loadPersistentMessages();
-    }
-};
-
-function loadLocalFallbacks() {
-    try { let sc = localStorage.getItem("mel_config"); if(sc) appConfig = JSON.parse(sc); } catch(e){}
-    try { let sp = localStorage.getItem("mel_posts"); userPosts = sp ? JSON.parse(sp) : []; } catch(e){}
-    try { let sch = localStorage.getItem("mel_chat"); chatMessages = sch ? JSON.parse(sch) : []; } catch(e){}
-    try { let sf = localStorage.getItem("mel_photos_v2"); databasePhotos = sf ? JSON.parse(sf) : []; } catch(e){}
-    
-    let nick = localStorage.getItem("mel_chat_nick");
-    if(nick) document.getElementById("chatNick").value = nick;
-}
-
-async function syncDataWithCloud() {
-    let { data: posts } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
-    if(posts) userPosts = posts;
-    let { data: chats } = await supabase.from('chats').select('*').order('created_at', { ascending: true });
-    if(chats) chatMessages = chats;
-    let { data: photos } = await supabase.from('photos_v2').select('*').order('created_at', { ascending: false });
-    if(photos) databasePhotos = photos;
-
-    renderBoardPosts();
-    renderStellarPhotos();
-    renderModerationQueue();
-    loadPersistentMessages();
-}
-
-function listenRealtime() {
-    supabase.channel('room_moderada')
-      .on('postgres_changes', { event: '*', filter: 'table=eq.chats' }, () => { syncDataWithCloud(); })
-      .on('postgres_changes', { event: '*', filter: 'table=eq.posts' }, () => { syncDataWithCloud(); })
-      .on('postgres_changes', { event: '*', filter: 'table=eq.photos_v2' }, () => { syncDataWithCloud(); })
-      .subscribe();
-}
-
-function uploadStellarPhoto(input) {
-    if (input.files && input.files[0]) {
-        let reader = new FileReader();
-        reader.onload = async function(e) {
-            let srcData = e.target.result;
-            let newPhotoObj = { id: Date.now().toString(), src: srcData, status: 'pendiente' };
-
-            if (supabaseEnabled) {
-                await supabase.from('photos_v2').insert([newPhotoObj]);
-            } else {
-                databasePhotos.unshift(newPhotoObj);
-                localStorage.setItem("mel_photos_v2", JSON.stringify(databasePhotos));
-                renderStellarPhotos();
-                renderModerationQueue();
-            }
-            
-            let notice = document.getElementById("uploadNotice");
-            notice.textContent = "[Foto enviada. Esperando aprobacion de Mel]";
-            setTimeout(() => { notice.textContent = ""; }, 5000);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-function renderStellarPhotos() {
-    let zone = document.getElementById("stellarPhotoGridZone"); if(!zone) return; zone.innerHTML = "";
-    let approvedPhotos = databasePhotos.filter(p => p.status === 'aprobada');
-    
-    if(approvedPhotos.length === 0) {
-        zone.innerHTML = `<span style="color:var(--text-dim);">No hay reliquias publicas aun.</span>`;
-        return;
-    }
-    
-    approvedPhotos.forEach((photo, idx) => {
-        zone.innerHTML 
-        /* ==========================================================================
-           ESTILOS BASE E INTERFAZ
-           ========================================================================== */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background-color: var(--bg-deep-velvet);
-            color: var(--ghost-white);
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-            font-size: 12px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Capa de fondo para renderizar efectos visuales puros */
-        #aestheticBackgroundCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .rococo-matrix-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .matrix-header-box {
-            background: var(--goth-charcoal);
-            border: 2px dashed var(--border-rococo);
-            padding: 30px 20px;
-            text-align: center;
-            box-shadow: 5px 5px 0px var(--panel-shadow-goth);
-            background-size: cover;
-            background-position: center;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
-        }
-
-        .main-terminal-title {
-            color: var(--barbie-pink);
-            font-size: 26px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        .rococo-tabs-nav-bar { display: flex; gap: 10px; border-bottom: 2px solid var(--border-rococo); padding-bottom: 5px; }
-        .rococo-menu-link {
-            background: var(--goth-charcoal); border: 1px solid var(--border-rococo);
-            color: var(--text-dim); padding: 8px 16px; cursor: pointer; user-select: none;
-        }
-        .rococo-menu-link.active-tab {
-            background: var(--barbie-pink); color: var(--goth-charcoal); font-weight: bold;
-        }
-
-        .rococo-layout-grid { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
-        .rococo-side-panel { display: flex; flex-direction: column; gap: 20px; width: 300px; }
-        .rococo-center-panel {
-            background: var(--goth-charcoal); border: 1px solid var(--border-rococo);
-            padding: 20px; box-shadow: 5px 5px 0px var(--panel-shadow-goth); min-height: 500px;
-        }
-
-        .rococo-card-module { background: var(--goth-charcoal); border: 1px solid var(--border-rococo); padding: 15px; box-shadow: 4px 4px 0px var(--panel-shadow-goth); }
-        .module-title { color: var(--barbie-pink); font-size: 11px; font-weight: bold; text-transform: uppercase; border-bottom: 1px dotted var(--border-rococo); padding-bottom: 4px; margin-bottom: 10px; }
-
-        .avatar-frame-box { width: 110px; height: 110px; border: 2px double var(--barbie-pink); margin: 0 auto 10px auto; display: flex; align-items: center; justify-content: center; background: var(--bg-deep-velvet); overflow: hidden; }
-        .avatar-frame-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        .tab-view { display: none; }
-        .tab-view.active-view { display: block; }
-
-        .rococo-post-node { background: var(--bg-deep-velvet); border: 1px solid var(--border-rococo); padding: 12px; margin-bottom: 15px; }
-        input[type="text"], textarea, select { background: var(--bg-deep-velvet); border: 1px solid var(--border-rococo); color: var(--ghost-white); padding: 5px; font-family: monospace; font-size: 11px; width: 100%; }
-        
-        .rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--barbie-pink); padding: 5px 10px; cursor: pointer; font-family: monospace; font-size: 11px; }
-        .rococo-btn:hover { background: var(--barbie-pink); color: var(--goth-charcoal); }
-
-        /* GALERÍA DE FOTOS */
-        .stellar-photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; margin-top: 10px; }
-        .stellar-photo-card { background: var(--bg-deep-velvet); border: 1px solid var(--border-rococo); padding: 5px; text-align: center; }
-        .stellar-photo-card img { width: 100%; height: auto; border: 1px solid var(--border-rococo); }
-        
-        /* PANEL DE MODERACIÓN */
-        .mod-photo-item { display: flex; align-items: center; gap: 10px; background: var(--bg-deep-velvet); padding: 6px; border: 1px dotted var(--border-rococo); margin-bottom: 6px; }
-        .mod-photo-item img { width: 40px; height: 40px; object-fit: cover; border: 1px solid var(--barbie-pink); }
-        .btn-approve { border-color: var(--system-green); color: var(--system-green); }
-        .btn-approve:hover { background: var(--system-green); color: #000; }
-        .btn-reject { border-color: var(--system-red); color: var(--system-red); }
-        .btn-reject:hover { background: var(--system-red); color: #000; }
-
-        /* CHAT FLOTANTE */
-        #chatRetroTab { position: fixed; bottom: 15px; right: 20px; background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--barbie-pink); padding: 6px 12px; cursor: pointer; z-index: 9999; }
-        #chatRetroWindow { position: fixed; bottom: 15px; right: 20px; width: 320px; height: 400px; background: var(--goth-charcoal); border: 2px solid var(--border-rococo); z-index: 9999; display: flex; flex-direction: column; }
-        .chat-title-top { background: var(--border-rococo); color: var(--soft-lace-pink); padding: 6px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .chat-body-stream { flex-grow: 1; padding: 10px; overflow-y: auto; background: var(--bg-deep-velvet); display: flex; flex-direction: column; gap: 8px; }
-        .chat-footer-inputs { padding: 6px; border-top: 1px solid var(--border-rococo); display: flex; flex-direction: column; gap: 4px; }
-        .hidden { display: none !important; }
-
-        @media (max-width: 1024px) { .rococo-layout-grid { display: flex; flex-direction: column; } .rococo-side-panel { width: 100%; } }
-    </style>
-</head>
-<body>
-
-<canvas id="aestheticBackgroundCanvas"></canvas>
-
-<div class="rococo-matrix-container">
-    
-    <header class="matrix-header-box" id="matrixHeader">
-        <div class="main-terminal-title" id="liveTitle">mel_sanctuary_matrix</div>
-        <div style="color: var(--soft-lace-pink); font-size:11px;" id="liveBio">505 // @_tomate_4</div>
-        <div style="margin-top:10px; font-size:9px; color: var(--text-dim);">[ Filtro de Seguridad de Contenido Activo ]</div>
-    </header>
-
-    <nav class="rococo-tabs-nav-bar">
-        <div class="rococo-menu-link active-tab" id="tabMainLink" onclick="switchVirtualTab('main')">[-] nucleo_principal</div>
-        <div class="rococo-menu-link" id="tabStellarLink" onclick="switchVirtualTab('stellar')">[-] registros_estelares</div>
-    </nav>
-
-    <div class="rococo-layout-grid">
-        
-        <aside class="rococo-side-panel">
-            
-            <div class="rococo-card-module">
-                <div class="module-title">[-] firmware_identidad</div>
-                <div class="avatar-frame-box" onclick="triggerClick('avatarUploaderField')" style="cursor:pointer;">
-                    <span id="txtAvatarPlace" style="font-size:9px; color:var(--text-dim); text-align:center;">[ Cambiar Avatar ]</span>
-                    <img id="imgAvatarView" src="" alt="Avatar" style="display:none;">
-                </div>
-                <input type="file" id="avatarUploaderField" style="display:none;" accept="image/*" onchange="loadPersonalAvatar(this)">
-            </div>
-
-            <div class="rococo-card-module">
-                <div class="module-title" onclick="toggleAdminPanel()" style="cursor:pointer;">[+] configuracion_y_moderacion</div>
-                <div id="secretPanel" style="display:none; margin-top:10px; border-top:1px dashed var(--border-rococo); padding-top:10px;">
-                    
-                    <div style="margin-bottom:15px;">
-                        <span style="color:var(--barbie-pink); font-size:10px; font-weight:bold; display:block; margin-bottom:6px;">⚠️ FOTOS PENDIENTES DE ACEPTAR:</span>
-                        <div id="moderationQueueZone" style="max-height:160px; overflow-y:auto; background:#110b0f; padding:4px;">
-                            <span style="color:var(--text-dim); font-size:10px;">No hay fotos esperando aprobación.</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom:10px;">
-                        <label style="font-size:10px; display:block; margin-bottom:4px;">Foto de Portada (Banner):</label>
-                        <button class="rococo-btn" style="width:100%;" onclick="triggerClick('bannerUploaderField')">Subir Nueva Portada</button>
-                        <input type="file" id="bannerUploaderField" style="display:none;" accept="image/*" onchange="loadPersonalBanner(this)">
-                    </div>
-                    <div style="margin-bottom:6px;">
-                        <label style="font-size:10px; display:block;">Titulo:</label>
-                        <input type="text" id="cfgTitle">
-                    </div>
-                    <button class="rococo-btn" style="width:100%;" onclick="saveConfigChanges()">Guardar Ajustes</button>
-                </div>
-            </div>
-
-        </aside>
-
-        <main class="rococo-center-panel">
-            
-            <div id="viewMainGrid" class="tab-view active-view">
-                <div class="module-title">[-] muro_de_fragmentos</div>
-                <div style="background: var(--bg-deep-velvet); padding:12px; border:1px solid var(--border-rococo); margin-bottom:20px;">
-                    <textarea id="postTextIn" rows="3" placeholder="Escribe algo aquí..." style="width:100%; resize:none; margin-bottom:8px;"></textarea>
-                    <button class="rococo-btn" onclick="publishUserPostNode()">[ Publicar ]</button>
-                </div>
-                <div id="boardScrollerZone"></div>
-            </div>
-
-            <div id="viewStellarGrid" class="tab-view">
-                <div class="module-title">[-] album_de_reliquias_estelares</div>
-                <p style="color: var(--text-dim); margin-bottom:12px;">
-                    Las imágenes subidas por amigos pasarán por un proceso de revisión antes de ser públicas.
-                </p>
-                <div style="margin-bottom:20px;">
-                    <button class="rococo-btn" onclick="triggerClick('stellarFileInput')">[ Enviar Imagen al Álbum ]</button>
-                    <input type="file" id="stellarFileInput" style="display:none;" accept="image/*" onchange="uploadStellarPhoto(this)">
-                    <span id="uploadNotice" style="color:var(--barbie-pink); margin-left:10px; font-size:11px;"></span>
-                </div>
-                <div id="stellarPhotoGridZone" class="stellar-photo-grid"></div>
-            </div>
-
-        </main>
-
-    </div>
-</div>
-
-<div id="chatRetroTab" onclick="toggleRetroChatWindow(true)">[-] Chat_Amigos</div>
-<div id="chatRetroWindow" class="hidden">
-    <div class="chat-title-top">
-        <span>[ Sala_De_Chat ]</span>
-        <span style="cursor:pointer;" onclick="toggleRetroChatWindow(false)">[X]</span>
-    </div>
-    <div class="chat-body-stream" id="chatRetroMessages"></div>
-    <div class="chat-footer-inputs">
-        <input type="text" id="chatNick" placeholder="Tu Apodo...">
-        <input type="text" id="chatRetroInput" placeholder="Mensaje... [Enter]" onkeypress="handleChatEnter(event)">
-    </div>
-</div>
-
-<script>
-// ==========================================================================
-// INTEGRACIÓN SUPABASE & CONFIG LOCAL
-// ==========================================================================
-const SUPABASE_URL = "https://tu-proyecto.supabase.co";
-const SUPABASE_ANON_KEY = "tu-anon-key-de-supabase";
-
-let supabaseEnabled = false;
-let supabase = null;
-
-if (SUPABASE_URL !== "https://tu-proyecto.supabase.co") {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    supabaseEnabled = true;
-}
-
-let appConfig = { title: "mel_sanctuary_matrix", bio: "505 // @_tomate_4", avatar: "", banner: "" };
-let userPosts = []; let chatMessages = [];
-let databasePhotos = []; 
-
-// Variables globales para la animación limpia de partículas
-let canvas, ctx;
-let dynamicParticles = [];
-let matrixDrops = [];
-
-window.onload = async function() {
-    loadLocalFallbacks();
-    applyMelChanges();
-    initAestheticEngine();
-    
-    if (supabaseEnabled) {
-        await syncDataWithCloud();
-        listenRealtime();
-    } else {
-        renderBoardPosts();
-        renderStellarPhotos();
-        renderModerationQueue();
-        loadPersistentMessages();
-    }
-};
-
-function loadLocalFallbacks() {
-    try { let sc = localStorage.getItem("mel_config"); if(sc) appConfig = JSON.parse(sc); } catch(e){}
-    try { let sp = localStorage.getItem("mel_posts"); userPosts = sp ? JSON.parse(sp) : []; } catch(e){}
-    try { let sch = localStorage.getItem("mel_chat"); chatMessages = sch ? JSON.parse(sch) : []; } catch(e){}
-    try { let sf = localStorage.getItem("mel_photos_v2"); databasePhotos = sf ? JSON.parse(sf) : []; } catch(e){}
-    
-    let nick = localStorage.getItem("mel_chat_nick");
-    if(nick) document.getElementById("chatNick").value = nick;
-}
-
-async function syncDataWithCloud() {
-    let { data: posts } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
-    if(posts) userPosts = posts;
-    let { data: chats } = await supabase.from('chats').select('*').order('created_at', { ascending: true });
-    if(chats) chatMessages = chats;
-    let { data: photos } = await supabase.from('photos_v2').select('*').order('created_at', { ascending: false });
-    if(photos) databasePhotos = photos;
-
-    renderBoardPosts();
-    renderStellarPhotos();
-    renderModerationQueue();
-    loadPersistentMessages();
-}
-
-function listenRealtime() {
-    supabase.channel('room_moderada')
-      .on('postgres_changes', { event: '*', filter: 'table=eq.chats' }, () => { syncDataWithCloud(); })
-      .on('postgres_changes', { event: '*', filter: 'table=eq.posts' }, () => { syncDataWithCloud(); })
-      .on('postgres_changes', { event: '*', filter: 'table=eq.photos_v2' }, () => { syncDataWithCloud(); })
-      .subscribe();
-}
-
-function uploadStellarPhoto(input) {
-    if (input.files && input.files[0]) {
-        let reader = new FileReader();
-        reader.onload = async function(e) {
-            let srcData = e.target.result;
-            let newPhotoObj = { id: Date.now().toString(), src: srcData, status: 'pendiente' };
-
-            if (supabaseEnabled) {
-                await supabase.from('photos_v2').insert([newPhotoObj]);
-            } else {
-                databasePhotos.unshift(newPhotoObj);
-                localStorage.setItem("mel_photos_v2", JSON.stringify(databasePhotos));
-                renderStellarPhotos();
-                renderModerationQueue();
-            }
-            
-            let notice = document.getElementById("uploadNotice");
-            notice.textContent = "[Foto enviada a revisión. Esperando aprobación de Mel]";
-            setTimeout(() => { notice.textContent = ""; }, 5000);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-function renderStellarPhotos() {
-    let zone = document.getElementById("stellarPhotoGridZone"); if(!zone) return; zone.innerHTML = "";
-    let approvedPhotos = databasePhotos.filter(p => p.status === 'aprobada');
-    
-    if(approvedPhotos.length === 0) {
-        zone.innerHTML = `<span style="color:var(--text-dim);">No hay reliquias públicas aún.</span>`;
-        return;
-    }
-    
-    approvedPhotos.forEach((photo, idx) => {
-        zone.innerHTML += `
-          <div class="stellar-photo-card">
-            <img src="${photo.src}">
-            <div class="stellar-photo-meta">reliquia_#${idx+1}</div>
-          </div>`;
-    });
-}
-
-function renderModerationQueue() {
-    let queueZone = document.getElementById("moderationQueueZone"); if(!queueZone) return; queueZone.innerHTML = "";
-    let pendingPhotos = databasePhotos.filter(p => p.status === 'pendiente');
-
-    if(pendingPhotos.length === 0) {
-        queueZone.innerHTML = `<span style="color:var(--text-dim); font-size:10px;">No hay fotos por aprobar.</span>`;
-        return;
-    }
-
-    pendingPhotos.forEach((photo) => {
-        queueZone.innerHTML += `
-          <div class="mod-photo-item" id="mod-item-${photo.id}">
-            <img src="${photo.src}">
-            <div style="display:flex; flex-direction:column; gap:2px;">
-                <button class="rococo-btn btn-approve" style="font-size:9px; padding:2px 4px;" onclick="approvePhoto('${photo.id}')">Aprobar</button>
-                <button class="rococo-btn btn-reject" style="font-size:9px; padding:2px 4px;" onclick="rejectPhoto('${photo.id}')">Eliminar</button>
-            </div>
-          </div>`;
-    });
-}
-
-async function approvePhoto(id) {
-    if (supabaseEnabled) {
-        await supabase.from('photos_v2').update({ status: 'aprobada' }).eq('id', id);
-        await syncDataWithCloud();
-    } else {
-        let index = databasePhotos.findIndex(p => p.id === id);
-        if(index !== -1) {
-            databasePhotos[index].status = 'aprobada';
-            localStorage.setItem("mel_photos_v2", JSON.stringify(databasePhotos));
-            renderStellarPhotos();
-            renderModerationQueue();
-        }
-    }
-}
-
-async function rejectPhoto(id) {
-    if (supabaseEnabled) {
-        await supabase.from('photos_v2').delete().eq('id', id);
-        await syncDataWithCloud();
-    } else {
-        databasePhotos = databasePhotos.filter(p => p.id !== id);
-        localStorage.setItem("mel_photos_v2", JSON.stringify(databasePhotos));
-        renderStellarPhotos();
-        renderModerationQueue();
-    }
-}
-
-function applyMelChanges() {
-    document.getElementById("liveTitle").textContent = appConfig.title;
-    document.getElementById("cfgTitle").value = appConfig.title;
-    if (appConfig.avatar) {
-        document.getElementById("txtAvatarPlace").style.display = "none";
-        let img = document.getElementById("imgAvatarView");
-        img.src = appConfig.avatar; img.style.display = "block";
-    }
-    if (appConfig.banner) {
-        document.getElementById("matrixHeader").style.backgroundImage = `url('${appConfig.banner}')`;
-    }
-}
-
-async function publi  --goth-charcoal: #FFDCE4;
-  --barbie-pink: #FEB1C7;
-  --porcelain-pink: #4B4B4B;
-  --bg-deep-velvet: #FFFDF9;
-  --surface-box: rgba(255, 240, 245, 0.9);
-  --text-main: #4B4B4B;
-  --input-bg: #FFFFFF;
-  --input-text: #4B4B4B;
-
-  --evt-goth: #D3BBDD;
-  --evt-coquette: #FFC0CB;
-  --evt-cyber: #87CEEB;
-}
-
-* { box-sizing: border-box; transition: background 0.3s, color 0.3s, border-color 0.3s; }
-
-body {
-  margin: 0; padding: 50px 0; 
-  background-color: var(--anime-black);
-  color: var(--text-main); 
-  font-family: var(--font-goth);
-  background-image: radial-gradient(circle at center, var(--goth-charcoal) 0%, var(--bg-deep-velvet) 100%);
-  display: flex; justify-content: center; overflow-x: hidden;
-  position: relative;
-}
-
-/* MARCOS DE ENCAJE KAOMOJI */
-body::before, body::after {
-  content: "o.O 3 ✦ -+-[+]--+-- ✦ 3 O.o o.O 3 ✦ -+-[+]--+-- ✦ 3 O.o o.O 3 ✦ -+-[+]--+-- ✦ 3 O.o";
-  position: fixed; left: 0; width: 100%; text-align: center;
-  font-size: 11px; color: var(--barbie-pink); pointer-events: none; opacity: 0.4;
-  z-index: 50;
-}
-body::before { top: 10px; }
-body::after { bottom: 10px; }
-
-/* CONTENEDOR MAESTRO */
-.rococo-cocoon-container {
-  width: 880px;
-  background: var(--anime-black);
-  border: 4px solid var(--barbie-pink);
-  outline: 8px solid var(--anime-black);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(254,177,199,0.15);
-  position: relative;
-  padding: 24px;
-  border-radius: 16px;
-  z-index: 10;
-}
-
-/* BANNER DE PORTADA */
-.sanctuary-header-banner {
-  width: 100%; height: 210px;
-  background-color: var(--goth-charcoal);
-  border: 2px solid var(--barbie-pink);
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  border-radius: 12px;
-}
-.banner-title-frame {
-  background: var(--surface-box);
-  border: 1px dashed var(--barbie-pink);
-  outline: 5px solid var(--surface-box);
-  padding: 12px 30px; text-align: center;
-  border-radius: 24px;
-}
-.banner-title-frame h1 {
-  margin: 0; font-family: var(--font-coquette); font-size: 34px;
-  color: var(--barbie-pink); text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
-}
-
-/* NAVEGACIÓN */
-.rococo-menu-bar { display: flex; justify-content: space-between; margin: 20px 0; gap: 6px; }
-.rococo-menu-link {
-  flex: 1; text-align: center; padding: 9px; background: var(--goth-charcoal);
-  border: 1px solid var(--barbie-pink); color: var(--text-main);
-  font-family: var(--font-vintage); font-style: italic; font-size: 12px;
-  text-decoration: none; border-radius: 8px; cursor: pointer; white-space: nowrap;
-}
-.rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; font-weight: bold; }
-
-/* VISTAS */
-.tab-view { display: none; }
-.tab-view.active-view { display: block; }
-
-/* CUADRÍCULA TRIPARTITA */
-.rococo-grid { display: grid; grid-template-columns: 210px 390px 220px; gap: 15px; }
-
-/* CAJAS CONTENEDORAS */
-.rococo-frame-box {
-  background: var(--surface-box);
-  border: 1px solid var(--goth-charcoal);
-  outline: 1px solid var(--barbie-pink); outline-offset: -5px;
-  padding: 18px 14px 14px 14px; position: relative; margin-bottom: 20px;
-  border-radius: 14px;
-}
-.rococo-frame-title {
-  font-family: var(--font-vintage); font-style: italic; font-weight: bold;
-  text-align: center; color: var(--barbie-pink); font-size: 14px;
-  margin: 5px 0 15px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 8px;
-  position: relative; z-index: 2;
-}
-
-/* CYBER MASCOTA (TAMAGOTCHI) */
-.tamagotchi-screen {
-  background: #152215; border: 3px inset #334433; border-radius: 8px;
-  padding: 10px; text-align: center; font-family: monospace; color: #77ff77;
-  text-shadow: 0 0 4px #22aa22; margin-bottom: 8px; min-height: 70px;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-}
-.tamagotchi-sprite { font-size: 22px; margin-bottom: 4px; animation: tamaFloat 1.5s ease-in-out infinite alternate; }
-@keyframes tamaFloat { from { transform: translateY(0); } to { transform: translateY(-4px); } }
-
-/* ELEMENTOS DE FORMULARIO & BOTONES */
-.music-user-input-row { display: flex; gap: 4px; margin-bottom: 8px; }
-.music-user-input-row input, .music-user-input-row select {
-  flex: 1; background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  color: var(--input-text); font-family: var(--font-goth); font-size: 10px; padding: 4px; border-radius: 4px;
-}
-.rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-family: var(--font-goth); font-size: 11px; padding: 5px; cursor: pointer; width: 100%; border-radius: 6px; }
-.rococo-btn:hover { background: var(--barbie-pink); color: #000; }
-
-/* PLAYLISTS COLAPSABLES */
-.genre-dropdown-container { margin-top: 10px; }
-.genre-header-trigger {
-  background: var(--goth-charcoal); border: 1px dashed var(--barbie-pink);
-  color: var(--text-main); font-size: 11px; padding: 5px; cursor: pointer;
-  margin-top: 4px; border-radius: 4px; text-align: left; font-weight: bold;
-}
-.genre-content-list { display: none; padding: 6px; background: rgba(0,0,0,0.2); border: 1px solid var(--goth-charcoal); border-top:none; border-radius: 0 0 6px 6px; }
-.genre-content-list.open { display: block; }
-
-/* FEED DE BITÁCORA */
-.rococo-board-scroller { max-height: 380px; overflow-y: auto; padding-right: 4px; }
-.rococo-post-node { background: var(--input-bg); border: 1px solid var(--barbie-pink); padding: 12px; margin-bottom: 16px; font-size: 11px; border-radius: 10px; }
-
-/* INTERFAZ DEL CALENDARIO */
-.victorian-calendar-wrapper { max-width: 540px; margin: 0 auto; background: rgba(0,0,0,0.2); border: 2px double var(--barbie-pink); padding: 20px; border-radius: 16px; }
-.calendar-header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-family: var(--font-vintage); }
-.calendar-grid-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
-.calendar-cell-node { 
-  background: var(--input-bg); border: 1px solid var(--goth-charcoal); 
-  padding: 12px 0; font-size: 10px; border-radius: 6px; cursor: pointer; position: relative;
-}
-.calendar-cell-node:hover { background: var(--goth-charcoal); border-color: var(--barbie-pink); }
-.calendar-cell-node.has-event { border: 1px solid var(--barbie-pink); box-shadow: 0 0 8px rgba(254,177,199,0.5); }
-.calendar-cell-node.has-event::after {
-  content: "✦"; position: absolute; top: 2px; right: 4px; font-size: 8px; color: var(--barbie-pink);
-}
-.event-display-scroll { 
-  background: var(--input-bg); border: 1px dashed var(--barbie-pink); 
-  padding: 15px; margin-top: 15px; border-radius: 10px; font-size: 11px; 
-  font-family: var(--font-goth); text-align: left; 
-}
-.event-creator-form { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-.event-creator-form input, .event-creator-form select {
-  background: var(--anime-black); border: 1px solid var(--barbie-pink); color: #fff;
-  padding: 6px; font-size: 11px; font-family: var(--font-goth); border-radius: 4px;
-}
-
-/* SUB-MÓDULO CÓSMICO */
-.cosmic-read-box {
-  background: rgba(0, 0, 0, 0.4); border: 1px double var(--evt-cyber);
-  padding: 10px; margin-top: 8px; border-radius: 6px; font-size: 10.5px; line-height: 14px;
-}
-
-/* EFECTOS VISUALES CLICKS */
-.click-particle {
-  position: absolute; pointer-events: none; z-index: 99999;
-  font-family: var(--font-goth); font-size: 14px; animation: clickRise 1.2s ease-out forwards;
-}
-@keyframes clickRise {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-60px) scale(1.3); opacity: 0; }
-}
-</style>
-</head>
-<body>
-
-<div class="rococo-cocoon-container">
-  <!-- ENCABEZADO -->
-  <header class="sanctuary-header-banner">
-    <div class="banner-title-frame">
-      <h1 id="liveTitle">mel_sanctuary_matrix</h1>
-      <span style="font-size:10px; letter-spacing:2px; color:var(--barbie-pink);">✦ Matrix & Astral Multi-Calendar System v11 ✦</span>
-    </div>
-  </header>
-
-  <!-- NAVEGACIÓN GENERAL -->
-  <nav class="rococo-menu-bar">
-    <div id="tabMainLink" class="rococo-menu-link active-tab" onclick="switchVirtualTab('main')">✦ Cuaderno Central</div>
-    <a href="https://www.instagram.com/its.mell456?igsh=OHBsMWdhcXZtczJm" target="_blank" class="rococo-menu-link">Instagram</a>
-    <a href="https://www.tiktok.com/@_tomate_4?_r=1&_t=ZS-97DcZ6o3U6X" target="_blank" class="rococo-menu-link">TikTok</a>
-    <div id="tabCalendarLink" class="rococo-menu-link" onclick="switchVirtualTab('calendar')">(✦) Terminal Cósmica & Fechas</div>
-  </nav>
-
-  <!-- VISTA 1: CUADERNO CENTRAL / BITÁCORA -->
-  <div id="viewMainGrid" class="tab-view active-view">
-    <div class="rococo-grid">
-      <!-- COLUMNA IZQUIERDA: IDENTIDAD & MASCOTA -->
-      <aside>
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">identidad</div>
-          <div style="text-align:center; font-size:12px; font-weight:bold; color:var(--barbie-pink);">its.mell456</div>
-          <div style="text-align:center; font-size:10px; font-style:italic;">505 // @_tomate_4</div>
-        </div>
-
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">cyber mascota v11</div>
-          <div class="tamagotchi-screen">
-            <div class="tamagotchi-sprite" id="tamaPet">(o.o)</div>
-            <div style="font-size:9px;" id="tamaStatus">Estado: Estable</div>
-          </div>
-          <div style="display:flex; gap:4px;">
-            <button class="rococo-btn" style="font-size:9px; padding:3px;" onclick="interactTama('feed')">Alimentar</button>
-            <button class="rococo-btn" style="font-size:9px; padding:3px;" onclick="interactTama('love')">Mimar</button>
-          </div>
-        </div>
-      </aside>
-
-      <!-- COLUMNA CENTRAL: RED / PUBLICACIONES -->
-      <main>
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">bitácora de transmisiones</div>
-          <div class="music-user-input-row">
-            <input type="text" id="postTextIn" placeholder="Inyectar pensamientos a la red...">
-            <button class="rococo-btn" style="width:75px;" onclick="publishUserPostNode()">Enviar</button>
-          </div>
-          <div class="rococo-board-scroller" id="boardScrollerZone"></div>
-        </div>
-      </main>
-
-      <!-- COLUMNA DERECHA: MATRIZ SÓNICA / MUSICA -->
-      <aside>
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">matriz sónica</div>
-          <div class="music-user-input-row" style="flex-direction:column; gap:4px;">
-            <input type="text" id="liveMusicLinkIn" placeholder="URL de YouTube...">
-            <select id="genreSelectorIn">
-              <option value="cyber">Cyber Goth</option>
-              <option value="witch">Witch House</option>
-              <option value="coquette">Rococo Core</option>
-            </select>
-            <button class="rococo-btn" onclick="addLinkToDynamicPlaylist()">Inyectar Link</button>
-          </div>
-
-          <div class="genre-dropdown-container">
-            <div class="genre-header-trigger" onclick="toggleGenreCollapse('cyberList')">▼ Cyber Goth Tracks</div>
-            <div class="genre-content-list" id="cyberList"></div>
-            <div class="genre-header-trigger" onclick="toggleGenreCollapse('witchList')">▼ Witch House Tracks</div>
-            <div class="genre-content-list" id="witchList"></div>
-            <div class="genre-header-trigger" onclick="toggleGenreCollapse('coquetteList')">▼ Rococo Core Tracks</div>
-            <div class="genre-content-list" id="coquetteList"></div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <!-- VISTA 2: TERMINAL CRONOLÓGICA & CÓSMICA -->
-  <div id="viewCalendarGrid" class="tab-view">
-    <div class="rococo-frame-box" style="max-width:100%;">
-      <div class="rococo-frame-title">relicario cronológico & mapa planetario</div>
-      <div class="victorian-calendar-wrapper">
-        <div class="calendar-header-nav">
-          <button class="rococo-btn" style="width:40px;" onclick="moveCalendarMonth(-1)">&lt;</button>
-          <span id="calendarMonthTitle" style="font-weight:bold; color:var(--barbie-pink);">Sincronizando...</span>
-          <button class="rococo-btn" style="width:40px;" onclick="moveCalendarMonth(1)">&gt;</button>
-        </div>
-        <div class="calendar-grid-days" id="calendarGridZone"></div>
-        
-        <!-- PANEL DE CONTROL MULTIFUNCIÓN + LECTURAS ASTRALES -->
-        <div class="event-display-scroll" id="eventDetailOutput">
-          Selecciona una coordenada del calendario para desplegar la consola multifunción y leer el estado de los astros.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- LÓGICA DE CONTROL (JAVASCRIPT) -->
-<script>
-let activeMonth = 5; // Junio
-let activeYear = 2026;
-let selectedDay = null;
-
-const clickSymbols = ["✦", "++", "x_x", "txt", "shadow", "🎀", "🖤", "(*_*)"];
-
-// BASE DE DATOS ASTROLÓGICA INTEGRADA
-const zodiacData = {
-  5: { sign: "Géminis / Cáncer", prediction: "Las corrientes de Mercurio aceleran tus pensamientos en la red. Momento perfecto para reprogramar prioridades y blindar secretos de miradas ajenas." },
-  6: { sign: "Cáncer / Leo", prediction: "La influencia lunar intensifica la sensibilidad estética. Tus creaciones ganan un brillo místico; no temas aislarte en tu santuario si el entorno se sobrecarga." },
-  7: { sign: "Leo / Virgo", prediction: "El Sol entra en alineación directa potenciando tu magnetismo virtual. Filtra las influencias externas y enfócate en tus propios códigos." }
-};
-
-const planetPositions = [
-  "Venus en cuadratura con Plutón: Alta vibración de melancolía gótica y magnetismo.",
-  "Mercurio Retrógrado en zona cibernética: Evita malentendidos en tus redes y resguarda datos.",
-  "Luna Llena en conjunción con Neptuno: Sueños lúcidos, ideas etéreas y transiciones hiper-sensibles.",
-  "Marte en tránsito por la Constelación de Orión: Energía combativa refinada para estructurar nuevos proyectos.",
-  "Saturno en aspecto armónico con Urano: Cambios lentos pero inquebrantables en tu arquitectura mental."
-];
-
-// REGISTROS DE EVENTOS MULTIFUNCIÓN
-let multiFunctionCalendar = {
-  "2026-5-15": { 
-    motive: "Activación del Nexo Estelar V11", 
-    style: "cyber",
-    track: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    mood: "(✦_✦) Conexión Estelar Activa"
-  }
-};
-
-let userPosts = [{ text: "Consola astrológica y cuaderno central acoplados con éxito.", likes: 1, comments: [] }];
-let categorisedPlaylist = { cyber: [], witch: [], coquette: [] };
-
-window.onload = function() {
-  document.body.addEventListener('click', function(e) {
-    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
-    createClickKaomojiSplash(e.pageX, e.pageY);
-  });
-  renderBoardPosts();
-  buildInteractiveCalendar();
-};
-
-/* EFECTOS DE SPLASH */
-function createClickKaomojiSplash(x, y) {
-  for(let i=0; i<3; i++) {
-    let p = document.createElement('div');
-    p.className = 'click-particle';
-    p.textContent = clickSymbols[Math.floor(Math.random() * clickSymbols.length)];
-    p.style.left = (x + (Math.random() * 40 - 20)) + 'px';
-    p.style.top = (y + (Math.random() * 40 - 20)) + 'px';
-    p.style.color = 'var(--barbie-pink)';
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 1200);
-  }
-}
-
-/* NAVEGACIÓN ENTRE VISTAS */
-function switchVirtualTab(target) {
-  document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active-view'));
-  document.querySelectorAll('.rococo-menu-link').forEach(el => el.classList.remove('active-tab'));
-  if(target === 'main') {
-    document.getElementById("viewMainGrid").classList.add("active-view");
-    document.getElementById("tabMainLink").classList.add("active-tab");
-  } else if(target === 'calendar') {
-    document.getElementById("viewCalendarGrid").classList.add("active-view");
-    document.getElementById("tabCalendarLink").classList.add("active-tab");
-  }
-}
-
-/* CONTROL DE MASCOTA CYBER */
-function interactTama(action) {
-  let pet = document.getElementById("tamaPet");
-  let status = document.getElementById("tamaStatus");
-  if(action === 'feed') {
-    pet.textContent = "( ✦_✦ )";
-    status.textContent = "Estado: Energía al 100%";
-  } else {
-    pet.textContent = "(>.<)b";
-    status.textContent = "Estado: Datos de afecto asimilados";
-  }
-  setTimeout(() => { pet.textContent = "(o.o)"; status.textContent = "Estado: Estable"; }, 2500);
-}
-
-/* CONTROL DE PLAYLIST EN RED */
-function toggleGenreCollapse(id) { document.getElementById(id).classList.toggle('open'); }
-
-function addLinkToDynamicPlaylist() {
-  let urlIn = document.getElementById("liveMusicLinkIn").value.trim();
-  let genre = document.getElementById("genreSelectorIn").value;
-  if(!urlIn) return;
-  let title = "✦ Track (" + urlIn.substring(urlIn.length - 5) + ")";
-  categorisedPlaylist[genre].push({ title: title, url: urlIn });
-  document.getElementById("liveMusicLinkIn").value = "";
-  renderCategorisedPlaylist();
-}
-
-function renderCategorisedPlaylist() {
-  ['cyber', 'witch', 'coquette'].forEach(g => {
-    let box = document.getElementById(`${g}List`); box.innerHTML = "";
-    categorisedPlaylist[g].forEach(item => {
-      box.innerHTML += `<a href="${item.url}" target="_blank" style="display:block; font-size:10px; color:var(--text-main); margin:3px 0; text-decoration:none;">${item.title}</a>`;
-    });
-  });
-}
-
-/* CONTROL DE PUBLICACIONES INTERNAS */
-function publishUserPostNode() {
-  let txt = document.getElementById("postTextIn").value; if(!txt.trim()) return;
-  userPosts.unshift({ text: txt });
-  document.getElementById("postTextIn").value = "";
-  renderBoardPosts();
-}
-
-function renderBoardPosts() {
-  let box = document.getElementById("boardScrollerZone"); box.innerHTML = "";
-  userPosts.forEach(post => { box.innerHTML += `<div class="rococo-post-node"><div>${post.text}</div></div>`; });
-}
-
-/* NÚCLEO DEL CALENDARIO & GENERADOR ASTRAL MULTIFUNCIÓN */
-function buildInteractiveCalendar() {
-  let titleEl = document.getElementById("calendarMonthTitle");
-  titleEl.textContent = `Matriz Temporal: ${activeMonth + 1} / ${activeYear}`;
-  let grid = document.getElementById("calendarGridZone"); grid.innerHTML = "";
-
-  for(let day = 1; day <= 30; day++) {
-    let dateKey = `${activeYear}-${activeMonth}-${day}`;
-    let hasEvtClass = multiFunctionCalendar[dateKey] ? "has-event" : "";
-    grid.innerHTML += `<div class="calendar-cell-node ${hasEvtClass}" id="cell-d-${day}" onclick="focusCalendarCellNode(${day})">${day}</div>`;
-  }
-}
-
-function focusCalendarCellNode(day) {
-  selectedDay = day;
-  let dateKey = `${activeYear}-${activeMonth}-${day}`;
-  let currentData = multiFunctionCalendar[dateKey];
-  let output = document.getElementById("eventDetailOutput");
-
-  // Predicciones algorítmicas integradas según el día seleccionado
-  let zodiacInfo = zodiacData[activeMonth] || { sign:  --goth-charcoal: #FFDCE4;
-  --barbie-pink: #FEB1C7;
-  --porcelain-pink: #4B4B4B;
-  --bg-deep-velvet: #FFFDF9;
-  --surface-box: rgba(255, 240, 245, 0.9);
-  --text-main: #4B4B4B;
-  --input-bg: #FFFFFF;
-  --input-text: #4B4B4B;
-  --chat-header-bg: #FEB1C7;
-
-  --evt-goth: #D3BBDD;
-  --evt-coquette: #FFC0CB;
-  --evt-destiny: #FFFACD;
-}
-
-* { box-sizing: border-box; transition: background 0.3s, color 0.3s, border-color 0.3s; }
-
-body {
-  margin: 0; padding: 50px 0; 
-  background-color: var(--anime-black);
-  color: var(--text-main); 
-  font-family: var(--font-goth);
-  background-image: radial-gradient(circle at center, var(--goth-charcoal) 0%, var(--bg-deep-velvet) 100%);
-  display: flex; justify-content: center; overflow-x: hidden;
-}
-
-/* MARCOS DE ENCAJE KAOMOJI GENERALES */
-body::before, body::after {
-  content: "o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o";
-  position: fixed; left: 0; width: 100%; text-align: center;
-  font-size: 11px; color: var(--barbie-pink); pointer-events: none; opacity: 0.4;
-  z-index: 50;
-}
-body::before { top: 10px; }
-body::after { bottom: 10px; }
-
-/* CONTENEDOR PRINCIPAL SEMIREDONDO */
-.rococo-cocoon-container {
-  width: 880px;
-  background: var(--anime-black);
-  border: 4px solid var(--barbie-pink);
-  outline: 8px solid var(--anime-black);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(254,177,199,0.15);
-  position: relative;
-  padding: 24px;
-  border-radius: 16px;
-}
-.rococo-cocoon-container::before {
-  content: "}-v-{ (._.) }-v-{ (._.) }-v-{ (._.) }-v-{ (._.) }-v-{ (._.) }-v-{ (._.) }-v-{";
-  position: absolute; top: -18px; left: 0; width: 100%;
-  text-align: center; font-size: 11px; color: var(--barbie-pink);
-  letter-spacing: 4px; pointer-events: none;
-}
-
-/* PORTADA */
-.sanctuary-header-banner {
-  width: 100%; height: 210px;
-  background-color: var(--goth-charcoal);
-  border: 2px solid var(--barbie-pink);
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  border-radius: 12px;
-}
-.banner-title-frame {
-  background: var(--surface-box);
-  border: 1px dashed var(--barbie-pink);
-  outline: 5px solid var(--surface-box);
-  padding: 12px 30px; text-align: center;
-  border-radius: 24px;
-}
-.banner-title-frame h1 {
-  margin: 0; font-family: var(--font-coquette); font-size: 34px;
-  color: var(--barbie-pink); text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
-}
-
-/* CONSOLA SECRETA MEL */
-.mel-admin-trigger {
-  position: absolute; top: 12px; right: 12px; z-index: 100;
-  background: var(--anime-black); border: 1px solid var(--barbie-pink);
-  color: var(--barbie-pink); padding: 6px 12px; font-size: 11px; cursor: pointer;
-  border-radius: 20px; font-family: var(--font-goth); font-weight: bold;
-}
-.mel-secret-panel {
-  display: none; background: var(--bg-deep-velvet);
-  border: 2px dashed var(--barbie-pink); padding: 20px; margin: 15px 0;
-  border-radius: 12px; font-size: 12px;
-}
-.panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.panel-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
-.panel-row input, .panel-row textarea, .panel-row select {
-  background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  color: var(--input-text); padding: 6px; font-family: var(--font-goth); font-size: 11px; border-radius: 6px;
-}
-
-/* MENÚ DE PESTAÑAS */
-.rococo-menu-bar { display: flex; justify-content: space-between; margin: 20px 0; gap: 6px; }
-.rococo-menu-link {
-  flex: 1; text-align: center; padding: 9px; background: var(--goth-charcoal);
-  border: 1px solid var(--barbie-pink); color: var(--text-main);
-  font-family: var(--font-vintage); font-style: italic; font-size: 12px;
-  text-decoration: none; border-radius: 8px; cursor: pointer; white-space: nowrap;
-}
-.rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; font-weight: bold; }
-
-.tab-view { display: none; }
-.tab-view.active-view { display: block; }
-
-.rococo-grid { display: grid; grid-template-columns: 210px 390px 220px; gap: 15px; }
-
-/* CAJAS MARCO EXTERNAS */
-.rococo-frame-box {
-  background: var(--surface-box);
-  border: 1px solid var(--goth-charcoal);
-  outline: 1px solid var(--barbie-pink); outline-offset: -5px;
-  padding: 18px 14px 14px 14px; position: relative; margin-bottom: 20px;
-  border-radius: 14px;
-}
-.rococo-frame-box::after {
-  content: "v--v--v--v";
-  position: absolute; bottom: -8px; left: 0; width: 100%; text-align: center;
-  font-size: 9px; color: var(--barbie-pink); opacity: 0.7;
-}
-
-.rococo-frame-title {
-  font-family: var(--font-vintage); font-style: italic; font-weight: bold;
-  text-align: center; color: var(--barbie-pink); font-size: 14px;
-  margin: 5px 0 15px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 8px;
-  position: relative; z-index: 2;
-}
-
-/* AVATAR */
-.cameo-avatar-wrapper {
-  width: 110px; height: 110px; margin: 0 auto 10px auto;
-  border-radius: 50%; border: 3px double var(--barbie-pink); overflow: hidden;
-  background: var(--bg-deep-velvet); display: flex; align-items: center; justify-content: center; cursor: pointer;
-}
-.cameo-avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; display: none; }
-.cameo-avatar-wrapper .placeholder { font-size: 10px; text-align: center; color: var(--barbie-pink); }
-
-.music-user-input-row { display: flex; gap: 4px; margin-bottom: 8px; }
-.music-user-input-row input {
-  flex: 1; background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  color: var(--input-text); font-family: var(--font-goth); font-size: 10px; padding: 4px; border-radius: 4px;
-}
-
-/* QUAD HOLOGRAMAS CON MATRIZ ASCII (51367.jpg SUBTENUE Y ELEGANTE) */
-.holo-matrix-4x4 {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 8px; width: 100%; min-height: 240px;
-}
-.holo-slot {
-  background: #050204; border: 1px solid var(--barbie-pink);
-  border-radius: 8px; overflow: hidden; display: flex;
-  align-items: center; justify-content: center; padding: 4px; font-size: 11px;
-  color: var(--barbie-pink); position: relative;
-}
-
-.ascii-holo-container {
-  font-family: monospace;
-  font-size: 5px;
-  line-height: 4.5px;
-  letter-spacing: 1px;
-  text-align: center;
-  white-space: pre;
-  color: #ff66b2;
-  text-shadow: 0 0 1px #ff007f; /* Neón sutil ajustado para no desencajar */
-  animation: holoGlitch 2.5s infinite steps(5), holoFlicker 0.15s infinite;
-  user-select: none;
-}
-
-@keyframes holoGlitch {
-  0%, 100% { transform: translate(0, 0) skew(0deg); filter: hue-rotate(0deg); }
-  20% { transform: translate(-1px, 1px) skew(-1deg); filter: brightness(1.1); }
-  40% { transform: translate(1px, -1px) skew(1deg); }
-  60% { transform: translate(-0.5px, -0.5px) skew(0deg); filter: hue-rotate(10deg); }
-  80% { transform: translate(1px, 0.5px) skew(1deg); }
-}
-
-@keyframes holoFlicker {
-  0%, 100% { opacity: 0.95; }
-  50% { opacity: 0.85; }
-}
-
-/* MURO / SCROLLER */
-.rococo-board-scroller { max-height: 380px; overflow-y: auto; padding-right: 4px; }
-.rococo-post-node {
-  background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  padding: 12px; margin-bottom: 16px; font-size: 11px; border-radius: 10px;
-}
-.post-social-bar { display: flex; gap: 8px; margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--barbie-pink); }
-.react-btn { background: none; border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 2px 6px; cursor: pointer; border-radius: 4px; }
-.comment-box { margin-top: 8px; }
-.comment-stream { font-size: 10px; display: flex; flex-direction: column; gap: 4px; max-height: 90px; overflow-y: auto; margin-bottom: 5px; }
-.comment-line { padding: 3px; border-radius: 4px; background: rgba(0,0,0,0.15); border-left: 3px solid var(--barbie-pink); }
-.comment-input-row { display: flex; gap: 4px; }
-.comment-in { flex: 1; background: var(--anime-black); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 4px; font-family: var(--font-goth); border-radius: 4px; }
-
-/* OPINIONES Y RESEÑAS */
-.opinions-stream { max-height: 180px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
-.opinion-node { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--barbie-pink); padding: 8px; border-radius: 6px; font-size: 10px; }
-
-/* GALERÍA DE FOTOS */
-.stellar-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-height: 500px; overflow-y: auto; padding: 10px; }
-.stellar-photo-card { background: var(--input-bg); border: 1px solid var(--barbie-pink); padding: 6px; border-radius: 10px; text-align: center; }
-.stellar-photo-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 6px; border: 1px solid var(--goth-charcoal); }
-.stellar-photo-meta { font-size: 10px; margin-top: 4px; color: var(--barbie-pink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-/* CALENDARIO INTERACTIVO */
-.victorian-calendar-wrapper {
-  max-width: 520px; margin: 0 auto; background: rgba(0,0,0,0.2); border: 2px double var(--barbie-pink); padding: 20px; border-radius: 16px;
-}
-.calendar-header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-family: var(--font-vintage); }
-.calendar-grid-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
-.calendar-day-header { font-size: 10px; font-weight: bold; color: var(--barbie-pink); padding-bottom: 5px; border-bottom: 1px dashed var(--goth-charcoal); }
-
-.calendar-cell-node {
-  background: var(--input-bg); border: 1px solid var(--goth-charcoal); padding: 12px 0; font-size: 10px; border-radius: 6px; cursor: pointer; position: relative;
-}
-.calendar-cell-node:hover { background: var(--goth-charcoal); border-color: var(--barbie-pink); }
-.calendar-cell-node.empty-cell { background: transparent; border: none; cursor: default; }
-
-.calendar-cell-node.evt-goth-style { background: rgba(162, 123, 202, 0.25); border: 1px solid var(--evt-goth); font-weight: bold; box-shadow: 0 0 8px var(--evt-goth); }
-.calendar-cell-node.evt-coquette-style { background: rgba(254, 177, 199, 0.25); border: 1px solid var(--evt-coquette); font-weight: bold; box-shadow: 0 0 8px var(--evt-coquette); }
-.calendar-cell-node.evt-destiny-style { background: rgba(243, 229, 171, 0.25); border: 1px solid var(--evt-destiny); font-weight: bold; box-shadow: 0 0 8px var(--evt-destiny); }
-
-.event-display-scroll { background: var(--input-bg); border: 1px dashed var(--barbie-pink); padding: 12px; margin-top: 15px; border-radius: 10px; font-size: 11px; font-family: var(--font-goth); text-align: center; }
-
-.rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-family: var(--font-goth); font-size: 11px; padding: 5px; cursor: pointer; width: 100%; border-radius: 6px; }
-.rococo-btn:hover { background: var(--barbie-pink); color: #000; }
-.hidden-uploader { display: none; }
-
-/* GIFS FLOTANTES */
-.side-gif { position: fixed; top: 62%; transform: translateY(-50%); z-index: 40; width: 65px; height: auto; pointer-events: none; opacity: 0.8; }
-.left-gif { left: 20px; }
-.right-gif { right: 20px; }
-
-@media (max-width: 1024px) {
-  .side-gif { display: none; }
-}
-
-/* PLAYLIST DINÁMICA DE LINKS */
-.playlist-links-wrapper {
-  max-height: 120px; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; margin-top: 10px; padding: 4px;
-}
-.playlist-item-link {
-  font-size: 11px; color: var(--text-main); text-decoration: none; border-left: 2px solid var(--barbie-pink); padding-left: 6px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.playlist-item-link:hover { color: var(--barbie-pink); text-decoration: underline; }
-
-/* PANEL EXCLUSIVO LOGS DE HORAS OCULTAS */
-.mel-exclusive-log {
-  background: rgba(0,0,0,0.4); border: 1px solid var(--barbie-pink); max-height: 150px; overflow-y: auto; padding: 8px; border-radius: 6px; font-family: monospace; font-size: 10px; margin-top: 8px;
-}
-
-/* PARTÍCULAS */
-.kaomoji-particle { position: fixed; pointer-events: none; z-index: 9999; white-space: nowrap; }
-@keyframes fall { to { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
-
-/* CHAT RETRO CON PERSISTENCIA */
-.chat-dock { position: fixed; bottom: 0; right: 40px; display: flex; align-items: flex-end; gap: 12px; z-index: 10000; }
-.chat-tab { background: var(--chat-header-bg); color: var(--text-main); padding: 8px 16px; border-radius: 8px 8px 0 0; font-family: var(--font-goth); font-size: 11px; font-weight: bold; cursor: pointer; border: 1px solid var(--barbie-pink); box-shadow: 0px -2px 6px rgba(0,0,0,0.3); }
-.chat-window { width: 280px; background: var(--anime-black); border: 2px solid var(--barbie-pink); border-radius: 8px 8px 0 0; font-family: var(--font-goth); box-shadow: -2px -2px 12px rgba(0,0,0,0.4); }
-.chat-header { background: var(--chat-header-bg); color: var(--text-main); padding: 8px; font-size: 11px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border-radius: 6px 6px 0 0; border-bottom: 1px solid var(--barbie-pink); }
-.chat-body { height: 230px; padding: 8px; overflow-y: auto; font-size: 11px; background: var(--bg-deep-velvet); display: flex; flex-direction: column; gap: 6px; }
-.chat-msg-line { margin: 0; padding: 6px 8px; border-radius: 6px; line-height: 1.3; word-wrap: break-word; }
-.chat-msg-line.friend { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); align-self: flex-start; max-width: 85%; color: var(--porcelain-pink); }
-.chat-msg-line.user { background: var(--surface-box); border: 1px dashed var(--barbie-pink); align-self: flex-end; max-width: 85%; color: var(--barbie-pink); }
-.chat-input-container { display: flex; border-top: 1px solid var(--barbie-pink); background: var(--input-bg); }
-.chat-nick { width: 80px; padding: 6px; border: none; border-right: 1px solid var(--barbie-pink); font-size: 10px; background: var(--anime-black); color: var(--barbie-pink); outline: none; text-align: center; }
-.chat-input { flex: 1; padding: 6px; border: none; font-size: 11px; background: var(--input-bg); color: var(--input-text); outline: none; }
-.hidden { display: none; }
-</style>
-</head>
-<body>
-
-<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif left-gif" alt="decoración">
-<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif right-gif" alt="decoración">
-
-<div class="rococo-cocoon-container">
-  <!-- BOTÓN DE ACCESO AL PANEL SECRETO -->
-  <button class="mel-admin-trigger" onclick="toggleAdminPanel()">[-] Panel de Control Mel</button>
-
-  <!-- PANEL DE CONFIGURACIÓN SECRETA (VISTA EXCLUSIVA DE MEL) -->
-  <div class="mel-secret-panel" id="secretPanel">
-    <h3 style="margin:0 0 12px 0; font-family:var(--font-vintage); color:var(--barbie-pink); text-align:center;">(o.o) Consola de Inyección & Modos Duales</h3>
-    
-    <!-- REGISTRO DE HORAS PARA MENSAJES ANÓNIMOS -->
-    <div style="background: rgba(254,177,199,0.08); border: 1px solid var(--barbie-pink); padding: 12px; margin-bottom: 15px; border-radius: 8px;">
-      <h4 style="margin: 0 0 6px 0; color: var(--barbie-pink); font-size: 11px;">👁️ Historial de Mensajes Anónimos + Marcas de Tiempo (Solo Mel)</h4>
-      <div class="mel-exclusive-log" id="melSecretTimeLog">
-        Cargando líneas de la red...
-      </div>
-    </div>
-
-    <div style="text-align: center; margin-bottom: 15px; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px;">
-      <span style="color:var(--barbie-pink); font-weight:bold; margin-right:10px;">Cambiar Estética Visual:</span>
-      <select id="cfgThemeSelector" onchange="switchThemeMode(this.value)" style="background:var(--input-bg); color:var(--input-text); border:1px solid var(--barbie-pink); padding:3px;">
-        <option value="dark">+(-) Estilo Dark Goth</option>
-        <option value="pastel">+(v) Estilo Pastel Coquette</option>
-      </select>
-    </div>
-
-    <div class="panel-grid">
-      <div>
-        <h4 style="margin:5px 0; color:var(--barbie-pink);">Configuración Base</h4>
-        <div class="panel-row"><label>Título de la Matriz:</label><input type="text" id="cfgTitle" value="mel_sanctuary_matrix"></div>
-        <div class="panel-row"><label>Biografía:</label><textarea id="cfgBio" rows="2">505 // @_tomate_4</textarea></div>
-        <div class="panel-row"><label>Música Reproductor Principal (YT Link):</label><input type="text" id="cfgYoutubeId" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></div>
-        <button class="rococo-btn" style="background:var(--barbie-pink); color:#000; font-weight:bold;" onclick="saveConfigChanges()">Guardar Configuración Base</button>
-      </div>
-      <div>
-        <h4 style="margin:5px 0; color:var(--barbie-pink);">Inyección Adicional</h4>
-        <div class="panel-row"><label>Holograma Secundario 2:</label><input type="text" id="cfgHolo2" value="+(o.o)+"></div>
-        <div class="panel-row"><label>Holograma Secundario 3:</label><input type="text" id="cfgHolo3" value="}-v-{"></div>
-        <button class="rococo-btn" onclick="saveHoloChanges()">Actualizar Secundarios</button>
-      </div>
-    </div>
-  </div>
-
-  <header class="sanctuary-header-banner" id="mainBanner">
-    <div class="banner-title-frame">
-      <h1 id="liveTitle">mel_sanctuary_matrix</h1>
-      <span style="font-size:10px; letter-spacing:2px; color:var(--barbie-pink);">✦ Kaomoji Relic Matrix v7 ✦</span>
-    </div>
-  </header>
-
-  <nav class="rococo-menu-bar">
-    <div id="tabMainLink" class="rococo-menu-link active-tab" onclick="switchVirtualTab('main')">✦ Cuaderno Central</div>
-    <a href="https://www.instagram.com/its.mell456?igsh=OHBsMWdhcXZtczJm" target="_blank" class="rococo-menu-link">Instagram</a>
-    <a href="https://www.tiktok.com/@_tomate_4?_r=1&_t=ZS-97DcZ6o3U6X" target="_blank" class="rococo-menu-link">TikTok</a>
-    <div id="tabStellarLink" class="rococo-menu-link" onclick="switchVirtualTab('stellar')">✦ Archivo Estelar</div>
-    <div id="tabCalendarLink" class="rococo-menu-link" onclick="switchVirtualTab('calendar')">(⭒_⭒) Fechas Místicas</div>
-  </nav>
-
-  <!-- PESTAÑA PRINCIPAL -->
-  <div id="viewMainGrid" class="tab-view active-view">
-    <div class="rococo-grid">
-      <aside>
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">identidad</div>
-          <div class="cameo-avatar-wrapper" onclick="triggerClick('fileAvatar')">
-            <span class="placeholder" id="txtAvatarPlace">[ Rostro ]</span>
-            <img id="imgAvatarView" src="" alt="Avatar">
-          </div>
-          <input type="file" id="fileAvatar" class="hidden-uploader" accept="image/*" onchange="loadPersonalAvatar(this)">
-          <div style="text-align:center; font-size:12px; font-weight:bold; color:var(--barbie-pink);">its.mell456</div>
-          <div style="text-align:center; font-size:10px; font-style:italic; margin-top:4px; margin-bottom:8px;" id="liveBio">505 // @_tomate_4</div>
-          <button class="rococo-btn" style="font-size:9px; padding:4px;" onclick="triggerMatrixOracle()">[o] Consultar Oráculo</button>
-          <div id="oracleResultBox" style="font-size:9px; text-align:center; color:var(--barbie-pink); margin-top:6px; font-weight:bold;"></div>
-        </div>
-
-        <!-- HOLOGRAMAS CON EL ARTE ASCII DE 51367.JPG -->
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">hologramas de la red</div>
-          <div class="holo-matrix-4x4">
-            <div class="holo-slot" style="grid-column: span 2;">
-              <div class="ascii-holo-container">
-     .---.         .---.
-    /     \  _._  /     \
-   \_..---.-'   '-.---.._/
-  /  .:::./       \.:::.  \
-  | :::./           \.::: |
-  \_::/  ____   ____  \::_/
-    |/  / __ \ / __ \  \|
-    (   \ :: / \ :: /   )
-     \   '--'   '--'   /
-   .-'-.           .-'-.
-  /     '--.---.--'     \
- /   /\             /\   \
-|   /  \ _       _ /  \   |
- \_/    ' '-...-' '    \_/
-       |  | | | |  |
-       |  |_|_|_|  |
-              </div>
-            </div>
-            <div class="holo-slot" id="slotHolo2">+(o.o)+</div>
-            <div class="holo-slot" id="slotHolo3">}-v-{</div>
-          </div>
-        </div>
-      </aside>
-
-      <main>
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">bitácora & transmisiones</div>
-          <div class="music-user-input-row">
-            <input type="text" id="postTextIn" placeholder="¿Qué secreto cruza la red hoy?">
-            <button class="rococo-btn" style="width:75px;" onclick="publishUserPostNode()">Enviar</button>
-          </div>
-          <div class="rococo-board-scroller" id="boardScrollerZone"></div>
-        </div>
-      </main>
-
-      <aside>
-        <!-- PLAYLIST DINÁMICA DE ENLACES A YOUTUBE -->
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">matriz sónica</div>
-          <div class="music-user-input-row">
-            <input type="text" id="liveMusicLinkIn" placeholder="Añadir URL de YouTube...">
-            <button class="rococo-btn" style="width:65px; font-size:9px;" onclick="addLinkToDynamicPlaylist()">Añadir</button>
-          </div>
-          <div id="musicContainerFrame" style="border:1px solid var(--barbie-pink); border-radius:6px; overflow:hidden; height:110px; background:#000; margin-bottom:10px;"></div>
-          
-          <div style="font-size:10px; color:var(--barbie-pink); border-top:1px dashed var(--barbie-pink); padding-top:6px; font-weight:bold;">✦ Playlist de la Red:</div>
-          <div class="playlist-links-wrapper" id="playlistHyperlinksBox"></div>
-        </div>
-
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">opiniones del santuario</div>
-          <div class="opinions-stream" id="opinionsStreamZone"></div>
-          <div class="music-user-input-row" style="flex-direction: column; gap: 4px;">
-            <input type="text" id="opinionTextIn" placeholder="¿Qué opinas de este rincón?" style="width: 100%;">
-            <button class="rococo-btn" onclick="publishUserOpinion()">Dejar Reseña</button>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <!-- PESTAÑA 2: ARCHIVO ESTELAR -->
-  <div id="viewStellarGrid" class="tab-view">
-    <div class="rococo-frame-box" style="max-width:100%;">
-      <div class="rococo-frame-title">archivo de capturas estelares</div>
-      <div style="text-align:center; margin-bottom:15px; background:rgba(0,0,0,0.2); padding:10px; border-radius:8px;">
-        <input type="file" id="fileStellar" accept="image/*" style="font-size:11px;" onchange="uploadStellarPhoto(this)">
-      </div>
-      <div class="stellar-photo-grid" id="stellarPhotoGridZone"></div>
-    </div>
-  </div>
-
-  <!-- PESTAÑA 3: CALENDARIO -->
-  <div id="viewCalendarGrid" class="tab-view">
-    <div class="rococo-frame-box" style="max-width:100%;">
-      <div class="rococo-frame-title">relicario cronológico</div>
-      <div class="victorian-calendar-wrapper">
-        <div class="calendar-header-nav">
-          <button class="rococo-btn" style="width:40px;" onclick="moveCalendarMonth(-1)">&lt;</button>
-          <span id="calendarMonthTitle" style="font-weight:bold; color:var(--barbie-pink);">Junio 2026</span>
-          <button class="rococo-btn" style="width:40px;" onclick="moveCalendarMonth(1)">&gt;</button>
-        </div>
-        <div class="calendar-grid-days" id="calendarGridZone"></div>
-        <div class="event-display-scroll" id="eventDetailOutput">Haz clic en un día iluminado para leer el destino.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CHAT GLOBAL CON APODOS ANÓNIMOS PERMANENTES -->
-<div class="chat-dock">
-  <div id="chatRetroTab" class="chat-tab" onclick="toggleRetroChatWindow(true)">[-] Chat de Amigos</div>
-  <div id="chatRetroWindow" class="chat-window hidden">
-    <div class="chat-header" onclick="toggleRetroChatWindow(false)">
-      <span>(._.) Habitación Conectada</span>
-      <span style="font-size:9px;">v</span>
-    </div>
-    <div class="chat-body" id="chatRetroMessages"></div>
-    <div class="chat-input-container">
-      <input type="text" class="chat-nick" id="chatNick" placeholder="Apodo..." maxlength="12">
-      <input type="text" class="chat-input" id="chatRetroInput" placeholder="Escribe de manera anónima..." onkeypress="handleRetroChatSubmit(event)">
-    </div>
-  </div>
-</div>
-
-<script>
-let currentView = 'main';
-let currentTheme = 'dark';
-let activeMonth = 5; 
-let activeYear = 2026;
-
-// Listado de apodos cute góticos
-const cuteGothNicks = [
-  "⛓️•vamp", "🕸️•doll", "🩸•luna", "🖤•pixie", "🥀•rose", "💀•glitch", 
-  "🔮•witch", "🐈‍⬛•neko", "🦇•bat", "🕯️•gloom", "🎀•lace", "🕸️•coax"
-];
-
-const defaultPosts = [
-  { text: "Iniciando el despliegue estético v7... Las flores caen y el reloj místico se sincroniza.", likes: 4, comments: ["Me encanta la lluvia de estrellas +.+"] },
-  { text: "Pacto de medianoche grabado en el código. No mires los hologramas fijamente.", likes: 7, comments: [] }
-];
-
-const defaultOpinions = [
-  { text: "Este santuario se siente tan etéreo y misterioso. Me encanta pasar por aquí." }
-];
-
-const defaultPlaylist = [
-  { title: "✦ Melancholia Core Track", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
-  { title: "✦ Cyber Goth Gaze 505", url: "https://www.youtube.com/watch?v=5Eq3V_gSka4" }
-];
-
-let appConfig = {
-  title: "mel_sanctuary_matrix",
-  bio: "505 // @_tomate_4",
-  youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  holo2: "+(o.o)+", holo3: "}-v-{", holo4: "(._.)"
-};
-
-let userPosts = [];
-let userOpinions = [];
-let chatMessages = [];
-let stellarPhotos = [];
-let sharedPlaylist = [];
-
-window.onload = function() {
-  loadDataFromLocalStorage();
-  applyMelChanges();
-  renderBoardPosts();
-  renderOpinions();
-  buildInteractiveCalendar();
-  loadPersistentMessages();
-  renderPlaylistHyperlinks();
-  assignPermanentAnonymousNick();
-};
-
-function loadDataFromLocalStorage() {
-  try {
-    let storedConfig = localStorage.getItem("mel_config");
-    if(storedConfig) appConfig = JSON.parse(storedConfig);
-  } catch(e) {}
-
-  try { let storedPosts = localStorage.getItem("mel_posts"); userPosts = storedPosts ? JSON.parse(storedPosts) : [...defaultPosts]; } catch(e) { userPosts = [...defaultPosts]; }
-  try { let storedOpinions = localStorage.getItem("mel_opinions"); userOpinions = storedOpinions ? JSON.parse(storedOpinions) : [...defaultOpinions]; } catch(e) { userOpinions = [...defaultOpinions]; }
-  try { let storedPlaylist = localStorage.getItem("mel_playlist"); sharedPlaylist = storedPlaylist ? JSON.parse(storedPlaylist) : [...defaultPlaylist]; } catch(e) { sharedPlaylist = [...defaultPlaylist]; }
-  try { let storedPhotos = localStorage.getItem("mel_photos"); stellarPhotos = storedPhotos ? JSON.parse(storedPhotos) : []; } catch(e) { stellarPhotos = []; }
-  
-  try {
-    let storedChat = localStorage.getItem("mel_chat");
-    chatMessages = storedChat ? JSON.parse(storedChat) : [
-      { nick: "Sistema ✦", text: "Habitación sincronizada con la base de datos.", timestamp: "00:00", isAnon: false }
-    ];
-  } catch(e) { chatMessages = []; }
-
-  try {
-    let storedTheme = localStorage.getItem("mel_theme");
-    if(storedTheme) {
-      currentTheme = storedTheme;
-      document.documentElement.setAttribute("data-theme", currentTheme);
-      document.getElementById("cfgThemeSelector").value = currentTheme;
-    }
-  } catch(e) {}
-}
-
-function assignPermanentAnonymousNick() {
-  let myAnonNick = localStorage.getItem("mel_my_anon_nick");
-  if (!myAnonNick) {
-    myAnonNick = cuteGothNicks[Math.floor(Math.random() * cuteGothNicks.length)];
-    localStorage.setItem("mel_my_anon_nick", myAnonNick);
-  }
-  document.getElementById("chatNick").placeholder = myAnonNick;
-}
-
-function applyMelChanges() {
-  document.getElementById("liveTitle").textContent = appConfig.title || "mel_sanctuary_matrix";
-  document.getElementById("liveBio").textContent = appConfig.bio || "505 // @_tomate_4";
-  
-  document.getElementById("cfgTitle").value = appConfig.title || "";
-  document.getElementById("cfgBio").value = appConfig.bio || "";
-  document.getElementById("cfgYoutubeId").value = appConfig.youtubeUrl || "";
-  document.getElementById("cfgHolo2").value = appConfig.holo2 || "+(o.o)+";
-  document.getElementById("cfgHolo3").value = appConfig.holo3 || "}-v-{";
-
-  let ytId = extractYoutubeIdToken(appConfig.youtubeUrl || "dQw4w9WgXcQ");
-  document.getElementById("musicContainerFrame").innerHTML = `
-    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${ytId}?autoplay=0&playlist=${ytId}&loop=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  `;
-
-  document.getElementById("slotHolo2").textContent = appConfig.holo2 || "+(o.o)+";
-  document.getElementById("slotHolo3").textContent = appConfig.holo3 || "}-v-{";
-}
-
-function extractYoutubeIdToken(url) {
-  if(!url) return "dQw4w9WgXcQ";
-  let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-  let match = url.match(regExp);
-  return (match && match[2].length === 11) ? match[2] : "dQw4w9WgXcQ";
-}
-
-function renderPlaylistHyperlinks() {
-  let container = document.getElementById("playlistHyperlinksBox");
-  if(!container) return;
-  container.innerHTML = "";
-  sharedPlaylist.forEach((item, idx) => {
-    container.innerHTML += `
-      <a href="${item.url}" target="_blank" class="playlist-item-link" title="${item.title}">
-        ${idx + 1}. ${item.title}
-      </a>
-    `;
-  });
-}
-
-function addLinkToDynamicPlaylist() {
-  let urlIn = document.getElementById("liveMusicLinkIn");
-  if(!urlIn || !urlIn.value.trim()) return;
-  let rawUrl = urlIn.value.trim();
-  
-  let token = extractYoutubeIdToken(rawUrl);
-  let computedTitle = "✦ Rastro Sónico (" + token.substring(0, 5) + ")";
-  
-  sharedPlaylist.push({ title: computedTitle, url: rawUrl });
-  localStorage.setItem("mel_playlist", JSON.stringify(sharedPlaylist));
-  urlIn.value = "";
-  renderPlaylistHyperlinks();
-}
-
-function switchVirtualTab(target) {
-  currentView = target;
-  document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active-view'));
-  document.querySelectorAll('.rococo-menu-link').forEach(el => el.classList.remove('active-tab'));
-  
-  if(target === 'main') {
-    document.getElementById("viewMainGrid").classList.add("active-view");
-    document.getElementById("tabMainLink").classList.add("active-tab");
-  } else if(target === 'stellar') {
-    document.getElementById("viewStellarGrid").classList.add("active-view");
-    document.getElementById("tabStellarLink").classList.add("active-tab");
-  } else if(target === 'calendar') {
-    document.getElementById("viewCalendarGrid").classList.add("active-view");
-    document.getElementById("tabCalendarLink").classList.add("active-tab");
-  }
-}
-
-function toggleAdminPanel() {
-  let p = document.getElementById("secretPanel");
-  p.style.display = (p.style.display === "block") ? "none" : "block";
-  if(p.style.display === "block") {
-    renderMelSecretLog();
-  }
-}
-
-function renderMelSecretLog() {
-  let logZone = document.getElementById("melSecretTimeLog");
-  if(!logZone) return;
-  logZone.innerHTML = "";
-  let anonMessages = chatMessages.filter(m => m.isAnon);
-  if(anonMessages.length === 0) {
-    logZone.innerHTML = "Ningún susurro anónimo interceptado en esta sesión.";
-    return;
-  }
-  anonMessages.forEach(m => {
-    logZone.innerHTML += `<div>[${m.timestamp}] <strong>${m.nick}:</strong> ${m.text}</div>`;
-  });
-}
-
-function renderBoardPosts() {
-  let box = document.getElementById("boardScrollerZone");
-  if(!box) return; box.innerHTML = "";
-  
-  userPosts.forEach((post, i) => {
-    if(!post) return;
-    let postLikes = post.likes || 0;
-    let commentsArray = post.comments || [];
-    let commsHtml = commentsArray.map(c => `<div class="comment-line">${c || ""}</div>`).join('');
-    
-    box.innerHTML += `
-      <div class="rococo-post-node">
-        <div style="color:var(--barbie-pink); font-size:10px; font-weight:bold; margin-bottom:6px; letter-spacing:1px;">✧ fragmento de alma #${i+1}</div>
-        <div style="line-height:1.4; padding-left: 4px;">${post.text}</div>
-        <div class="post-social-bar">
-          <button class="react-btn" onclick="likePostNode(${i})">[-] Reaccionar (${postLikes})</button>
-        </div>
-        <div class="comment-box">
-          <div class="comment-stream">${commsHtml}</div>
-          <div class="comment-input-row">
-            <input type="text" class="comment-in" id="commIn-${i}" placeholder="Escribir susurro...">
-            <button class="rococo-btn" style="width:50px; font-size:9px;" onclick="addCommentToNode(${i})">Unir</button>
-          </div>
-        </div>
-      </div>
-    `;
-  });
-}
-
-function publishUserPostNode() {
-  let txt = document.getElementById("postTextIn").value;
-  if(!txt.trim()) return;
-  userPosts.unshift({ text: txt, likes: 0, comments: [] });
-  localStorage.setItem("mel_posts", JSON.stringify(userPosts));
-  document.getElementById("postTextIn").value = "";
-  renderBoardPosts();
-}
-
-function likePostNode(i) {
-  if(!userPosts[i]) return;
-  userPosts[i].likes = (userPosts[i].likes || 0) + 1;
-  localStorage.setItem("mel_posts", JSON.stringify(userPosts));
-  renderBoardPosts();
-}
-
-function addCommentToNode(i) {
-  let input = document.getElementById(`commIn-${i}`);
-  if(!input || !input.value.trim()) return;
-  if(!userPosts[i].comments) userPosts[i].comments = [];
-  userPosts[i].comments.push(input.value.trim());
-  localStorage.setItem("mel_posts", JSON.stringify(userPosts));
-  input.value = "";
-  renderBoardPosts();
-}
-
-function renderOpinions() {
-  let box = document.getElementById("opinionsStreamZone");
-  if(!box) return; box.innerHTML = "";
-  userOpinions.forEach(op => { box.innerHTML += `<div class="opinion-node">✦ ${op.text}</div>`; });
-}
-
-function publishUserOpinion() {
-  let input = document.getElementById("opinionTextIn");
-  if(!input || !input.value.trim()) return;
-  userOpinions.unshift({ text: input.value.trim() });
-  localStorage.setItem("mel_opinions", JSON.stringify(userOpinions));
-  input.value = "";
-  renderOpinions();
-}
-
-function switchThemeMode(mode) {
-  currentTheme = mode;
-  document.documentElement.setAttribute('data-theme', mode);
-  localStorage.setItem("mel_theme", mode);
-}
-
-function saveConfigChanges() {
-  appConfig.title = document.getElementById("cfgTitle").value;
-  appConfig.bio = document.getElementById("cfgBio").value;
-  appConfig.youtubeUrl = document.getElementById("cfgYoutubeId").value;
-  localStorage.setItem("mel_config", JSON.stringify(appConfig));
-  applyMelChanges();
-  alert("Santuario base reconfigurado.");
-}
-
-function saveHoloChanges() {
-  appConfig.holo2 = document.getElementById("cfgHolo2").value;
-  appConfig.holo3 = document.getElementById("cfgHolo3").value;
-  localStorage.setItem("mel_config", JSON.stringify(appConfig));
-  applyMelChanges();
-  alert("Hologramas secundarios actualizados.");
-}
-
-function uploadStellarPhoto(input) {
-  if (input.files && input.files[0]) {
-    let reader = new FileReader();
-    reader.onload = function(e) {
-      stellarPhotos.unshift(e.target.result);
-      localStorage.setItem("mel_photos", JSON.stringify(stellarPhotos));
-      renderStellarPhotos();
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-function renderStellarPhotos() {
-  let zone = document.getElementById("stellarPhotoGridZone");
-  if(!zone) return; zone.innerHTML = "";
-  stellarPhotos.forEach((src, idx) => {
-    zone.innerHTML += `
-      <div class="stellar-photo-card">
-        <img src="${src}" alt="Captura Estelar">
-        <div class="stellar-photo-meta">reliquia_df_${idx+1}</div>
-      </div>
-    `;
-  });
-}
-
-function triggerClick(id) { document.getElementById(id).click(); }
-
-function loadPersonalAvatar(uploader) {
-  if (uploader.files && uploader.files[0]) {
-    let reader = new FileReader();
-    reader.onload = function(e) {
-      document.getElementById("txtAvatarPlace").style.display = "none";
-      let img = document.getElementById("imgAvatarView");
-      img.src = e.target.result; img.style.display = "block";
-    };
-    reader.readAsDataURL(uploader.files[0]);
-  }
-}
-
-function triggerMatrixOracle() {
-  const responses = ["Los hologramas revelan hilos sutiles.", "Un pacto místico florecerá pronto.", "Sincronía detectada en el código."];
-  let choice = responses[Math.floor(Math.random() * responses.length)];
-  document.getElementById("oracleResultBox").textContent = `✦ ${choice}`;
-}
-
-const monthLabels = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-
-function buildInteractiveCalendar() {
-  let titleEl = document.getElementById("calendarMonthTitle");
-  if(titleEl) titleEl.textContent = `${monthLabels[activeMonth]} ${activeYear}`;
-  let grid = document.getElementById("calendarGridZone"); if(!grid) return;
-  grid.innerHTML = "";
-
-  const headers = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
-  headers.forEach(h => grid.innerHTML += `<div class="calendar-day-header">${h}</div>`);
-
-  let firstDayIndex = new Date(activeYear, activeMonth, 1).getDay();
-  let totalDays = new Date(activeYear, activeMonth + 1, 0).getDate();
-
-  for(let i = 0; i < firstDayIndex; i++) grid.innerHTML += `<div class="calendar-cell-node empty-cell"></div>`;
-  for(let day = 1; day <= totalDays; day++) {
-    grid.innerHTML += `<div class="calendar-cell-node" onclick="focusCalendarCellNode(${day})">${day}</div>`;
-  }
-}
-
-function moveCalendarMonth(dir) {
-  activeMonth += dir;
-  if(activeMonth > 11) { activeMonth = 0; activeYear++; }
-  if(activeMonth < 0) { activeMonth = 11; activeYear--; }
-  buildInteractiveCalendar();
-}
-
-function focusCalendarCellNode(day) {
-  let out = document.getElementById("eventDetailOutput");
-  if(out) out.innerHTML = `Día ${day} de ${monthLabels[activeMonth]}.<br><span style="opacity:0.5;">(Sin destino fijado)</span>`;
-}
-
-// Lluvia persistente de símbolos Kaomoji
-const rainSymbols = ["*", "+", "x", "o", "v", "-"];
-setInterval(() => {
-  const el = document.createElement("div"); el.className = "kaomoji-particle";
-  el.textContent = rainSymbols[Math.floor(Math.random() * rainSymbols.length)];
-  el.style.left = Math.random() * 100 + "vw"; el.style.top = "-25px";
-  el.style.color = Math.random() > 0.5 ? "var(--barbie-pink)" : "#ffffff";
-  el.style.fontSize = Math.random() * 16 + 10 + "px";
-  el.style.animation = `fall ${Math.random() * 4 + 3}s linear forwards`;
-  document.body.appendChild(el); setTimeout(() => el.remove(), 6000);
-}, 600);
-
-function toggleRetroChatWindow(isOpen) {
-  if(isOpen) {
-    document.getElementById("chatRetroTab").classList.add("hidden");
-    document.getElementById("chatRetroWindow").classList.remove("hidden");
-  } else {
-    document.getElementById("chatRetroWindow").classList.add("hidden");
-    document.getElementById("chatRetroTab").classList.remove("hidden");
-  }
-}
-
-function loadPersistentMessages() {
-  let box = document.getElementById("chatRetroMessages");
-  if(!box) return; box.innerHTML = "";
-  chatMessages.forEach(msg => {
-    box.innerHTML += `
-      <p class="chat-msg-line friend">
-        <strong>${msg.nick}:</strong> ${msg.text}
-      </p>
-    `;
-  });
-  box.scrollTop = box.scrollHeight;
-  renderStellarPhotos();
-}
-
-function handleRetroChatSubmit(e) {
-  if (e.key === 'Enter') {
-    let nickInput = document.getElementById("chatNick");
-    let textInput = document.getElementById("chatRetroInput");
-    if(!textInput.value.trim()) return;
-
-    let finalNick = nickInput.value.trim();
-    let isAnonMessage = false;
-
-    if (!finalNick) {
-      finalNick = localStorage.getItem("mel_my_anon_nick") || "⛓️•vamp";
-      isAnonMessage = true;
-    }
-
-    let d = new Date();
-    let timestamp = d.toTimeString().split(' ')[0];
-
-    let newMessage = {
-      nick: finalNick,
-      text: textInput.value.trim(),
-      isAnon: isAnonMessage,
-      timestamp: timestamp
-    };
-
-    chatMessages.push(newMessage);
-    localStorage.setItem("mel_chat", JSON.stringify(chatMessages));
-    textInput.value = "";
-    loadPersistentMessages();
-    renderMelSecretLog();
-  }
-}
-</script>
-</body>
-</html>
+           
