@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>+ mel_sanctuary_rococo_v7_kaomoji_calendar +</title>
+<title>✦ mel_sanctuary_rococo_v7_kaomoji_calendar ✦</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Charm:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* --- 𓏲ᵎ * PALETAS DE COLORES DUALES * ᵎ𓏲 --- */
+/* ─── 𓏲ᵎ 🖤 PALETAS DE COLORES DUALES ᵎ𓏲 ─── */
 :root {
   --anime-black: #1F1F1F;
   --goth-charcoal: #4B4B4B;
@@ -22,7 +22,6 @@
   --input-bg: #1F1F1F;
   --input-text: #ffffff;
   --chat-header-bg: #4B4B4B;
-  --fb-old-blue: #3b5998;
   
   --evt-goth: #A27BCA;
   --evt-coquette: #FEB1C7;
@@ -61,7 +60,7 @@ body {
   display: flex; justify-content: center; overflow-x: hidden;
 }
 
-/* MARCOS DE ENCAJE KAOMOJI */
+/* MARCOS DE ENCAJE KAOMOJI GENERALES */
 body::before, body::after {
   content: "o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o";
   position: fixed; left: 0; width: 100%; text-align: center;
@@ -110,7 +109,7 @@ body::after { bottom: 10px; }
   color: var(--barbie-pink); text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
 }
 
-/* CONSOLA SECRETA */
+/* CONSOLA SECRETA MEL */
 .mel-admin-trigger {
   position: absolute; top: 12px; right: 12px; z-index: 100;
   background: var(--anime-black); border: 1px solid var(--barbie-pink);
@@ -129,7 +128,7 @@ body::after { bottom: 10px; }
   color: var(--input-text); padding: 6px; font-family: var(--font-goth); font-size: 11px; border-radius: 6px;
 }
 
-/* MENÚ INTERNO DE PESTAÑAS */
+/* MENÚ DE PESTAÑAS */
 .rococo-menu-bar { display: flex; justify-content: space-between; margin: 20px 0; gap: 6px; }
 .rococo-menu-link {
   flex: 1; text-align: center; padding: 9px; background: var(--goth-charcoal);
@@ -144,12 +143,12 @@ body::after { bottom: 10px; }
 
 .rococo-grid { display: grid; grid-template-columns: 210px 390px 220px; gap: 15px; }
 
-/* BORDES SEMIREDONDOS EN MARCOS EN GENERAL */
+/* CAJAS MARCO EXTERNAS */
 .rococo-frame-box {
   background: var(--surface-box);
   border: 1px solid var(--goth-charcoal);
   outline: 1px solid var(--barbie-pink); outline-offset: -5px;
-  padding: 14px; position: relative; margin-bottom: 20px;
+  padding: 18px 14px 14px 14px; position: relative; margin-bottom: 20px;
   border-radius: 14px;
 }
 .rococo-frame-box::after {
@@ -157,13 +156,15 @@ body::after { bottom: 10px; }
   position: absolute; bottom: -8px; left: 0; width: 100%; text-align: center;
   font-size: 9px; color: var(--barbie-pink); opacity: 0.7;
 }
+
 .rococo-frame-title {
   font-family: var(--font-vintage); font-style: italic; font-weight: bold;
-  text-align: center; color: var(--barbie-pink); font-size: 13px;
-  margin: 0 0 12px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 5px;
+  text-align: center; color: var(--barbie-pink); font-size: 14px;
+  margin: 5px 0 15px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 8px;
+  position: relative; z-index: 2;
 }
 
-/* AVATAR CAMAFEO */
+/* AVATAR */
 .cameo-avatar-wrapper {
   width: 110px; height: 110px; margin: 0 auto 10px auto;
   border-radius: 50%; border: 3px double var(--barbie-pink); overflow: hidden;
@@ -178,20 +179,45 @@ body::after { bottom: 10px; }
   color: var(--input-text); font-family: var(--font-goth); font-size: 10px; padding: 4px; border-radius: 4px;
 }
 
-/* QUAD HOLOGRAMAS */
+/* QUAD HOLOGRAMAS CON MATRIZ ASCII (51367.jpg SUBTENUE Y ELEGANTE) */
 .holo-matrix-4x4 {
-  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-  gap: 6px; width: 100%; min-height: 240px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; width: 100%; min-height: 240px;
 }
 .holo-slot {
-  background: #000000; border: 1px solid var(--barbie-pink);
+  background: #050204; border: 1px solid var(--barbie-pink);
   border-radius: 8px; overflow: hidden; display: flex;
-  align-items: center; justify-content: center; padding: 2px; font-size: 20px;
-  color: var(--barbie-pink);
+  align-items: center; justify-content: center; padding: 4px; font-size: 11px;
+  color: var(--barbie-pink); position: relative;
 }
-.holo-slot img, .holo-slot iframe, .holo-slot svg { width: 100%; height: 100%; object-fit: cover; border: 0; display: block; }
 
-/* FEED DEL MURO */
+.ascii-holo-container {
+  font-family: monospace;
+  font-size: 5px;
+  line-height: 4.5px;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: pre;
+  color: #ff66b2;
+  text-shadow: 0 0 1px #ff007f; /* Neón sutil ajustado para no desencajar */
+  animation: holoGlitch 2.5s infinite steps(5), holoFlicker 0.15s infinite;
+  user-select: none;
+}
+
+@keyframes holoGlitch {
+  0%, 100% { transform: translate(0, 0) skew(0deg); filter: hue-rotate(0deg); }
+  20% { transform: translate(-1px, 1px) skew(-1deg); filter: brightness(1.1); }
+  40% { transform: translate(1px, -1px) skew(1deg); }
+  60% { transform: translate(-0.5px, -0.5px) skew(0deg); filter: hue-rotate(10deg); }
+  80% { transform: translate(1px, 0.5px) skew(1deg); }
+}
+
+@keyframes holoFlicker {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.85; }
+}
+
+/* MURO / SCROLLER */
 .rococo-board-scroller { max-height: 380px; overflow-y: auto; padding-right: 4px; }
 .rococo-post-node {
   background: var(--input-bg); border: 1px solid var(--barbie-pink);
@@ -205,23 +231,17 @@ body::after { bottom: 10px; }
 .comment-input-row { display: flex; gap: 4px; }
 .comment-in { flex: 1; background: var(--anime-black); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 4px; font-family: var(--font-goth); border-radius: 4px; }
 
-/* CAJA DE CONFESIONES ANÓNIMAS */
-.confession-scroller { max-height: 140px; overflow-y: auto; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
-.confession-card { background: rgba(254,177,199,0.05); border: 1px dashed var(--goth-charcoal); padding: 8px; border-radius: 8px; font-size: 10px; line-height: 1.4; }
+/* OPINIONES Y RESEÑAS */
+.opinions-stream { max-height: 180px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.opinion-node { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--barbie-pink); padding: 8px; border-radius: 6px; font-size: 10px; }
 
-/* REJILLA DE FOTOS (ARCHIVO ESTELAR) */
+/* GALERÍA DE FOTOS */
 .stellar-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-height: 500px; overflow-y: auto; padding: 10px; }
 .stellar-photo-card { background: var(--input-bg); border: 1px solid var(--barbie-pink); padding: 6px; border-radius: 10px; text-align: center; }
 .stellar-photo-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 6px; border: 1px solid var(--goth-charcoal); }
 .stellar-photo-meta { font-size: 10px; margin-top: 4px; color: var(--barbie-pink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-/* ALMAS VINCULADAS */
-.friends-scroll-zone { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
-.friend-card { background: rgba(75, 75, 75, 0.1); border: 1px solid var(--barbie-pink); padding: 8px; border-radius: 8px; }
-.friend-name { color: var(--barbie-pink); font-weight: bold; font-size: 11px; display: flex; justify-content: space-between; }
-.friend-meta-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 9px; padding: 3px; text-align: center; text-decoration: none; display: block; margin-top: 4px; border-radius: 4px; }
-
-/* CALENDARIO CRONOLÓGICO */
+/* CALENDARIO INTERACTIVO */
 .victorian-calendar-wrapper {
   max-width: 520px; margin: 0 auto; background: rgba(0,0,0,0.2); border: 2px double var(--barbie-pink); padding: 20px; border-radius: 16px;
 }
@@ -245,7 +265,7 @@ body::after { bottom: 10px; }
 .rococo-btn:hover { background: var(--barbie-pink); color: #000; }
 .hidden-uploader { display: none; }
 
-/* GIFS FLOTANTES EN COSTADOS */
+/* GIFS FLOTANTES */
 .side-gif { position: fixed; top: 62%; transform: translateY(-50%); z-index: 40; width: 65px; height: auto; pointer-events: none; opacity: 0.8; }
 .left-gif { left: 20px; }
 .right-gif { right: 20px; }
@@ -254,55 +274,60 @@ body::after { bottom: 10px; }
   .side-gif { display: none; }
 }
 
-/* MENÚS DESPLEGABLES DE PLAYLISTS */
-.genre-dropdown { background: rgba(31, 31, 31, 0.5); margin-bottom: 8px; border-radius: 8px; overflow: hidden; border: 1px dashed var(--barbie-pink); }
-.genre-dropdown summary { padding: 10px; font-size: 11px; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-.genre-dropdown summary::-webkit-details-marker { display: none; }
-.genre-dropdown summary:hover { background: rgba(254, 177, 199, 0.15); }
-.genre-dropdown summary::after { content: "v"; font-size: 0.7rem; color: var(--barbie-pink); }
-.genre-dropdown[open] summary::after { transform: rotate(180deg); }
-.dropdown-content { padding: 10px; background: rgba(0,0,0,0.2); border-top: 1px dashed var(--barbie-pink); }
-.dropdown-content ul { list-style: "* "; padding-left: 15px; margin: 0; }
-.dropdown-content li { margin-bottom: 6px; font-size: 11px; }
-.dropdown-content a { color: var(--text-main); text-decoration: none; }
-.dropdown-content a:hover { text-decoration: underline; color: var(--barbie-pink); }
+/* PLAYLIST DINÁMICA DE LINKS */
+.playlist-links-wrapper {
+  max-height: 120px; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; margin-top: 10px; padding: 4px;
+}
+.playlist-item-link {
+  font-size: 11px; color: var(--text-main); text-decoration: none; border-left: 2px solid var(--barbie-pink); padding-left: 6px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.playlist-item-link:hover { color: var(--barbie-pink); text-decoration: underline; }
 
-/* PARTÍCULAS KAOMOJI */
-.kaomoji-particle { position: fixed; pointer-events: none; z-index: 9999; white-space: nowrap; font-family: Arial, sans-serif; }
+/* PANEL EXCLUSIVO LOGS DE HORAS OCULTAS */
+.mel-exclusive-log {
+  background: rgba(0,0,0,0.4); border: 1px solid var(--barbie-pink); max-height: 150px; overflow-y: auto; padding: 8px; border-radius: 6px; font-family: monospace; font-size: 10px; margin-top: 8px;
+}
+
+/* PARTÍCULAS */
+.kaomoji-particle { position: fixed; pointer-events: none; z-index: 9999; white-space: nowrap; }
 @keyframes fall { to { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
-@keyframes burst { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--mx), var(--my)) scale(0.4); opacity: 0; } }
 
 /* CHAT RETRO CON PERSISTENCIA */
 .chat-dock { position: fixed; bottom: 0; right: 40px; display: flex; align-items: flex-end; gap: 12px; z-index: 10000; }
 .chat-tab { background: var(--chat-header-bg); color: var(--text-main); padding: 8px 16px; border-radius: 8px 8px 0 0; font-family: var(--font-goth); font-size: 11px; font-weight: bold; cursor: pointer; border: 1px solid var(--barbie-pink); box-shadow: 0px -2px 6px rgba(0,0,0,0.3); }
-.chat-window { width: 260px; background: var(--anime-black); border: 2px solid var(--barbie-pink); border-radius: 8px 8px 0 0; font-family: var(--font-goth); box-shadow: -2px -2px 12px rgba(0,0,0,0.4); }
+.chat-window { width: 280px; background: var(--anime-black); border: 2px solid var(--barbie-pink); border-radius: 8px 8px 0 0; font-family: var(--font-goth); box-shadow: -2px -2px 12px rgba(0,0,0,0.4); }
 .chat-header { background: var(--chat-header-bg); color: var(--text-main); padding: 8px; font-size: 11px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border-radius: 6px 6px 0 0; border-bottom: 1px solid var(--barbie-pink); }
 .chat-body { height: 230px; padding: 8px; overflow-y: auto; font-size: 11px; background: var(--bg-deep-velvet); display: flex; flex-direction: column; gap: 6px; }
 .chat-msg-line { margin: 0; padding: 6px 8px; border-radius: 6px; line-height: 1.3; word-wrap: break-word; }
 .chat-msg-line.friend { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); align-self: flex-start; max-width: 85%; color: var(--porcelain-pink); }
 .chat-msg-line.user { background: var(--surface-box); border: 1px dashed var(--barbie-pink); align-self: flex-end; max-width: 85%; color: var(--barbie-pink); }
 .chat-input-container { display: flex; border-top: 1px solid var(--barbie-pink); background: var(--input-bg); }
-.chat-nick { width: 60px; padding: 6px; border: none; border-right: 1px solid var(--barbie-pink); font-size: 10px; background: var(--anime-black); color: var(--barbie-pink); outline: none; text-align: center; }
+.chat-nick { width: 80px; padding: 6px; border: none; border-right: 1px solid var(--barbie-pink); font-size: 10px; background: var(--anime-black); color: var(--barbie-pink); outline: none; text-align: center; }
 .chat-input { flex: 1; padding: 6px; border: none; font-size: 11px; background: var(--input-bg); color: var(--input-text); outline: none; }
 .hidden { display: none; }
-
-/* BARRA TAMAGOTCHI */
-progress { -webkit-appearance: none; appearance: none; width: 100%; height: 10px; margin-top: 4px; }
-progress::-webkit-progress-bar { background-color: rgba(0,0,0,0.3); border-radius: 4px; }
-progress::-webkit-progress-val { background-color: var(--barbie-pink); border-radius: 4px; }
 </style>
 </head>
 <body>
 
-<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif left-gif" alt="decoración loop">
-<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif right-gif" alt="decoración loop">
+<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif left-gif" alt="decoración">
+<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif right-gif" alt="decoración">
 
 <div class="rococo-cocoon-container">
+  <!-- BOTÓN DE ACCESO AL PANEL SECRETO -->
   <button class="mel-admin-trigger" onclick="toggleAdminPanel()">[-] Panel de Control Mel</button>
 
-  <!-- PANEL DE CONFIGURACIÓN -->
+  <!-- PANEL DE CONFIGURACIÓN SECRETA (VISTA EXCLUSIVA DE MEL) -->
   <div class="mel-secret-panel" id="secretPanel">
     <h3 style="margin:0 0 12px 0; font-family:var(--font-vintage); color:var(--barbie-pink); text-align:center;">(o.o) Consola de Inyección & Modos Duales</h3>
+    
+    <!-- REGISTRO DE HORAS PARA MENSAJES ANÓNIMOS -->
+    <div style="background: rgba(254,177,199,0.08); border: 1px solid var(--barbie-pink); padding: 12px; margin-bottom: 15px; border-radius: 8px;">
+      <h4 style="margin: 0 0 6px 0; color: var(--barbie-pink); font-size: 11px;">👁️ Historial de Mensajes Anónimos + Marcas de Tiempo (Solo Mel)</h4>
+      <div class="mel-exclusive-log" id="melSecretTimeLog">
+        Cargando líneas de la red...
+      </div>
+    </div>
+
     <div style="text-align: center; margin-bottom: 15px; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px;">
       <span style="color:var(--barbie-pink); font-weight:bold; margin-right:10px;">Cambiar Estética Visual:</span>
       <select id="cfgThemeSelector" onchange="switchThemeMode(this.value)" style="background:var(--input-bg); color:var(--input-text); border:1px solid var(--barbie-pink); padding:3px;">
@@ -315,72 +340,35 @@ progress::-webkit-progress-val { background-color: var(--barbie-pink); border-ra
       <div>
         <h4 style="margin:5px 0; color:var(--barbie-pink);">Configuración Base</h4>
         <div class="panel-row"><label>Título de la Matriz:</label><input type="text" id="cfgTitle" value="mel_sanctuary_matrix"></div>
-        <div class="panel-row"><label>Biografía:</label><textarea id="cfgBio" rows="2">𓏲ᵎ Rococó Goth & Pastel Dual // @_tomate_4</textarea></div>
-        <div class="panel-row"><label>Música Base (YouTube Link):</label><input type="text" id="cfgYoutubeId" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></div>
+        <div class="panel-row"><label>Biografía:</label><textarea id="cfgBio" rows="2">505 // @_tomate_4</textarea></div>
+        <div class="panel-row"><label>Música Reproductor Principal (YT Link):</label><input type="text" id="cfgYoutubeId" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></div>
         <button class="rococo-btn" style="background:var(--barbie-pink); color:#000; font-weight:bold;" onclick="saveConfigChanges()">Guardar Configuración Base</button>
       </div>
       <div>
-        <h4 style="margin:5px 0; color:var(--barbie-pink);">Inyección de Hologramas</h4>
-        <div class="panel-row"><label>Holograma 1 (Código SVG/Kaomoji):</label><input type="text" id="cfgHolo1" value="PROPIO"></div>
-        <div class="panel-row"><label>Holograma 2:</label><input type="text" id="cfgHolo2" value="+(o.o)+"></div>
-        <div class="panel-row"><label>Holograma 3:</label><input type="text" id="cfgHolo3" value="}-v-{"></div>
-        <div class="panel-row"><label>Holograma 4:</label><input type="text" id="cfgHolo4" value="(._.)"></div>
-        <button class="rococo-btn" onclick="saveHoloChanges()">Inyectar los 4 Hologramas</button>
+        <h4 style="margin:5px 0; color:var(--barbie-pink);">Inyección Adicional</h4>
+        <div class="panel-row"><label>Holograma Secundario 2:</label><input type="text" id="cfgHolo2" value="+(o.o)+"></div>
+        <div class="panel-row"><label>Holograma Secundario 3:</label><input type="text" id="cfgHolo3" value="}-v-{"></div>
+        <button class="rococo-btn" onclick="saveHoloChanges()">Actualizar Secundarios</button>
       </div>
-    </div>
-
-    <hr style="border:0; border-top:1px dashed var(--barbie-pink); margin:15px 0;">
-    <h4 style="margin:5px 0; color:var(--barbie-pink);">[+] Fijar Fecha con Motivo Estético</h4>
-    <div style="display:grid; grid-template-columns: 80px 100px 1fr; gap:6px; margin-bottom:8px;">
-      <input type="number" id="calInDay" placeholder="Día" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
-      <select id="calInMonth" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
-        <option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option>
-        <option value="3">Abril</option><option value="4">Mayo</option><option value="5">Junio</option>
-        <option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option>
-        <option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option>
-      </select>
-      <select id="calInReason" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
-        <option value="goth">[-] Secreto / Pacto Goth</option>
-        <option value="coquette">}-v-{ Romance / Coquette</option>
-        <option value="destiny">++ Destino / Cumpleaños</option>
-      </select>
-    </div>
-    <div style="display:flex; gap:6px; margin-bottom:15px;">
-      <input type="text" id="calInText" placeholder="Escribe el fragmento del recuerdo aquí..." style="flex:1; background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
-      <button class="rococo-btn" style="width:auto; padding:4px 15px;" onclick="addCustomCalendarEvent()">Inyectar Destino</button>
-    </div>
-
-    <h4 style="margin:5px 0; color:var(--text-main);">}-v-{ Vincular Nuevo Amigo</h4>
-    <div style="display:flex; gap:8px; align-items:flex-end;">
-      <div class="panel-row" style="flex:1;"><input type="text" id="newFriendName" placeholder="Nick Amigo"></div>
-      <div class="panel-row" style="flex:1">
-        <select id="newFriendType">
-          <option value="Instagram">Instagram</option>
-          <option value="TikTok">TikTok</option>
-          <option value="Correo">Correo</option>
-        </select>
-      </div>
-      <div class="panel-row" style="flex:2;"><input type="text" id="newFriendLink" placeholder="Link de perfil..."></div>
-      <button class="rococo-btn" style="width:auto; padding:7px 15px; margin-bottom:10px; background:var(--barbie-pink); color:#000;" onclick="addNewFriendNode()">Vincular</button>
     </div>
   </div>
 
   <header class="sanctuary-header-banner" id="mainBanner">
     <div class="banner-title-frame">
       <h1 id="liveTitle">mel_sanctuary_matrix</h1>
-      <span style="font-size:10px; letter-spacing:2px; color:var(--barbie-pink);">+-+ Kaomoji Relic Matrix v7 +-+</span>
+      <span style="font-size:10px; letter-spacing:2px; color:var(--barbie-pink);">✦ Kaomoji Relic Matrix v7 ✦</span>
     </div>
   </header>
 
   <nav class="rococo-menu-bar">
-    <div id="tabMainLink" class="rococo-menu-link active-tab" onclick="switchVirtualTab('main')">++ Cuaderno Central</div>
+    <div id="tabMainLink" class="rococo-menu-link active-tab" onclick="switchVirtualTab('main')">✦ Cuaderno Central</div>
     <a href="https://www.instagram.com/its.mell456?igsh=OHBsMWdhcXZtczJm" target="_blank" class="rococo-menu-link">Instagram</a>
     <a href="https://www.tiktok.com/@_tomate_4?_r=1&_t=ZS-97DcZ6o3U6X" target="_blank" class="rococo-menu-link">TikTok</a>
-    <div id="tabStellarLink" class="rococo-menu-link" onclick="switchVirtualTab('stellar')">++ Archivo Estelar</div>
+    <div id="tabStellarLink" class="rococo-menu-link" onclick="switchVirtualTab('stellar')">✦ Archivo Estelar</div>
     <div id="tabCalendarLink" class="rococo-menu-link" onclick="switchVirtualTab('calendar')">(⭒_⭒) Fechas Místicas</div>
   </nav>
 
-  <!-- PESTAÑA PRINCIPAL: CUADERNO CENTRAL -->
+  <!-- PESTAÑA PRINCIPAL -->
   <div id="viewMainGrid" class="tab-view active-view">
     <div class="rococo-grid">
       <aside>
@@ -392,37 +380,44 @@ progress::-webkit-progress-val { background-color: var(--barbie-pink); border-ra
           </div>
           <input type="file" id="fileAvatar" class="hidden-uploader" accept="image/*" onchange="loadPersonalAvatar(this)">
           <div style="text-align:center; font-size:12px; font-weight:bold; color:var(--barbie-pink);">its.mell456</div>
-          <div style="text-align:center; font-size:10px; font-style:italic; margin-top:4px; margin-bottom:8px;" id="liveBio">𓏲ᵎ Rococó Goth // @_tomate_4</div>
+          <div style="text-align:center; font-size:10px; font-style:italic; margin-top:4px; margin-bottom:8px;" id="liveBio">505 // @_tomate_4</div>
           <button class="rococo-btn" style="font-size:9px; padding:4px;" onclick="triggerMatrixOracle()">[o] Consultar Oráculo</button>
           <div id="oracleResultBox" style="font-size:9px; text-align:center; color:var(--barbie-pink); margin-top:6px; font-weight:bold;"></div>
         </div>
 
+        <!-- HOLOGRAMAS CON EL ARTE ASCII DE 51367.JPG -->
         <div class="rococo-frame-box">
-          <div class="rococo-frame-title">playlists favoritas</div>
-          <details class="genre-dropdown"><summary># Rock</summary><div class="dropdown-content"><ul><li><a href="#" target="_blank">Rock Essentials</a></li></ul></div></details>
-          <details class="genre-dropdown"><summary># Visual Kei</summary><div class="dropdown-content"><ul><li><a href="#" target="_blank">Malice Mizer Core</a></li></ul></div></details>
-          <details class="genre-dropdown"><summary># K-Pop</summary><div class="dropdown-content"><ul><li><a href="#" target="_blank">Girl Groups</a></li></ul></div></details>
-          <details class="genre-dropdown"><summary># Baladas</summary><div class="dropdown-content"><ul><li><a href="#" target="_blank">Nostalgic Hits</a></li></ul></div></details>
-          <details class="genre-dropdown"><summary># Vocaloid</summary><div class="dropdown-content"><ul><li><a href="#" target="_blank">Hatsune Miku tragic</a></li></ul></div></details>
-        </div>
-
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">tamagotchi v2</div>
-          <div style="text-align: center;">
-            <div id="tamoAvatar" style="font-size: 28px; margin-bottom: 5px; font-weight: bold;">(•‿•)</div>
-            <div id="tamoStatus" style="font-size: 9px; margin-bottom: 8px; font-style: italic;">Estado: Feliz! (^-^)</div>
-            <progress id="tamoProgress" value="100" max="100"></progress>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 8px;">
-              <button class="rococo-btn" style="font-size: 9px; padding: 3px;" onclick="feedTamo()">[-] Comer</button>
-              <button class="rococo-btn" style="font-size: 9px; padding: 3px;" onclick="playTamo()">[+] Jugar</button>
+          <div class="rococo-frame-title">hologramas de la red</div>
+          <div class="holo-matrix-4x4">
+            <div class="holo-slot" style="grid-column: span 2;">
+              <div class="ascii-holo-container">
+     .---.         .---.
+    /     \  _._  /     \
+   \_..---.-'   '-.---.._/
+  /  .:::./       \.:::.  \
+  | :::./           \.::: |
+  \_::/  ____   ____  \::_/
+    |/  / __ \ / __ \  \|
+    (   \ :: / \ :: /   )
+     \   '--'   '--'   /
+   .-'-.           .-'-.
+  /     '--.---.--'     \
+ /   /\             /\   \
+|   /  \ _       _ /  \   |
+ \_/    ' '-...-' '    \_/
+       |  | | | |  |
+       |  |_|_|_|  |
+              </div>
             </div>
+            <div class="holo-slot" id="slotHolo2">+(o.o)+</div>
+            <div class="holo-slot" id="slotHolo3">}-v-{</div>
           </div>
         </div>
       </aside>
 
       <main>
         <div class="rococo-frame-box">
-          <div class="rococo-frame-title">bitácora & transmisiones del muro</div>
+          <div class="rococo-frame-title">bitácora & transmisiones</div>
           <div class="music-user-input-row">
             <input type="text" id="postTextIn" placeholder="¿Qué secreto cruza la red hoy?">
             <button class="rococo-btn" style="width:75px;" onclick="publishUserPostNode()">Enviar</button>
@@ -432,32 +427,26 @@ progress::-webkit-progress-val { background-color: var(--barbie-pink); border-ra
       </main>
 
       <aside>
+        <!-- PLAYLIST DINÁMICA DE ENLACES A YOUTUBE -->
         <div class="rococo-frame-box">
           <div class="rococo-frame-title">matriz sónica</div>
           <div class="music-user-input-row">
-            <input type="text" id="liveMusicLinkIn" placeholder="YouTube URL...">
-            <button class="rococo-btn" style="width:65px; font-size:9px;" onclick="injectCustomMusicEmbed()">Inyectar</button>
+            <input type="text" id="liveMusicLinkIn" placeholder="Añadir URL de YouTube...">
+            <button class="rococo-btn" style="width:65px; font-size:9px;" onclick="addLinkToDynamicPlaylist()">Añadir</button>
           </div>
-          <div id="musicContainerFrame" style="border:1px solid var(--barbie-pink); border-radius:6px; overflow:hidden; height:110px; background:#000;"></div>
+          <div id="musicContainerFrame" style="border:1px solid var(--barbie-pink); border-radius:6px; overflow:hidden; height:110px; background:#000; margin-bottom:10px;"></div>
+          
+          <div style="font-size:10px; color:var(--barbie-pink); border-top:1px dashed var(--barbie-pink); padding-top:6px; font-weight:bold;">✦ Playlist de la Red:</div>
+          <div class="playlist-links-wrapper" id="playlistHyperlinksBox"></div>
         </div>
 
         <div class="rococo-frame-box">
-          <div class="rococo-frame-title">reliquias_hologramas_4x4</div>
-          <div class="holo-matrix-4x4" id="holoMatrixBox">
-            <div class="holo-slot" id="slotHolo1"></div>
-            <div class="holo-slot" id="slotHolo2">+(o.o)+</div>
-            <div class="holo-slot" id="slotHolo3">}-v-{</div>
-            <div class="holo-slot" id="slotHolo4">(._.)</div>
+          <div class="rococo-frame-title">opiniones del santuario</div>
+          <div class="opinions-stream" id="opinionsStreamZone"></div>
+          <div class="music-user-input-row" style="flex-direction: column; gap: 4px;">
+            <input type="text" id="opinionTextIn" placeholder="¿Qué opinas de este rincón?" style="width: 100%;">
+            <button class="rococo-btn" onclick="publishUserOpinion()">Dejar Reseña</button>
           </div>
-        </div>
-
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">confesionario anónimo</div>
-          <div class="comment-input-row">
-            <input type="text" class="comment-in" id="confessIn" placeholder="Deja caer tu susurro...">
-            <button class="rococo-btn" style="width:45px; font-size:9px;" onclick="sendAnonymousConfession()">Soltar</button>
-          </div>
-          <div class="confession-scroller" id="confessScrollerZone"></div>
         </div>
       </aside>
     </div>
@@ -474,7 +463,7 @@ progress::-webkit-progress-val { background-color: var(--barbie-pink); border-ra
     </div>
   </div>
 
-  <!-- PESTAÑA 3: FECHAS MÍSTICAS / CALENDARIO -->
+  <!-- PESTAÑA 3: CALENDARIO -->
   <div id="viewCalendarGrid" class="tab-view">
     <div class="rococo-frame-box" style="max-width:100%;">
       <div class="rococo-frame-title">relicario cronológico</div>
@@ -487,32 +476,22 @@ progress::-webkit-progress-val { background-color: var(--barbie-pink); border-ra
         <div class="calendar-grid-days" id="calendarGridZone"></div>
         <div class="event-display-scroll" id="eventDetailOutput">Haz clic en un día iluminado para leer el destino.</div>
       </div>
-
-      <div style="margin-top:25px; display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">almas vinculadas</div>
-          <div class="friends-scroll-zone" id="friendsScrollZone"></div>
-        </div>
-        <div class="rococo-frame-box" style="display:flex; align-items:center; justify-content:center; text-align:center; font-size:11px;">
-          <p>+-+ Cada alma listada posee un nexo directo inyectado en el tejido central de mel_sanctuary. +-+</p>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
-<!-- CHAT GLOBAL PERSISTENTE RETRO -->
+<!-- CHAT GLOBAL CON APODOS ANÓNIMOS PERMANENTES -->
 <div class="chat-dock">
-  <div id="chatRetroTab" class="chat-tab" onclick="toggleRetroChatWindow(true)">[-] Chat Global</div>
+  <div id="chatRetroTab" class="chat-tab" onclick="toggleRetroChatWindow(true)">[-] Chat de Amigos</div>
   <div id="chatRetroWindow" class="chat-window hidden">
     <div class="chat-header" onclick="toggleRetroChatWindow(false)">
-      <span>(._.) Room Conectado</span>
+      <span>(._.) Habitación Conectada</span>
       <span style="font-size:9px;">v</span>
     </div>
     <div class="chat-body" id="chatRetroMessages"></div>
     <div class="chat-input-container">
-      <input type="text" class="chat-nick" id="chatNick" placeholder="Nick..." maxlength="8" value="Anon">
-      <input type="text" class="chat-input" id="chatRetroInput" placeholder="Escribe un mensaje..." onkeypress="handleRetroChatSubmit(event)">
+      <input type="text" class="chat-nick" id="chatNick" placeholder="Apodo..." maxlength="12">
+      <input type="text" class="chat-input" id="chatRetroInput" placeholder="Escribe de manera anónima..." onkeypress="handleRetroChatSubmit(event)">
     </div>
   </div>
 </div>
@@ -523,103 +502,138 @@ let currentTheme = 'dark';
 let activeMonth = 5; 
 let activeYear = 2026;
 
-let appConfig = {
-  title: "mel_sanctuary_matrix",
-  bio: "𓏲ᵎ Rococó Goth // @_tomate_4",
-  youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  holo1: "PROPIO", holo2: "+(o.o)+", holo3: "}-v-{", holo4: "(._.)"
-};
+// Listado de apodos cute góticos
+const cuteGothNicks = [
+  "⛓️•vamp", "🕸️•doll", "🩸•luna", "🖤•pixie", "🥀•rose", "💀•glitch", 
+  "🔮•witch", "🐈‍⬛•neko", "🦇•bat", "🕯️•gloom", "🎀•lace", "🕸️•coax"
+];
 
-let userPosts = [
+const defaultPosts = [
   { text: "Iniciando el despliegue estético v7... Las flores caen y el reloj místico se sincroniza.", likes: 4, comments: ["Me encanta la lluvia de estrellas +.+"] },
   { text: "Pacto de medianoche grabado en el código. No mires los hologramas fijamente.", likes: 7, comments: [] }
 ];
 
-let anonymousConfessions = [
-  "A veces me quedo mirando el reflejo del santuario esperando que el código responda... - anón"
+const defaultOpinions = [
+  { text: "Este santuario se siente tan etéreo y misterioso. Me encanta pasar por aquí." }
 ];
 
-let stellarPhotos = [
-  "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&width=200",
-  "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&width=200"
+const defaultPlaylist = [
+  { title: "✦ Melancholia Core Track", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+  { title: "✦ Cyber Goth Gaze 505", url: "https://www.youtube.com/watch?v=5Eq3V_gSka4" }
 ];
 
-let customEvents = {
-  "2026-5-5": { reason: "goth", text: "Eclipse de Luna Negra: Pacto silencioso de las Almas Rococó." },
-  "2026-5-14": { reason: "coquette", text: "Aniversario del Santuario: Intercambio de listones y kaomojis tiernos." },
-  "2026-5-25": { reason: "destiny", text: "Alineación Astral Central: Destino de Mel revelado." }
+let appConfig = {
+  title: "mel_sanctuary_matrix",
+  bio: "505 // @_tomate_4",
+  youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  holo2: "+(o.o)+", holo3: "}-v-{", holo4: "(._.)"
 };
 
-let linkedFriends = [
-  { name: "Sora ✧", type: "Instagram", link: "https://instagram.com" },
-  { name: "Luna_Goth", type: "TikTok", link: "https://tiktok.com" }
-];
+let userPosts = [];
+let userOpinions = [];
+let chatMessages = [];
+let stellarPhotos = [];
+let sharedPlaylist = [];
 
 window.onload = function() {
   loadDataFromLocalStorage();
   applyMelChanges();
   renderBoardPosts();
-  renderConfessions();
-  renderStellarPhotos();
-  renderLinkedFriendsZone();
+  renderOpinions();
   buildInteractiveCalendar();
   loadPersistentMessages();
+  renderPlaylistHyperlinks();
+  assignPermanentAnonymousNick();
 };
 
 function loadDataFromLocalStorage() {
-  if(localStorage.getItem("mel_config")) appConfig = JSON.parse(localStorage.getItem("mel_config"));
-  if(localStorage.getItem("mel_posts")) userPosts = JSON.parse(localStorage.getItem("mel_posts"));
-  if(localStorage.getItem("mel_confessions")) anonymousConfessions = JSON.parse(localStorage.getItem("mel_confessions"));
-  if(localStorage.getItem("mel_photos")) stellarPhotos = JSON.parse(localStorage.getItem("mel_photos"));
-  if(localStorage.getItem("mel_events")) customEvents = JSON.parse(localStorage.getItem("mel_events"));
-  if(localStorage.getItem("mel_friends")) linkedFriends = JSON.parse(localStorage.getItem("mel_friends"));
-  if(localStorage.getItem("mel_theme")) {
-    currentTheme = localStorage.getItem("mel_theme");
-    document.documentElement.setAttribute("data-theme", currentTheme);
-    document.getElementById("cfgThemeSelector").value = currentTheme;
+  try {
+    let storedConfig = localStorage.getItem("mel_config");
+    if(storedConfig) appConfig = JSON.parse(storedConfig);
+  } catch(e) {}
+
+  try { let storedPosts = localStorage.getItem("mel_posts"); userPosts = storedPosts ? JSON.parse(storedPosts) : [...defaultPosts]; } catch(e) { userPosts = [...defaultPosts]; }
+  try { let storedOpinions = localStorage.getItem("mel_opinions"); userOpinions = storedOpinions ? JSON.parse(storedOpinions) : [...defaultOpinions]; } catch(e) { userOpinions = [...defaultOpinions]; }
+  try { let storedPlaylist = localStorage.getItem("mel_playlist"); sharedPlaylist = storedPlaylist ? JSON.parse(storedPlaylist) : [...defaultPlaylist]; } catch(e) { sharedPlaylist = [...defaultPlaylist]; }
+  try { let storedPhotos = localStorage.getItem("mel_photos"); stellarPhotos = storedPhotos ? JSON.parse(storedPhotos) : []; } catch(e) { stellarPhotos = []; }
+  
+  try {
+    let storedChat = localStorage.getItem("mel_chat");
+    chatMessages = storedChat ? JSON.parse(storedChat) : [
+      { nick: "Sistema ✦", text: "Habitación sincronizada con la base de datos.", timestamp: "00:00", isAnon: false }
+    ];
+  } catch(e) { chatMessages = []; }
+
+  try {
+    let storedTheme = localStorage.getItem("mel_theme");
+    if(storedTheme) {
+      currentTheme = storedTheme;
+      document.documentElement.setAttribute("data-theme", currentTheme);
+      document.getElementById("cfgThemeSelector").value = currentTheme;
+    }
+  } catch(e) {}
+}
+
+function assignPermanentAnonymousNick() {
+  let myAnonNick = localStorage.getItem("mel_my_anon_nick");
+  if (!myAnonNick) {
+    myAnonNick = cuteGothNicks[Math.floor(Math.random() * cuteGothNicks.length)];
+    localStorage.setItem("mel_my_anon_nick", myAnonNick);
   }
+  document.getElementById("chatNick").placeholder = myAnonNick;
 }
 
 function applyMelChanges() {
-  document.getElementById("liveTitle").textContent = appConfig.title;
-  document.getElementById("liveBio").textContent = appConfig.bio;
+  document.getElementById("liveTitle").textContent = appConfig.title || "mel_sanctuary_matrix";
+  document.getElementById("liveBio").textContent = appConfig.bio || "505 // @_tomate_4";
   
-  document.getElementById("cfgTitle").value = appConfig.title;
-  document.getElementById("cfgBio").value = appConfig.bio;
-  document.getElementById("cfgYoutubeId").value = appConfig.youtubeUrl;
-  document.getElementById("cfgHolo1").value = appConfig.holo1;
-  document.getElementById("cfgHolo2").value = appConfig.holo2;
-  document.getElementById("cfgHolo3").value = appConfig.holo3;
-  document.getElementById("cfgHolo4").value = appConfig.holo4;
+  document.getElementById("cfgTitle").value = appConfig.title || "";
+  document.getElementById("cfgBio").value = appConfig.bio || "";
+  document.getElementById("cfgYoutubeId").value = appConfig.youtubeUrl || "";
+  document.getElementById("cfgHolo2").value = appConfig.holo2 || "+(o.o)+";
+  document.getElementById("cfgHolo3").value = appConfig.holo3 || "}-v-{";
 
-  let ytId = extractYoutubeIdToken(appConfig.youtubeUrl);
+  let ytId = extractYoutubeIdToken(appConfig.youtubeUrl || "dQw4w9WgXcQ");
   document.getElementById("musicContainerFrame").innerHTML = `
     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${ytId}?autoplay=0&playlist=${ytId}&loop=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   `;
 
-  let h1 = document.getElementById("slotHolo1");
-  if(appConfig.holo1 === "PROPIO" || appConfig.holo1 === "") {
-    h1.innerHTML = `<svg viewBox="0 0 100 100" style="background:#0a0508;"><circle cx="50" cy="45" r="18" stroke="#FEB1C7" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/><path d="M25 80 C 30 55, 70 55, 75 80" stroke="#FEB1C7" stroke-width="1.5" fill="none"/><circle cx="43" cy="42" r="2" fill="#FEB1C7"/><circle cx="57" cy="42" r="2" fill="#FEB1C7"/><path d="M48 48 Q50 50 52 48" stroke="#FEB1C7" stroke-width="1" fill="none"/></svg>`;
-  } else {
-    h1.innerHTML = appConfig.holo1;
-  }
-  document.getElementById("slotHolo2").textContent = appConfig.holo2;
-  document.getElementById("slotHolo3").textContent = appConfig.holo3;
-  document.getElementById("slotHolo4").textContent = appConfig.holo4;
+  document.getElementById("slotHolo2").textContent = appConfig.holo2 || "+(o.o)+";
+  document.getElementById("slotHolo3").textContent = appConfig.holo3 || "}-v-{";
 }
 
 function extractYoutubeIdToken(url) {
+  if(!url) return "dQw4w9WgXcQ";
   let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   let match = url.match(regExp);
   return (match && match[2].length === 11) ? match[2] : "dQw4w9WgXcQ";
 }
 
-function injectCustomMusicEmbed() {
-  let inputVal = document.getElementById("liveMusicLinkIn").value;
-  if(!inputVal.trim()) return;
-  appConfig.youtubeUrl = inputVal;
-  localStorage.setItem("mel_config", JSON.stringify(appConfig));
-  applyMelChanges();
+function renderPlaylistHyperlinks() {
+  let container = document.getElementById("playlistHyperlinksBox");
+  if(!container) return;
+  container.innerHTML = "";
+  sharedPlaylist.forEach((item, idx) => {
+    container.innerHTML += `
+      <a href="${item.url}" target="_blank" class="playlist-item-link" title="${item.title}">
+        ${idx + 1}. ${item.title}
+      </a>
+    `;
+  });
+}
+
+function addLinkToDynamicPlaylist() {
+  let urlIn = document.getElementById("liveMusicLinkIn");
+  if(!urlIn || !urlIn.value.trim()) return;
+  let rawUrl = urlIn.value.trim();
+  
+  let token = extractYoutubeIdToken(rawUrl);
+  let computedTitle = "✦ Rastro Sónico (" + token.substring(0, 5) + ")";
+  
+  sharedPlaylist.push({ title: computedTitle, url: rawUrl });
+  localStorage.setItem("mel_playlist", JSON.stringify(sharedPlaylist));
+  urlIn.value = "";
+  renderPlaylistHyperlinks();
 }
 
 function switchVirtualTab(target) {
@@ -642,53 +656,46 @@ function switchVirtualTab(target) {
 function toggleAdminPanel() {
   let p = document.getElementById("secretPanel");
   p.style.display = (p.style.display === "block") ? "none" : "block";
-}
-
-function switchThemeMode(mode) {
-  currentTheme = mode;
-  if(mode === 'pastel') {
-    document.documentElement.setAttribute('data-theme', 'pastel');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
+  if(p.style.display === "block") {
+    renderMelSecretLog();
   }
-  localStorage.setItem("mel_theme", mode);
 }
 
-function saveConfigChanges() {
-  appConfig.title = document.getElementById("cfgTitle").value;
-  appConfig.bio = document.getElementById("cfgBio").value;
-  appConfig.youtubeUrl = document.getElementById("cfgYoutubeId").value;
-  localStorage.setItem("mel_config", JSON.stringify(appConfig));
-  applyMelChanges();
-  alert("Tejido central reprogramado exitosamente +-+");
-}
-
-function saveHoloChanges() {
-  appConfig.holo1 = document.getElementById("cfgHolo1").value;
-  appConfig.holo2 = document.getElementById("cfgHolo2").value;
-  appConfig.holo3 = document.getElementById("cfgHolo3").value;
-  appConfig.holo4 = document.getElementById("cfgHolo4").value;
-  localStorage.setItem("mel_config", JSON.stringify(appConfig));
-  applyMelChanges();
-  alert("Inyección cuántica completada (o.o)");
+function renderMelSecretLog() {
+  let logZone = document.getElementById("melSecretTimeLog");
+  if(!logZone) return;
+  logZone.innerHTML = "";
+  let anonMessages = chatMessages.filter(m => m.isAnon);
+  if(anonMessages.length === 0) {
+    logZone.innerHTML = "Ningún susurro anónimo interceptado en esta sesión.";
+    return;
+  }
+  anonMessages.forEach(m => {
+    logZone.innerHTML += `<div>[${m.timestamp}] <strong>${m.nick}:</strong> ${m.text}</div>`;
+  });
 }
 
 function renderBoardPosts() {
   let box = document.getElementById("boardScrollerZone");
-  box.innerHTML = "";
+  if(!box) return; box.innerHTML = "";
+  
   userPosts.forEach((post, i) => {
-    let commsHtml = post.comments.map(c => `<div class="comment-line">${c}</div>`).join('');
+    if(!post) return;
+    let postLikes = post.likes || 0;
+    let commentsArray = post.comments || [];
+    let commsHtml = commentsArray.map(c => `<div class="comment-line">${c || ""}</div>`).join('');
+    
     box.innerHTML += `
       <div class="rococo-post-node">
-        <div style="color:var(--barbie-pink); font-size:10px; font-weight:bold; margin-bottom:4px;">+-+ Enlace Transmitido #${i+1}</div>
-        <div style="line-height:1.4;">${post.text}</div>
+        <div style="color:var(--barbie-pink); font-size:10px; font-weight:bold; margin-bottom:6px; letter-spacing:1px;">✧ fragmento de alma #${i+1}</div>
+        <div style="line-height:1.4; padding-left: 4px;">${post.text}</div>
         <div class="post-social-bar">
-          <button class="react-btn" onclick="likePostNode(${i})">[-] Reaccionar (${post.likes})</button>
+          <button class="react-btn" onclick="likePostNode(${i})">[-] Reaccionar (${postLikes})</button>
         </div>
         <div class="comment-box">
           <div class="comment-stream">${commsHtml}</div>
           <div class="comment-input-row">
-            <input type="text" class="comment-in" id="commIn-${i}" placeholder="Comentar...">
+            <input type="text" class="comment-in" id="commIn-${i}" placeholder="Escribir susurro...">
             <button class="rococo-btn" style="width:50px; font-size:9px;" onclick="addCommentToNode(${i})">Unir</button>
           </div>
         </div>
@@ -707,42 +714,58 @@ function publishUserPostNode() {
 }
 
 function likePostNode(i) {
-  userPosts[i].likes++;
+  if(!userPosts[i]) return;
+  userPosts[i].likes = (userPosts[i].likes || 0) + 1;
   localStorage.setItem("mel_posts", JSON.stringify(userPosts));
   renderBoardPosts();
 }
 
 function addCommentToNode(i) {
   let input = document.getElementById(`commIn-${i}`);
-  if(!input.value.trim()) return;
-  userPosts[i].comments.push(input.value);
+  if(!input || !input.value.trim()) return;
+  if(!userPosts[i].comments) userPosts[i].comments = [];
+  userPosts[i].comments.push(input.value.trim());
   localStorage.setItem("mel_posts", JSON.stringify(userPosts));
   input.value = "";
   renderBoardPosts();
 }
 
-function renderConfessions() {
-  let box = document.getElementById("confessScrollerZone");
-  box.innerHTML = anonymousConfessions.map(c => `<div class="confession-card">${c}</div>`).join('');
+function renderOpinions() {
+  let box = document.getElementById("opinionsStreamZone");
+  if(!box) return; box.innerHTML = "";
+  userOpinions.forEach(op => { box.innerHTML += `<div class="opinion-node">✦ ${op.text}</div>`; });
 }
 
-function sendAnonymousConfession() {
-  let input = document.getElementById("confessIn");
-  if(!input.value.trim()) return;
-  anonymousConfessions.unshift(`"${input.value}" - anón`);
-  localStorage.setItem("mel_confessions", JSON.stringify(anonymousConfessions));
+function publishUserOpinion() {
+  let input = document.getElementById("opinionTextIn");
+  if(!input || !input.value.trim()) return;
+  userOpinions.unshift({ text: input.value.trim() });
+  localStorage.setItem("mel_opinions", JSON.stringify(userOpinions));
   input.value = "";
-  renderConfessions();
+  renderOpinions();
 }
 
-function renderStellarPhotos() {
-  let box = document.getElementById("stellarPhotoGridZone");
-  box.innerHTML = stellarPhotos.map(p => `
-    <div class="stellar-photo-card">
-      <img src="${p}" alt="Reliquia">
-      <div class="stellar-photo-meta">reliquia_core</div>
-    </div>
-  `).join('');
+function switchThemeMode(mode) {
+  currentTheme = mode;
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem("mel_theme", mode);
+}
+
+function saveConfigChanges() {
+  appConfig.title = document.getElementById("cfgTitle").value;
+  appConfig.bio = document.getElementById("cfgBio").value;
+  appConfig.youtubeUrl = document.getElementById("cfgYoutubeId").value;
+  localStorage.setItem("mel_config", JSON.stringify(appConfig));
+  applyMelChanges();
+  alert("Santuario base reconfigurado.");
+}
+
+function saveHoloChanges() {
+  appConfig.holo2 = document.getElementById("cfgHolo2").value;
+  appConfig.holo3 = document.getElementById("cfgHolo3").value;
+  localStorage.setItem("mel_config", JSON.stringify(appConfig));
+  applyMelChanges();
+  alert("Hologramas secundarios actualizados.");
 }
 
 function uploadStellarPhoto(input) {
@@ -757,6 +780,19 @@ function uploadStellarPhoto(input) {
   }
 }
 
+function renderStellarPhotos() {
+  let zone = document.getElementById("stellarPhotoGridZone");
+  if(!zone) return; zone.innerHTML = "";
+  stellarPhotos.forEach((src, idx) => {
+    zone.innerHTML += `
+      <div class="stellar-photo-card">
+        <img src="${src}" alt="Captura Estelar">
+        <div class="stellar-photo-meta">reliquia_df_${idx+1}</div>
+      </div>
+    `;
+  });
+}
+
 function triggerClick(id) { document.getElementById(id).click(); }
 
 function loadPersonalAvatar(uploader) {
@@ -765,52 +801,24 @@ function loadPersonalAvatar(uploader) {
     reader.onload = function(e) {
       document.getElementById("txtAvatarPlace").style.display = "none";
       let img = document.getElementById("imgAvatarView");
-      img.src = e.target.result;
-      img.style.display = "block";
+      img.src = e.target.result; img.style.display = "block";
     };
     reader.readAsDataURL(uploader.files[0]);
   }
 }
 
 function triggerMatrixOracle() {
-  const responses = [
-    "Los hologramas revelan hilos sutiles en tu destino.",
-    "Un pacto rococó oculto florecerá esta semana.",
-    "El código advierte: sincronía mística alta con @_tomate_4",
-    "Estrellas de texto caen a tu favor."
-  ];
+  const responses = ["Los hologramas revelan hilos sutiles.", "Un pacto místico florecerá pronto.", "Sincronía detectada en el código."];
   let choice = responses[Math.floor(Math.random() * responses.length)];
-  document.getElementById("oracleResultBox").textContent = `+-+ ${choice}`;
-}
-
-function renderLinkedFriendsZone() {
-  let box = document.getElementById("friendsScrollZone");
-  box.innerHTML = linkedFriends.map(f => `
-    <div class="friend-card">
-      <div class="friend-name"><span>[-] ${f.name}</span> <span style="font-size:8px; opacity:0.6;">${f.type}</span></div>
-      <a href="${f.link}" target="_blank" class="friend-meta-btn">Cruzar al Perfil</a>
-    </div>
-  `).join('');
-}
-
-function addNewFriendNode() {
-  let name = document.getElementById("newFriendName").value;
-  let type = document.getElementById("newFriendType").value;
-  let link = document.getElementById("newFriendLink").value;
-  if(!name.trim() || !link.trim()) return;
-  linkedFriends.push({ name, type, link });
-  localStorage.setItem("mel_friends", JSON.stringify(linkedFriends));
-  document.getElementById("newFriendName").value = "";
-  document.getElementById("newFriendLink").value = "";
-  renderLinkedFriendsZone();
+  document.getElementById("oracleResultBox").textContent = `✦ ${choice}`;
 }
 
 const monthLabels = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
 function buildInteractiveCalendar() {
-  document.getElementById("calendarMonthTitle").textContent = `${monthLabels[activeMonth]} ${activeYear}`;
-  let grid = document.getElementById("calendarGridZone");
-  if(!grid) return;
+  let titleEl = document.getElementById("calendarMonthTitle");
+  if(titleEl) titleEl.textContent = `${monthLabels[activeMonth]} ${activeYear}`;
+  let grid = document.getElementById("calendarGridZone"); if(!grid) return;
   grid.innerHTML = "";
 
   const headers = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
@@ -819,26 +827,9 @@ function buildInteractiveCalendar() {
   let firstDayIndex = new Date(activeYear, activeMonth, 1).getDay();
   let totalDays = new Date(activeYear, activeMonth + 1, 0).getDate();
 
-  for(let i = 0; i < firstDayIndex; i++) {
-    grid.innerHTML += `<div class="calendar-cell-node empty-cell"></div>`;
-  }
-
+  for(let i = 0; i < firstDayIndex; i++) grid.innerHTML += `<div class="calendar-cell-node empty-cell"></div>`;
   for(let day = 1; day <= totalDays; day++) {
-    let dateKey = `${activeYear}-${activeMonth}-${day}`;
-    let extraClass = "";
-    
-    if(customEvents[dateKey]) {
-      let r = customEvents[dateKey].reason;
-      if(r === "goth") extraClass = " evt-goth-style";
-      if(r === "coquette") extraClass = " evt-coquette-style";
-      if(r === "destiny") extraClass = " evt-destiny-style";
-    }
-
-    grid.innerHTML += `
-      <div class="calendar-cell-node${extraClass}" onclick="focusCalendarCellNode(${day})" onmouseover="focusCalendarCellNode(${day})">
-        ${day}
-      </div>
-    `;
+    grid.innerHTML += `<div class="calendar-cell-node" onclick="focusCalendarCellNode(${day})">${day}</div>`;
   }
 }
 
@@ -850,132 +841,26 @@ function moveCalendarMonth(dir) {
 }
 
 function focusCalendarCellNode(day) {
-  let dateKey = `${activeYear}-${activeMonth}-${day}`;
   let out = document.getElementById("eventDetailOutput");
-  if(customEvents[dateKey]) {
-    out.innerHTML = `<strong>Día ${day} - Motivo: ${customEvents[dateKey].reason.toUpperCase()}</strong><br>+ ${customEvents[dateKey].text}`;
-  } else {
-    out.innerHTML = `Día ${day} de ${monthLabels[activeMonth]}.<br><span style="opacity:0.5;">(Sin destino fijado)</span>`;
-  }
+  if(out) out.innerHTML = `Día ${day} de ${monthLabels[activeMonth]}.<br><span style="opacity:0.5;">(Sin destino fijado)</span>`;
 }
 
-function addCustomCalendarEvent() {
-  let d = parseInt(document.getElementById("calInDay").value);
-  let m = parseInt(document.getElementById("calInMonth").value);
-  let reason = document.getElementById("calInReason").value;
-  let text = document.getElementById("calInText").value;
-  
-  if(!d || !text.trim()) { alert("Ingresa un día y texto válidos."); return; }
-  
-  let key = `2026-${m}-${d}`;
-  customEvents[key] = { reason, text };
-  localStorage.setItem("mel_events", JSON.stringify(customEvents));
-  
-  document.getElementById("calInDay").value = "";
-  document.getElementById("calInText").value = "";
-  
-  buildInteractiveCalendar();
-  alert("Coordenada inyectada.");
-}
-
-// Lluvia de partículas simbólicas en el fondo
+// Lluvia persistente de símbolos Kaomoji
 const rainSymbols = ["*", "+", "x", "o", "v", "-"];
 setInterval(() => {
-  const el = document.createElement("div");
-  el.className = "kaomoji-particle";
+  const el = document.createElement("div"); el.className = "kaomoji-particle";
   el.textContent = rainSymbols[Math.floor(Math.random() * rainSymbols.length)];
-  el.style.left = Math.random() * 100 + "vw";
-  el.style.top = "-25px";
+  el.style.left = Math.random() * 100 + "vw"; el.style.top = "-25px";
   el.style.color = Math.random() > 0.5 ? "var(--barbie-pink)" : "#ffffff";
   el.style.fontSize = Math.random() * 16 + 10 + "px";
   el.style.animation = `fall ${Math.random() * 4 + 3}s linear forwards`;
-  document.body.appendChild(el);
-  setTimeout(() => el.remove(), 6000);
-}, 500);
+  document.body.appendChild(el); setTimeout(() => el.remove(), 6000);
+}, 600);
 
-// Destellos de texto al hacer clic
-const burstBlossoms = ["(.)", "*:.*", "+.+", "x_x"];
-window.addEventListener("click", (e) => {
-  if(['BUTTON', 'A', 'SUMMARY', 'INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
-
-  for (let i = 0; i < 7; i++) {
-    const flower = document.createElement("div");
-    flower.className = "kaomoji-particle";
-    flower.textContent = burstBlossoms[Math.floor(Math.random() * burstBlossoms.length)];
-    flower.style.left = e.clientX + "px";
-    flower.style.top = e.clientY + "px";
-    flower.style.fontSize = "15px";
-    
-    const mx = (Math.random() - 0.5) * 160 + "px";
-    const my = (Math.random() - 0.5) * 160 + "px";
-    flower.style.setProperty('--mx', mx);
-    flower.style.setProperty('--my', my);
-    flower.style.animation = "burst 1.3s cubic-bezier(0.1, 0.8, 0.3, 1) forwards";
-    
-    document.body.appendChild(flower);
-    setTimeout(() => flower.remove(), 1300);
-  }
-});
-
-// Lógica de Tamagotchi
-let tamoHunger = 100;
-const tamoAvatarEl = document.getElementById("tamoAvatar");
-const tamoStatusEl = document.getElementById("tamoStatus");
-const tamoProgressEl = document.getElementById("tamoProgress");
-
-setInterval(() => {
-  if(!tamoProgressEl) return;
-  if(tamoHunger > 0) tamoHunger -= 5;
-  tamoProgressEl.value = tamoHunger;
-
-  if(tamoHunger <= 0) {
-    tamoAvatarEl.textContent = "(x_x)";
-    tamoStatusEl.textContent = "Estado: Se ha desmayado... (._.)";
-  } else if(tamoHunger < 35) {
-    tamoAvatarEl.textContent = "(._.)";
-    tamoStatusEl.textContent = "Estado: Tengo mucha hambre! (-_-)";
-  } else if(tamoHunger < 70) {
-    tamoAvatarEl.textContent = "(o.o)";
-    tamoStatusEl.textContent = "Estado: Tengo espacio para pastelillos.";
-  }
-}, 4500);
-
-function feedTamo() {
-  if(tamoHunger <= 0) tamoHunger = 25;
-  tamoHunger = Math.min(tamoHunger + 20, 100);
-  tamoProgressEl.value = tamoHunger;
-  tamoAvatarEl.textContent = "(^.^) ";
-  tamoStatusEl.textContent = "Estado: Alimentado de forma óptima.";
-  resetTamoFaceDelay();
-}
-
-function playTamo() {
-  if(tamoHunger > 10) {
-    tamoHunger = Math.max(tamoHunger - 5, 0);
-    tamoProgressEl.value = tamoHunger;
-    tamoAvatarEl.textContent = "(o^.^o)";
-    tamoStatusEl.textContent = "Estado: Saltando por la red.";
-    resetTamoFaceDelay();
-  } else {
-    alert("Está demasiado débil para jugar, aliméntalo primero.");
-  }
-}
-
-function resetTamoFaceDelay() {
-  setTimeout(() => {
-    if(tamoHunger >= 70) {
-      tamoAvatarEl.textContent = "(•‿•)";
-      tamoStatusEl.textContent = "Estado: ¡Feliz y lleno! +-+";
-    }
-  }, 2500);
-}
-
-// Control del Chat de Amigos Retro
 function toggleRetroChatWindow(isOpen) {
   if(isOpen) {
     document.getElementById("chatRetroTab").classList.add("hidden");
     document.getElementById("chatRetroWindow").classList.remove("hidden");
-    scrollChatToBottom();
   } else {
     document.getElementById("chatRetroWindow").classList.add("hidden");
     document.getElementById("chatRetroTab").classList.remove("hidden");
@@ -983,55 +868,49 @@ function toggleRetroChatWindow(isOpen) {
 }
 
 function loadPersistentMessages() {
-  const chatBody = document.getElementById('chatRetroMessages');
-  let messages = JSON.parse(localStorage.getItem('mel_matrix_chat_history')) || [
-    { sender: "System", text: "(^.^) ¡Chat activado! Deja tu marca acá.", type: "friend" }
-  ];
-  
-  chatBody.innerHTML = '<p style="color:#777; font-size:9px; text-align:center; margin:3px 0;">Sala de mensajería del Santuario</p>';
-  messages.forEach(msg => {
-    const msgElement = document.createElement('div');
-    msgElement.className = `chat-msg-line ${msg.type}`;
-    msgElement.innerHTML = `<b>${msg.sender}:</b> ${msg.text}`;
-    chatBody.appendChild(msgElement);
+  let box = document.getElementById("chatRetroMessages");
+  if(!box) return; box.innerHTML = "";
+  chatMessages.forEach(msg => {
+    box.innerHTML += `
+      <p class="chat-msg-line friend">
+        <strong>${msg.nick}:</strong> ${msg.text}
+      </p>
+    `;
   });
-  scrollChatToBottom();
+  box.scrollTop = box.scrollHeight;
+  renderStellarPhotos();
 }
 
-function handleRetroChatSubmit(event) {
-  if(event.key === 'Enter') {
-    const input = document.getElementById("chatRetroInput");
-    const nickInput = document.getElementById("chatNick");
-    const val = input.value.trim();
-    const sender = nickInput.value.trim() || "Anon";
-    if(val === "") return;
-    
-    let messages = JSON.parse(localStorage.getItem('mel_matrix_chat_history')) || [];
-    messages.push({ sender: sender, text: val, type: "user" });
-    localStorage.setItem('mel_matrix_chat_history', JSON.stringify(messages));
-    
+function handleRetroChatSubmit(e) {
+  if (e.key === 'Enter') {
+    let nickInput = document.getElementById("chatNick");
+    let textInput = document.getElementById("chatRetroInput");
+    if(!textInput.value.trim()) return;
+
+    let finalNick = nickInput.value.trim();
+    let isAnonMessage = false;
+
+    if (!finalNick) {
+      finalNick = localStorage.getItem("mel_my_anon_nick") || "⛓️•vamp";
+      isAnonMessage = true;
+    }
+
+    let d = new Date();
+    let timestamp = d.toTimeString().split(' ')[0];
+
+    let newMessage = {
+      nick: finalNick,
+      text: textInput.value.trim(),
+      isAnon: isAnonMessage,
+      timestamp: timestamp
+    };
+
+    chatMessages.push(newMessage);
+    localStorage.setItem("mel_chat", JSON.stringify(chatMessages));
+    textInput.value = "";
     loadPersistentMessages();
-    input.value = "";
-    
-    // Simulación de respuesta automática corta de amigos
-    setTimeout(() => {
-      const responses = [
-        "¡Qué lindo leer eso! Siempre me encanta pasarme por mel_sanctuary. (o.o)",
-        "Totalmente de acuerdo con el diseño rococó goth.",
-        "Súper retro todo por aquí. ¡Me fascina! +-+"
-      ];
-      const reply = responses[Math.floor(Math.random() * responses.length)];
-      let updatedMessages = JSON.parse(localStorage.getItem('mel_matrix_chat_history')) || [];
-      updatedMessages.push({ sender: "Amigo", text: reply, type: "friend" });
-      localStorage.setItem('mel_matrix_chat_history', JSON.stringify(updatedMessages));
-      loadPersistentMessages();
-    }, 1500);
+    renderMelSecretLog();
   }
-}
-
-function scrollChatToBottom() {
-  const chatBody = document.getElementById('chatRetroMessages');
-  if(chatBody) chatBody.scrollTop = chatBody.scrollHeight;
 }
 </script>
 </body>
