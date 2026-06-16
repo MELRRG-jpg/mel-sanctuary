@@ -3,661 +3,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Santuario de Mirei - Tako Retro Rococó</title>
+    <title>୨୧ arunyi's private cocoon ୨୧</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=VT323&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Zio+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         /* ==========================================================================
-           VARIABLES Y TEMAS DUALES (Alquimia de Colores)
+           ARQUITECTURA DE COLORES (SOFT BLUSH & VINTAGE COQUETTE PALETTE)
            ========================================================================== */
         :root {
-            /* Modo Rosita (Pétalo Celestial) */
-            --fondo-santuario: #FFF5F7;
-            --borde-rococo: #FFDBDA;
-            --detalles-encaje: #DB7F8E;
-            --texto-principal: #4A3E3D;
-            --oro-realeza: #D4AF37;
-            --fondo-cajas: rgba(255, 255, 255, 0.85);
-            --patron-fondo: radial-gradient(#FFDBDA 20%, transparent 20%) 0 0 / 15px 15px;
+            --blush-base: #FFF4F5;
+            --caja-fondo: #FFFFFF;
+            --encaje-suave: #FFDCDA;
+            --rosa-viejo: #DB7F8E;
+            --cradle-lavanda: #E6CAD4;
+            --texto-marron: #654649;
+            --texto-firme: #4A2E31;
+            --oro-sutil: #DFBA6B;
+            --sombra-coquette: 0px 8px 24px rgba(219, 127, 142, 0.25);
+            --borde-doble: 6px double #DB7F8E;
+            --borde-puntos: 2px dotted #DB7F8E;
         }
 
-        [data-tema="gotico"] {
-            /* Modo Gótico (Abismo de Terciopelo) */
-            --fondo-santuario: #121212;
-            --borde-rococo: #2A2425;
-            --detalles-encaje: #8B2635;
-            --texto-principal: #E0D0D0;
-            --oro-realeza: #AA7C11;
-            --fondo-cajas: rgba(24, 23, 23, 0.9);
-            --patron-fondo: radial-gradient(#3A1F24 20%, transparent 20%) 0 0 / 15px 15px;
-        }
-
-        /* ==========================================================================
-           ESTILOS BASE Y MARCOS ROCOCÓ
-           ========================================================================== */
+        /* RESETEO Y CONFIGURACIÓN GENERAL DEL LIENZO */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: all 0.4s ease;
+            cursor: url('https://cur.cursors-4u.net/symbols/sym-9/sym834.cur'), auto !important; /* Cursor de varita/corazón retro */
         }
 
         body {
-            background-color: var(--fondo-santuario);
-            background-image: var(--patron-fondo);
-            font-family: 'Comfortaa', cursive;
-            color: var(--texto-principal);
+            background-color: var(--blush-base);
+            /* Patrón denso de píxel-corazones repetidos de fondo */
+            background-image: 
+                radial-gradient(var(--encaje-suave) 15%, transparent 15%),
+                radial-gradient(var(--encaje-suave) 15%, transparent 15%);
+            background-size: 16px 16px;
+            background-position: 0 0, 8px 8px;
+            font-family: 'Fredoka', sans-serif;
+            color: var(--texto-marron);
+            padding: 30px 10px 80px 10px;
             display: flex;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        /* El Gran Cascarón Retro */
-        .santuario-contenedor {
-            width: 1000px;
-            background: var(--fondo-cajas);
-            border: 12px double var(--detalles-encaje);
-            border-radius: 40px;
-            padding: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            position: relative;
-        }
-
-        .santuario-contenedor::before {
-            content: "✿ Mirei Pink ✿";
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--borde-rococo);
-            padding: 5px 20px;
-            border: 3px solid var(--detalles-encaje);
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        /* ENCABEZADO ESTÉTICO */
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px dashed var(--borde-rococo);
-            padding-bottom: 20px;
-        }
-
-        header h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 65px;
-            color: var(--detalles-encaje);
-            text-shadow: 2px 2px var(--borde-rococo);
-        }
-
-        header p {
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: lowercase;
-            opacity: 0.8;
-        }
-
-        /* ==========================================================================
-           NAVEGACIÓN (Pestañas del Destino)
-           ========================================================================== */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .pestana-boton {
-            background: var(--borde-rococo);
-            border: 2px solid var(--detalles-encaje);
-            padding: 12px 20px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-family: 'Comfortaa', cursive;
-            font-size: 13px;
-            color: var(--texto-principal);
-            font-weight: bold;
-        }
-
-        .pestana-boton.activa, .pestana-boton:hover {
-            background: var(--detalles-encaje);
-            color: #FFF;
-            box-shadow: 0 0 10px var(--detalles-encaje);
-        }
-
-        /* SECCIONES */
-        .seccion-santuario {
-            display: none;
-        }
-
-        .seccion-santuario.activa {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        /* ==========================================================================
-           CONTENEDORES INTERNOS
-           ========================================================================== */
-        .cofre-decorado {
-            background: rgba(255, 255, 255, 0.5);
-            border: 3px dashed var(--detalles-encaje);
-            border-radius: 25px;
-            padding: 25px;
-            position: relative;
-        }
-
-        [data-tema="gotico"] .cofre-decorado {
-            background: rgba(20, 20, 20, 0.5);
-        }
-
-        .titulo-cofre {
-            font-size: 18px;
-            color: var(--detalles-encaje);
-            margin-bottom: 15px;
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid var(--borde-rococo);
-            padding-bottom: 5px;
+            overflow-x: hidden;
         }
 
-        /* LAYOUT DE LA PÁGINA DE INICIO */
-        .grid-altar {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 25px;
+        /* ANIMACIÓN FLUIDA DE SAKURAS CAYENDO */
+        #capa-sakura {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
         }
-
-        .marco-retrato {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 15px;
-            border: 8px double var(--oro-realeza);
-            border-radius: 50%;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        .petalo-sakura {
+            position: absolute;
+            background: #FFBECD;
+            border-radius: 120% 0 120% 120%;
+            opacity: 0.5;
+            animation: caidaEterna 7s linear infinite;
         }
-
-        .marco-retrato img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .subir-oculto {
-            display: none;
-        }
-
-        .etiqueta-subir {
-            display: block;
-            text-align: center;
-            background: var(--detalles-encaje);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 11px;
-            cursor: pointer;
-            margin-top: 10px;
+        @keyframes caidaEterna {
+            0% { transform: translateY(-10vh) rotate(0deg) scale(0.8); opacity: 0.8; }
+            50% { transform: translateX(30px) rotate(180deg) scale(1); opacity: 0.5; }
+            100% { transform: translateY(110vh) translateX(-30px) rotate(360deg) scale(0.6); opacity: 0; }
         }
 
         /* ==========================================================================
-           REPRODUCTOR UNIFICADO
+           BARRA DE ESTADO SUPERIOR (ESTILO NOTIFICACIONES DE SNEAK PEEK)
            ========================================================================== */
-        .reproductor-global {
-            background: var(--borde-rococo);
-            border: 2px solid var(--detalles-encaje);
-            padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 25px;
+        .barra-ticker-notificaciones {
+            width: 100%;
+            max-width: 980px;
+            background: var(--caja-fondo);
+            border: 2px solid var(--rosa-viejo);
+            border-radius: 30px;
+            padding: 6px 20px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            box-shadow: var(--sombra-coquette);
+        }
+        .burbuja-alerta {
+            background: var(--encaje-suave);
+            color: var(--texto-firme);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--rosa-viejo);
         }
 
-        .info-melodia {
-            flex-grow: 1;
+        /* ==========================================================================
+           EL GRAN CASCARÓN DETALLADO (EL CAPULLO CENTRAL)
+           ========================================================================== */
+        .cascaron-santuario {
+            background: var(--caja-fondo);
+            border: var(--borde-doble);
+            border-radius: 24px;
+            max-width: 980px;
+            width: 100%;
+            padding: 25px;
+            box-shadow: var(--sombra-coquette);
+            position: relative;
         }
 
-        .info-melodia marquee {
-            font-size: 14px;
-            font-weight: bold;
-            color: var(--detalles-encaje);
+        /* Estampas y Stickers en las esquinas estilo Y2K Scrapbook */
+        .sticker-coquette {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.4;
+            pointer-events: none;
         }
+        .st-top-left { top: 15px; left: 15px; }
+        .st-top-right { top: 15px; right: 15px; }
 
-        .controles-reproductor {
+        /* BANNER CABECERA PERSONALIZADA */
+        .altar-banner {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(rgba(255,244,245,0.2), rgba(255,244,245,0.5)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=900&auto=format&fit=cover') center;
+            background-size: cover;
+            border-radius: 16px;
+            border: 2px solid var(--encaje-suave);
             display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .boton-audio {
-            background: var(--detalles-encaje);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            box-shadow: inset 0 0 40px rgba(219,127,142,0.15);
+        }
+        .altar-banner h1 {
+            font-family: 'VT323', monospace;
+            font-size: 65px;
+            color: white;
+            text-shadow: 4px 4px 0px var(--rosa-viejo), -2px -2px 0px var(--rosa-viejo), 2px -2px 0px var(--rosa-viejo), -2px 2px 0px var(--rosa-viejo);
+            letter-spacing: 2px;
+        }
+        .altar-banner p {
+            font-family: 'Courier Prime', monospace;
+            font-size: 11px;
+            background: white;
+            padding: 4px 15px;
+            border-radius: 12px;
+            margin-top: -5px;
+            border: 1px dashed var(--rosa-viejo);
+            color: var(--texto-firme);
         }
 
-        .boton-audio:hover {
-            transform: scale(1.1);
-            background: var(--oro-realeza);
+        /* ==========================================================================
+           BARRA DE MENÚS Y SUB-MENÚS DESPLEGABLES INTERACTIVOS
+           ========================================================================== */
+        .navegacion-interactiva {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            background: #FFFBFB;
+            padding: 12px;
+            border-radius: 40px;
+            border: 1px solid var(--encaje-suave);
         }
 
-        .control-volumen {
+        .dropdown-santuario {
+            position: relative;
+        }
+
+        .btn-navegacion {
+            background: var(--caja-fondo);
+            border: 2px dashed var(--rosa-viejo);
+            padding: 8px 22px;
+            border-radius: 20px;
+            font-family: inherit;
+            color: var(--texto-marron);
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-navegacion:hover, .btn-navegacion.activo {
+            background: var(--encaje-suave);
+            border-style: solid;
+            transform: scale(1.05);
+        }
+
+        .caja-submenus {
+            display: none;
+            position: absolute;
+            top: 115%; left: 50%;
+            transform: translateX(-50%);
+            background: var(--caja-fondo);
+            border: 2px solid var(--rosa-viejo);
+            border-radius: 12px;
+            min-width: 190px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+            padding: 6px 0;
+        }
+        .caja-submenus::before {
+            content: '';
+            position: absolute;
+            top: -7px; left: 50%; transform: translateX(-50%);
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 7px solid var(--rosa-viejo);
+        }
+        .dropdown-santuario:hover .caja-submenus { display: block; }
+
+        .item-submenu {
+            padding: 8px 16px;
+            color: var(--texto-marron);
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 12px;
         }
-
-        .deslizador-volumen {
-            accent-color: var(--detalles-encaje);
-            cursor: pointer;
-            width: 80px;
-        }
-
-        .lista-generos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .tarjeta-cancion {
-            background: var(--fondo-santuario);
-            padding: 20px;
-            border-radius: 15px;
-            border: 2px solid var(--borde-rococo);
-            border-top: 5px solid var(--detalles-encaje);
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .tarjeta-cancion:hover {
-            border-color: var(--oro-realeza);
-            transform: translateY(-3px);
+        .item-submenu:hover {
+            background: var(--blush-base);
+            color: var(--texto-firme);
+            padding-left: 22px;
         }
 
         /* ==========================================================================
-           JARDÍN SOCIAL Y ENLACES REALES
+           GRID ESTRUCTURAL PRINCIPAL (ENFOQUE EXCLUSIVO EN TU INSTAGRAM RETRO)
            ========================================================================== */
-        .red-amistades {
+        .bloque-secciones {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
+            grid-template-columns: 270px 1fr;
+            gap: 25px;
         }
 
-        .avatar-amigo {
-            text-align: center;
-            background: var(--fondo-cajas);
-            padding: 15px;
-            border-radius: 20px;
-            border: 2px solid var(--borde-rococo);
-        }
-
-        .avatar-amigo img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            border: 3px solid var(--detalles-encaje);
-            object-fit: cover;
-        }
-
-        .apodo-amigo {
-            font-size: 12px;
-            font-weight: bold;
-            margin-top: 8px;
-            color: var(--detalles-encaje);
-        }
-
-        /* Estilos específicos para tus accesos directos */
-        .bloque-redes-propias {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .enlace-estetico {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--borde-rococo);
-            border: 2px solid var(--detalles-encaje);
-            padding: 12px 25px;
-            border-radius: 50px;
-            color: var(--texto-principal);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .enlace-estetico:hover {
-            background: var(--detalles-encaje);
-            color: #FFF;
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px var(--detalles-encaje);
-        }
-
-        .formulario-publicacion {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .entrada-susurro {
-            flex-grow: 1;
-            padding: 15px;
-            border-radius: 15px;
-            border: 2px solid var(--detalles-encaje);
-            background: var(--fondo-santuario);
-            color: var(--texto-principal);
-            font-family: 'Comfortaa', cursive;
-        }
-
-        .boton-enviar {
-            background: var(--detalles-encaje);
-            color: white;
-            border: none;
-            padding: 0 20px;
-            border-radius: 15px;
-            cursor: pointer;
-        }
-
-        .lista-susurros {
+        /* ==========================================================================
+           COLUMNA IZQUIERDA: DETALLES DE IDENTIDAD Y ESTADOS DE ÁNIMO
+           ========================================================================== */
+        .perfil-columna-izquierda {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
-        .nota-susurro {
-            background: var(--borde-rococo);
-            padding: 15px;
-            border-radius: 15px;
-            border-left: 4px solid var(--oro-realeza);
+        .caja-marco-rococo {
+            background: var(--caja-fondo);
+            border: 2px dashed var(--rosa-viejo);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: inset 0 0 15px rgba(255,220,218,0.3);
+            position: relative;
+        }
+
+        .caja-marco-rococo::after {
+            content: '୨୧';
+            position: absolute;
+            top: -10px; left: 50%; transform: translateX(-50%);
+            background: white; padding: 0 8px; font-size: 12px; color: var(--rosa-viejo);
+        }
+
+        .encabezado-caja-interna {
+            background: var(--encaje-suave);
+            text-align: center;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--texto-firme);
+        }
+
+        /* Contenedor del Avatar Estilo Guardapelo Antiguo */
+        .marco-guardapelo-avatar {
+            width: 150px;
+            height: 150px;
+            border: var(--borde-doble);
+            border-radius: 50%;
+            margin: 0 auto 12px auto;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+        .marco-guardapelo-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Lista de Estados minuciosos (Carrd / SpaceHey Style) */
+        .tabla-estados-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 12px;
+        }
+        .fila-estado-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted var(--encaje-suave);
+            padding-bottom: 4px;
+        }
+        .fila-estado-item span { font-weight: 600; color: var(--rosa-viejo); }
+
+        /* REPRODUCTOR DE CASSETTE ULTRA DETALLADO */
+        .reproductor-mini-cassette {
+            background: #FFFBFB;
+            border: 2px solid var(--rosa-viejo);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 5px;
+            position: relative;
+        }
+        .cuerpo-cassette-visual {
+            width: 100%; height: 60px;
+            background: var(--texto-marron);
+            border-radius: 6px;
+            border: 2px solid var(--encaje-suave);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Los pequeños engranajes giratorios del cassette */
+        .engranaje-cassette {
+            width: 22px; height: 22px;
+            border: 4px dotted #FFF; border-radius: 50%;
+        }
+        .girando-disco { animation: spin 4s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .controles-reproduccion-retro {
+            display: flex; justify-content: center; gap: 18px; margin-top: 10px; font-size: 14px;
+        }
+        .controles-reproduccion-retro i { cursor: pointer; color: var(--rosa-viejo); }
+        .controles-reproduccion-retro i:hover { color: var(--texto-firme); }
+
+        /* Input decorativo para colocar IDs o Links de YouTube */
+        .caja-input-yt {
+            width: 100%; font-size: 10px; padding: 5px 8px; margin-top: 10px;
+            border: 1px dashed var(--rosa-viejo); border-radius: 6px; font-family: inherit;
+            color: var(--texto-marron); text-align: center;
         }
 
         /* ==========================================================================
-           BAÚL DE DESTELLOS (Galería)
+           COLUMNA DERECHA: BIO DETALLADA, CAJA DE PUBLICACIÓN Y FEED DE IMÁGENES
            ========================================================================== */
-        .cuadrícula-galeria {
+        .perfil-columna-derecha {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Caja de Perfil Biográfico e Índices */
+        .caja-bio-estilo-ig {
+            border: 2px solid var(--encaje-suave);
+            border-radius: 16px;
+            padding: 20px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF9FA 100%);
+        }
+        .cabecera-datos-usuario {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
+        }
+        .nombre-id-ig { font-size: 20px; font-weight: 600; color: var(--texto-firme); }
+        
+        .contadores-mini-cuadros {
+            display: flex; gap: 15px; font-size: 12px; margin-bottom: 15px;
+            background: #FFF; padding: 8px 15px; border-radius: 10px; border: 1px dotted var(--rosa-viejo);
+        }
+        .contadores-mini-cuadros strong { color: var(--rosa-viejo); }
+
+        .texto-esencia-bio {
+            font-size: 13px; line-height: 1.6; color: var(--texto-marron);
+            border-left: 3px solid var(--rosa-viejo); padding-left: 12px;
+        }
+
+        /* CAJA DE MANIFESTACIÓN MULTIMEDIA (Para subir y escribir) */
+        .panel-creador-contenido {
+            background: #FFFBFB;
+            border: 2px dashed var(--rosa-viejo);
+            border-radius: 16px;
+            padding: 15px;
+        }
+        .campo-escritura-retro {
+            width: 100%; height: 60px; border: 1px solid var(--cradle-lavanda);
+            border-radius: 8px; padding: 10px; font-family: inherit; font-size: 12px;
+            resize: none; margin-bottom: 10px; color: var(--texto-marron);
+        }
+
+        /* CUADRÍCULA DENSE-FEED (ESTILO IG / MYSPACE MULTI-OPCIONES) */
+        .cuadrícula-imagenes-feed {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            margin-top: 20px;
         }
 
-        .cuadro-galeria {
-            height: 200px;
-            border: 4px double var(--detalles-encaje);
-            border-radius: 15px;
+        .tarjeta-espejo-multimedia {
+            aspect-ratio: 1 / 1;
+            border: 3px double var(--encaje-suave);
+            border-radius: 12px;
             overflow: hidden;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .tarjeta-espejo-multimedia:hover {
+            border-color: var(--rosa-viejo);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(219,127,142,0.2);
+        }
+        .tarjeta-espejo-multimedia img, .tarjeta-espejo-multimedia video {
+            width: 100%; height: 100%; object-fit: cover;
         }
 
-        .cuadro-galeria img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ALTERNADOR DE ESTÉTICA */
-        .alternador-estetica {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            border-top: 3px dashed var(--borde-rococo);
-            padding-top: 20px;
-        }
-
-        .boton-estetica {
-            padding: 12px 25px;
-            border-radius: 20px;
-            border: 2px solid var(--texto-principal);
-            cursor: pointer;
-            font-family: 'Comfortaa', cursive;
+        /* Pequeño detalle de cinta adhesiva / sticker vintage en las fotos */
+        .sello-postal-vintage {
+            position: absolute;
+            bottom: 6px; right: 6px;
+            background: rgba(255, 255, 255, 0.85);
+            font-size: 10px; font-family: 'Courier Prime', monospace;
+            padding: 1px 6px; border-radius: 4px;
+            border: 1px dotted var(--rosa-viejo);
+            color: var(--texto-firme);
             font-weight: bold;
-            font-size: 14px;
         }
 
-        .estetica-rosita { background: #FFDBDA; color: #DB7F8E; }
-        .estetica-gotica { background: #181717; color: #FFDBDA; }
+        /* ==========================================================================
+           PESTAÑA 2: EL MURO DE AMIGOS (EL DIÁLOGO DE LAS ALMAS)
+           ========================================================================== */
+        .seccion-ocultable { display: none; }
+        
+        .contenedor-muro-amigos {
+            max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;
+        }
+        
+        .comentario-myspace-card {
+            background: var(--caja-fondo);
+            border: 2px dashed var(--cradle-lavanda);
+            border-radius: 16px;
+            padding: 15px;
+        }
+        .cabecera-amigo-comenta {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+            border-bottom: 1px dotted var(--encaje-suave); padding-bottom: 6px;
+        }
+        .avatar-amigo-circular {
+            width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--rosa-viejo); overflow: hidden;
+        }
+        .avatar-amigo-circular img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Formulario para que tus amigos te dejen comentarios reales */
+        .caja-dejar-susurro {
+            background: #FFF9FA; border: 2px solid var(--encaje-suave); border-radius: 12px; padding: 15px;
+        }
+
+        /* CONFIGURACIÓN DEL PIE DE PÁGINA */
+        footer {
+            text-align: center; font-family: 'Courier Prime', monospace; font-size: 10px;
+            color: var(--rosa-viejo); margin-top: 40px; border-top: 1px dotted var(--encaje-suave); padding-top: 15px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="santuario-contenedor">
-        
-        <header>
-            <h1 id="titulo-reino">jardín de los cerezos</h1>
-            <p>navegación melódica en el paraje retro</p>
-        </header>
+    <div id="capa-sakura"></div>
 
-        <nav>
-            <div class="pestana-boton activa" onclick="abrirPestana('altar')">✿ el altar</div>
-            <div class="pestana-boton" onclick="abrirPestana('sinfonias')">✿ sinfonías queridas</div>
-            <div class="pestana-boton" onclick="abrirPestana('jardin')">✿ jardín social</div>
-            <div class="pestana-boton" onclick="abrirPestana('baul')">✿ baúl de destellos</div>
+    <div class="barra-ticker-notificaciones">
+        <div style="display: flex; align-items: center; gap: 10px; font-size: 12px;">
+            <span class="burbuja-alerta">✧ actualización de estado ✧</span>
+            <marquee scrollamount="2" style="width: 300px; color: var(--texto-marron); font-weight: bold;">Mirei ha manifestado una nueva foto en el Altar... Escuchando pistas melancólicas...</marquee>
+        </div>
+        <div style="font-size: 11px; font-weight: 600;"><i class="fa-solid fa-heart-pulse"></i> online & dreaming</div>
+    </div>
+
+    <div class="cascaron-santuario">
+        
+        <span class="sticker-coquette st-top-left">🧸</span>
+        <span class="sticker-coquette st-top-right">🎀</span>
+
+        <div class="altar-banner">
+            <h1>arunyi's cocoon</h1>
+            <p>୨୧ un paraje de encaje, códigos e imágenes místicas ୨୧</p>
+        </div>
+
+        <nav class="navegacion-interactiva">
+            
+            <div class="dropdown-santuario">
+                <button class="btn-navegacion activo" onclick="irASeccionDinamica('seccion-altar-me', this)">
+                    <i class="fa-solid fa-house-user"></i> home (me)
+                </button>
+                <div class="caja-submenus">
+                    <a href="#" class="opcion-link item-submenu" onclick="alert('Mi diario íntimo de suspiros')">✧ ver bitácora íntima</a>
+                    <a href="#" class="opcion-link item-submenu" onclick="alert('Contador pixelado: 4,432 visitas')">✧ estadísticas de visitas</a>
+                </div>
+            </div>
+
+            <div class="dropdown-santuario">
+                <button class="btn-navegacion" onclick="irASeccionDinamica('seccion-jardin-friends', this)">
+                    <i class="fa-solid fa-user-group"></i> friends space
+                </button>
+                <div class="caja-submenus">
+                    <a href="#" class="opcion-link item-submenu">✧ ver muro de almas unidas</a>
+                    <a href="#" class="opcion-link item-submenu" onclick="alert('Abriendo bandeja de correspondencia privada')">✧ bandeja de susurros privados</a>
+                </div>
+            </div>
+
+            <button class="btn-navegacion" onclick="alert('Sección Portafolio de Arte en construcción 🌸')">
+                <i class="fa-solid fa-palette"></i> portfolio
+            </button>
         </nav>
 
-        <div class="reproductor-global">
-            <div class="controles-reproductor">
-                <button class="boton-audio" onclick="reproducirOPausar()"><i id="icono-global" class="fa-solid fa-play"></i></button>
-            </div>
-            <div class="info-melodia">
-                <span style="font-size: 11px; opacity: 0.7;">sonando ahora:</span>
-                <marquee id="texto-melodia" scrollamount="3">ninguna melodía seleccionada — ve a la pestaña de sinfonías</marquee>
-            </div>
-            <div class="control-volumen">
-                <i class="fa-solid fa-volume-low"></i>
-                <input type="range" class="deslizador-volumen" min="0" max="1" step="0.1" value="0.5" oninput="ajustarVolumen(this.value)">
-            </div>
-            <audio id="reproductor-nucleo" src=""></audio>
-        </div>
-
-        <div id="altar" class="seccion-santuario activa">
-            <div class="grid-altar">
-                <div class="cofre-decorado" style="text-align: center;">
-                    <div class="titulo-cofre"><i class="fa-solid fa-wand-magic-sparkles"></i> semblante</div>
-                    <div class="marco-retrato">
-                        <img id="imagen-perfil" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=300&auto=format&fit=cover" alt="Retrato">
+        <div id="seccion-altar-me" class="bloque-secciones">
+            
+            <aside class="perfil-columna-izquierda">
+                
+                <div class="caja-marco-rococo">
+                    <div class="encabezado-caja-interna">retrato actual</div>
+                    <div class="marco-guardapelo-avatar">
+                        <img id="avatar-principal-imagen" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=300&auto=format&fit=cover">
                     </div>
-                    <label for="archivo-perfil" class="etiqueta-subir">📁 transmutar semblante</label>
-                    <input type="file" id="archivo-perfil" class="subir-oculto" accept="image/*" onchange="cambiarRetrato(event)">
+                    <label for="subir-avatar-archivo" style="font-size:10px; text-decoration:underline; cursor:pointer; display:block; text-align:center;">[transmutar semblante]</label>
+                    <input type="file" id="subir-avatar-archivo" style="display:none;" accept="image/*" onchange="actualizarAvatarInteractivamente(event)">
                 </div>
 
-                <div class="cofre-decorado">
-                    <div class="titulo-cofre"><i class="fa-solid fa-feather"></i> susurros de la dueña</div>
-                    <p style="font-size: 14px; line-height: 1.8;">
-                        la música ahora fluye a través de todo el santuario. puedes cambiar libremente de pestaña o alterar la estética sin temor a que el encanto del sonido se rompa. las conexiones a tus portales sociales han sido grabadas en piedra decorada.
+                <div class="caja-marco-rococo">
+                    <div class="encabezado-caja-interna">status de la deidad</div>
+                    <div class="tabla-estados-lista">
+                        <div class="fila-estado-item">🧁 <b>ánimo:</b> <span id="st-animo">con sueño</span></div>
+                        <div class="fila-estado-item">🧸 <b>sentir:</b> <span id="st-sentir">in love</span></div>
+                        <div class="fila-estado-item">🎮 <b>jugando:</b> <span id="st-juego">pop'n music</span></div>
+                        <div class="fila-estado-item">🍵 <b>bebiendo:</b> <span id="st-bebida">té de rosas</span></div>
+                    </div>
+                </div>
+
+                <div class="caja-marco-rococo">
+                    <div class="encabezado-caja-interna">treasure player</div>
+                    <div class="reproductor-mini-cassette">
+                        <p id="pista-titulo-retro" style="font-size:10px; font-weight:bold; white-space:nowrap; overflow:hidden; text-align:center; margin-bottom:5px;">Vals de Encaje Oscuro</p>
+                        
+                        <div class="cuerpo-cassette-visual">
+                            <div id="disco-izq" class="engranaje-cassette"></div>
+                            <div id="disco-der" class="engranaje-cassette"></div>
+                        </div>
+
+                        <div class="controles-reproduccion-retro">
+                            <i class="fa-solid fa-backward" onclick="alert('Pista anterior')"></i>
+                            <i id="icono-play-retro" class="fa-solid fa-play" onclick="controlarAudioCassette()"></i>
+                            <i class="fa-solid fa-forward" onclick="alert('Pista siguiente')"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="caja-input-yt" placeholder="pega enlace o ID de YouTube aquí..." onchange="conectarReproductorYoutube(this.value)">
+                    <audio id="core-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
+                    <iframe id="iframe-youtube-oculto" style="display:none;" src=""></iframe>
+                </div>
+
+            </aside>
+
+            <main class="perfil-columna-derecha">
+                
+                <div class="caja-bio-estilo-ig">
+                    <div class="cabecera-datos-usuario">
+                        <h2 class="nombre-id-ig">mirei_pink ✿</h2>
+                        <i class="fa-solid fa-certificate" style="color:var(--rosa-viejo);" title="Cuenta Mística Verificada"></i>
+                    </div>
+
+                    <div class="contadores-mini-cuadros">
+                        <div><strong id="contador-post-num">3</strong> destellos</div>
+                        <div><strong>888</strong> almas afines</div>
+                        <div><strong>333</strong> cortejando</div>
+                    </div>
+
+                    <p class="texto-esencia-bio" id="biografia-actual-cambiante">
+                        soñando despierta entre encajes rococó, códigos limpios y suspiros antiguos. este es mi refugio absoluto centrado en mí. prohibido comentarios mundanos, solo vibras tiernas, stickers vintage y arte digital.
                     </p>
                 </div>
-            </div>
+
+                <div class="panel-creador-contenido">
+                    <p style="font-size:11px; font-weight:600; margin-bottom:6px; color:var(--rosa-viejo); text-transform:uppercase;"><i class="fa-solid fa-wand-magic-sparkles"></i> manifestar destello en mi feed principal:</p>
+                    <textarea id="texto-nuevo-sentir" class="campo-escritura-retro" placeholder="Escribe un nuevo sentir para tu biografía principal..."></textarea>
+                    
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <label style="background:var(--encaje-suave); padding:6px 14px; border-radius:8px; font-size:11px; font-weight:600; cursor:pointer;">
+                            📷 cargar foto o video desde tu galería
+                            <input type="file" id="archivo-multimedia-post" accept="image/*,video/*" style="display:none;" onchange="capturarArchivoParaPost(event)">
+                        </label>
+                        <button onclick="irradiarContenidoAlFeed()" style="background:var(--rosa-viejo); color:white; border:none; padding:7px 18px; border-radius:8px; font-family:inherit; font-size:11px; font-weight:600; cursor:pointer;">irradiar ✧</button>
+                    </div>
+                </div>
+
+                <div class="cuadrícula-imagenes-feed" id="contenedor-feed-fotos">
+                    
+                    <div class="tarjeta-espejo-multimedia">
+                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=300&auto=format&fit=cover">
+                        <div class="sello-postal-vintage">୨୧ 01</div>
+                    </div>
+
+                    <div class="tarjeta-espejo-multimedia">
+                        <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=300&auto=format&fit=cover">
+                        <div class="sello-postal-vintage">୨୧ 02</div>
+                    </div>
+
+                    <div class="tarjeta-espejo-multimedia">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=300&auto=format&fit=cover">
+                        <div class="sello-postal-vintage">୨୧ 03</div>
+                    </div>
+
+                </div>
+
+            </main>
+
         </div>
 
-        <div id="sinfonias" class="seccion-santuario">
-            <div class="cofre-decorado">
-                <div class="titulo-cofre"><i class="fa-solid fa-music"></i> melodías del corazón</div>
-                <p style="font-size: 12px; margin-bottom: 15px;">haz clic en cualquier tarjeta para invocar la música dentro del santuario:</p>
+        <div id="seccion-jardin-friends" class="seccion-ocultable" style="padding-top:10px;">
+            <div class="contenedor-muro-amigos">
+                <h2 style="font-family:'VT323', monospace; font-size:38px; text-align:center; color:var(--rosa-viejo);">✧ el muro de las almas aliadas ✧</h2>
                 
-                <div class="lista-generos">
-                    <div class="tarjeta-cancion" onclick="cargarMelodia('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', '🌸 pop dulce — brisa retro de akihabara')">
-                        <strong style="color: var(--detalles-encaje); display:block; margin-bottom:5px;">🌸 pop dulce</strong>
-                        <span style="font-size: 11px; opacity:0.8;">invocar melodía retro</span>
+                <div class="caja-dejar-susurro">
+                    <p style="font-size:11px; font-weight:600; margin-bottom:8px; color:var(--rosa-viejo);">🎀 deja un mensaje real en el muro de mirei:</p>
+                    <input type="text" id="nombre-amigo-input" placeholder="Tu Apodo Místico..." style="width:100%; padding:6px; font-family:inherit; font-size:11px; margin-bottom:8px; border:1px solid var(--cradle-lavanda); border-radius:6px;">
+                    <textarea id="texto-amigo-comentario" placeholder="Escribe un susurro para el muro colectivo..." style="width:100%; height:50px; padding:8px; font-family:inherit; font-size:11px; border:1px solid var(--cradle-lavanda); border-radius:6px; resize:none; margin-bottom:8px;"></textarea>
+                    <button onclick="amigoPublicaComentario()" style="background:var(--rosa-viejo); color:white; border:none; padding:5px 12px; border-radius:6px; font-family:inherit; font-size:11px; font-weight:600; cursor:pointer;">dejar susurro ୨୧</button>
+                </div>
+
+                <div id="lista-comentarios-comunidad" style="display:flex; flex-direction:column; gap:15px;">
+                    
+                    <div class="comentario-myspace-card">
+                        <div class="cabecera-amigo-comenta">
+                            <div class="avatar-amigo-circular">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=50&auto=format&fit=cover">
+                            </div>
+                            <span style="font-size:12px; font-weight:600;">yuki_chan 🌸</span>
+                            <span style="font-size:10px; margin-left:auto; opacity:0.6;">hace unos instantes</span>
+                        </div>
+                        <p style="font-size:12px; line-height:1.5;">¡Amo por completo el nivel de detalles de este santuario! Los engranajes del casete girando son lo máximo. Te dejo este recuerdito en tu feed.</p>
                     </div>
 
-                    <div class="tarjeta-cancion" onclick="cargarMelodia('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', '🖤 vals de encaje — sonata gótica melancólica')">
-                        <strong style="color: var(--detalles-encaje); display:block; margin-bottom:5px;">🖤 vals de encaje</strong>
-                        <span style="font-size: 11px; opacity:0.8;">invocar melodía oscura</span>
-                    </div>
-
-                    <div class="tarjeta-cancion" onclick="cargarMelodia('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3', '🍵 vapor oriental — destellos en casete antiguo')">
-                        <strong style="color: var(--detalles-encaje); display:block; margin-bottom:5px;">🍵 vapor oriental</strong>
-                        <span style="font-size: 11px; opacity:0.8;">invocar melodía de Patchwork</span>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <div id="jardin" class="seccion-santuario">
-            <div class="cofre-decorado">
-                <div class="titulo-cofre"><i class="fa-solid fa-star"></i> mis portales eternos</div>
-                <div class="bloque-redes-propias">
-                    <a href="https://www.instagram.com/its.mell456?igsh=OHBsMWdhcXZtczJm" target="_blank" class="enlace-estetico">
-                        <i class="fa-brands fa-instagram"></i> mirar mi instagram
-                    </a>
-                    <a href="https://www.tiktok.com/@_tomate_4?_r=1&_t=ZS-97DcZ6o3U6X" target="_blank" class="enlace-estetico">
-                        <i class="fa-brands fa-tiktok"></i> mirar mi tiktok
-                    </a>
-                </div>
-            </div>
-
-            <div class="cofre-decorado">
-                <div class="titulo-cofre"><i class="fa-solid fa-heart"></i> almas unidas</div>
-                <div class="red-amistades">
-                    <div class="avatar-amigo"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150&auto=format&fit=cover"><div class="apodo-amigo">yuki🌸</div></div>
-                    <div class="avatar-amigo"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=cover"><div class="apodo-amigo">kuro🖤</div></div>
-                    <div class="avatar-amigo"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=cover"><div class="apodo-amigo">mika🎀</div></div>
-                    <div class="avatar-amigo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=cover"><div class="apodo-amigo">sayuri🌸</div></div>
-                </div>
-            </div>
-
-            <div class="cofre-decorado">
-                <div class="titulo-cofre"><i class="fa-solid fa-comment-dots"></i> muro de los susurros</div>
-                <div class="formulario-publicacion">
-                    <input type="text" id="campo-susurro" class="entrada-susurro" placeholder="escribe un susurro para el jardín...">
-                    <button class="boton-enviar" onclick="publicarSusurro()">enviar</button>
-                </div>
-                <div id="contenedor-susurros" class="lista-susurros">
-                    <div class="nota-susurro"><strong>yuki🌸:</strong> ¡qué increíble que la música no se corte al cambiar de pestaña!</div>
-                </div>
-            </div>
-        </div>
-
-        <div id="baul" class="seccion-santuario">
-            <div class="cofre-decorado">
-                <div class="titulo-cofre"><i class="fa-solid fa-images"></i> galería de visiones</div>
-                <label for="archivo-galeria" class="etiqueta-subir" style="width: 250px; margin: 0 auto;">✨ manifestar imagen nueva</label>
-                <input type="file" id="archivo-galeria" class="subir-oculto" accept="image/*" multiple onchange="cargarGaleria(event)">
-
-                <div id="muro-galeria" class="cuadrícula-galeria">
-                    <div class="cuadro-galeria"><img src="https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=300&auto=format&fit=cover"></div>
-                    <div class="cuadro-galeria"><img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=300&auto=format&fit=cover"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="alternador-estetica">
-            <button class="boton-estetica estetica-rosita" onclick="mutarEstetica('rosita')">🎀 modo rosita</button>
-            <button class="boton-estetica estetica-gotica" onclick="mutarEstetica('gotico')">🦇 modo gótico</button>
-        </div>
+        <footer>
+            © arunyi 2026-2027 ୨୧ hecho con devoción por los códigos detallados, el encaje y los píxeles tiernos.
+        </footer>
 
     </div>
 
     <script>
-        const audioNucleo = document.getElementById('reproductor-nucleo');
-        const iconoGlobal = document.getElementById('icono-global');
-        const textoMelodia = document.getElementById('texto-melodia');
+        // GENERADOR METICULOSO DE LLUVIA DE SAKURA
+        function invocarPetalos() {
+            const capa = document.getElementById('capa-sakura');
+            const petalo = document.createElement('div');
+            petalo.className = 'petalo-sakura';
+            petalo.style.left = Math.random() * 100 + 'vw';
+            petalo.style.width = Math.random() * 8 + 6 + 'px';
+            petalo.style.height = petalo.style.width;
+            petalo.style.animationDuration = Math.random() * 3 + 4 + 's';
+            capa.appendChild(petalo);
+            setTimeout(() => petalo.remove(), 7000);
+        }
+        setInterval(invocarPetalos, 220);
 
-        function abrirPestana(idPestana) {
-            const secciones = document.querySelectorAll('.seccion-santuario');
-            secciones.forEach(sec => sec.classList.remove('activa'));
-            
-            const botones = document.querySelectorAll('.pestana-boton');
-            botones.forEach(btn => btn.classList.remove('activa'));
+        // CAMBIAR PESTAÑAS SIN INTERRUMPIR EL AUDIO
+        function irASeccionDinamica(idSeccion, boton) {
+            document.getElementById('seccion-altar-me').style.display = 'none';
+            document.getElementById('seccion-jardin-friends').style.display = 'none';
+            document.querySelectorAll('.btn-navegacion').forEach(btn => btn.classList.remove('activo'));
 
-            document.getElementById(idPestana).classList.add('activa');
-            event.currentTarget.classList.add('activa');
+            document.getElementById(idSeccion).style.display = (idSeccion === 'seccion-altar-me') ? 'grid' : 'block';
+            boton.classList.add('activo');
         }
 
-        function cargarMelodia(enlace, nombre) {
-            audioNucleo.src = enlace;
-            textoMelodia.textContent = nombre;
-            audioNucleo.play();
-            iconoGlobal.className = 'fa-solid fa-pause';
+        // ACTUALIZACIÓN EN TIEMPO REAL DEL AVATAR DEL GUARDAPELO
+        function actualizarAvatarInteractivamente(e) {
+            const lector = new FileReader();
+            lector.onload = () => document.getElementById('avatar-principal-imagen').src = lector.result;
+            lector.readAsDataURL(e.target.files[0]);
         }
 
-        function reproducirOPausar() {
-            if (!audioNucleo.src) {
-                textoMelodia.textContent = "❌ escoge una melodía en la pestaña de sinfonías primero...";
+        // CONTROLADOR DE SUBIDAS TEMPORALES DEL COFRE
+        let bufferArchivo = null;
+        function capturarArchivoParaPost(e) {
+            bufferArchivo = e.target.files[0];
+            alert("✨ Destello visual alineado con éxito. Presiona 'Irradiar ✧' para inyectarlo al feed.");
+        }
+
+        // IRRADIAR CONTENIDO: TEXTO A BIO Y MULTIMEDIA AL FEED EN CUADRÍCULA (ESTILO IG)
+        let conteoMagicoPost = 3;
+        function irradiarContenidoAlFeed() {
+            const entradaTexto = document.getElementById('texto-nuevo-sentir');
+            const bioCuerpo = document.getElementById('biografia-actual-cambiante');
+            const feedContenedor = document.getElementById('contenedor-feed-fotos');
+            const textNumPost = document.getElementById('contador-post-num');
+
+            // Si se escribió texto, muta tu biografía principal
+            if (entradaTexto.value.trim() !== "") {
+                bioCuerpo.textContent = entradaTexto.value;
+            }
+
+            // Si se cargó un archivo, crea una nueva tarjeta de cuadrícula con su sello vintage
+            if (bufferArchivo) {
+                const lector = new FileReader();
+                lector.onload = function(event) {
+                    const nuevaTarjeta = document.createElement('div');
+                    nuevaTarjeta.className = 'tarjeta-espejo-multimedia';
+                    conteoMagicoPost++;
+
+                    if (bufferArchivo.type.includes('video')) {
+                        nuevaTarjeta.innerHTML = `<video src="${event.target.result}" controls autoplay muted loop></video>
+                                                  <div class="sello-postal-vintage">୨୧ 0${conteoMagicoPost}</div>`;
+                    } else {
+                        nuevaTarjeta.innerHTML = `<img src="${event.target.result}">
+                                                  <div class="sello-postal-vintage">୨୧ 0${conteoMagicoPost}</div>`;
+                    }
+
+                    feedContenedor.insertBefore(nuevaTarjeta, feedContenedor.firstChild);
+                    textNumPost.textContent = conteoMagicoPost;
+                    bufferArchivo = null;
+                }
+                lector.readAsDataURL(bufferArchivo);
+            }
+
+            entradaTexto.value = "";
+        }
+
+        // REPRODUCTOR DE CASSETTE INTERNO (AUDIO RETRO + CAPTURA DE YOUTUBE)
+        const elementAudio = document.getElementById('core-audio');
+        const icoPlayRetro = document.getElementById('icono-play-retro');
+        const titTrack = document.getElementById('pista-titulo-retro');
+        const marcoIframeYt = document.getElementById('iframe-youtube-oculto');
+        const engraneIzg = document.getElementById('disco-izq');
+        const engraneDer = document.getElementById('disco-der');
+
+        function controlarAudioCassette() {
+            if (elementAudio.paused) {
+                elementAudio.play();
+                icoPlayRetro.className = "fa-solid fa-pause";
+                engraneIzg.classList.add('girando-disco');
+                engraneDer.classList.add('girando-disco');
+            } else {
+                elementAudio.pause();
+                icoPlayRetro.className = "fa-solid fa-play";
+                engraneIzg.classList.remove('girando-disco');
+                engraneDer.classList.remove('girando-disco');
+            }
+        }
+
+        function conectarReproductorYoutube(url) {
+            let videoId = '';
+            if (url.includes('v=')) videoId = url.split('v=')[1].split('&')[0];
+            else if (url.includes('youtu.be/')) videoId = url.split('youtu.be/')[1].split('?')[0];
+            else videoId = url;
+
+            if (videoId) {
+                elementAudio.pause();
+                icoPlayRetro.className = "fa-solid fa-compact-disc fa-spin"; // Icono de disco girando para pistas externas
+                engraneIzg.classList.add('girando-disco');
+                engraneDer.classList.add('girando-disco');
+                marcoIframeYt.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                titTrack.textContent = "Sintonía Externa Activa ♫";
+            }
+        }
+
+        // FUNCIONALIDAD SIMULADA DEL MURO DE AMIGOS (DEJAR MENSAJES EN EL FEED DE COMUNIDAD)
+        function amigoPublicaComentario() {
+            const nombre = document.getElementById('nombre-amigo-input');
+            const mensaje = document.getElementById('texto-amigo-comentario');
+            const contenedorMuro = document.getElementById('lista-comentarios-comunidad');
+
+            if (nombre.value.trim() === "" || mensaje.value.trim() === "") {
+                alert("Por favor llena ambos cofres (apodo y mensaje) para manifestar tu susurro.");
                 return;
             }
-            if (audioNucleo.paused) {
-                audioNucleo.play();
-                iconoGlobal.className = 'fa-solid fa-pause';
-            } else {
-                audioNucleo.pause();
-                iconoGlobal.className = 'fa-solid fa-play';
-            }
-        }
 
-        function ajustarVolumen(valor) {
-            audioNucleo.volume = valor;
-        }
+            const nuevaCartaComentario = document.createElement('div');
+            nuevaCartaComentario.className = 'comentario-myspace-card';
+            nuevaCartaComentario.innerHTML = `
+                <div class="cabecera-amigo-comenta">
+                    <div class="avatar-amigo-circular">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=cover">
+                    </div>
+                    <span style="font-size:12px; font-weight:600;">${nombre.value} ୨୧</span>
+                    <span style="font-size:10px; margin-left:auto; opacity:0.6;">justo ahora</span>
+                </div>
+                <p style="font-size:12px; line-height:1.5;">${mensaje.value}</p>
+            `;
 
-        function mutarEstetica(estilo) {
-            const cuerpo = document.documentElement;
-            const titulo = document.getElementById('titulo-reino');
-
-            if (estilo === 'gotico') {
-                cuerpo.setAttribute('data-tema', 'gotico');
-                titulo.textContent = 'el abismo de terciopelo';
-            } else {
-                cuerpo.removeAttribute('data-tema');
-                titulo.textContent = 'jardín de los cerezos';
-            }
-        }
-
-        function cambiarRetrato(event) {
-            const lector = new FileReader();
-            lector.onload = function() {
-                document.getElementById('imagen-perfil').src = lector.result;
-            }
-            lector.readAsDataURL(event.target.files[0]);
-        }
-
-        function cargarGaleria(event) {
-            const archivos = event.target.files;
-            const contenedorGaleria = document.getElementById('muro-galeria');
-
-            for (let i = 0; i < archivos.length; i++) {
-                const lector = new FileReader();
-                lector.onload = function(e) {
-                    const nuevoCuadro = document.createElement('div');
-                    nuevoCuadro.className = 'cuadro-galeria';
-                    nuevoCuadro.innerHTML = `<img src="${e.target.result}">`;
-                    contenedorGaleria.insertBefore(nuevoCuadro, contenedorGaleria.firstChild);
-                }
-                lector.readAsDataURL(archivos[i]);
-            }
-        }
-
-        function publicarSusurro() {
-            const entrada = document.getElementById('campo-susurro');
-            const contenedor = document.getElementById('contenedor-susurros');
-
-            if (entrada.value.trim() !== "") {
-                const nuevaNota = document.createElement('div');
-                nuevaNota.className = 'nota-susurro';
-                nuevaNota.innerHTML = `<strong>tú misma🌸:</strong> ${entrada.value}`;
-                contenedor.insertBefore(nuevaNota, contenedor.firstChild);
-                entrada.value = "";
-            }
+            contenedorMuro.insertBefore(nuevaCartaComentario, contenedorMuro.firstChild);
+            nombre.value = "";
+            mensaje.value = "";
         }
     </script>
 </body>
