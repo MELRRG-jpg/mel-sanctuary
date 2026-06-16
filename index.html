@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arunyi's cocoon 🎀</title>
+    <title>arunyi's cocoon 🎀 Official Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Cherry+Bomb+One&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -18,7 +18,6 @@
 
         body {
             background-color: var(--rosa-fondo);
-            /* Patrón de estrellas/puntos sutiles imitando el fondo de tu carrd */
             background-image: radial-gradient(#E8C1C7 10%, transparent 11%), radial-gradient(#E8C1C7 10%, transparent 11%);
             background-size: 20px 20px;
             background-position: 0 0, 10px 10px;
@@ -37,7 +36,6 @@
             pointer-events: none; z-index: 9999;
         }
 
-        /* ESTRUCTURA PRINCIPAL DE TU CARRD */
         .carrd-wrapper {
             width: 900px;
             background: #FFFFFF;
@@ -48,11 +46,10 @@
             position: relative;
         }
 
-        /* BANNER CON ILUSTRACIÓN DE FONDO Y LOGO REDONDEADO */
         .header-banner {
             width: 100%;
             height: 200px;
-            background: url('https://i.imgur.com/your-banner-here.jpg') center/cover #FFE3E7; /* Reemplaza con tu banner original */
+            background: linear-gradient(135deg, #FFE3E7, #FFF4F6);
             border-radius: 16px 16px 0 0;
             position: relative;
             border: 1px solid var(--rosa-borde);
@@ -71,10 +68,8 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* CINTA DE ENCAJE CON LAZOS DE TUS REFERENCIAS */
         .cinta-encaje {
             width: 100%;
             height: 25px;
@@ -83,7 +78,6 @@
             margin-bottom: 15px;
         }
 
-        /* MENÚ DE NAVEGACIÓN EXACTO */
         .nav-bar-arunyi {
             display: flex;
             justify-content: space-between;
@@ -101,7 +95,6 @@
             font-size: 11px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s;
             color: var(--texto-principal);
         }
 
@@ -119,14 +112,12 @@
             color: #B58890;
         }
 
-        /* DISEÑO DE 3 COLUMNAS ASIMÉTRICO (Layout Fiel) */
         .grid-tres-columnas {
             display: grid;
             grid-template-columns: 230px 1fr 240px;
             gap: 16px;
         }
 
-        /* CAJAS ESTILO CONTENEDOR ANIDADOS */
         .caja-blanca {
             background: var(--rosa-caja);
             border: 2px dashed var(--rosa-borde);
@@ -148,7 +139,6 @@
             border: 1px solid #FFF;
         }
 
-        /* COLUMNA 1: PERFIL */
         .avatar-marcado {
             width: 120px;
             height: 120px;
@@ -185,7 +175,6 @@
             line-height: 1.6;
         }
 
-        /* REPRODUCCIÓN RETRO ABAJO A LA IZQUIERDA */
         .reproductor-retro {
             display: flex;
             align-items: center;
@@ -197,7 +186,6 @@
             font-size: 10px;
         }
 
-        /* MARCOS DE SELLOS EXACTOS (LATEST ART & LISTINGS) */
         .marco-sello-stamp {
             border: 4px dotted var(--rosa-borde);
             border-radius: 4px;
@@ -208,7 +196,6 @@
             max-width: 100%;
         }
 
-        /* CALENDARIO DE ACTUALIZACIONES PROPIO */
         .tabla-calendario {
             width: 100%;
             font-size: 11px;
@@ -219,7 +206,6 @@
         .tabla-calendario td { padding: 3px 1px; border: 1px solid #FFF0F2; }
         .tabla-calendario .hoy { background: #E8C1C7; color: white; border-radius: 4px; font-weight: bold; }
 
-        /* VISTAS DE PESTAÑAS Y PANEL PRIVADO */
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .input-arunyi { width: 100%; padding: 5px; border: 1px solid var(--rosa-borde); border-radius: 6px; font-size: 11px; box-sizing: border-box; }
@@ -292,8 +278,7 @@
 
                     <div class="caja-blanca">
                         <span class="tag-cabecera">💬 message board</span>
-                        <div id="muro-mensajes-fijos" style="font-size:11px; background:#FFF; border:1px solid #F3DCDE; padding:8px; border-radius:6px; max-height:80px; overflow-y:auto; margin-bottom:8px;">
-                            </div>
+                        <div id="muro-mensajes-fijos" style="font-size:11px; background:#FFF; border:1px solid #F3DCDE; padding:8px; border-radius:6px; max-height:80px; overflow-y:auto; margin-bottom:8px;"></div>
                         <div style="display:flex; gap:4px;">
                             <input type="text" id="nuevo-mensaje-txt" class="input-arunyi" placeholder="Escribe un pensamiento...">
                             <button class="btn-arunyi" onclick="enviarMensajeMuro()">Fijar</button>
@@ -302,7 +287,7 @@
 
                     <div class="caja-blanca">
                         <span class="tag-cabecera">🧸 treasure box</span>
-                        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;" id="galeria-treasure-box">
+                        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
                             <img src="https://i.pinimg.com/236x/21/df/b8/21dfb8dd4610b271d44bc4719c968cfd.jpg" style="width:100%; height:55px; object-fit:cover; border-radius:4px;">
                         </div>
                     </div>
@@ -356,7 +341,6 @@
                     <label style="font-size:11px; display:block;">Cambiar Imagen de Fondo General:
                         <input type="text" class="input-arunyi" placeholder="Pega el enlace URL..." onchange="cambiarFondoPanel(this.value)">
                     </label>
-                    <p style="font-size:10px; color:green; margin-top:10px;">✓ Variables de entorno locales cargadas correctamente.</p>
                 </div>
             </div>
         </div>
@@ -364,7 +348,7 @@
     </div>
 
     <script>
-        const CLAVE_ACCESO = 'arunyi123'; // Tu clave privada
+        const CLAVE_ACCESO = 'arunyi123';
 
         window.addEventListener('DOMContentLoaded', () => {
             construirCalendarioReal();
@@ -379,7 +363,6 @@
             btn.classList.add('active');
         }
 
-        // VERIFICACIÓN DEL PANEL PRIVADO
         function abrirAjustesArunyi() {
             if(document.getElementById('pass-control').value === CLAVE_ACCESO) {
                 document.getElementById('panel-bloqueado').style.display = 'none';
@@ -399,7 +382,6 @@
             localStorage.setItem('arunyi-bg', url);
         }
 
-        // GESTIÓN DEL MURO DE MENSAJES
         function enviarMensajeMuro() {
             const txt = document.getElementById('nuevo-mensaje-txt').value;
             if(!txt) return;
@@ -415,7 +397,6 @@
             div.innerHTML = msgs.map(m => `<div style="border-bottom:1px dashed #FFE3E7; padding:2px 0;">🌸 ${m}</div>`).join('');
         }
 
-        // CONSTRUCCIÓN DEL CALENDARIO REAL SOLICITADO (Año Actual 2026)
         function construirCalendarioReal() {
             const tabla = document.getElementById('tabla-fechas-dinamicas');
             const f = new Date();
@@ -445,3 +426,20 @@
         function cargarDatosGuardados() {
             renderizarMuro(JSON.parse(localStorage.getItem('arunyi-msgs')) || []);
             if(localStorage.getItem('arunyi-bg')) document.body.style.backgroundImage = `url('${localStorage.getItem('arunyi-bg')}')`;
+            if(localStorage.getItem('arunyi-music')) cambiarMusicaPanel(localStorage.getItem('arunyi-music'));
+        }
+
+        function iniciarEfectoSakura() {
+            const c = document.getElementById('contenedor-particulas');
+            setInterval(() => {
+                const p = document.createElement('div'); p.textContent = '🌸';
+                p.style.position = 'absolute'; p.style.left = Math.random()*window.innerWidth+'px'; p.style.top = '-20px';
+                p.style.fontSize = '11px'; p.style.transition = 'all 3.5s linear'; p.style.opacity = '0.6';
+                c.appendChild(p);
+                setTimeout(() => { p.style.transform = `translateY(${window.innerHeight+30}px) rotate(120deg)`; p.style.opacity = '0'; }, 50);
+                setTimeout(() => p.remove(), 3600);
+            }, 600);
+        }
+    </script>
+</body>
+</html>
