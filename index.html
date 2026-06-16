@@ -3,18 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>+ mel_sanctuary_rococo_v11_matrix +</title>
+<title>✦ mel_sanctuary_rococo_v7_kaomoji_calendar ✦</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Charm:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- Firebase para conexión en tiempo real -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
 <style>
-/* --- [++ Goth / Pastel Coquette Matrix Core ++] --- */
+/* ─── 𓏲ᵎ 🖤 ᵎ𓏲 ─── */
 :root {
   --anime-black: #1F1F1F;
   --goth-charcoal: #4B4B4B;
@@ -25,7 +21,13 @@
   --text-main: #FFDCE4;
   --input-bg: #1F1F1F;
   --input-text: #ffffff;
+  --chat-header-bg: #4B4B4B;
+  --fb-old-blue: #3b5998;
   
+  --evt-goth: #A27BCA;
+  --evt-coquette: #FEB1C7;
+  --evt-destiny: #F3E5AB;
+
   --font-goth: 'Courier Prime', monospace;
   --font-vintage: 'Playfair Display', serif;
   --font-coquette: 'Charm', cursive;
@@ -41,9 +43,14 @@
   --text-main: #4B4B4B;
   --input-bg: #FFFFFF;
   --input-text: #4B4B4B;
+  --chat-header-bg: #FEB1C7;
+
+  --evt-goth: #D3BBDD;
+  --evt-coquette: #FFC0CB;
+  --evt-destiny: #FFFACD;
 }
 
-* { box-sizing: border-box; transition: all 0.3s ease; }
+* { box-sizing: border-box; transition: background 0.3s, color 0.3s, border-color 0.3s; }
 body {
   margin: 0; padding: 50px 0; 
   background-color: var(--anime-black);
@@ -51,11 +58,10 @@ body {
   font-family: var(--font-goth);
   background-image: radial-gradient(circle at center, var(--goth-charcoal) 0%, var(--bg-deep-velvet) 100%);
   display: flex; justify-content: center; overflow-x: hidden;
-  position: relative;
 }
 
 body::before, body::after {
-  content: "(--) +++ (--) +++ (--) +++ (--) +++ (--) +++ (--) +++ (--) +++ (--)";
+  content: "𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂";
   position: fixed; left: 0; width: 100%; text-align: center;
   font-size: 11px; color: var(--barbie-pink); pointer-events: none; opacity: 0.4;
   z-index: 50;
@@ -63,324 +69,71 @@ body::before, body::after {
 body::before { top: 10px; }
 body::after { bottom: 10px; }
 
-/* --- EFECTO DE PARTICULAS FLOTANTES --- */
-.ambient-particle {
-  position: fixed; pointer-events: none; opacity: 0.6; z-index: 1;
-  color: var(--barbie-pink); font-size: 14px;
-  animation: floatParticle 8s linear infinite;
-}
-@keyframes floatParticle {
-  0% { transform: translateY(110vh) translateX(0) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.6; }
-  100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
-}
-
 .rococo-cocoon-container {
-  width: 900px; background: var(--anime-black);
-  border: 4px solid var(--barbie-pink); outline: 8px solid var(--anime-black);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.6);
-  position: relative; padding: 24px; border-radius: 16px; z-index: 10;
+  width: 880px;
+  background: var(--anime-black);
+  border: 4px solid var(--barbie-pink);
+  outline: 8px solid var(--anime-black);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(254,177,199,0.15);
+  position: relative;
+  padding: 24px;
+  border-radius: 16px;
+}
+.rococo-cocoon-container::before {
+  content: "🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀 𐀔 🎀";
+  position: absolute; top: -18px; left: 0; width: 100%;
+  text-align: center; font-size: 11px; color: var(--barbie-pink);
+  letter-spacing: 4px; pointer-events: none;
 }
 
 .sanctuary-header-banner {
-  width: 100%; height: 200px;
-  background-color: var(--goth-charcoal); background-size: cover; background-position: center;
+  width: 100%; height: 210px;
+  background-color: var(--goth-charcoal);
   border: 2px solid var(--barbie-pink);
-  position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center;
-  border-radius: 12px; box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  border-radius: 12px;
 }
 .banner-title-frame {
-  background: var(--surface-box); border: 1px dashed var(--barbie-pink);
-  outline: 5px solid var(--surface-box); padding: 12px 30px; text-align: center; border-radius: 24px;
+  background: var(--surface-box);
+  border: 1px dashed var(--barbie-pink);
+  outline: 5px solid var(--surface-box);
+  padding: 12px 30px; text-align: center;
+  border-radius: 24px;
 }
 .banner-title-frame h1 {
   margin: 0; font-family: var(--font-coquette); font-size: 34px;
   color: var(--barbie-pink); text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
 }
 
-.rococo-menu-bar { display: flex; justify-content: space-between; margin: 25px 0 15px 0; gap: 8px; }
-.rococo-menu-link {
-  flex: 1; text-align: center; padding: 12px; background: var(--goth-charcoal);
-  border: 1px solid var(--barbie-pink); color: var(--text-main);
-  font-family: var(--font-vintage); font-style: italic; font-size: 13px;
-  border-radius: 8px; cursor: pointer; font-weight: bold;
+.mel-admin-trigger {
+  position: absolute; top: 12px; right: 12px; z-index: 100;
+  background: var(--anime-black); border: 1px solid var(--barbie-pink);
+  color: var(--barbie-pink); padding: 6px 12px; font-size: 11px; cursor: pointer;
+  border-radius: 20px; font-family: var(--font-goth); font-weight: bold;
 }
-.rococo-menu-link:hover { background: rgba(254,177,199,0.2); }
-.rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; box-shadow: 0 0 10px var(--barbie-pink); }
-
-.tab-content-view { display: none; animation: fadeIn 0.4s ease-in-out; }
-.tab-content-view.active-view { display: block; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.mel-secret-panel {
+  display: none; background: var(--bg-deep-velvet);
+  border: 2px dashed var(--barbie-pink); padding: 20px; margin: 15px 0;
+  border-radius: 12px; font-size: 12px;
 }
-
-.rococo-grid-three { display: grid; grid-template-columns: 220px 420px 210px; gap: 15px; }
-.gallery-grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
-
-.rococo-frame-box {
-  background: var(--surface-box); border: 1px solid var(--goth-charcoal);
-  outline: 1px solid var(--barbie-pink); outline-offset: -5px;
-  padding: 14px; position: relative; margin-bottom: 15px; border-radius: 14px;
-}
-.rococo-frame-title {
-  font-family: var(--font-vintage); font-style: italic; font-weight: bold;
-  text-align: center; color: var(--barbie-pink); font-size: 13px;
-  margin: 0 0 12px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 5px;
-}
-
-.cameo-avatar-wrapper {
-  width: 110px; height: 110px; margin: 0 auto 10px auto;
-  border-radius: 50%; border: 3px double var(--barbie-pink); overflow: hidden;
-  background: var(--bg-deep-velvet); display: flex; align-items: center; justify-content: center;
-}
-.cameo-avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-.social-button-links { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
-.social-button-links a {
-  display: block; text-align: center; font-size: 11px; padding: 6px;
-  background: rgba(0,0,0,0.3); border: 1px dashed var(--barbie-pink);
-  color: var(--text-main); text-decoration: none; border-radius: 6px;
-}
-.social-button-links a:hover { background: var(--barbie-pink); color: #000; }
-
-.music-user-input-row { display: flex; gap: 6px; margin-bottom: 8px; }
-.music-user-input-row input, .music-user-input-row textarea {
-  flex: 1; background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  color: var(--input-text); font-family: var(--font-goth); font-size: 11px; padding: 6px; border-radius: 6px;
-}
-.rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-family: var(--font-goth); font-size: 11px; padding: 6px; cursor: pointer; width: 100%; border-radius: 6px; }
-.rococo-btn:hover { background: var(--barbie-pink); color: #000; }
-
-.photo-card {
+.panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.panel-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+.panel-row input, .panel-row textarea, .panel-row select {
   background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  padding: 10px; border-radius: 12px; text-align: center;
-  box-shadow: 3px 3px 0px var(--goth-charcoal);
+  color: var(--input-text); padding: 6px; font-family: var(--font-goth); font-size: 11px; border-radius: 6px;
 }
-.photo-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(254,177,199,0.3); }
-.photo-caption { font-size: 11px; margin-top: 8px; font-style: italic; color: var(--porcelain-pink); }
 
-.playlist-scroller { max-height: 120px; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; }
-.playlist-item {
-  background: rgba(0,0,0,0.2); border: 1px dashed var(--barbie-pink);
-  padding: 5px 8px; border-radius: 6px; font-size: 10px; display: flex; justify-content: space-between;
+.rococo-menu-bar { display: flex; justify-content: space-between; margin: 20px 0; gap: 6px; }
+.rococo-menu-link {
+  flex: 1; text-align: center; padding: 9px; background: var(--goth-charcoal);
+  border: 1px solid var(--barbie-pink); color: var(--text-main);
+  font-family: var(--font-vintage); font-style: italic; font-size: 12px;
+  text-decoration: none; border-radius: 8px; cursor: pointer; white-space: nowrap;
 }
-.playlist-item a { color: var(--text-main); text-decoration: none; }
+.rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; font-weight: bold; }
 
-.social-post-wall { max-height: 500px; overflow-y: auto; padding-right: 5px; }
-.friend-post-node {
-  background: rgba(254,177,199,0.04); border: 1px solid var(--barbie-pink);
-  padding: 14px; margin-bottom: 15px; border-radius: 12px;
-  position: relative; outline: 3px solid var(--anime-black);
-}
-.friend-badge-tag { font-weight: bold; color: var(--barbie-pink); font-size: 11px; margin-bottom: 5px; letter-spacing: 1px; }
+.tab-view { display: none; }
+.tab-view.active-view { display: block; }
 
-.chat-dock { position: fixed; bottom: 0; right: 40px; display: flex; align-items: flex-end; gap: 12px; z-index: 10000; }
-.chat-tab { background: var(--anime-black); color: var(--barbie-pink); padding: 8px 16px; border-radius: 8px 8px 0 0; font-family: var(--font-goth); font-size: 11px; font-weight: bold; cursor: pointer; border: 1px solid var(--barbie-pink); border-bottom: none; }
-.chat-window { width: 290px; background: var(--anime-black); border: 2px solid var(--barbie-pink); border-radius: 12px 12px 0 0; }
-.chat-header { background: var(--goth-charcoal); border-bottom: 1px solid var(--barbie-pink); color: var(--barbie-pink); padding: 10px; font-size: 11px; display: flex; justify-content: space-between; cursor: pointer; }
-.chat-body { height: 240px; padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; background: var(--bg-deep-velvet); }
-.chat-msg-line { display: flex; flex-direction: column; max-width: 80%; border-radius: 14px; padding: 6px 10px; font-size: 11px; word-wrap: break-word; }
-.chat-msg-line.friend { background: var(--goth-charcoal); color: var(--text-main); align-self: flex-start; border-bottom-left-radius: 2px; }
-.chat-msg-line.user { background: var(--barbie-pink); color: #000; align-self: flex-end; border-bottom-right-radius: 2px; }
-.chat-input { width: 100%; padding: 10px; border: none; border-top: 1px solid var(--barbie-pink); font-size: 11px; background: var(--input-bg); color: #fff; outline: none; }
-
-.admin-trigger-btn { position: absolute; top: 10px; right: 10px; font-size: 10px; background: none; border: 1px solid var(--barbie-pink); color: var(--barbie-pink); cursor: pointer; padding: 3px 8px; border-radius: 10px; }
-.hidden-panel { display: none; background: rgba(0,0,0,0.4); padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px dashed var(--barbie-pink); }
-.hidden { display: none; }
-</style>
-</head>
-<body>
-
-<!-- GENERACIÓN AUTOMÁTICA DE LA LLUVIA DE LAZOS/ESTRELLAS -->
-<div id="ambientParticlesContainer"></div>
-
-<div class="rococo-cocoon-container">
-  <button class="admin-trigger-btn" onclick="toggleSettingsPanel()">[⚙️ Ajustes Estéticos]</button>
-
-  <!-- PANEL DE CONFIGURACIÓN AMPLIADO -->
-  <div id="settingsPanel" class="hidden-panel">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:11px;">
-      <div>
-        <label>Tema de Interfaz:</label>
-        <select id="themeStyleSelect" onchange="changeThemeConfig(this.value)" style="width:100%; padding:4px; margin-bottom:6px;">
-          <option value="dark">Goth Místico</option>
-          <option value="pastel">Pastel Coquette</option>
-        </select>
-        <label>Frecuencia Emocional Actual:</label>
-        <select id="inputMoodSet" style="width:100%; padding:4px; margin-bottom:6px;">
-          <option value="🎀 Encaje de Medianoche">🎀 Encaje de Medianoche</option>
-          <option value="🕯️ Melancolía Rococó">🕯️ Melancolía Rococó</option>
-          <option value="🪞 Espejo Nublado">🪞 Espejo Nublado</option>
-          <option value="⛓️ Caos Elegante">⛓️ Caos Elegante</option>
-          <option value="🩰 Distorsión de Seda">🩰 Distorsión de Seda</option>
-        </select>
-        <label>Subir Nueva Portada:</label>
-        <input type="file" accept="image/*" onchange="uploadVisualFile(this, 'banner')" style="margin-bottom:6px; font-size:10px;">
-      </div>
-      <div>
-        <label>Subir Foto de Perfil:</label>
-        <input type="file" accept="image/*" onchange="uploadVisualFile(this, 'avatar')" style="margin-bottom:6px; font-size:10px;">
-        <label>Título del Santuario:</label>
-        <input type="text" id="inputTitleSet" value="mel_sanctuary_matrix" style="width:100%; padding:4px;">
-      </div>
-    </div>
-    <button class="rococo-btn" style="margin-top:8px; font-size:10px;" onclick="saveVisualSettings()">Fijar Estética</button>
-  </div>
-
-  <!-- PORTADA -->
-  <header class="sanctuary-header-banner" id="bannerDisplay" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&width=800');">
-    <div class="banner-title-frame">
-      <h1 id="textTitleDisplay">mel_sanctuary_matrix</h1>
-      <span style="font-size:10px; letter-spacing:2px; color:var(--barbie-pink);">+++ Nexus Coquette Communication Network +++</span>
-    </div>
-  </header>
-
-  <!-- PESTAÑAS -->
-  <nav class="rococo-menu-bar">
-    <div class="rococo-menu-link active-tab" id="tab-home" onclick="switchTab('home')">+++ [01] El Capullo</div>
-    <div class="rococo-menu-link" id="tab-gallery" onclick="switchTab('gallery')">+++ [02] Fragmentos Visuales</div>
-    <div class="rococo-menu-link" id="tab-social" onclick="switchTab('social')">+++ [03] Eco de Almas</div>
-  </nav>
-
-  <!-- ================= PESTAÑA 1: EL CAPULLO ================= -->
-  <div id="view-home" class="tab-content-view active-view">
-    <div class="rococo-grid-three">
-      <aside>
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">identidad</div>
-          <div class="cameo-avatar-wrapper">
-            <img id="avatarDisplay" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&width=200" alt="Profile">
-          </div>
-          <div style="text-align:center; font-size:12px; font-weight:bold; color:var(--barbie-pink);">its.mell456</div>
-          
-          <!-- DISPLAY DE FRECUENCIA EMOCIONAL -->
-          <div id="moodDisplay" style="text-align:center; font-size:10px; margin-top:6px; font-style:italic; color:var(--porcelain-pink);">frecuencia: 🎀 Encaje de Medianoche</div>
-          
-          <div class="social-button-links">
-            <a href="https://www.instagram.com/its.mell456" target="_blank">Instagram ♡</a>
-            <a href="https://www.tiktok.com/@_tomate_4" target="_blank">TikTok ✦</a>
-          </div>
-        </div>
-
-        <div class="rococo-frame-box" style="text-align:center;">
-          <div class="rococo-frame-title">tu apodo red</div>
-          <b id="uniqueUserTag" style="color:var(--barbie-pink); font-size:12px;">Generando...</b>
-        </div>
-      </aside>
-
-      <main>
-        <div class="rococo-frame-box" style="text-align:center; padding: 20px 15px;">
-          <div class="rococo-frame-title">Santuario Virtual</div>
-          <p style="font-size:12px; font-style:italic; line-height:1.5;">"Bienvenida a la central rococó. Navega por las pestañas superiores para ver mis publicaciones de fotos exclusivas o para dejar un rastro de tu esencia en mi zona social."</p>
-        </div>
-
-        <!-- COFRE DEL ORÁCULO DIARIO (NUEVO PLUS INTERACTIVO) -->
-        <div class="rococo-frame-box" style="text-align:center;">
-          <div class="rococo-frame-title">🔮 el oráculo de la matriz</div>
-          <p id="oracleText" style="font-size:11px; font-style:italic; min-height:32px; color:var(--porcelain-pink);">"Haz clic abajo para sintonizar el destino de tu aura hoy..."</p>
-          <button class="rococo-btn" style="width:auto; padding:5px 15px;" onclick="consultMatrixOracle()">Consultar Oráculo</button>
-        </div>
-      </main>
-
-      <aside>
-        <div class="rococo-frame-box" style="text-align:center;">
-          <div class="rococo-frame-title">tamagotchi</div>
-          <img src="https://fontmeme.com/permalink/240320/0fb97136365a6e87f2da516109f29883.png" style="width:45px; margin-bottom:5px; filter:hue-rotate(300deg);">
-          <div style="font-size:10px; background:rgba(0,0,0,0.3); padding:6px; border-radius:6px; border:1px solid var(--barbie-pink);">
-            <span>Status: 🎀 Feliz</span><br>
-            <span>Animo: 100% Coquette</span>
-          </div>
-        </div>
-
-        <div class="rococo-frame-box">
-          <div class="rococo-frame-title">Libertad Viviente</div>
-          <div class="music-user-input-row" style="flex-direction:column; gap:4px;">
-            <input type="text" id="songTitle" placeholder="Canción...">
-            <input type="text" id="songUrl" placeholder="Link...">
-            <button class="rococo-btn" style="font-size:9px; padding:3px;" onclick="addTrackToPlaylist()">+ Agregar</button>
-          </div>
-          <div class="playlist-scroller" id="playlistBox"></div>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <!-- ================= PESTAÑA 2: FRAGMENTOS VISUALES ================= -->
-  <div id="view-gallery" class="tab-content-view">
-    <div class="rococo-frame-box">
-      <div class="rococo-frame-title">Fragmentos Visuales</div>
-      <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:10px; border:1px dashed var(--barbie-pink); margin-bottom:20px;">
-        <span style="font-size:11px; display:block; margin-bottom:6px; color:var(--barbie-pink);">[+] Revelar nuevo fragmento desde tu galería:</span>
-        <div class="music-user-input-row">
-          <input type="file" id="galleryFileInput" accept="image/*" style="font-size:11px;">
-          <input type="text" id="galleryCaptionInput" placeholder="Escribe un pie de foto estético...">
-          <button class="rococo-btn" style="width:90px;" onclick="publishPhotoToGallery()">Publicar</button>
-        </div>
-      </div>
-      <div class="gallery-grid-layout" id="galleryContainer"></div>
-    </div>
-  </div>
-
-  <!-- ================= PESTAÑA 3: ECO DE ALMAS ================= -->
-  <div id="view-social" class="tab-content-view">
-    <div class="rococo-frame-box">
-      <div class="rococo-frame-title">Muro Social: Eco de Almas</div>
-      <div class="music-user-input-row" style="align-items: flex-end;">
-        <textarea id="socialWallInput" rows="2" placeholder="Deja un destello de tu mente en el eco..."></textarea>
-        <button class="rococo-btn" style="width:100px; height:42px;" onclick="postToSocialWall()">Dejar Nota</button>
-      </div>
-      <hr style="border:none; border-top:1px double var(--barbie-pink); margin:15px 0;">
-      <div class="social-post-wall" id="socialWallContainer"></div>
-    </div>
-  </div>
-
-</div>
-
-<!-- CHAT FLOTANTE -->
-<div class="chat-dock">
-  <div id="chatTriggerBtn" class="chat-tab" onclick="toggleChatDisplay(true)">[-] Mensajes de la Red (<span id="chatCount">0</span>)</div>
-  <div id="chatBoxWindow" class="chat-window hidden">
-    <div class="chat-header" onclick="toggleChatDisplay(false)">
-      <span>Matrix Direct Chat</span>
-      <span style="font-size:9px; color:var(--barbie-pink);">[Ocultar]</span>
-    </div>
-    <div class="chat-body" id="chatMessageDisplay"></div>
-    <input type="text" class="chat-input" id="chatRawInput" placeholder="Enviar susurro estilo IG..." onkeypress="submitChatMessage(event)">
-  </div>
-</div>
-
-<script>
-// CONFIGURACIÓN DE FIREBASE (Simulada o Real)
-const firebaseConfig = { databaseURL: "https://TU-PROPIO-PROYECTO.firebaseio.com" };
-
-let database; let isFirebaseActive = false;
-try {
-  if (!firebaseConfig.databaseURL.includes("TU-PROPIO-PROYECTO")) {
-    firebase.initializeApp(firebaseConfig); database = firebase.database(); isFirebaseActive = true;
-  }
-} catch(e) { console.log("Modo local simulado activo."); }
-
-let myNick = "";
-let customConfig = {
-  title: "mel_sanctuary_matrix",
-  avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&width=200",
-  banner: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&width=800",
-  mood: "🎀 Encaje de Medianoche"
-};
-
-let memoryChat = [];
-let memorySongs = [{title:"Malice Mizer - Illuminati", link:"#"}];
-let memorySocial = [{sender:"+GothDoll01", text:"¡Me encantan los nuevos módulos del oráculo y la lluvia de lazos flotando!"}];
-let memoryGallery = [{img:"https://images.unsplash.com/photo-1516062423079-7ca13cca99a8?q=80&width=300", caption:"Aesthetic lace room vibe."}];
-
-// Respuestas estéticas para el oráculo
-const oraclePhrases = [
-  "Hoy tu aura brilla en rosa pastel, pero tus pensamientos visten de terciopelo negro. Alguien te piensa.",
-  "El laberinto digital hoy te favorece. Ve a 'Fragmentos Visuales' y comparte tu mística.",
-  "Una sintonía melancólica te rodea. Alguien con inicial oculta cruzará tu red pronto.",
-  "Frecuencia protegida. Los lazos de tu corset cibernético contienen un secreto importante hoy.",
-  "Espejo nublado: No busques respuestas en el exterior hoy, tu propio capullo tiene la clave.",
-  "Advertencia de la ma
+.rococo-grid { display: grid; grid-template-columns: 210px
