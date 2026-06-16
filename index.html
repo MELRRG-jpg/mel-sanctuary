@@ -467,8 +467,7 @@ body::after { bottom: 10px; }
       <div id="viewRoom" class="tab-view active-view">
         <div class="box-module">
           <div class="box-module-title"><span>👥 Salón de Aliados Conectados</span></div>
-          <div class="friends-showcase" id="friendsContainer">
-            </div>
+          <div class="friends-showcase" id="friendsContainer"></div>
         </div>
       </div>
 
@@ -511,8 +510,7 @@ body::after { bottom: 10px; }
             <input type="text" id="addGalUrl" placeholder="Pegar URL de Imagen/GIF para tu galería..." style="flex:1; background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:6px; border-radius:6px; font-family:var(--font-goth);">
             <button class="panel-btn" style="margin:0;" onclick="executeAddGallery()">Subir Elemento ⊹</button>
           </div>
-          <div class="gallery-wrapper" id="galleryContainer">
-            </div>
+          <div class="gallery-wrapper" id="galleryContainer"></div>
         </div>
       </div>
 
@@ -588,7 +586,6 @@ function syncUIDom() {
   document.getElementById("imgLoopLeft").src = masterConfig.loopLeft;
   document.getElementById("imgLoopRight").src = masterConfig.loopRight;
   
-  // Set values on Admin Form inputs
   document.getElementById("cfgTitle").value = masterConfig.title;
   document.getElementById("cfgBio").value = masterConfig.bio;
   document.getElementById("cfgBanner").value = masterConfig.banner;
@@ -603,12 +600,12 @@ function syncUIDom() {
   renderTamaScreen();
 }
 
-/* ─── 1. CAMBIO DE TEMA VISUAL DE PREFERENCIA ─── */
 function toggleVisualTheme() {
   let cur = document.body.getAttribute("data-theme");
   let next = (cur === "cute") ? "dark" : "cute";
   document.body.setAttribute("data-theme", next);
   localStorage.setItem("mel_visual_theme", next);
+  renderBgStrategy();
 }
 
 function toggleAdminPanel() {
@@ -616,7 +613,6 @@ function toggleAdminPanel() {
   panel.style.display = (panel.style.display === "block") ? "none" : "block";
 }
 
-/* ─── 2. SISTEMA DE FONDOS PERSONALIZADOS AVANZADO ─── */
 function handleBgConfigChange() {
   let val = document.getElementById("cfgBgType").value;
   document.getElementById("rowBgUrl").style.display = (val==='image'||val==='video') ? 'flex' : 'none';
@@ -676,7 +672,6 @@ function saveMasterConfig() {
   alert("¡Santuario Configurado Correctamente! (｡•̀ᴗ-)✧");
 }
 
-/* ─── 3 Y 4. SISTEMA DE AMIGOS & CONTACTO EN EL ALTAR ─── */
 function executeAddFriend() {
   let name = document.getElementById("addFrName").value.trim();
   if(!name) return alert("Ingresa un alias para tu amigo");
@@ -693,10 +688,13 @@ function executeAddFriend() {
   saveToLocalStorage("mel_friends", friendsList);
   renderFriends();
   
-  // Limpiar inputs
   document.getElementById("addFrName").value = "";
   document.getElementById("addFrDesc").value = "";
   document.getElementById("addFrAvatar").value = "";
+  document.getElementById("addFrInsta").value = "";
+  document.getElementById("addFrTikTok").value = "";
+  document.getElementById("addFrWA").value = "";
+  document.getElementById("addFrEmail").value = "";
 }
 
 function renderFriends() {
@@ -725,7 +723,6 @@ function renderFriends() {
   });
 }
 
-/* ─── 5. SISTEMA DE CHAT RETRO ESTILO FACEBOOK VIEJO ─── */
 let activeChats = {};
 function openRetroChat(index) {
   if (activeChats[index]) return;
@@ -741,7 +738,7 @@ function openRetroChat(index) {
       <span style="cursor:pointer;" onclick="closeRetroChat(${index})">✕</span>
     </div>
     <div class="chat-window-body" id="chatBody-${index}">
-      <div class="chat-bubble friend">${friend.name}: ¡Hola Mel! Let's talk inside the matrix (｡•̀ᴗ-)✧</div>
+      <div class="chat-bubble friend">${friend.name}: ¡Hola! Platiquemos un rato por aquí ୨୧</div>
     </div>
     <div class="chat-window-footer">
       <input type="text" id="chatInput-${index}" placeholder="Escribir mensaje..." onkeypress="checkChatSubmit(event, ${index})">
@@ -767,30 +764,27 @@ function checkChatSubmit(e, index) {
     input.value = "";
     body.scrollTop = body.scrollHeight;
 
-    // Simulación de respuesta automática preparada para Backend / Real-time
     setTimeout(() => {
       if(document.getElementById(`chatBody-${index}`)) {
-        body.innerHTML += `<div class="chat-bubble friend">✦ canalizado en vivo: (≧◡≦) ୨୧</div>`;
+        body.innerHTML += `<div class="chat-bubble friend">✦ (≧◡≦) ୨୧ ¡Súper!</div>`;
         body.scrollTop = body.scrollHeight;
       }
     }, 1000);
   }
 }
 
-/* ─── 6. TAMAGOTCHI ENGINE EVOLUTIVO MEJORADO ─── */
 function runTamaPassiveEngine() {
   setInterval(() => {
     tamaState.hambre = Math.max(0, tamaState.hambre - 4);
     tamaState.energy = Math.max(0, tamaState.energy - 3);
     tamaState.happy = Math.max(0, tamaState.happy - 5);
     
-    // Auto-XP si se mantienen estables sus parámetros
     if(tamaState.hambre > 40 && tamaState.energy > 40) {
       tamaState.xp += 2;
       if(tamaState.xp >= 100) {
         tamaState.xp = 0;
         tamaState.lvl += 1;
-        alert("¡Tu Tamagotchi ha evolucionado a una etapa superior de la Matriz! (≧◡≦) ✧");
+        alert("¡Tu Tamagotchi ha subido de nivel! (≧◡≦) ✧");
       }
     }
     renderTamaScreen();
@@ -812,19 +806,18 @@ function actTama(action) {
 function renderTamaScreen() {
   let av = "(.ˬ.)";
   let status = "Estable";
-  if(tamaState.hambre < 30 || tamaState.energy < 30) { av = "(✖╭╮✖)"; status = "Necesito Cuidado"; }
-  else if(tamaState.happy > 75) { av = "(≧◡≦) ♡"; status = "Hiperactivo"; }
-  else if(tamaState.lvl >= 3) { av = "🔱(｡•̀ᴗ-)✧🔱"; status = "Modo Deidad Arcana"; }
+  if(tamaState.hambre < 30 || tamaState.energy < 30) { av = "(✖╭╮✖)"; status = "Tengo Hambre/Sueño"; }
+  else if(tamaState.happy > 75) { av = "(≧◡≦) ♡"; status = "¡Muy Feliz!"; }
+  else if(tamaState.lvl >= 3) { av = "🔱(｡•̀ᴗ-)✧🔱"; status = "Evolución Suprema"; }
 
   document.getElementById("tamaAvatar").textContent = av;
   document.getElementById("tamaStatus").textContent = `Estado: ${status}`;
   document.getElementById("lblTamaHambre").textContent = `🍖 H: ${tamaState.hambre}%`;
   document.getElementById("lblTamaEnergy").textContent = `⚡ E: ${tamaState.energy}%`;
   document.getElementById("lblTamaHappy").textContent = `♡ F: ${tamaState.happy}%`;
-  document.getElementById("lblTamaLevel").textContent = `⭐ Lvl: ${tamaState.lvl} (${tamaState.xp}xp)`;
+  document.getElementById("lblTamaLevel").textContent = `⭐ Lvl: ${tamaState.lvl}`;
 }
 
-/* ─── 7. SISTEMA MUSICAL DESPLEGABLE DINÁMICO ─── */
 function toggleGenreCollapse(id) {
   document.getElementById(id).classList.toggle("open");
 }
@@ -836,7 +829,7 @@ function executeAddTrack() {
   let link = document.getElementById("addMuLink").value.trim();
   let thumb = document.getElementById("addMuThumb").value.trim() || "https://picsum.photos/50/50";
   
-  if(!title || !link) return alert("Completa los datos mínimos de la pista");
+  if(!title || !link) return alert("Completa los datos de la pista");
   
   let finalId = link.includes("v=") ? link.split("v=")[1].split("&")[0] : link.split("/").pop();
   tracksData[genre].push({ title, artist, link: finalId, thumb });
@@ -846,6 +839,7 @@ function executeAddTrack() {
   document.getElementById("addMuTitle").value = "";
   document.getElementById("addMuArtist").value = "";
   document.getElementById("addMuLink").value = "";
+  document.getElementById("addMuThumb").value = "";
 }
 
 function renderAllTrackLists() {
@@ -872,15 +866,17 @@ function renderAllTrackLists() {
   });
 }
 
-/* ─── 8. CALENDARIO PERSONAL AUTOMATIZADO ─── */
 function executeAddEvent() {
   let day = parseInt(document.getElementById("cfgCalDay").value);
   let note = document.getElementById("cfgCalNote").value.trim();
-  if(!day || day < 1 || day > 30 || !note) return alert("Define un día válido (1-30) y su nota descriptiva");
+  if(!day || day < 1 || day > 30 || !note) return alert("Define un día válido (1-30) y su recordatorio");
   
   calendarEvents[day] = note;
   saveToLocalStorage("mel_events", calendarEvents);
   renderCalendarStructure();
+  
+  document.getElementById("cfgCalDay").value = "";
+  document.getElementById("cfgCalNote").value = "";
 }
 
 function renderCalendarStructure() {
@@ -894,16 +890,15 @@ function renderCalendarStructure() {
       cell.classList.add("has-event");
       cell.setAttribute("data-note", `✦ día ${d}: ${calendarEvents[d]}`);
     } else {
-      cell.setAttribute("data-note", `Sin eventos registrados`);
+      cell.setAttribute("data-note", `Sin eventos`);
     }
     grid.appendChild(cell);
   }
 }
 
-/* ─── 9. COFRADÍA VISUAL (GALERÍA) ─── */
 function executeAddGallery() {
   let url = document.getElementById("addGalUrl").value.trim();
-  if(!url) return alert("Ingresa un enlace de imagen válido");
+  if(!url) return alert("Ingresa una URL de imagen");
   galleryItems.push(url);
   saveToLocalStorage("mel_gallery", galleryItems);
   renderGallery();
@@ -929,7 +924,6 @@ function renderGallery() {
   });
 }
 
-/* ─── 11 Y 12. SISTEMA INTERACTIVO DE LLUVIA Y EXPLOSIONES (KAOMOJI) ─── */
 function spawnKaomojiRain() {
   const particles = ["✧", "✦", "♡", "✿", "❀", "୨୧", "⋆", "☆"];
   setInterval(() => {
@@ -965,7 +959,6 @@ function setupClickExplosions() {
   });
 }
 
-/* INTERRUPTOR GENERAL DE PESTAÑAS (TABS) */
 function switchView(target) {
   document.querySelectorAll(".tab-view").forEach(v => v.classList.remove("active-view"));
   document.querySelectorAll(".rococo-menu-link").forEach(l => l.classList.remove("active-tab"));
