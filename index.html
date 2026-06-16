@@ -3,795 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>୨୧ arunyi's private cocoon ୨୧</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=VT323&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Zio+Slab&display=swap" rel="stylesheet">
+    <title>Santuario Conectado - Tako Retro v2.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=MS+PGothic&family=VT323&family=Cherry+Bomb+One&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    
     <style>
-        /* ==========================================================================
-           ARQUITECTURA DE COLORES (SOFT BLUSH & VINTAGE COQUETTE PALETTE)
-           ========================================================================== */
         :root {
-            --blush-base: #FFF4F5;
-            --caja-fondo: #FFFFFF;
-            --encaje-suave: #FFDCDA;
-            --rosa-viejo: #DB7F8E;
-            --cradle-lavanda: #E6CAD4;
-            --texto-marron: #654649;
-            --texto-firme: #4A2E31;
-            --oro-sutil: #DFBA6B;
-            --sombra-coquette: 0px 8px 24px rgba(219, 127, 142, 0.25);
-            --borde-doble: 6px double #DB7F8E;
-            --borde-puntos: 2px dotted #DB7F8E;
+            /* Paleta extraída directamente de tus referencias (Arunyi / Himegyaru) */
+            --rosa-fondo: #FFEAEF;
+            --rosa-caja: #FFF5F7;
+            --cerezo-medio: #E8B4BC;
+            --cerezo-oscuro: #B47E86;
+            --texto-retro: #644D53;
+            --borde-punto: 2px dotted #E8B4BC;
         }
 
-        /* RESETEO Y CONFIGURACIÓN GENERAL DEL LIENZO */
-        * {
-            box-sizing: border-box;
+        /* Fondo general con el clásico patrón de cuadrícula/estrellas retro */
+        body {
+            background-color: var(--rosa-fondo);
+            background-image: 
+                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'MS PGothic', 'Comfortaa', sans-serif;
+            color: var(--texto-retro);
             margin: 0;
             padding: 0;
-            cursor: url('https://cur.cursors-4u.net/symbols/sym-9/sym834.cur'), auto !important; /* Cursor de varita/corazón retro */
+            font-size: 13px;
         }
 
-        body {
-            background-color: var(--blush-base);
-            /* Patrón denso de píxel-corazones repetidos de fondo */
-            background-image: 
-                radial-gradient(var(--encaje-suave) 15%, transparent 15%),
-                radial-gradient(var(--encaje-suave) 15%, transparent 15%);
-            background-size: 16px 16px;
-            background-position: 0 0, 8px 8px;
-            font-family: 'Fredoka', sans-serif;
-            color: var(--texto-marron);
-            padding: 30px 10px 80px 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
-
-        /* ANIMACIÓN FLUIDA DE SAKURAS CAYENDO */
-        #capa-sakura {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        .petalo-sakura {
-            position: absolute;
-            background: #FFBECD;
-            border-radius: 120% 0 120% 120%;
-            opacity: 0.5;
-            animation: caidaEterna 7s linear infinite;
-        }
-        @keyframes caidaEterna {
-            0% { transform: translateY(-10vh) rotate(0deg) scale(0.8); opacity: 0.8; }
-            50% { transform: translateX(30px) rotate(180deg) scale(1); opacity: 0.5; }
-            100% { transform: translateY(110vh) translateX(-30px) rotate(360deg) scale(0.6); opacity: 0; }
-        }
-
-        /* ==========================================================================
-           BARRA DE ESTADO SUPERIOR (ESTILO NOTIFICACIONES DE SNEAK PEEK)
-           ========================================================================== */
-        .barra-ticker-notificaciones {
-            width: 100%;
-            max-width: 980px;
-            background: var(--caja-fondo);
-            border: 2px solid var(--rosa-viejo);
-            border-radius: 30px;
-            padding: 6px 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: var(--sombra-coquette);
-        }
-        .burbuja-alerta {
-            background: var(--encaje-suave);
-            color: var(--texto-firme);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 20px;
-            border: 1px solid var(--rosa-viejo);
-        }
-
-        /* ==========================================================================
-           EL GRAN CASCARÓN DETALLADO (EL CAPULLO CENTRAL)
-           ========================================================================== */
-        .cascaron-santuario {
-            background: var(--caja-fondo);
-            border: var(--borde-doble);
+        /* CONTENEDOR PRINCIPAL: Simula el marco de Carrd/SpaceHey de las fotos */
+        .contenedor-santuario {
+            max-width: 850px;
+            margin: 30px auto;
+            background: #FFFFFF;
+            border: 12px double var(--cerezo-medio);
             border-radius: 24px;
-            max-width: 980px;
-            width: 100%;
             padding: 25px;
-            box-shadow: var(--sombra-coquette);
+            box-shadow: 0px 0px 20px rgba(232, 180, 188, 0.4);
             position: relative;
         }
 
-        /* Estampas y Stickers en las esquinas estilo Y2K Scrapbook */
-        .sticker-coquette {
-            position: absolute;
-            font-size: 24px;
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        .st-top-left { top: 15px; left: 15px; }
-        .st-top-right { top: 15px; right: 15px; }
-
-        /* BANNER CABECERA PERSONALIZADA */
-        .altar-banner {
+        /* HEADER ESTILO BANNER DE ANIME / J-WEB */
+        .banner-header {
             width: 100%;
-            height: 220px;
-            background: linear-gradient(rgba(255,244,245,0.2), rgba(255,244,245,0.5)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=900&auto=format&fit=cover') center;
-            background-size: cover;
+            height: 180px;
+            background: linear-gradient(180deg, #FDE3E7 0%, #FFEAEF 100%);
+            border: 3px dashed var(--cerezo-medio);
             border-radius: 16px;
-            border: 2px solid var(--encaje-suave);
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
             position: relative;
-            box-shadow: inset 0 0 40px rgba(219,127,142,0.15);
+            overflow: hidden;
         }
-        .altar-banner h1 {
-            font-family: 'VT323', monospace;
-            font-size: 65px;
+
+        .banner-header h1 {
+            font-family: 'Cherry Bomb One', cursive;
+            font-size: 42px;
             color: white;
-            text-shadow: 4px 4px 0px var(--rosa-viejo), -2px -2px 0px var(--rosa-viejo), 2px -2px 0px var(--rosa-viejo), -2px 2px 0px var(--rosa-viejo);
+            text-shadow: 3px 3px 0px var(--cerezo-medio), -1px -1px 0px var(--cerezo-medio), 1px -1px 0px var(--cerezo-medio), -1px 1px 0px var(--cerezo-medio);
+            margin: 0;
             letter-spacing: 2px;
         }
-        .altar-banner p {
-            font-family: 'Courier Prime', monospace;
+
+        .subtitulo-retro {
             font-size: 11px;
-            background: white;
-            padding: 4px 15px;
-            border-radius: 12px;
-            margin-top: -5px;
-            border: 1px dashed var(--rosa-viejo);
-            color: var(--texto-firme);
+            letter-spacing: 1px;
+            margin-top: 5px;
+            color: var(--cerezo-oscuro);
         }
 
-        /* ==========================================================================
-           BARRA DE MENÚS Y SUB-MENÚS DESPLEGABLES INTERACTIVOS
-           ========================================================================== */
-        .navegacion-interactiva {
+        /* BARRA DE NAVEGACIÓN COMPACTA (Estilo Arunyi) */
+        .nav-retro {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 25px 0;
-            background: #FFFBFB;
-            padding: 12px;
-            border-radius: 40px;
-            border: 1px solid var(--encaje-suave);
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 3px double var(--cerezo-medio);
+            padding-bottom: 15px;
         }
 
-        .dropdown-santuario {
+        /* MENÚS DESPLEGABLES ESTILO BOTÓN CON ENCAJE */
+        .menu-desplegable {
             position: relative;
+            display: inline-block;
         }
 
-        .btn-navegacion {
-            background: var(--caja-fondo);
-            border: 2px dashed var(--rosa-viejo);
-            padding: 8px 22px;
+        .boton-retro {
+            background: var(--rosa-caja);
+            color: var(--texto-retro);
+            border: 2px dashed var(--cerezo-medio);
             border-radius: 20px;
+            padding: 6px 16px;
             font-family: inherit;
-            color: var(--texto-marron);
-            font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-        .btn-navegacion:hover, .btn-navegacion.activo {
-            background: var(--encaje-suave);
-            border-style: solid;
-            transform: scale(1.05);
+            gap: 5px;
         }
 
-        .caja-submenus {
+        .boton-retro:hover {
+            background: var(--cerezo-medio);
+            color: white;
+            border-style: solid;
+        }
+
+        .contenido-desplegable {
             display: none;
             position: absolute;
-            top: 115%; left: 50%;
-            transform: translateX(-50%);
-            background: var(--caja-fondo);
-            border: 2px solid var(--rosa-viejo);
+            background: #FFFFFF;
+            border: 2px dotted var(--cerezo-medio);
             border-radius: 12px;
-            min-width: 190px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            z-index: 1000;
-            padding: 6px 0;
+            min-width: 160px;
+            box-shadow: 2px 4px 8px rgba(0,0,0,0.05);
+            z-index: 100;
+            top: 110%;
+            padding: 5px 0;
         }
-        .caja-submenus::before {
-            content: '';
-            position: absolute;
-            top: -7px; left: 50%; transform: translateX(-50%);
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-bottom: 7px solid var(--rosa-viejo);
-        }
-        .dropdown-santuario:hover .caja-submenus { display: block; }
 
-        .item-submenu {
-            padding: 8px 16px;
-            color: var(--texto-marron);
+        .contenido-desplegable a {
+            display: block;
+            padding: 8px 12px;
+            color: var(--texto-retro);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-        }
-        .item-submenu:hover {
-            background: var(--blush-base);
-            color: var(--texto-firme);
-            padding-left: 22px;
+            font-size: 11px;
         }
 
-        /* ==========================================================================
-           GRID ESTRUCTURAL PRINCIPAL (ENFOQUE EXCLUSIVO EN TU INSTAGRAM RETRO)
-           ========================================================================== */
-        .bloque-secciones {
+        .contenido-desplegable a:hover {
+            background-color: var(--rosa-fondo);
+            color: var(--cerezo-oscuro);
+        }
+
+        .menu-desplegable:hover .contenido-desplegable {
+            display: block;
+        }
+
+        /* ESTRUCTURA DE REJILLA TIPO MYSPACE / CARRD */
+        .layout-santuario {
             display: grid;
-            grid-template-columns: 270px 1fr;
-            gap: 25px;
+            grid-template-columns: 240px 1fr;
+            gap: 20px;
         }
 
-        /* ==========================================================================
-           COLUMNA IZQUIERDA: DETALLES DE IDENTIDAD Y ESTADOS DE ÁNIMO
-           ========================================================================== */
-        .perfil-columna-izquierda {
+        /* COLUMNA IZQUIERDA: Perfil y Widgets */
+        .columna-lateral {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .caja-marco-rococo {
-            background: var(--caja-fondo);
-            border: 2px dashed var(--rosa-viejo);
+        /* BLOQUES CONTENEDORES RETRO COMPACTOS */
+        .bloque-retro {
+            background: var(--rosa-caja);
+            border: 2px solid var(--cerezo-medio);
             border-radius: 16px;
-            padding: 16px;
-            box-shadow: inset 0 0 15px rgba(255,220,218,0.3);
+            padding: 15px;
             position: relative;
         }
 
-        .caja-marco-rococo::after {
-            content: '୨୧';
+        /* Etiquetas de título encapsuladas que ves en Arunyi (ej: 🎀 profile, 🎀 updates) */
+        .etiqueta-bloque {
             position: absolute;
-            top: -10px; left: 50%; transform: translateX(-50%);
-            background: white; padding: 0 8px; font-size: 12px; color: var(--rosa-viejo);
-        }
-
-        .encabezado-caja-interna {
-            background: var(--encaje-suave);
-            text-align: center;
+            top: -12px;
+            left: 15px;
+            background: #FFFFFF;
+            border: 1px solid var(--cerezo-medio);
+            border-radius: 10px;
+            padding: 2px 12px;
             font-size: 11px;
-            font-weight: 600;
-            padding: 4px;
-            border-radius: 6px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--texto-firme);
-        }
-
-        /* Contenedor del Avatar Estilo Guardapelo Antiguo */
-        .marco-guardapelo-avatar {
-            width: 150px;
-            height: 150px;
-            border: var(--borde-doble);
-            border-radius: 50%;
-            margin: 0 auto 12px auto;
-            overflow: hidden;
-            background: white;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
-        }
-        .marco-guardapelo-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Lista de Estados minuciosos (Carrd / SpaceHey Style) */
-        .tabla-estados-lista {
+            font-weight: bold;
+            color: var(--cerezo-oscuro);
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-size: 12px;
+            align-items: center;
+            gap: 4px;
         }
-        .fila-estado-item {
+
+        /* Caja de Perfil */
+        .avatar-retro {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px double var(--cerezo-medio);
+            display: block;
+            margin: 10px auto 10px auto;
+            object-fit: cover;
+            background: #fff;
+        }
+
+        .estado-lista {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            font-size: 11px;
+        }
+
+        .estado-lista li {
+            margin-bottom: 5px;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px dotted var(--encaje-suave);
-            padding-bottom: 4px;
-        }
-        .fila-estado-item span { font-weight: 600; color: var(--rosa-viejo); }
-
-        /* REPRODUCTOR DE CASSETTE ULTRA DETALLADO */
-        .reproductor-mini-cassette {
-            background: #FFFBFB;
-            border: 2px solid var(--rosa-viejo);
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 5px;
-            position: relative;
-        }
-        .cuerpo-cassette-visual {
-            width: 100%; height: 60px;
-            background: var(--texto-marron);
-            border-radius: 6px;
-            border: 2px solid var(--encaje-suave);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        /* Los pequeños engranajes giratorios del cassette */
-        .engranaje-cassette {
-            width: 22px; height: 22px;
-            border: 4px dotted #FFF; border-radius: 50%;
-        }
-        .girando-disco { animation: spin 4s linear infinite; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        .controles-reproduccion-retro {
-            display: flex; justify-content: center; gap: 18px; margin-top: 10px; font-size: 14px;
-        }
-        .controles-reproduccion-retro i { cursor: pointer; color: var(--rosa-viejo); }
-        .controles-reproduccion-retro i:hover { color: var(--texto-firme); }
-
-        /* Input decorativo para colocar IDs o Links de YouTube */
-        .caja-input-yt {
-            width: 100%; font-size: 10px; padding: 5px 8px; margin-top: 10px;
-            border: 1px dashed var(--rosa-viejo); border-radius: 6px; font-family: inherit;
-            color: var(--texto-marron); text-align: center;
+            border-bottom: 1px dotted var(--cerezo-medio);
+            padding-bottom: 2px;
         }
 
-        /* ==========================================================================
-           COLUMNA DERECHA: BIO DETALLADA, CAJA DE PUBLICACIÓN Y FEED DE IMÁGENES
-           ========================================================================== */
-        .perfil-columna-derecha {
+        /* COLUMNA DERECHA: Feed de publicaciones y multimedia */
+        .columna-principal {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        /* Caja de Perfil Biográfico e Índices */
-        .caja-bio-estilo-ig {
-            border: 2px solid var(--encaje-suave);
-            border-radius: 16px;
-            padding: 20px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFF9FA 100%);
-        }
-        .cabecera-datos-usuario {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
-        }
-        .nombre-id-ig { font-size: 20px; font-weight: 600; color: var(--texto-firme); }
-        
-        .contadores-mini-cuadros {
-            display: flex; gap: 15px; font-size: 12px; margin-bottom: 15px;
-            background: #FFF; padding: 8px 15px; border-radius: 10px; border: 1px dotted var(--rosa-viejo);
-        }
-        .contadores-mini-cuadros strong { color: var(--rosa-viejo); }
-
-        .texto-esencia-bio {
-            font-size: 13px; line-height: 1.6; color: var(--texto-marron);
-            border-left: 3px solid var(--rosa-viejo); padding-left: 12px;
-        }
-
-        /* CAJA DE MANIFESTACIÓN MULTIMEDIA (Para subir y escribir) */
-        .panel-creador-contenido {
-            background: #FFFBFB;
-            border: 2px dashed var(--rosa-viejo);
+        /* ÁREA DE ENTRADA DE TEXTO */
+        .caja-crear-post {
+            background: #FFFFFF;
+            border: 2px dashed var(--cerezo-medio);
             border-radius: 16px;
             padding: 15px;
-        }
-        .campo-escritura-retro {
-            width: 100%; height: 60px; border: 1px solid var(--cradle-lavanda);
-            border-radius: 8px; padding: 10px; font-family: inherit; font-size: 12px;
-            resize: none; margin-bottom: 10px; color: var(--texto-marron);
+            margin-top: 10px;
         }
 
-        /* CUADRÍCULA DENSE-FEED (ESTILO IG / MYSPACE MULTI-OPCIONES) */
-        .cuadrícula-imagenes-feed {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+        .textarea-retro {
+            width: 100%;
+            height: 60px;
+            border: 1px solid var(--cerezo-medio);
+            border-radius: 8px;
+            background: var(--rosa-caja);
+            padding: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+            color: var(--texto-retro);
+            resize: none;
+            font-size: 12px;
         }
 
-        .tarjeta-espejo-multimedia {
-            aspect-ratio: 1 / 1;
-            border: 3px double var(--encaje-suave);
+        .textarea-retro:focus {
+            outline: none;
+            border-color: var(--cerezo-oscuro);
+        }
+
+        /* REPRODUCTOR MULTIMEDIA RETRO (Idéntico a los reproductores MP3 de las fotos) */
+        .reproductor-mp3 {
+            background: var(--rosa-caja);
+            border: 2px solid var(--cerezo-medio);
             border-radius: 12px;
-            overflow: hidden;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .reproductor-youtube-marco {
             position: relative;
-            background: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-        }
-        .tarjeta-espejo-multimedia:hover {
-            border-color: var(--rosa-viejo);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 18px rgba(219,127,142,0.2);
-        }
-        .tarjeta-espejo-multimedia img, .tarjeta-espejo-multimedia video {
-            width: 100%; height: 100%; object-fit: cover;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid var(--cerezo-medio);
+            margin-top: 8px;
         }
 
-        /* Pequeño detalle de cinta adhesiva / sticker vintage en las fotos */
-        .sello-postal-vintage {
+        .reproductor-youtube-marco iframe {
             position: absolute;
-            bottom: 6px; right: 6px;
-            background: rgba(255, 255, 255, 0.85);
-            font-size: 10px; font-family: 'Courier Prime', monospace;
-            padding: 1px 6px; border-radius: 4px;
-            border: 1px dotted var(--rosa-viejo);
-            color: var(--texto-firme);
-            font-weight: bold;
+            top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        /* ==========================================================================
-           PESTAÑA 2: EL MURO DE AMIGOS (EL DIÁLOGO DE LAS ALMAS)
-           ========================================================================== */
-        .seccion-ocultable { display: none; }
-        
-        .contenedor-muro-amigos {
-            max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;
-        }
-        
-        .comentario-myspace-card {
-            background: var(--caja-fondo);
-            border: 2px dashed var(--cradle-lavanda);
-            border-radius: 16px;
-            padding: 15px;
-        }
-        .cabecera-amigo-comenta {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
-            border-bottom: 1px dotted var(--encaje-suave); padding-bottom: 6px;
-        }
-        .avatar-amigo-circular {
-            width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--rosa-viejo); overflow: hidden;
-        }
-        .avatar-amigo-circular img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Formulario para que tus amigos te dejen comentarios reales */
-        .caja-dejar-susurro {
-            background: #FFF9FA; border: 2px solid var(--encaje-suave); border-radius: 12px; padding: 15px;
+        /* GALERÍA AUTOMÁTICA EN SELLOS DE CORREO (Estilo Listings de Arunyi) */
+        .galeria-retro {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
         }
 
-        /* CONFIGURACIÓN DEL PIE DE PÁGINA */
-        footer {
-            text-align: center; font-family: 'Courier Prime', monospace; font-size: 10px;
-            color: var(--rosa-viejo); margin-top: 40px; border-top: 1px dotted var(--encaje-suave); padding-top: 15px;
+        .item-multimedia {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border: 2px dashed var(--cerezo-medio);
+            border-radius: 8px;
+            background: white;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+
+        /* Créditos de pie de página idénticos a los tuyos */
+        .footer-creditos {
+            text-align: center;
+            font-size: 10px;
+            color: var(--cerezo-oscuro);
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px dotted var(--cerezo-medio);
         }
     </style>
 </head>
 <body>
 
-    <div id="capa-sakura"></div>
-
-    <div class="barra-ticker-notificaciones">
-        <div style="display: flex; align-items: center; gap: 10px; font-size: 12px;">
-            <span class="burbuja-alerta">✧ actualización de estado ✧</span>
-            <marquee scrollamount="2" style="width: 300px; color: var(--texto-marron); font-weight: bold;">Mirei ha manifestado una nueva foto en el Altar... Escuchando pistas melancólicas...</marquee>
-        </div>
-        <div style="font-size: 11px; font-weight: 600;"><i class="fa-solid fa-heart-pulse"></i> online & dreaming</div>
-    </div>
-
-    <div class="cascaron-santuario">
+    <div class="contenedor-santuario">
         
-        <span class="sticker-coquette st-top-left">🧸</span>
-        <span class="sticker-coquette st-top-right">🎀</span>
-
-        <div class="altar-banner">
-            <h1>arunyi's cocoon</h1>
-            <p>୨୧ un paraje de encaje, códigos e imágenes místicas ୨୧</p>
+        <div class="banner-header">
+            <h1>Arunyi</h1>
+            <div class="subtitulo-retro">WELCOME TO ARUNYI.ART! ENJOY YOUR STAY ✧*:.｡.</div>
         </div>
 
-        <nav class="navegacion-interactiva">
-            
-            <div class="dropdown-santuario">
-                <button class="btn-navegacion activo" onclick="irASeccionDinamica('seccion-altar-me', this)">
-                    <i class="fa-solid fa-house-user"></i> home (me)
-                </button>
-                <div class="caja-submenus">
-                    <a href="#" class="opcion-link item-submenu" onclick="alert('Mi diario íntimo de suspiros')">✧ ver bitácora íntima</a>
-                    <a href="#" class="opcion-link item-submenu" onclick="alert('Contador pixelado: 4,432 visitas')">✧ estadísticas de visitas</a>
+        <div class="nav-retro">
+            <div class="menu-desplegable">
+                <button class="boton-retro">🌸 mi altar <i class="fa-solid fa-chevron-down" style="font-size: 9px;"></i></button>
+                <div class="contenido-desplegable">
+                    <a href="#">ver mi sentir</a>
+                    <a href="#">espejo de recuerdos</a>
                 </div>
             </div>
 
-            <div class="dropdown-santuario">
-                <button class="btn-navegacion" onclick="irASeccionDinamica('seccion-jardin-friends', this)">
-                    <i class="fa-solid fa-user-group"></i> friends space
-                </button>
-                <div class="caja-submenus">
-                    <a href="#" class="opcion-link item-submenu">✧ ver muro de almas unidas</a>
-                    <a href="#" class="opcion-link item-submenu" onclick="alert('Abriendo bandeja de correspondencia privada')">✧ bandeja de susurros privados</a>
+            <div class="menu-desplegable">
+                <button class="boton-retro">🖤 el callejón social <i class="fa-solid fa-chevron-down" style="font-size: 9px;"></i></button>
+                <div class="contenido-desplegable">
+                    <a href="#">muro de amistades</a>
+                    <a href="#">oráculo de susurros</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout-santuario">
+            
+            <div class="columna-lateral">
+                <div class="bloque-retro" style="margin-top: 10px;">
+                    <div class="etiqueta-bloque">🎀 profile</div>
+                    <img src="https://i.pinimg.com/736x/8a/7e/8a/8a7e8a9fdfc4114ecb3d4f1cd111d40c.jpg" alt="Avatar" class="avatar-retro">
+                    <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">arunyi ୨୧ artist</div>
+                    
+                    <ul class="estado-lista">
+                        <li><span>status:</span> <span style="color: var(--cerezo-oscuro);">doing comms</span></li>
+                        <li><span>feeling:</span> <span style="color: var(--cerezo-oscuro);">sick ☠️</span></li>
+                        <li><span>playing:</span> <span style="color: var(--cerezo-oscuro);">mortal kombat 11</span></li>
+                    </ul>
+                </div>
+
+                <div class="bloque-retro" style="margin-top: 10px;">
+                    <div class="etiqueta-bloque">🎀 sintonía</div>
+                    <div style="font-size:10px; margin-top:5px; margin-bottom:5px;">Pegar Link o ID de YouTube:</div>
+                    <input type="text" id="link-youtube" placeholder="link aquí..." onchange="actualizarMusicaContenedor(this.value)" style="width:100%; padding:4px; border-radius:6px; border:1px solid var(--cerezo-medio); font-size:11px; box-sizing: border-box;">
                 </div>
             </div>
 
-            <button class="btn-navegacion" onclick="alert('Sección Portafolio de Arte en construcción 🌸')">
-                <i class="fa-solid fa-palette"></i> portfolio
-            </button>
-        </nav>
-
-        <div id="seccion-altar-me" class="bloque-secciones">
-            
-            <aside class="perfil-columna-izquierda">
+            <div class="columna-principal">
                 
-                <div class="caja-marco-rococo">
-                    <div class="encabezado-caja-interna">retrato actual</div>
-                    <div class="marco-guardapelo-avatar">
-                        <img id="avatar-principal-imagen" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=300&auto=format&fit=cover">
-                    </div>
-                    <label for="subir-avatar-archivo" style="font-size:10px; text-decoration:underline; cursor:pointer; display:block; text-align:center;">[transmutar semblante]</label>
-                    <input type="file" id="subir-avatar-archivo" style="display:none;" accept="image/*" onchange="actualizarAvatarInteractivamente(event)">
-                </div>
-
-                <div class="caja-marco-rococo">
-                    <div class="encabezado-caja-interna">status de la deidad</div>
-                    <div class="tabla-estados-lista">
-                        <div class="fila-estado-item">🧁 <b>ánimo:</b> <span id="st-animo">con sueño</span></div>
-                        <div class="fila-estado-item">🧸 <b>sentir:</b> <span id="st-sentir">in love</span></div>
-                        <div class="fila-estado-item">🎮 <b>jugando:</b> <span id="st-juego">pop'n music</span></div>
-                        <div class="fila-estado-item">🍵 <b>bebiendo:</b> <span id="st-bebida">té de rosas</span></div>
-                    </div>
-                </div>
-
-                <div class="caja-marco-rococo">
-                    <div class="encabezado-caja-interna">treasure player</div>
-                    <div class="reproductor-mini-cassette">
-                        <p id="pista-titulo-retro" style="font-size:10px; font-weight:bold; white-space:nowrap; overflow:hidden; text-align:center; margin-bottom:5px;">Vals de Encaje Oscuro</p>
+                <div class="bloque-retro" style="margin-top: 10px;">
+                    <div class="etiqueta-bloque">💌 message board</div>
+                    <div class="caja-crear-post">
+                        <textarea id="texto-sentir" placeholder="escribe tu sentir secreto aquí..." class="textarea-retro"></textarea>
                         
-                        <div class="cuerpo-cassette-visual">
-                            <div id="disco-izq" class="engranaje-cassette"></div>
-                            <div id="disco-der" class="engranaje-cassette"></div>
-                        </div>
-
-                        <div class="controles-reproduccion-retro">
-                            <i class="fa-solid fa-backward" onclick="alert('Pista anterior')"></i>
-                            <i id="icono-play-retro" class="fa-solid fa-play" onclick="controlarAudioCassette()"></i>
-                            <i class="fa-solid fa-forward" onclick="alert('Pista siguiente')"></i>
+                        <div style="margin-top: 10px; display:flex; justify-content: space-between; align-items:center;">
+                            <label style="cursor:pointer; background:#fff; padding:4px 10px; border-radius:6px; border:1px dashed var(--cerezo-medio); font-size:11px;">
+                                📷 foto/video
+                                <input type="file" id="subida-multimedia" accept="image/*,video/*" style="display:none;">
+                            </label>
+                            <button onclick="publicarAlAltar()" style="background: var(--cerezo-medio); color:white; border:none; padding:5px 14px; border-radius:6px; cursor:pointer; font-family: inherit; font-size: 11px;">manifestar ✦</button>
                         </div>
                     </div>
-                    <input type="text" class="caja-input-yt" placeholder="pega enlace o ID de YouTube aquí..." onchange="conectarReproductorYoutube(this.value)">
-                    <audio id="core-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
-                    <iframe id="iframe-youtube-oculto" style="display:none;" src=""></iframe>
                 </div>
 
-            </aside>
-
-            <main class="perfil-columna-derecha">
-                
-                <div class="caja-bio-estilo-ig">
-                    <div class="cabecera-datos-usuario">
-                        <h2 class="nombre-id-ig">mirei_pink ✿</h2>
-                        <i class="fa-solid fa-certificate" style="color:var(--rosa-viejo);" title="Cuenta Mística Verificada"></i>
-                    </div>
-
-                    <div class="contadores-mini-cuadros">
-                        <div><strong id="contador-post-num">3</strong> destellos</div>
-                        <div><strong>888</strong> almas afines</div>
-                        <div><strong>333</strong> cortejando</div>
-                    </div>
-
-                    <p class="texto-esencia-bio" id="biografia-actual-cambiante">
-                        soñando despierta entre encajes rococó, códigos limpios y suspiros antiguos. este es mi refugio absoluto centrado en mí. prohibido comentarios mundanos, solo vibras tiernas, stickers vintage y arte digital.
-                    </p>
-                </div>
-
-                <div class="panel-creador-contenido">
-                    <p style="font-size:11px; font-weight:600; margin-bottom:6px; color:var(--rosa-viejo); text-transform:uppercase;"><i class="fa-solid fa-wand-magic-sparkles"></i> manifestar destello en mi feed principal:</p>
-                    <textarea id="texto-nuevo-sentir" class="campo-escritura-retro" placeholder="Escribe un nuevo sentir para tu biografía principal..."></textarea>
+                <div class="bloque-retro" style="margin-top: 10px;">
+                    <div class="etiqueta-bloque">🎵 updates & media</div>
+                    <p style="margin: 10px 0 5px 0; font-style: italic; font-size: 12px;">"escuchando mi vals favorito mientras deambulo por el santuario..."</p>
                     
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <label style="background:var(--encaje-suave); padding:6px 14px; border-radius:8px; font-size:11px; font-weight:600; cursor:pointer;">
-                            📷 cargar foto o video desde tu galería
-                            <input type="file" id="archivo-multimedia-post" accept="image/*,video/*" style="display:none;" onchange="capturarArchivoParaPost(event)">
-                        </label>
-                        <button onclick="irradiarContenidoAlFeed()" style="background:var(--rosa-viejo); color:white; border:none; padding:7px 18px; border-radius:8px; font-family:inherit; font-size:11px; font-weight:600; cursor:pointer;">irradiar ✧</button>
-                    </div>
-                </div>
-
-                <div class="cuadrícula-imagenes-feed" id="contenedor-feed-fotos">
-                    
-                    <div class="tarjeta-espejo-multimedia">
-                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?q=80&w=300&auto=format&fit=cover">
-                        <div class="sello-postal-vintage">୨୧ 01</div>
-                    </div>
-
-                    <div class="tarjeta-espejo-multimedia">
-                        <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?q=80&w=300&auto=format&fit=cover">
-                        <div class="sello-postal-vintage">୨୧ 02</div>
-                    </div>
-
-                    <div class="tarjeta-espejo-multimedia">
-                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=300&auto=format&fit=cover">
-                        <div class="sello-postal-vintage">୨୧ 03</div>
-                    </div>
-
-                </div>
-
-            </main>
-
-        </div>
-
-        <div id="seccion-jardin-friends" class="seccion-ocultable" style="padding-top:10px;">
-            <div class="contenedor-muro-amigos">
-                <h2 style="font-family:'VT323', monospace; font-size:38px; text-align:center; color:var(--rosa-viejo);">✧ el muro de las almas aliadas ✧</h2>
-                
-                <div class="caja-dejar-susurro">
-                    <p style="font-size:11px; font-weight:600; margin-bottom:8px; color:var(--rosa-viejo);">🎀 deja un mensaje real en el muro de mirei:</p>
-                    <input type="text" id="nombre-amigo-input" placeholder="Tu Apodo Místico..." style="width:100%; padding:6px; font-family:inherit; font-size:11px; margin-bottom:8px; border:1px solid var(--cradle-lavanda); border-radius:6px;">
-                    <textarea id="texto-amigo-comentario" placeholder="Escribe un susurro para el muro colectivo..." style="width:100%; height:50px; padding:8px; font-family:inherit; font-size:11px; border:1px solid var(--cradle-lavanda); border-radius:6px; resize:none; margin-bottom:8px;"></textarea>
-                    <button onclick="amigoPublicaComentario()" style="background:var(--rosa-viejo); color:white; border:none; padding:5px 12px; border-radius:6px; font-family:inherit; font-size:11px; font-weight:600; cursor:pointer;">dejar susurro ୨୧</button>
-                </div>
-
-                <div id="lista-comentarios-comunidad" style="display:flex; flex-direction:column; gap:15px;">
-                    
-                    <div class="comentario-myspace-card">
-                        <div class="cabecera-amigo-comenta">
-                            <div class="avatar-amigo-circular">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=50&auto=format&fit=cover">
-                            </div>
-                            <span style="font-size:12px; font-weight:600;">yuki_chan 🌸</span>
-                            <span style="font-size:10px; margin-left:auto; opacity:0.6;">hace unos instantes</span>
+                    <div class="reproductor-mp3">
+                        <div class="reproductor-youtube-marco">
+                            <iframe id="parlante-youtube" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>
-                        <p style="font-size:12px; line-height:1.5;">¡Amo por completo el nivel de detalles de este santuario! Los engranajes del casete girando son lo máximo. Te dejo este recuerdito en tu feed.</p>
                     </div>
-
                 </div>
+
+                <div class="bloque-retro" style="margin-top: 10px;">
+                    <div class="etiqueta-bloque">⭐ listings / recuerdos</div>
+                    <div class="galeria-retro" id="galeria-dinamica">
+                        </div>
+                </div>
+
             </div>
         </div>
 
-        <footer>
-            © arunyi 2026-2027 ୨୧ hecho con devoción por los códigos detallados, el encaje y los píxeles tiernos.
-        </footer>
+        <div class="footer-creditos">
+            © arunyi 2022-2026 ୨୧ made with carrd ୨୧ banner by paimiu
+        </div>
 
     </div>
 
     <script>
-        // GENERADOR METICULOSO DE LLUVIA DE SAKURA
-        function invocarPetalos() {
-            const capa = document.getElementById('capa-sakura');
-            const petalo = document.createElement('div');
-            petalo.className = 'petalo-sakura';
-            petalo.style.left = Math.random() * 100 + 'vw';
-            petalo.style.width = Math.random() * 8 + 6 + 'px';
-            petalo.style.height = petalo.style.width;
-            petalo.style.animationDuration = Math.random() * 3 + 4 + 's';
-            capa.appendChild(petalo);
-            setTimeout(() => petalo.remove(), 7000);
-        }
-        setInterval(invocarPetalos, 220);
-
-        // CAMBIAR PESTAÑAS SIN INTERRUMPIR EL AUDIO
-        function irASeccionDinamica(idSeccion, boton) {
-            document.getElementById('seccion-altar-me').style.display = 'none';
-            document.getElementById('seccion-jardin-friends').style.display = 'none';
-            document.querySelectorAll('.btn-navegacion').forEach(btn => btn.classList.remove('activo'));
-
-            document.getElementById(idSeccion).style.display = (idSeccion === 'seccion-altar-me') ? 'grid' : 'block';
-            boton.classList.add('activo');
-        }
-
-        // ACTUALIZACIÓN EN TIEMPO REAL DEL AVATAR DEL GUARDAPELO
-        function actualizarAvatarInteractivamente(e) {
-            const lector = new FileReader();
-            lector.onload = () => document.getElementById('avatar-principal-imagen').src = lector.result;
-            lector.readAsDataURL(e.target.files[0]);
-        }
-
-        // CONTROLADOR DE SUBIDAS TEMPORALES DEL COFRE
-        let bufferArchivo = null;
-        function capturarArchivoParaPost(e) {
-            bufferArchivo = e.target.files[0];
-            alert("✨ Destello visual alineado con éxito. Presiona 'Irradiar ✧' para inyectarlo al feed.");
-        }
-
-        // IRRADIAR CONTENIDO: TEXTO A BIO Y MULTIMEDIA AL FEED EN CUADRÍCULA (ESTILO IG)
-        let conteoMagicoPost = 3;
-        function irradiarContenidoAlFeed() {
-            const entradaTexto = document.getElementById('texto-nuevo-sentir');
-            const bioCuerpo = document.getElementById('biografia-actual-cambiante');
-            const feedContenedor = document.getElementById('contenedor-feed-fotos');
-            const textNumPost = document.getElementById('contador-post-num');
-
-            // Si se escribió texto, muta tu biografía principal
-            if (entradaTexto.value.trim() !== "") {
-                bioCuerpo.textContent = entradaTexto.value;
-            }
-
-            // Si se cargó un archivo, crea una nueva tarjeta de cuadrícula con su sello vintage
-            if (bufferArchivo) {
-                const lector = new FileReader();
-                lector.onload = function(event) {
-                    const nuevaTarjeta = document.createElement('div');
-                    nuevaTarjeta.className = 'tarjeta-espejo-multimedia';
-                    conteoMagicoPost++;
-
-                    if (bufferArchivo.type.includes('video')) {
-                        nuevaTarjeta.innerHTML = `<video src="${event.target.result}" controls autoplay muted loop></video>
-                                                  <div class="sello-postal-vintage">୨୧ 0${conteoMagicoPost}</div>`;
-                    } else {
-                        nuevaTarjeta.innerHTML = `<img src="${event.target.result}">
-                                                  <div class="sello-postal-vintage">୨୧ 0${conteoMagicoPost}</div>`;
-                    }
-
-                    feedContenedor.insertBefore(nuevaTarjeta, feedContenedor.firstChild);
-                    textNumPost.textContent = conteoMagicoPost;
-                    bufferArchivo = null;
-                }
-                lector.readAsDataURL(bufferArchivo);
-            }
-
-            entradaTexto.value = "";
-        }
-
-        // REPRODUCTOR DE CASSETTE INTERNO (AUDIO RETRO + CAPTURA DE YOUTUBE)
-        const elementAudio = document.getElementById('core-audio');
-        const icoPlayRetro = document.getElementById('icono-play-retro');
-        const titTrack = document.getElementById('pista-titulo-retro');
-        const marcoIframeYt = document.getElementById('iframe-youtube-oculto');
-        const engraneIzg = document.getElementById('disco-izq');
-        const engraneDer = document.getElementById('disco-der');
-
-        function controlarAudioCassette() {
-            if (elementAudio.paused) {
-                elementAudio.play();
-                icoPlayRetro.className = "fa-solid fa-pause";
-                engraneIzg.classList.add('girando-disco');
-                engraneDer.classList.add('girando-disco');
-            } else {
-                elementAudio.pause();
-                icoPlayRetro.className = "fa-solid fa-play";
-                engraneIzg.classList.remove('girando-disco');
-                engraneDer.classList.remove('girando-disco');
-            }
-        }
-
-        function conectarReproductorYoutube(url) {
+        // Lógica de transformación de links de YouTube
+        function actualizarMusicaContenedor(url) {
+            const iframe = document.getElementById('parlante-youtube');
             let videoId = '';
-            if (url.includes('v=')) videoId = url.split('v=')[1].split('&')[0];
-            else if (url.includes('youtu.be/')) videoId = url.split('youtu.be/')[1].split('?')[0];
-            else videoId = url;
-
-            if (videoId) {
-                elementAudio.pause();
-                icoPlayRetro.className = "fa-solid fa-compact-disc fa-spin"; // Icono de disco girando para pistas externas
-                engraneIzg.classList.add('girando-disco');
-                engraneDer.classList.add('girando-disco');
-                marcoIframeYt.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-                titTrack.textContent = "Sintonía Externa Activa ♫";
+            
+            if(url.includes('v=')) {
+                videoId = url.split('v=')[1].split('&')[0];
+            } else if(url.includes('youtu.be/')) {
+                videoId = url.split('youtu.be/')[1].split('?')[0];
+            } else {
+                videoId = url; 
+            }
+            
+            if(videoId) {
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
             }
         }
 
-        // FUNCIONALIDAD SIMULADA DEL MURO DE AMIGOS (DEJAR MENSAJES EN EL FEED DE COMUNIDAD)
-        function amigoPublicaComentario() {
-            const nombre = document.getElementById('nombre-amigo-input');
-            const mensaje = document.getElementById('texto-amigo-comentario');
-            const contenedorMuro = document.getElementById('lista-comentarios-comunidad');
+        // Sistema dinámico de posteo hacia la galería con formato retro
+        function publicarAlAltar() {
+            const sentir = document.getElementById('texto-sentir').value;
+            const archivoInput = document.getElementById('subida-multimedia');
+            const galeria = document.getElementById('galeria-dinamica');
+            
+            if(!sentir && !archivoInput.files[0]) return;
 
-            if (nombre.value.trim() === "" || mensaje.value.trim() === "") {
-                alert("Por favor llena ambos cofres (apodo y mensaje) para manifestar tu susurro.");
-                return;
+            if(archivoInput.files[0]) {
+                const lector = new FileReader();
+                lector.onload = function(e) {
+                    const esVideo = archivoInput.files[0].type.includes('video');
+                    let elementoHTML = '';
+                    
+                    if(esVideo) {
+                        elementoHTML = `<video src="${e.target.result}" class="item-multimedia" controls></video>`;
+                    } else {
+                        elementoHTML = `<img src="${e.target.result}" class="item-multimedia" title="${sentir}">`;
+                    }
+                    galeria.innerHTML = elementoHTML + galeria.innerHTML;
+                };
+                lector.readAsDataURL(archivoInput.files[0]);
             }
-
-            const nuevaCartaComentario = document.createElement('div');
-            nuevaCartaComentario.className = 'comentario-myspace-card';
-            nuevaCartaComentario.innerHTML = `
-                <div class="cabecera-amigo-comenta">
-                    <div class="avatar-amigo-circular">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=cover">
-                    </div>
-                    <span style="font-size:12px; font-weight:600;">${nombre.value} ୨୧</span>
-                    <span style="font-size:10px; margin-left:auto; opacity:0.6;">justo ahora</span>
-                </div>
-                <p style="font-size:12px; line-height:1.5;">${mensaje.value}</p>
-            `;
-
-            contenedorMuro.insertBefore(nuevaCartaComentario, contenedorMuro.firstChild);
-            nombre.value = "";
-            mensaje.value = "";
+            
+            alert('¡Tu sentir se ha manifestado en los recuadros del Santuario!');
+            document.getElementById('texto-sentir').value = '';
         }
     </script>
 </body>
