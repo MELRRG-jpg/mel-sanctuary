@@ -1,14 +1,986 @@
-MEL_SANCTUARY - CODIGO HTML
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✦ mel_sanctuary_rococo_v8_ultimate ✦</title>
 
-[INICIO DEL CODIGO]
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Charm:wght@400;700&display=swap" rel="stylesheet">
 
-Aquí irá el código HTML completo de edición de tu página actual.
+<style>
+/* ─── 𓏲ᵎ VARIABLES ORIGINALES + SOPORTE DE TEMAS ᵎ𓏲 ─── */
+:root {
+  /* MODO DARK POR DEFECTO (V-Kei / Gothic) */
+  --anime-black: #1F1F1F;
+  --goth-charcoal: #4B4B4B;
+  --barbie-pink: #FEB1C7;
+  --porcelain-pink: #FFDCE4;
+  --bg-deep-velvet: #120A10;
+  --surface-box: rgba(31, 31, 31, 0.85);
+  --text-main: #FFDCE4;
+  --input-bg: #1F1F1F;
+  --input-text: #ffffff;
+  --chat-header-bg: #4B4B4B;
+  --fb-old-blue: #3b5998;
+  
+  --evt-goth: #A27BCA;
+  --evt-coquette: #FEB1C7;
+  --evt-destiny: #F3E5AB;
 
-Estructura: - HTML principal - CSS integrado - JavaScript integrado
+  --font-goth: 'Courier Prime', monospace;
+  --font-vintage: 'Playfair Display', serif;
+  --font-coquette: 'Charm', cursive;
+  
+  --border-radius-semi: 12px;
+}
 
-Funciones a integrar: - Modo Dark / Cute - Panel administrador - Fondos
-personalizables - Amigos y redes - Chat estilo Facebook antiguo -
-Tamagotchi mejorado - Playlist - Calendario - Galería - Animaciones con
-símbolos y kaomojis
+[data-theme="cute"] {
+  /* MODO CUTE (Hime Gyaru / Coquette Pastel) */
+  --anime-black: #FFF0F5;
+  --goth-charcoal: #FFDCE4;
+  --barbie-pink: #FEB1C7;
+  --porcelain-pink: #4B4B4B;
+  --bg-deep-velvet: #FFFDF9;
+  --surface-box: rgba(255, 240, 245, 0.9);
+  --text-main: #4B4B4B;
+  --input-bg: #FFFFFF;
+  --input-text: #4B4B4B;
+  --chat-header-bg: #FEB1C7;
 
-[FIN DEL CODIGO]
+  --evt-goth: #D3BBDD;
+  --evt-coquette: #FFC0CB;
+  --evt-destiny: #FFFACD;
+}
+
+* { box-sizing: border-box; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+
+body {
+  margin: 0; padding: 50px 0; 
+  background-color: var(--anime-black);
+  color: var(--text-main); 
+  font-family: var(--font-goth);
+  background-image: radial-gradient(circle at center, var(--goth-charcoal) 0%, var(--bg-deep-velvet) 100%);
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex; justify-content: center; overflow-x: hidden;
+  position: relative;
+}
+
+/* Sistema Dinámico para Fondos de Video / GIF Customizados */
+#videoBgContainer {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: -10; pointer-events: none; overflow: hidden; display: none;
+}
+#videoBgContainer iframe {
+  width: 100vw; height: 100vh; transform: scale(1.3); border: none;
+}
+
+body::before, body::after {
+  content: "𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂 ⊹ ✧ ☥ ✧ ⊹ 𐐪𐑂";
+  position: fixed; left: 0; width: 100%; text-align: center;
+  font-size: 11px; color: var(--barbie-pink); pointer-events: none; opacity: 0.4;
+  z-index: 50;
+}
+body::before { top: 10px; }
+body::after { bottom: 10px; }
+
+/* CONTENEDOR PRINCIPAL ROCOCO */
+.rococo-cocoon-container {
+  width: 880px;
+  background: var(--anime-black);
+  border: 4px solid var(--barbie-pink);
+  outline: 8px solid var(--anime-black);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(254,177,199,0.15);
+  position: relative;
+  padding: 24px;
+  border-radius: var(--border-radius-semi);
+}
+.rococo-cocoon-container::before {
+  content: "୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧ 𐀔 ୨୧";
+  position: absolute; top: -18px; left: 0; width: 100%;
+  text-align: center; font-size: 11px; color: var(--barbie-pink);
+  letter-spacing: 4px; pointer-events: none;
+}
+
+.sanctuary-header-banner {
+  width: 100%; height: 210px;
+  background-color: var(--goth-charcoal);
+  background-size: cover; background-position: center;
+  border: 2px solid var(--barbie-pink);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  border-radius: var(--border-radius-semi);
+}
+.banner-title-frame {
+  background: var(--surface-box);
+  border: 1px dashed var(--barbie-pink);
+  outline: 5px solid var(--surface-box);
+  padding: 12px 30px; text-align: center;
+  border-radius: 24px;
+}
+.banner-title-frame h1 {
+  margin: 0; font-family: var(--font-coquette); font-size: 34px;
+  color: var(--barbie-pink); text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+#bannerBio { font-size: 11px; margin-top: 5px; color: var(--text-main); font-style: italic; }
+
+.mel-admin-trigger {
+  position: absolute; top: 12px; right: 12px; z-index: 100;
+  background: var(--anime-black); border: 1px solid var(--barbie-pink);
+  color: var(--barbie-pink); padding: 6px 12px; font-size: 11px; cursor: pointer;
+  border-radius: 20px; font-family: var(--font-goth); font-weight: bold;
+}
+.theme-switch-trigger {
+  position: absolute; top: 12px; left: 12px; z-index: 100;
+  background: var(--anime-black); border: 1px solid var(--barbie-pink);
+  color: var(--barbie-pink); padding: 6px 12px; font-size: 11px; cursor: pointer;
+  border-radius: 20px; font-family: var(--font-goth); font-weight: bold;
+}
+
+/* PANEL ADMIN MEJORADO */
+.mel-secret-panel {
+  display: none; background: var(--bg-deep-velvet);
+  border: 2px dashed var(--barbie-pink); padding: 20px; margin: 15px 0;
+  border-radius: var(--border-radius-semi); font-size: 12px;
+}
+.panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.panel-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+.panel-row input, .panel-row textarea, .panel-row select {
+  background: var(--input-bg); border: 1px solid var(--barbie-pink);
+  color: var(--input-text); padding: 6px; font-family: var(--font-goth); font-size: 11px; border-radius: 6px; outline: none;
+}
+.panel-btn {
+  background: var(--barbie-pink); color: #000; font-family: var(--font-goth);
+  font-weight: bold; border: none; padding: 8px; border-radius: 6px; cursor: pointer; margin-top: 5px;
+}
+
+/* BARRA DE NAVEGACIÓN TABULAR */
+.rococo-menu-bar { display: flex; justify-content: space-between; margin: 20px 0; gap: 6px; }
+.rococo-menu-link {
+  flex: 1; text-align: center; padding: 9px; background: var(--goth-charcoal);
+  border: 1px solid var(--barbie-pink); color: var(--text-main);
+  font-family: var(--font-vintage); font-style: italic; font-size: 12px;
+  text-decoration: none; border-radius: var(--border-radius-semi); cursor: pointer; white-space: nowrap;
+}
+.rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; font-weight: bold; }
+
+.tab-view { display: none; }
+.tab-view.active-view { display: block; }
+
+/* DISEÑO GRID COMPLETO Y ARREGLADO */
+.rococo-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+}
+
+.box-module {
+  background: var(--surface-box);
+  border: 2px solid var(--barbie-pink);
+  border-radius: var(--border-radius-semi);
+  padding: 14px;
+  margin-bottom: 15px;
+  position: relative;
+}
+.box-module-title {
+  font-family: var(--font-vintage);
+  font-size: 14px;
+  font-style: italic;
+  border-bottom: 1px dashed var(--barbie-pink);
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  color: var(--barbie-pink);
+  display: flex; justify-content: space-between;
+}
+
+/* SECCIÓN MÚSICA REESTRUCTURADA */
+.music-category { margin-bottom: 12px; }
+.music-toggle {
+  background: var(--goth-charcoal); color: var(--text-main);
+  padding: 6px; font-size: 11px; cursor: pointer; border-radius: 6px;
+  border: 1px solid var(--barbie-pink); display: flex; justify-content: space-between;
+}
+.music-content { display: none; padding: 6px 0; }
+.music-content.open { display: block; }
+.track-item {
+  font-size: 11px; padding: 4px; border-bottom: 1px dotted var(--goth-charcoal);
+  cursor: pointer; display: flex; align-items: center; gap: 6px;
+}
+.track-item:hover { color: var(--barbie-pink); }
+.track-thumb { width: 24px; height: 24px; border-radius: 4px; object-fit: cover; }
+
+/* MINI IMÁGENES LATERALES EN BUCLE */
+.lateral-loops-container {
+  display: flex; justify-content: space-between; margin-top: 10px; gap: 6px;
+}
+.loop-slot {
+  flex: 1; height: 65px; border: 1px dashed var(--barbie-pink);
+  background: var(--input-bg); border-radius: 6px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.loop-slot img { width: 100%; height: 100%; object-fit: cover; }
+
+/* TAMAGOTCHI MECÁNICAS MEJORADAS */
+.tama-container { text-align: center; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 8px; }
+.tama-screen {
+  background: #cbd6ab; color: #1a2403; font-family: monospace; padding: 8px;
+  border-radius: 6px; font-weight: bold; font-size: 12px; margin-bottom: 8px;
+  border: 2px solid var(--goth-charcoal); min-height: 75px;
+}
+.tama-stats { font-size: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; text-align: left; margin-top: 4px; }
+.tama-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.tama-btn {
+  background: var(--goth-charcoal); border: 1px solid var(--barbie-pink);
+  color: var(--barbie-pink); font-size: 10px; padding: 4px 0; border-radius: 4px; cursor: pointer;
+}
+.tama-btn:hover { background: var(--barbie-pink); color: #000; }
+
+/* CALENDARIO PERSONAL */
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; font-size: 10px; text-align: center; }
+.calendar-day { padding: 4px 0; background: rgba(255,255,255,0.05); border-radius: 4px; position: relative; cursor: pointer; }
+.calendar-day.has-event { border: 1px solid var(--barbie-pink); background: rgba(254,177,199,0.2); }
+.calendar-day:hover::after {
+  content: attr(data-note); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--bg-deep-velvet); color: var(--barbie-pink); border: 1px solid var(--barbie-pink);
+  padding: 4px; border-radius: 4px; width: 120px; z-index: 100; font-size: 9px; pointer-events: none;
+  display: block;
+}
+
+/* SISTEMA DE AMIGOS (FRIEND ROOM) */
+.friends-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+.friend-card {
+  background: var(--goth-charcoal); border: 1px solid var(--barbie-pink);
+  border-radius: var(--border-radius-semi); padding: 8px; text-align: center;
+  position: relative; display: flex; flex-direction: column; justify-content: space-between;
+}
+.friend-avatar { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; margin: 0 auto 6px; border: 1px dashed var(--barbie-pink); }
+.friend-name { font-weight: bold; font-size: 12px; color: var(--barbie-pink); margin-bottom: 2px; }
+.friend-desc { font-size: 10px; opacity: 0.8; font-style: italic; margin-bottom: 6px; min-height: 24px; }
+.friend-networks { display: flex; justify-content: center; gap: 6px; margin-bottom: 6px; }
+.net-badge {
+  font-size: 9px; padding: 2px 4px; border-radius: 4px; background: var(--anime-black);
+  color: var(--porcelain-pink); text-decoration: none; border: 1px solid var(--barbie-pink);
+}
+.chat-trigger-btn {
+  background: var(--barbie-pink); color: #000; border: none; font-size: 10px;
+  font-weight: bold; padding: 4px; border-radius: 4px; cursor: pointer; width: 100%;
+}
+
+/* GALERÍA DE COFRES */
+.gallery-wrapper { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+.gallery-card {
+  position: relative; border-radius: 8px; overflow: hidden; border: 1px solid var(--barbie-pink); height: 100px;
+}
+.gallery-card img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-del-btn {
+  position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.7);
+  color: red; border: none; border-radius: 50%; cursor: pointer; width: 16px; height: 16px; font-size: 9px;
+}
+
+/* SISTEMA FLOTANTE DE CHATS (FACEBOOK OLD / MESSENGER RETRO) */
+.messenger-dock {
+  position: fixed; bottom: 0; right: 30px; display: flex; gap: 12px; align-items: flex-end; z-index: 10000;
+}
+.retro-chat-window {
+  width: 230px; height: 290px; background: var(--anime-black);
+  border: 2px solid var(--barbie-pink); border-radius: 10px 10px 0 0;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.5); display: flex; flex-direction: column;
+}
+.chat-window-header {
+  background: var(--chat-header-bg); padding: 6px 10px; font-size: 11px;
+  font-weight: bold; display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px dashed var(--barbie-pink); color: var(--input-text);
+}
+.chat-window-body {
+  flex: 1; padding: 8px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;
+  background: var(--bg-deep-velvet); font-size: 11px;
+}
+.chat-bubble { padding: 5px 8px; border-radius: 8px; max-width: 85%; word-wrap: break-word; }
+.chat-bubble.me { background: var(--goth-charcoal); color: var(--text-main); align-self: flex-end; border-bottom-right-radius: 0; }
+.chat-bubble.friend { background: var(--barbie-pink); color: #000; align-self: flex-start; border-bottom-left-radius: 0; }
+.chat-window-footer { padding: 4px; display: flex; gap: 4px; border-top: 1px dotted var(--barbie-pink); }
+.chat-window-footer input {
+  flex: 1; background: var(--input-bg); color: var(--input-text); border: 1px solid var(--barbie-pink);
+  font-size: 11px; padding: 4px; border-radius: 4px; outline: none; font-family: var(--font-goth);
+}
+
+/* LLUVIA DE CARACTERES / ANIMACIONES */
+.falling-particle {
+  position: fixed; top: -20px; pointer-events: none; font-size: 12px;
+  color: var(--barbie-pink); z-index: 9999; animation: fallLinear linear forwards;
+}
+@keyframes fallLinear {
+  to { transform: translateY(105vh) rotate(360deg); }
+}
+
+.cherry-click-particle {
+  position: fixed; pointer-events: none; font-size: 13px; z-index: 10001;
+  animation: explodeParticle 0.8s ease-out forwards;
+}
+@keyframes explodeParticle {
+  0% { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.4); opacity: 0; }
+}
+</style>
+</head>
+<body data-theme="dark">
+
+<div id="videoBgContainer"></div>
+
+<button class="theme-switch-trigger" onclick="toggleVisualTheme()">୨୧ Cambiar Estilo (Dark/Cute)</button>
+<button class="mel-admin-trigger" onclick="toggleAdminPanel()">👑 Admin Core</button>
+
+<div class="rococo-cocoon-container">
+  
+  <div class="sanctuary-header-banner" id="bannerDom">
+    <div class="banner-title-frame">
+      <h1 id="lblTitle">✦ mel_sanctuary_matrix ✦</h1>
+      <div id="bannerBio">(｡•̀ᴗ-)✧ bienvenida/o a mi habitación digital</div>
+    </div>
+  </div>
+
+  <div class="mel-secret-panel" id="adminPanel">
+    <div class="box-module-title"><span>👑 Panel de Gestión Suprema</span></div>
+    <div class="panel-grid">
+      <div>
+        <h4>✦ Configuración General</h4>
+        <div class="panel-row"><label>Título:</label><input type="text" id="cfgTitle" value="✦ mel_sanctuary_matrix ✦"></div>
+        <div class="panel-row"><label>Biografía:</label><input type="text" id="cfgBio" value="(｡•̀ᴗ-)✧ bienvenida/o a mi habitación digital"></div>
+        <div class="panel-row"><label>Banner (URL):</label><input type="text" id="cfgBanner" placeholder="URL imagen/gif"></div>
+        
+        <h4>✦ Sistema de Fondos Avanzado</h4>
+        <div class="panel-row">
+          <label>Tipo de Tapiz:</label>
+          <select id="cfgBgType" onchange="handleBgConfigChange()">
+            <option value="preset">Prediseñado Original</option>
+            <option value="image">Imagen / GIF por URL</option>
+            <option value="video">Video de YouTube por URL</option>
+            <option value="local">Subir Archivo Local (Galería)</option>
+          </select>
+        </div>
+        <div class="panel-row" id="rowBgUrl" style="display:none;"><label>Enlace Directo / URL:</label><input type="text" id="cfgBgValue" placeholder="https://..."></div>
+        <div class="panel-row" id="rowBgLocal" style="display:none;"><label>Subir Tapiz:</label><input type="file" id="cfgBgLocalFile" accept="image/*" onchange="processLocalBg(this)"></div>
+      </div>
+      
+      <div>
+        <h4>✦ Vincular Aliado (Amigo)</h4>
+        <div class="panel-row"><label>Nombre:</label><input type="text" id="addFrName"></div>
+        <div class="panel-row"><label>Descripción Corta:</label><input type="text" id="addFrDesc"></div>
+        <div class="panel-row"><label>URL Avatar:</label><input type="text" id="addFrAvatar"></div>
+        <div class="panel-row"><label>Instagram (@):</label><input type="text" id="addFrInsta"></div>
+        <div class="panel-row"><label>TikTok (@):</label><input type="text" id="addFrTikTok"></div>
+        <div class="panel-row"><label>WhatsApp (Link/Num):</label><input type="text" id="addFrWA"></div>
+        <div class="panel-row"><label>Correo Electrónico:</label><input type="text" id="addFrEmail"></div>
+        <button class="panel-btn" style="width:100%;" onclick="executeAddFriend()">Añadir al Altar de Contactos ⊹</button>
+      </div>
+    </div>
+    
+    <div style="margin-top:15px; border-top:1px dashed var(--barbie-pink); padding-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+      <div>
+        <h4>✦ Añadir Pista Musical</h4>
+        <div class="panel-row">
+          <label>Categoría Género:</label>
+          <select id="addMuGenre">
+            <option value="rock">Rock</option>
+            <option value="vkei">V-Kei</option>
+            <option value="kpop">K-Pop</option>
+            <option value="baladas">Baladas</option>
+            <option value="vocaloid">Vocaloid</option>
+          </select>
+        </div>
+        <div class="panel-row"><label>Título Canción:</label><input type="text" id="addMuTitle"></div>
+        <div class="panel-row"><label>Artista:</label><input type="text" id="addMuArtist"></div>
+        <div class="panel-row"><label>Link YouTube (ID o URL):</label><input type="text" id="addMuLink"></div>
+        <div class="panel-row"><label>Mini Carátula (URL):</label><input type="text" id="addMuThumb"></div>
+        <button class="panel-btn" style="width:100%;" onclick="executeAddTrack()">Insertar Canción en Playlist ⊹</button>
+      </div>
+
+      <div>
+        <h4>✦ Administrar Loops Laterales e Ítem Calendario</h4>
+        <div class="panel-row"><label>Mini Loop Izquierdo (URL Image/GIF):</label><input type="text" id="cfgLoopLeft"></div>
+        <div class="panel-row"><label>Mini Loop Derecho (URL Image/GIF):</label><input type="text" id="cfgLoopRight"></div>
+        <div class="panel-row"><label>Día Evento (1-30):</label><input type="number" id="cfgCalDay" min="1" max="30"></div>
+        <div class="panel-row"><label>Nota del Evento:</label><input type="text" id="cfgCalNote"></div>
+        <button class="panel-btn" style="width:100%;" onclick="executeAddEvent()">Registrar Recordatorio ⊹</button>
+      </div>
+    </div>
+
+    <div style="text-align:right; margin-top:15px;">
+      <button class="panel-btn" style="background:#5cb85c; color:white;" onclick="saveMasterConfig()">Guardar Cambios Globales ✧</button>
+    </div>
+  </div>
+
+  <div class="rococo-menu-bar">
+    <div class="rococo-menu-link active-tab" id="tabBtnRoom" onclick="switchView('room')">✦ Friend Room</div>
+    <div class="rococo-menu-link" id="tabBtnMusic" onclick="switchView('music')">✦ Music Room</div>
+    <div class="rococo-menu-link" id="tabBtnGallery" onclick="switchView('gallery')">✦ Cofradía Visual</div>
+  </div>
+
+  <div class="rococo-grid">
+    
+    <aside>
+      <div class="box-module">
+        <div class="box-module-title"><span>📻 Reproductor Matrix</span></div>
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px; border:1px solid var(--barbie-pink);">
+          <iframe id="mainAudioPlayer" style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+        </div>
+        <div id="currentTrackTitle" style="font-size:10px; margin-top:6px; text-align:center; font-style:italic;">Default: J-Rock Selection</div>
+        
+        <div class="lateral-loops-container">
+          <div class="loop-slot"><img id="imgLoopLeft" src="https://api.dicebear.com/7.x/bottts/svg?seed=mel1"></div>
+          <div class="loop-slot"><img id="imgLoopRight" src="https://api.dicebear.com/7.x/bottts/svg?seed=mel2"></div>
+        </div>
+      </div>
+
+      <div class="box-module">
+        <div class="box-module-title"><span>📟 Tamagotchi Core</span></div>
+        <div class="tama-container">
+          <div class="tama-screen">
+            <div id="tamaAvatar" style="font-size:20px; margin-bottom:2px;">(｡•̀ᴗ-)✧</div>
+            <div id="tamaStatus" style="font-size:10px;">Estado: Feliz</div>
+            <div class="tama-stats">
+              <span id="lblTamaHambre">🍖 H: 100%</span>
+              <span id="lblTamaEnergy">⚡ E: 100%</span>
+              <span id="lblTamaHappy">♡ F: 100%</span>
+              <span id="lblTamaLevel">⭐ Lvl: 1</span>
+            </div>
+          </div>
+          <div class="tama-actions">
+            <button class="tama-btn" onclick="actTama('feed')" title="Alimentar">🍖</button>
+            <button class="tama-btn" onclick="actTama('play')" title="Jugar">🕹️</button>
+            <button class="tama-btn" onclick="actTama('sleep')" title="Dormir">💤</button>
+            <button class="tama-btn" onclick="actTama('heal')" title="Curar">💊</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-module">
+        <div class="box-module-title"><span>📅 Almanaques 2026</span></div>
+        <div class="calendar-grid" id="calendarGridDom"></div>
+      </div>
+    </aside>
+
+    <main>
+      
+      <div id="viewRoom" class="tab-view active-view">
+        <div class="box-module">
+          <div class="box-module-title"><span>👥 Salón de Aliados Conectados</span></div>
+          <div class="friends-showcase" id="friendsContainer">
+            </div>
+        </div>
+      </div>
+
+      <div id="viewMusic" class="tab-view">
+        <div class="box-module">
+          <div class="box-module-title"><span>🎵 Fonoteca Desplegable Multi-Género</span></div>
+          
+          <div class="music-category">
+            <div class="music-toggle" onclick="toggleGenreCollapse('catRock')"><span>▼ Rock</span></div>
+            <div class="music-content" id="catRock"></div>
+          </div>
+
+          <div class="music-category">
+            <div class="music-toggle" onclick="toggleGenreCollapse('catVkei')"><span>▼ Visual Kei (V-Kei)</span></div>
+            <div class="music-content" id="catVkei"></div>
+          </div>
+
+          <div class="music-category">
+            <div class="music-toggle" onclick="toggleGenreCollapse('catKpop')"><span>▼ K-Pop</span></div>
+            <div class="music-content" id="catKpop"></div>
+          </div>
+
+          <div class="music-category">
+            <div class="music-toggle" onclick="toggleGenreCollapse('catBaladas')"><span>▼ Baladas</span></div>
+            <div class="music-content" id="catBaladas"></div>
+          </div>
+
+          <div class="music-category">
+            <div class="music-toggle" onclick="toggleGenreCollapse('catVocaloid')"><span>▼ Vocaloid</span></div>
+            <div class="music-content" id="catVocaloid"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="viewGallery" class="tab-view">
+        <div class="box-module">
+          <div class="box-module-title"><span>📷 Almacén de Recuerdos & Mini Banners</span></div>
+          <div style="margin-bottom:12px; display:flex; gap:6px;">
+            <input type="text" id="addGalUrl" placeholder="Pegar URL de Imagen/GIF para tu galería..." style="flex:1; background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:6px; border-radius:6px; font-family:var(--font-goth);">
+            <button class="panel-btn" style="margin:0;" onclick="executeAddGallery()">Subir Elemento ⊹</button>
+          </div>
+          <div class="gallery-wrapper" id="galleryContainer">
+            </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="messenger-dock" id="messengerDockDom"></div>
+
+<script>
+/* ─── LOGIC SYSTEM CORRECTIONS & MEMORY CACHE ─── */
+let masterConfig = {
+  title: "✦ mel_sanctuary_matrix ✦",
+  bio: "(｡•̀ᴗ-)✧ bienvenida/o a mi habitación digital",
+  banner: "",
+  bgType: "preset",
+  bgValue: "",
+  loopLeft: "https://api.dicebear.com/7.x/bottts/svg?seed=mel1",
+  loopRight: "https://api.dicebear.com/7.x/bottts/svg?seed=mel2"
+};
+
+let friendsList = [
+  { name: "Yuki", desc: "V-Kei enthusiast x_x", avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Yuki", insta: "yuki_vk", tiktok: "", whatsapp: "123456", email: "yuki@matrix.com" },
+  { name: "Sakura", desc: "Coquette Queen ୨୧", avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Sakura", insta: "saku_coquette", tiktok: "sakura_dance", whatsapp: "", email: "" }
+];
+
+let tracksData = {
+  rock: [{ title: "Indie Rock Wave", artist: "The Pixels", link: "jfKfPfyJRdk", thumb: "https://picsum.photos/id/10/50/50" }],
+  vkei: [{ title: "Au Revoir Selection", artist: "Malice Mizer", link: "X78_V9vj-k8", thumb: "https://picsum.photos/id/15/50/50" }],
+  kpop: [{ title: "Gee Classic Remaster", artist: "SNSD", link: "Tqt0b7Sg264", thumb: "https://picsum.photos/id/22/50/50" }],
+  baladas: [{ title: "Melancholic Rain", artist: "X Japan", link: "WJzSf67V6p0", thumb: "https://picsum.photos/id/33/50/50" }],
+  vocaloid: [{ title: "Room Beats", artist: "Hatsune Miku", link: "yv3E8_H8b8w", thumb: "https://picsum.photos/id/40/50/50" }]
+};
+
+let galleryItems = [
+  "https://picsum.photos/id/102/200/200",
+  "https://picsum.photos/id/104/200/200"
+];
+
+let calendarEvents = {
+  15: "¡Aniversario Matrix! (｡♥‿♥｡)"
+};
+
+let tamaState = { hambre: 100, energy: 100, happy: 100, xp: 0, lvl: 1 };
+
+window.onload = function() {
+  loadCacheStorage();
+  syncUIDom();
+  spawnKaomojiRain();
+  setupClickExplosions();
+  runTamaPassiveEngine();
+};
+
+function loadCacheStorage() {
+  if (localStorage.getItem("mel_master_cfg")) masterConfig = JSON.parse(localStorage.getItem("mel_master_cfg"));
+  if (localStorage.getItem("mel_friends")) friendsList = JSON.parse(localStorage.getItem("mel_friends"));
+  if (localStorage.getItem("mel_tracks")) tracksData = JSON.parse(localStorage.getItem("mel_tracks"));
+  if (localStorage.getItem("mel_gallery")) galleryItems = JSON.parse(localStorage.getItem("mel_gallery"));
+  if (localStorage.getItem("mel_events")) calendarEvents = JSON.parse(localStorage.getItem("mel_events"));
+  if (localStorage.getItem("mel_tama")) tamaState = JSON.parse(localStorage.getItem("mel_tama"));
+  if (localStorage.getItem("mel_visual_theme")) document.body.setAttribute("data-theme", localStorage.getItem("mel_visual_theme"));
+}
+
+function saveToLocalStorage(key, obj) {
+  localStorage.setItem(key, JSON.stringify(obj));
+}
+
+function syncUIDom() {
+  document.getElementById("lblTitle").textContent = masterConfig.title;
+  document.getElementById("bannerBio").textContent = masterConfig.bio;
+  if(masterConfig.banner) document.getElementById("bannerDom").style.backgroundImage = `url('${masterConfig.banner}')`;
+  
+  document.getElementById("imgLoopLeft").src = masterConfig.loopLeft;
+  document.getElementById("imgLoopRight").src = masterConfig.loopRight;
+  
+  // Set values on Admin Form inputs
+  document.getElementById("cfgTitle").value = masterConfig.title;
+  document.getElementById("cfgBio").value = masterConfig.bio;
+  document.getElementById("cfgBanner").value = masterConfig.banner;
+  document.getElementById("cfgLoopLeft").value = masterConfig.loopLeft;
+  document.getElementById("cfgLoopRight").value = masterConfig.loopRight;
+  
+  renderBgStrategy();
+  renderFriends();
+  renderAllTrackLists();
+  renderGallery();
+  renderCalendarStructure();
+  renderTamaScreen();
+}
+
+/* ─── 1. CAMBIO DE TEMA VISUAL DE PREFERENCIA ─── */
+function toggleVisualTheme() {
+  let cur = document.body.getAttribute("data-theme");
+  let next = (cur === "cute") ? "dark" : "cute";
+  document.body.setAttribute("data-theme", next);
+  localStorage.setItem("mel_visual_theme", next);
+}
+
+function toggleAdminPanel() {
+  let panel = document.getElementById("adminPanel");
+  panel.style.display = (panel.style.display === "block") ? "none" : "block";
+}
+
+/* ─── 2. SISTEMA DE FONDOS PERSONALIZADOS AVANZADO ─── */
+function handleBgConfigChange() {
+  let val = document.getElementById("cfgBgType").value;
+  document.getElementById("rowBgUrl").style.display = (val==='image'||val==='video') ? 'flex' : 'none';
+  document.getElementById("rowBgLocal").style.display = (val==='local') ? 'flex' : 'none';
+}
+
+function processLocalBg(input) {
+  if (input.files && input.files[0]) {
+    let reader = new FileReader();
+    reader.onload = function(e) {
+      masterConfig.bgValue = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function renderBgStrategy() {
+  let vidContainer = document.getElementById("videoBgContainer");
+  vidContainer.style.display = "none";
+  vidContainer.innerHTML = "";
+  document.body.style.backgroundImage = "";
+
+  if(masterConfig.bgType === "preset") {
+    let curTheme = document.body.getAttribute("data-theme");
+    if(curTheme === 'cute') {
+      document.body.style.backgroundImage = "radial-gradient(circle at center, #FFF0F5 0%, #FEB1C7 100%)";
+    } else {
+      document.body.style.backgroundImage = "radial-gradient(circle at center, var(--goth-charcoal) 0%, var(--bg-deep-velvet) 100%)";
+    }
+  } else if (masterConfig.bgType === "image" || masterConfig.bgType === "local") {
+    if(masterConfig.bgValue) document.body.style.backgroundImage = `url('${masterConfig.bgValue}')`;
+  } else if (masterConfig.bgType === "video") {
+    if(masterConfig.bgValue) {
+      vidContainer.style.display = "block";
+      let url = masterConfig.bgValue;
+      let vidId = url.includes("v=") ? url.split("v=")[1].split("&")[0] : url.split("/").pop();
+      vidContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${vidId}?autoplay=1&mute=1&loop=1&playlist=${vidId}&controls=0" allow="autoplay"></iframe>`;
+    }
+  }
+}
+
+function saveMasterConfig() {
+  masterConfig.title = document.getElementById("cfgTitle").value;
+  masterConfig.bio = document.getElementById("cfgBio").value;
+  masterConfig.banner = document.getElementById("cfgBanner").value;
+  masterConfig.loopLeft = document.getElementById("cfgLoopLeft").value;
+  masterConfig.loopRight = document.getElementById("cfgLoopRight").value;
+  
+  let selectedBgType = document.getElementById("cfgBgType").value;
+  masterConfig.bgType = selectedBgType;
+  if(selectedBgType === "image" || selectedBgType === "video") {
+    masterConfig.bgValue = document.getElementById("cfgBgValue").value;
+  }
+  
+  saveToLocalStorage("mel_master_cfg", masterConfig);
+  syncUIDom();
+  alert("¡Santuario Configurado Correctamente! (｡•̀ᴗ-)✧");
+}
+
+/* ─── 3 Y 4. SISTEMA DE AMIGOS & CONTACTO EN EL ALTAR ─── */
+function executeAddFriend() {
+  let name = document.getElementById("addFrName").value.trim();
+  if(!name) return alert("Ingresa un alias para tu amigo");
+  let friend = {
+    name: name,
+    desc: document.getElementById("addFrDesc").value.trim() || "(｡•̀ᴗ-)✧ Friend Matrix",
+    avatar: document.getElementById("addFrAvatar").value.trim() || `https://api.dicebear.com/7.x/adventurer/svg?seed=${name}`,
+    insta: document.getElementById("addFrInsta").value.trim(),
+    tiktok: document.getElementById("addFrTikTok").value.trim(),
+    whatsapp: document.getElementById("addFrWA").value.trim(),
+    email: document.getElementById("addFrEmail").value.trim()
+  };
+  friendsList.push(friend);
+  saveToLocalStorage("mel_friends", friendsList);
+  renderFriends();
+  
+  // Limpiar inputs
+  document.getElementById("addFrName").value = "";
+  document.getElementById("addFrDesc").value = "";
+  document.getElementById("addFrAvatar").value = "";
+}
+
+function renderFriends() {
+  let container = document.getElementById("friendsContainer");
+  container.innerHTML = "";
+  friendsList.forEach((f, index) => {
+    let netsHtml = "";
+    if(f.insta) netsHtml += `<a href="https://instagram.com/${f.insta}" target="_blank" class="net-badge">IG</a>`;
+    if(f.tiktok) netsHtml += `<a href="https://tiktok.com/@${f.tiktok}" target="_blank" class="net-badge">TK</a>`;
+    if(f.whatsapp) netsHtml += `<a href="https://wa.me/${f.whatsapp}" target="_blank" class="net-badge">WA</a>`;
+    if(f.email) netsHtml += `<a href="mailto:${f.email}" class="net-badge">@</a>`;
+    
+    container.innerHTML += `
+      <div class="friend-card">
+        <div>
+          <img src="${f.avatar}" class="friend-avatar">
+          <div class="friend-name">${f.name}</div>
+          <div class="friend-desc">${f.desc}</div>
+        </div>
+        <div>
+          <div class="friend-networks">${netsHtml || '<span>⚜️ Matrix Room</span>'}</div>
+          <button class="chat-trigger-btn" onclick="openRetroChat(${index})">Hablar 💬</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+/* ─── 5. SISTEMA DE CHAT RETRO ESTILO FACEBOOK VIEJO ─── */
+let activeChats = {};
+function openRetroChat(index) {
+  if (activeChats[index]) return;
+  activeChats[index] = true;
+  let friend = friendsList[index];
+
+  let windowDom = document.createElement("div");
+  windowDom.className = "retro-chat-window";
+  windowDom.id = `chatWindow-${index}`;
+  windowDom.innerHTML = `
+    <div class="chat-window-header">
+      <span>╭─ ${friend.name} ─╮</span>
+      <span style="cursor:pointer;" onclick="closeRetroChat(${index})">✕</span>
+    </div>
+    <div class="chat-window-body" id="chatBody-${index}">
+      <div class="chat-bubble friend">${friend.name}: ¡Hola Mel! Let's talk inside the matrix (｡•̀ᴗ-)✧</div>
+    </div>
+    <div class="chat-window-footer">
+      <input type="text" id="chatInput-${index}" placeholder="Escribir mensaje..." onkeypress="checkChatSubmit(event, ${index})">
+    </div>
+  `;
+  document.getElementById("messengerDockDom").appendChild(windowDom);
+}
+
+function closeRetroChat(index) {
+  let el = document.getElementById(`chatWindow-${index}`);
+  if(el) el.remove();
+  delete activeChats[index];
+}
+
+function checkChatSubmit(e, index) {
+  if(e.key === 'Enter') {
+    let input = document.getElementById(`chatInput-${index}`);
+    let text = input.value.trim();
+    if(!text) return;
+
+    let body = document.getElementById(`chatBody-${index}`);
+    body.innerHTML += `<div class="chat-bubble me">${text}</div>`;
+    input.value = "";
+    body.scrollTop = body.scrollHeight;
+
+    // Simulación de respuesta automática preparada para Backend / Real-time
+    setTimeout(() => {
+      if(document.getElementById(`chatBody-${index}`)) {
+        body.innerHTML += `<div class="chat-bubble friend">✦ canalizado en vivo: (≧◡≦) ୨୧</div>`;
+        body.scrollTop = body.scrollHeight;
+      }
+    }, 1000);
+  }
+}
+
+/* ─── 6. TAMAGOTCHI ENGINE EVOLUTIVO MEJORADO ─── */
+function runTamaPassiveEngine() {
+  setInterval(() => {
+    tamaState.hambre = Math.max(0, tamaState.hambre - 4);
+    tamaState.energy = Math.max(0, tamaState.energy - 3);
+    tamaState.happy = Math.max(0, tamaState.happy - 5);
+    
+    // Auto-XP si se mantienen estables sus parámetros
+    if(tamaState.hambre > 40 && tamaState.energy > 40) {
+      tamaState.xp += 2;
+      if(tamaState.xp >= 100) {
+        tamaState.xp = 0;
+        tamaState.lvl += 1;
+        alert("¡Tu Tamagotchi ha evolucionado a una etapa superior de la Matriz! (≧◡≦) ✧");
+      }
+    }
+    renderTamaScreen();
+    saveToLocalStorage("mel_tama", tamaState);
+  }, 10000);
+}
+
+function actTama(action) {
+  if(action === 'feed') { tamaState.hambre = Math.min(100, tamaState.hambre + 25); tamaState.xp += 5; }
+  if(action === 'play') { tamaState.happy = Math.min(100, tamaState.happy + 30); tamaState.energy = Math.max(0, tamaState.energy - 15); tamaState.xp += 5; }
+  if(action === 'sleep') { tamaState.energy = Math.min(100, tamaState.energy + 40); tamaState.hambre = Math.max(0, tamaState.hambre - 10); }
+  if(action === 'heal') { tamaState.happy = Math.min(100, tamaState.happy + 10); tamaState.hambre = Math.min(100, tamaState.hambre + 10); }
+
+  if(tamaState.xp >= 100) { tamaState.xp = 0; tamaState.lvl += 1; }
+  renderTamaScreen();
+  saveToLocalStorage("mel_tama", tamaState);
+}
+
+function renderTamaScreen() {
+  let av = "(.ˬ.)";
+  let status = "Estable";
+  if(tamaState.hambre < 30 || tamaState.energy < 30) { av = "(✖╭╮✖)"; status = "Necesito Cuidado"; }
+  else if(tamaState.happy > 75) { av = "(≧◡≦) ♡"; status = "Hiperactivo"; }
+  else if(tamaState.lvl >= 3) { av = "🔱(｡•̀ᴗ-)✧🔱"; status = "Modo Deidad Arcana"; }
+
+  document.getElementById("tamaAvatar").textContent = av;
+  document.getElementById("tamaStatus").textContent = `Estado: ${status}`;
+  document.getElementById("lblTamaHambre").textContent = `🍖 H: ${tamaState.hambre}%`;
+  document.getElementById("lblTamaEnergy").textContent = `⚡ E: ${tamaState.energy}%`;
+  document.getElementById("lblTamaHappy").textContent = `♡ F: ${tamaState.happy}%`;
+  document.getElementById("lblTamaLevel").textContent = `⭐ Lvl: ${tamaState.lvl} (${tamaState.xp}xp)`;
+}
+
+/* ─── 7. SISTEMA MUSICAL DESPLEGABLE DINÁMICO ─── */
+function toggleGenreCollapse(id) {
+  document.getElementById(id).classList.toggle("open");
+}
+
+function executeAddTrack() {
+  let genre = document.getElementById("addMuGenre").value;
+  let title = document.getElementById("addMuTitle").value.trim();
+  let artist = document.getElementById("addMuArtist").value.trim();
+  let link = document.getElementById("addMuLink").value.trim();
+  let thumb = document.getElementById("addMuThumb").value.trim() || "https://picsum.photos/50/50";
+  
+  if(!title || !link) return alert("Completa los datos mínimos de la pista");
+  
+  let finalId = link.includes("v=") ? link.split("v=")[1].split("&")[0] : link.split("/").pop();
+  tracksData[genre].push({ title, artist, link: finalId, thumb });
+  saveToLocalStorage("mel_tracks", tracksData);
+  renderAllTrackLists();
+  
+  document.getElementById("addMuTitle").value = "";
+  document.getElementById("addMuArtist").value = "";
+  document.getElementById("addMuLink").value = "";
+}
+
+function renderAllTrackLists() {
+  const genres = ['rock', 'vkei', 'kpop', 'baladas', 'vocaloid'];
+  genres.forEach(g => {
+    let box = document.getElementById(`cat${g.charAt(0).toUpperCase() + g.slice(1)}`);
+    box.innerHTML = "";
+    if(tracksData[g].length === 0) {
+      box.innerHTML = "<div style='font-size:10px; padding:4px;'>Sin canciones añadidas</div>";
+    }
+    tracksData[g].forEach(t => {
+      let div = document.createElement("div");
+      div.className = "track-item";
+      div.onclick = () => {
+        document.getElementById("mainAudioPlayer").src = `https://www.youtube.com/embed/${t.link}?autoplay=1`;
+        document.getElementById("currentTrackTitle").textContent = `${t.artist} - ${t.title}`;
+      };
+      div.innerHTML = `
+        <img src="${t.thumb}" class="track-thumb">
+        <div><strong>${t.title}</strong><br><span style="opacity:0.6;">${t.artist}</span></div>
+      `;
+      box.appendChild(div);
+    });
+  });
+}
+
+/* ─── 8. CALENDARIO PERSONAL AUTOMATIZADO ─── */
+function executeAddEvent() {
+  let day = parseInt(document.getElementById("cfgCalDay").value);
+  let note = document.getElementById("cfgCalNote").value.trim();
+  if(!day || day < 1 || day > 30 || !note) return alert("Define un día válido (1-30) y su nota descriptiva");
+  
+  calendarEvents[day] = note;
+  saveToLocalStorage("mel_events", calendarEvents);
+  renderCalendarStructure();
+}
+
+function renderCalendarStructure() {
+  let grid = document.getElementById("calendarGridDom");
+  grid.innerHTML = "";
+  for(let d=1; d<=30; d++) {
+    let cell = document.createElement("div");
+    cell.className = "calendar-day";
+    cell.textContent = d;
+    if(calendarEvents[d]) {
+      cell.classList.add("has-event");
+      cell.setAttribute("data-note", `✦ día ${d}: ${calendarEvents[d]}`);
+    } else {
+      cell.setAttribute("data-note", `Sin eventos registrados`);
+    }
+    grid.appendChild(cell);
+  }
+}
+
+/* ─── 9. COFRADÍA VISUAL (GALERÍA) ─── */
+function executeAddGallery() {
+  let url = document.getElementById("addGalUrl").value.trim();
+  if(!url) return alert("Ingresa un enlace de imagen válido");
+  galleryItems.push(url);
+  saveToLocalStorage("mel_gallery", galleryItems);
+  renderGallery();
+  document.getElementById("addGalUrl").value = "";
+}
+
+function deleteGalleryItem(index) {
+  galleryItems.splice(index, 1);
+  saveToLocalStorage("mel_gallery", galleryItems);
+  renderGallery();
+}
+
+function renderGallery() {
+  let container = document.getElementById("galleryContainer");
+  container.innerHTML = "";
+  galleryItems.forEach((url, idx) => {
+    container.innerHTML += `
+      <div class="gallery-card">
+        <img src="${url}">
+        <button class="gallery-del-btn" onclick="deleteGalleryItem(${idx})">✕</button>
+      </div>
+    `;
+  });
+}
+
+/* ─── 11 Y 12. SISTEMA INTERACTIVO DE LLUVIA Y EXPLOSIONES (KAOMOJI) ─── */
+function spawnKaomojiRain() {
+  const particles = ["✧", "✦", "♡", "✿", "❀", "୨୧", "⋆", "☆"];
+  setInterval(() => {
+    let item = document.createElement("div");
+    item.className = "falling-particle";
+    item.textContent = particles[Math.floor(Math.random() * particles.length)];
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.animationDuration = (Math.random() * 4 + 3) + "s";
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(), 6000);
+  }, 450);
+}
+
+function setupClickExplosions() {
+  window.addEventListener("click", (e) => {
+    if(["BUTTON", "INPUT", "TEXTAREA", "SELECT", "OPTION"].includes(e.target.tagName)) return;
+    const elements = ["✿", "♡", "✧", "☆", "୨୧"];
+    for(let i=0; i<6; i++) {
+      let p = document.createElement("div");
+      p.className = "cherry-click-particle";
+      p.textContent = elements[Math.floor(Math.random() * elements.length)];
+      p.style.left = e.clientX + "px";
+      p.style.top = e.clientY + "px";
+      
+      let dx = (Math.random() - 0.5) * 100 + "px";
+      let dy = (Math.random() - 0.5) * 100 + "px";
+      p.style.setProperty('--dx', dx);
+      p.style.setProperty('--dy', dy);
+      
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 800);
+    }
+  });
+}
+
+/* INTERRUPTOR GENERAL DE PESTAÑAS (TABS) */
+function switchView(target) {
+  document.querySelectorAll(".tab-view").forEach(v => v.classList.remove("active-view"));
+  document.querySelectorAll(".rococo-menu-link").forEach(l => l.classList.remove("active-tab"));
+  
+  if(target === 'room') {
+    document.getElementById("viewRoom").classList.add("active-view");
+    document.getElementById("tabBtnRoom").classList.add("active-tab");
+  } else if (target === 'music') {
+    document.getElementById("viewMusic").classList.add("active-view");
+    document.getElementById("tabBtnMusic").classList.add("active-tab");
+  } else if (target === 'gallery') {
+    document.getElementById("viewGallery").classList.add("active-view");
+    document.getElementById("tabBtnGallery").classList.add("active-tab");
+  }
+}
+</script>
+</body>
+</html>
