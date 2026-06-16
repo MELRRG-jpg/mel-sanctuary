@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arunyi's cocoon 🎀 Official Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Cherry+Bomb+One&family=VT323&display=swap" rel="stylesheet">
+    <title>arunyi's cocoon 🎀</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        /* TU PALETA DE COLORES EXTRAÍDA AL 100% */
         :root {
-            --rosa-fondo: #FFF4F6;
-            --rosa-borde: #E8C1C7;
-            --rosa-caja: #FFF9FA;
-            --texto-principal: #8C5E66;
-            --fuente-pixel: 'VT323', monospace;
+            --arunyi-fondo: #FCF8F5;       /* Crema/Vainilla ultra suave de tus capturas */
+            --arunyi-caja: #FFFFFF;        /* Fondo limpio para los bloques */
+            --arunyi-borde: #E3C1C6;       /* Rosa apagado/pastelozo de las líneas de encaje */
+            --arunyi-acento: #F7D0D7;      /* Rosa chicle dulce de los botones y tags */
+            --arunyi-texto: #694F53;       /* Café moca oscuro de tus textos principales */
+            --arunyi-texto-muted: #9E7D82; /* Café claro para metadatos y fechas */
         }
 
         body {
-            background-color: var(--rosa-fondo);
-            background-image: radial-gradient(#E8C1C7 10%, transparent 11%), radial-gradient(#E8C1C7 10%, transparent 11%);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
+            background-color: var(--arunyi-fondo);
+            background-image: radial-gradient(var(--arunyi-borde) 9%, transparent 10%), radial-gradient(var(--arunyi-borde) 9%, transparent 10%);
+            background-size: 18px 18px;
+            background-position: 0 0, 9px 9px;
             background-attachment: fixed;
             font-family: 'Comfortaa', sans-serif;
-            color: var(--texto-principal);
+            color: var(--arunyi-texto);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -38,21 +40,21 @@
 
         .carrd-wrapper {
             width: 900px;
-            background: #FFFFFF;
-            border: 1px solid var(--rosa-borde);
+            background: var(--arunyi-caja);
+            border: 1px solid var(--arunyi-borde);
             border-radius: 24px;
             padding: 25px;
-            box-shadow: 0 10px 30px rgba(232, 193, 199, 0.3);
+            box-shadow: 0 10px 30px rgba(105, 79, 83, 0.05);
             position: relative;
         }
 
         .header-banner {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #FFE3E7, #FFF4F6);
+            background: linear-gradient(135deg, #F9E7E9, var(--arunyi-fondo)); 
             border-radius: 16px 16px 0 0;
             position: relative;
-            border: 1px solid var(--rosa-borde);
+            border: 1px solid var(--arunyi-borde);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -61,9 +63,9 @@
         .banner-logo-centro {
             width: 90px;
             height: 90px;
-            background: #FFF;
+            background: var(--arunyi-caja);
             border-radius: 50%;
-            border: 2px dashed var(--rosa-borde);
+            border: 2px dashed var(--arunyi-borde);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -73,11 +75,12 @@
         .cinta-encaje {
             width: 100%;
             height: 25px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 40 25"><path d="M0,0 Q10,12 20,0 Q30,12 40,0 L40,15 Q30,22 20,15 Q10,22 0,15 Z" fill="%23E8C1C7"/><circle cx="20" cy="5" r="2" fill="%23FFF"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="25" viewBox="0 0 40 25"><path d="M0,0 Q10,12 20,0 Q30,12 40,0 L40,15 Q30,22 20,15 Q10,22 0,15 Z" fill="%23E3C1C6"/><circle cx="20" cy="5" r="2" fill="%23FFF"/></svg>');
             background-repeat: repeat-x;
             margin-bottom: 15px;
         }
 
+        /* BOTONES DE NAVEGACIÓN CON TU PALETA */
         .nav-bar-arunyi {
             display: flex;
             justify-content: space-between;
@@ -89,17 +92,19 @@
             flex: 1;
             text-align: center;
             padding: 8px 5px;
-            background: #FFF;
-            border: 2px dashed var(--rosa-borde);
+            background: var(--arunyi-caja);
+            border: 2px dashed var(--arunyi-borde);
             border-radius: 8px;
             font-size: 11px;
             font-weight: bold;
             cursor: pointer;
-            color: var(--texto-principal);
+            color: var(--arunyi-texto);
+            transition: all 0.2s;
         }
 
         .nav-btn:hover, .nav-btn.active {
-            background: #FFE9EC;
+            background: var(--arunyi-acento);
+            color: var(--arunyi-texto);
             border-style: solid;
         }
 
@@ -109,7 +114,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 20px;
-            color: #B58890;
+            color: var(--arunyi-texto-muted);
         }
 
         .grid-tres-columnas {
@@ -119,8 +124,8 @@
         }
 
         .caja-blanca {
-            background: var(--rosa-caja);
-            border: 2px dashed var(--rosa-borde);
+            background: var(--arunyi-caja);
+            border: 2px dashed var(--arunyi-borde);
             border-radius: 12px;
             padding: 12px;
             margin-bottom: 16px;
@@ -128,8 +133,8 @@
         }
 
         .tag-cabecera {
-            background: #F3DCDE;
-            color: var(--texto-principal);
+            background: var(--arunyi-acento);
+            color: var(--arunyi-texto);
             padding: 2px 12px;
             font-size: 10px;
             font-weight: bold;
@@ -143,7 +148,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            border: 2px solid var(--rosa-borde);
+            border: 2px solid var(--arunyi-borde);
             display: block;
             margin: 0 auto 10px auto;
             object-fit: cover;
@@ -159,35 +164,41 @@
         .social-mini-btn {
             width: 24px;
             height: 24px;
-            border: 1px solid var(--rosa-borde);
+            border: 1px solid var(--arunyi-borde);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 11px;
-            color: var(--texto-principal);
+            color: var(--arunyi-texto);
             text-decoration: none;
-            background: #FFF;
+            background: var(--arunyi-caja);
+        }
+
+        .social-mini-btn:hover {
+            background: var(--arunyi-acento);
         }
 
         .status-list-pixel {
             font-size: 11px;
             line-height: 1.6;
+            color: var(--arunyi-texto);
         }
 
         .reproductor-retro {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #FFF;
-            border: 1px solid var(--rosa-borde);
+            background: var(--arunyi-fondo);
+            border: 1px solid var(--arunyi-borde);
             padding: 6px;
             border-radius: 6px;
             font-size: 10px;
+            color: var(--arunyi-texto);
         }
 
         .marco-sello-stamp {
-            border: 4px dotted var(--rosa-borde);
+            border: 4px dotted var(--arunyi-borde);
             border-radius: 4px;
             padding: 6px;
             background: white;
@@ -201,15 +212,18 @@
             font-size: 11px;
             text-align: center;
             border-collapse: collapse;
+            color: var(--arunyi-texto);
         }
-        .tabla-calendario th { background: #F3DCDE; padding: 2px; font-size: 9px; }
-        .tabla-calendario td { padding: 3px 1px; border: 1px solid #FFF0F2; }
-        .tabla-calendario .hoy { background: #E8C1C7; color: white; border-radius: 4px; font-weight: bold; }
+        .tabla-calendario th { background: var(--arunyi-acento); padding: 2px; font-size: 9px; color: var(--arunyi-texto); }
+        .tabla-calendario td { padding: 3px 1px; border: 1px solid var(--arunyi-fondo); }
+        .tabla-calendario .hoy { background: var(--arunyi-borde); color: white; border-radius: 4px; font-weight: bold; }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .input-arunyi { width: 100%; padding: 5px; border: 1px solid var(--rosa-borde); border-radius: 6px; font-size: 11px; box-sizing: border-box; }
-        .btn-arunyi { background: var(--rosa-borde); color: white; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; }
+        .sub-pestana-contenido { display: none; }
+        .sub-pestana-contenido.active { display: block; }
+        
+        .input-arunyi { width: 100%; padding: 5px; border: 1px solid var(--arunyi-borde); border-radius: 6px; font-size: 11px; box-sizing: border-box; color: var(--arunyi-texto); background: var(--arunyi-fondo); }
+        .btn-arunyi { background: var(--arunyi-borde); color: white; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: bold; }
+        .btn-arunyi:hover { background: var(--arunyi-texto-muted); }
     </style>
 </head>
 <body>
@@ -218,133 +232,147 @@
 
     <div class="carrd-wrapper">
         <div class="header-banner">
-            <div class="banner-logo-centro"><i class="fa-solid fa-shuttle-space" style="color: var(--rosa-borde);"></i></div>
+            <div class="banner-logo-centro"><i class="fa-solid fa-shuttle-space" style="color: var(--arunyi-borde);"></i></div>
         </div>
         <div class="cinta-encaje"></div>
 
         <div class="nav-bar-arunyi">
-            <div class="nav-btn active" onclick="cambiarSeccion('home', this)">Home</div>
-            <div class="nav-btn" onclick="cambiarSeccion('room', this)">Virtual Room</div>
-            <div class="nav-btn" onclick="cambiarSeccion('portfolio', this)">Portfolio</div>
-            <div class="nav-btn" onclick="cambiarSeccion('commissions', this)">Commission 📢</div>
-            <div class="nav-btn" onclick="cambiarSeccion('shop', this)">Shop 🛍️</div>
-            <div class="nav-btn" onclick="cambiarSeccion('internal-panel', this)">🔧 Ajustes</div>
+            <div class="nav-btn active" onclick="cambiarPestanaInterna('home', this)">Home</div>
+            <div class="nav-btn" onclick="cambiarPestanaInterna('room', this)">Virtual Room</div>
+            <div class="nav-btn" onclick="cambiarPestanaInterna('portfolio', this)">Portfolio</div>
+            <div class="nav-btn" onclick="cambiarPestanaInterna('commissions', this)">Commission 📢</div>
+            <div class="nav-btn" onclick="cambiarPestanaInterna('shop', this)">Shop 🛍️</div>
+            <div class="nav-btn" onclick="cambiarPestanaInterna('ajustes', this)">🔧 Ajustes</div>
         </div>
         <div class="sub-bar-welcome">✨ Welcome to arunyi.art! enjoy your stay 🪐</div>
 
-        <div id="view-home" class="tab-content active">
-            <div class="grid-tres-columnas">
-                
-                <div>
-                    <div class="caja-blanca">
-                        <span class="tag-cabecera"><i class="fa-solid fa-user"></i> profile</span>
-                        <img src="https://i.pinimg.com/236x/8d/62/1d/8d621d9600f681d431d1c8f498c41460.jpg" class="avatar-marcado">
-                        <div style="text-align: center; font-size: 11px; font-weight: bold;">arunyi 🎀 artist</div>
-                        
-                        <div class="social-row-mini">
-                            <a href="https://www.instagram.com/arunyi.art/" target="_blank" class="social-mini-btn"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="https://www.tiktok.com/@arunyi.art" target="_blank" class="social-mini-btn"><i class="fa-brands fa-tiktok"></i></a>
-                            <a href="https://twitter.com" target="_blank" class="social-mini-btn"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="https://discord.com" target="_blank" class="social-mini-btn"><i class="fa-solid fa-plus"></i></a>
-                        </div>
-
-                        <hr style="border: 0; border-top: 1px dotted var(--rosa-borde); margin: 8px 0;">
-                        
-                        <div class="status-list-pixel">
-                            🧁 <b>status:</b> working on comms<br>
-                            🧸 <b>feeling:</b> jolly<br>
-                            📖 <b>reading:</b> corpus hermeticum<br>
-                            🎮 <b>playing:</b> ac pocket camp
-                        </div>
+        <div class="grid-tres-columnas">
+            
+            <div>
+                <div class="caja-blanca">
+                    <span class="tag-cabecera"><i class="fa-solid fa-user"></i> profile</span>
+                    <img src="https://i.pinimg.com/236x/8d/62/1d/8d621d9600f681d431d1c8f498c41460.jpg" class="avatar-marcado">
+                    <div style="text-align: center; font-size: 11px; font-weight: bold;">arunyi 🎀 artist</div>
+                    
+                    <div class="social-row-mini">
+                        <a href="https://www.instagram.com/arunyi.art/" target="_blank" class="social-mini-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@arunyi.art" target="_blank" class="social-mini-btn"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://twitter.com" target="_blank" class="social-mini-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://discord.com" target="_blank" class="social-mini-btn"><i class="fa-solid fa-plus"></i></a>
                     </div>
 
-                    <div class="caja-blanca">
-                        <span class="tag-cabecera">🎵 true melody</span>
-                        <div class="reproductor-retro">
-                            <span><i class="fa-solid fa-backward"></i> &nbsp; <i class="fa-solid fa-play"></i> &nbsp; <i class="fa-solid fa-forward"></i></span>
-                            <span id="track-timer-sim">0:00 / 1:20</span>
-                        </div>
-                        <iframe id="musica-iframe" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" style="width:100%; height:40px; border:none; margin-top:8px; border-radius:4px;"></iframe>
+                    <hr style="border: 0; border-top: 1px dotted var(--arunyi-borde); margin: 8px 0;">
+                    
+                    <div class="status-list-pixel">
+                        🧁 <b>status:</b> working on comms<br>
+                        🧸 <b>feeling:</b> jolly<br>
+                        📖 <b>reading:</b> corpus hermeticum<br>
+                        🎮 <b>playing:</b> ac pocket camp
                     </div>
                 </div>
 
-                <div>
-                    <div class="caja-blanca">
+                <div class="caja-blanca">
+                    <span class="tag-cabecera">🎵 true melody</span>
+                    <div class="reproductor-retro">
+                        <span><i class="fa-solid fa-backward"></i> &nbsp; <i class="fa-solid fa-play"></i> &nbsp; <i class="fa-solid fa-forward"></i></span>
+                        <span id="track-timer-sim">0:00 / 1:20</span>
+                    </div>
+                    <iframe id="musica-iframe" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" style="width:100%; height:40px; border:none; margin-top:8px; border-radius:4px;"></iframe>
+                </div>
+            </div>
+
+            <div>
+                <div class="caja-blanca" style="min-height: 140px;">
+                    
+                    <div id="pestana-home" class="sub-pestana-contenido active">
                         <span class="tag-cabecera">🤍 welcome</span>
                         <p style="font-size:11px; line-height:1.5; margin:0;">
                             Hello, welcome to my website! This is my little corner of the internet and place where you can learn about my interests, work and projects! Make yourself at home and have fun exploring!
                         </p>
                     </div>
 
-                    <div class="caja-blanca">
-                        <span class="tag-cabecera">💬 message board</span>
-                        <div id="muro-mensajes-fijos" style="font-size:11px; background:#FFF; border:1px solid #F3DCDE; padding:8px; border-radius:6px; max-height:80px; overflow-y:auto; margin-bottom:8px;"></div>
-                        <div style="display:flex; gap:4px;">
-                            <input type="text" id="nuevo-mensaje-txt" class="input-arunyi" placeholder="Escribe un pensamiento...">
-                            <button class="btn-arunyi" onclick="enviarMensajeMuro()">Fijar</button>
+                    <div id="pestana-room" class="sub-pestana-contenido">
+                        <span class="tag-cabecera">🪐 virtual room</span>
+                        <p style="font-size:11px; margin:0;">¡Bienvenido a mi habitación virtual! Aquí puedes colocar decoraciones o píxeles personalizados pronto.</p>
+                    </div>
+
+                    <div id="pestana-portfolio" class="sub-pestana-contenido">
+                        <span class="tag-cabecera">🎨 portfolio</span>
+                        <p style="font-size:11px; margin:0;">Galería de ilustraciones y arte conceptual en desarrollo.</p>
+                    </div>
+
+                    <div id="pestana-commissions" class="sub-pestana-contenido">
+                        <span class="tag-cabecera">📢 commissions</span>
+                        <p style="font-size:11px; margin:0;">Información sobre comisiones: Abiertas / Cerradas. Revisa mis precios básicos aquí.</p>
+                    </div>
+
+                    <div id="pestana-shop" class="sub-pestana-contenido">
+                        <span class="tag-cabecera">🛍️ shop</span>
+                        <p style="font-size:11px; margin:0;">Mis tiendas virtuales y productos digitales descargables.</p>
+                    </div>
+
+                    <div id="pestana-ajustes" class="sub-pestana-contenido">
+                        <span class="tag-cabecera">🔒 administración</span>
+                        <div id="panel-bloqueado">
+                            <p style="font-size:10px; margin:0 0 8px 0; color:var(--arunyi-texto-muted);">Introduce tu clave técnica:</p>
+                            <input type="password" id="pass-control" class="input-arunyi" style="width:60%; margin-right:5px;" placeholder="Clave...">
+                            <button class="btn-arunyi" onclick="abrirAjustesArunyi()">Entrar</button>
+                        </div>
+                        <div id="panel-desbloqueado" style="display:none;">
+                            <label style="font-size:10px; display:block; margin-bottom:6px;">ID de Video de YouTube:
+                                <input type="text" class="input-arunyi" placeholder="Ej: dQw4w9WgXcQ" onchange="cambiarMusicaPanel(this.value)">
+                            </label>
+                            <label style="font-size:10px; display:block;">Imagen de Fondo (URL):
+                                <input type="text" class="input-arunyi" placeholder="URL de la imagen..." onchange="cambiarFondoPanel(this.value)">
+                            </label>
                         </div>
                     </div>
 
-                    <div class="caja-blanca">
-                        <span class="tag-cabecera">🧸 treasure box</span>
-                        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
-                            <img src="https://i.pinimg.com/236x/21/df/b8/21dfb8dd4610b271d44bc4719c968cfd.jpg" style="width:100%; height:55px; object-fit:cover; border-radius:4px;">
-                        </div>
+                </div>
+
+                <div class="caja-blanca">
+                    <span class="tag-cabecera">💬 message board</span>
+                    <div id="muro-mensajes-fijos" style="font-size:11px; background:#FFF; border:1px solid var(--arunyi-borde); padding:8px; border-radius:6px; max-height:80px; overflow-y:auto; margin-bottom:8px;"></div>
+                    <div style="display:flex; gap:4px;">
+                        <input type="text" id="nuevo-mensaje-txt" class="input-arunyi" placeholder="Escribe un pensamiento...">
+                        <button class="btn-arunyi" onclick="enviarMensajeMuro()">Fijar</button>
                     </div>
                 </div>
 
-                <div>
-                    <div class="caja-blanca">
-                        <span class="tag-cabecera">🔔 updates</span>
-                        <div style="font-size:10px; line-height:1.5; font-family:monospace; color:#A37880;">
-                            20.dec ➔ site on /links<br>
-                            18.dec ➔ buttons on<br>
-                            12.dec ➔ update on /about
-                        </div>
+                <div class="caja-blanca">
+                    <span class="tag-cabecera">🧸 treasure box</span>
+                    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:6px;">
+                        <img src="https://i.pinimg.com/236x/21/df/b8/21dfb8dd4610b271d44bc4719c968cfd.jpg" style="width:100%; height:55px; object-fit:cover; border-radius:4px;">
                     </div>
-
-                    <div class="caja-blanca">
-                        <span class="tag-cabecera">📅 calendario</span>
-                        <div style="font-size:10px; font-weight:bold; text-align:center; margin-bottom:4px;" id="cal-mes-titulo">Junio 2026</div>
-                        <table class="tabla-calendario">
-                            <thead><tr><th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th><th>D</th></tr></thead>
-                            <tbody id="tabla-fechas-dinamicas"></tbody>
-                        </table>
-                    </div>
-
-                    <div class="caja-blanca">
-                        <span class="tag-cabecera">⭐ latest art</span>
-                        <img src="https://i.pinimg.com/236x/8d/62/1d/8d621d9600f681d431d1c8f498c41460.jpg" class="marco-sello-stamp" style="height:90px; object-fit:cover;">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div id="view-room" class="tab-content"><div class="caja-blanca"><span class="tag-cabecera">🪐 room</span><p style="font-size:12px;">Contenido de tu cuarto virtual.</p></div></div>
-        <div id="view-portfolio" class="tab-content"><div class="caja-blanca"><span class="tag-cabecera">🎨 portfolio</span><p style="font-size:12px;">Tus ilustraciones guardadas.</p></div></div>
-        <div id="view-commissions" class="tab-content"><div class="caja-blanca"><span class="tag-cabecera">📢 commissions info</span><p style="font-size:12px;">Precios y estado de comisiones abiertos.</p></div></div>
-        <div id="view-shop" class="tab-content"><div class="caja-blanca"><span class="tag-cabecera">🛍️ shop</span><p style="font-size:12px;">Enlace a tus tiendas o productos digitales.</p></div></div>
-
-        <div id="view-internal-panel" class="tab-content">
-            <div class="caja-blanca">
-                <span class="tag-cabecera">🔒 ajustes internos (sólo arunyi)</span>
-                <div id="panel-bloqueado">
-                    <p style="font-size:11px; color:#C2828A;">Por favor introduce tu clave de acceso para administrar la configuración técnica:</p>
-                    <input type="password" id="pass-control" class="input-arunyi" style="width:60%; margin-right:5px;" placeholder="Clave...">
-                    <button class="btn-arunyi" onclick="abrirAjustesArunyi()">Entrar</button>
-                </div>
-                <div id="panel-desbloqueado" style="display:none; margin-top:10px;">
-                    <label style="font-size:11px; display:block; margin-bottom:8px;">Cambiar ID de Video de Música (YouTube):
-                        <input type="text" class="input-arunyi" placeholder="Ej: dQw4w9WgXcQ" onchange="cambiarMusicaPanel(this.value)">
-                    </label>
-                    <label style="font-size:11px; display:block;">Cambiar Imagen de Fondo General:
-                        <input type="text" class="input-arunyi" placeholder="Pega el enlace URL..." onchange="cambiarFondoPanel(this.value)">
-                    </label>
                 </div>
             </div>
-        </div>
 
+            <div>
+                <div class="caja-blanca">
+                    <span class="tag-cabecera">🔔 updates</span>
+                    <div style="font-size:10px; line-height:1.5; font-family:monospace; color:var(--arunyi-texto-muted);">
+                        20.dec ➔ site on /links<br>
+                        18.dec ➔ buttons on<br>
+                        12.dec ➔ update on /about
+                    </div>
+                </div>
+
+                <div class="caja-blanca">
+                    <span class="tag-cabecera">📅 calendario</span>
+                    <div style="font-size:10px; font-weight:bold; text-align:center; margin-bottom:4px;" id="cal-mes-titulo">Junio 2026</div>
+                    <table class="tabla-calendario">
+                        <thead><tr><th>L</th><th>M</th><th>M</th><th>J</th><th>V</th><th>S</th><th>D</th></tr></thead>
+                        <tbody id="tabla-fechas-dinamicas"></tbody>
+                    </table>
+                </div>
+
+                <div class="caja-blanca">
+                    <span class="tag-cabecera">⭐ latest art</span>
+                    <img src="https://i.pinimg.com/236x/8d/62/1d/8d621d9600f681d431d1c8f498c41460.jpg" class="marco-sello-stamp" style="height:90px; object-fit:cover;">
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <script>
@@ -356,10 +384,15 @@
             iniciarEfectoSakura();
         });
 
-        function cambiarSeccion(id, btn) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`view-${id}`).classList.add('active');
+        function cambiarPestanaInterna(idPestana, btn) {
+            document.querySelectorAll('.sub-pestana-contenido').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-bar-arunyi .nav-btn').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            document.getElementById(`pestana-${idPestana}`).classList.add('active');
             btn.classList.add('active');
         }
 
@@ -394,7 +427,7 @@
 
         function renderizarMuro(msgs) {
             const div = document.getElementById('muro-mensajes-fijos');
-            div.innerHTML = msgs.map(m => `<div style="border-bottom:1px dashed #FFE3E7; padding:2px 0;">🌸 ${m}</div>`).join('');
+            div.innerHTML = msgs.map(m => `<div style="border-bottom:1px dashed var(--arunyi-borde); padding:2px 0;">🌸 ${m}</div>`).join('');
         }
 
         function construirCalendarioReal() {
@@ -416,30 +449,4 @@
                     tr = document.createElement('tr');
                 }
                 let td = document.createElement('td');
-                td.textContent = d;
-                if(d === h) td.className = 'hoy';
-                tr.appendChild(td);
-            }
-            tabla.appendChild(tr);
-        }
-
-        function cargarDatosGuardados() {
-            renderizarMuro(JSON.parse(localStorage.getItem('arunyi-msgs')) || []);
-            if(localStorage.getItem('arunyi-bg')) document.body.style.backgroundImage = `url('${localStorage.getItem('arunyi-bg')}')`;
-            if(localStorage.getItem('arunyi-music')) cambiarMusicaPanel(localStorage.getItem('arunyi-music'));
-        }
-
-        function iniciarEfectoSakura() {
-            const c = document.getElementById('contenedor-particulas');
-            setInterval(() => {
-                const p = document.createElement('div'); p.textContent = '🌸';
-                p.style.position = 'absolute'; p.style.left = Math.random()*window.innerWidth+'px'; p.style.top = '-20px';
-                p.style.fontSize = '11px'; p.style.transition = 'all 3.5s linear'; p.style.opacity = '0.6';
-                c.appendChild(p);
-                setTimeout(() => { p.style.transform = `translateY(${window.innerHeight+30}px) rotate(120deg)`; p.style.opacity = '0'; }, 50);
-                setTimeout(() => p.remove(), 3600);
-            }, 600);
-        }
-    </script>
-</body>
-</html>
+                td.textC
