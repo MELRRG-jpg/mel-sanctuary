@@ -1,343 +1,39 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>+ mel_sanctuary_rococo_v7_kaomoji_calendar +</title>
+<div class="cuadro-holograma" style="position: relative; width: 100%; height: 100%; min-height: 230px; background-color: #120A10; overflow: hidden; display: flex; align-items: center; justify-content: center; box-sizing: border-box;">
+    
+    <svg viewBox="0 0 400 400" style="width: 100%; height: 100%; display: block; object-fit: cover;">
+        <defs>
+            <pattern id="puntosHalftone" width="3" height="3" patternUnits="userSpaceOnUse">
+                <circle cx="1.5" cy="1.5" r="1.1" fill="#FEB1C7" opacity="0.85" />
+            </pattern>
+            <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FF33AA" stop-opacity="0.5"/>
+                <stop offset="60%" stop-color="#400030" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+            </radialGradient>
+        </defs>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Charm:wght@400;700&display=swap" rel="stylesheet">
+        <rect width="400" height="400" fill="url(#bgGlow)" />
 
-<style>
-/* --- 𓏲ᵎ * PALETAS DE COLORES DUALES * ᵎ𓏲 --- */
-:root {
-  --anime-black: #1F1F1F;
-  --goth-charcoal: #4B4B4B;
-  --barbie-pink: #FEB1C7;
-  --porcelain-pink: #FFDCE4;
-  --bg-deep-velvet: #120A10;
-  --surface-box: rgba(31, 31, 31, 0.85);
-  --text-main: #FFDCE4;
-  --input-bg: #1F1F1F;
-  --input-text: #ffffff;
-  --chat-header-bg: #4B4B4B;
-  --fb-old-blue: #3b5998;
-  
-  --evt-goth: #A27BCA;
-  --evt-coquette: #FEB1C7;
-  --evt-destiny: #F3E5AB;
+        <path d="M 120,400 C 110,320 80,260 110,200 C 140,140 180,100 240,90 C 310,80 370,130 380,220 C 390,300 370,360 360,400 Z" fill="#000000" />
+        
+        <path d="M 110,200 C 70,180 30,220 10,280 C 0,330 20,380 50,400 C 40,340 60,260 110,200 Z" fill="#000000" />
+        <path d="M 360,200 C 385,170 410,210 400,270 C 390,320 370,360 350,400 C 365,340 370,250 360,200 Z" fill="#000000" />
 
-  --font-goth: 'Courier Prime', monospace;
-  --font-vintage: 'Playfair Display', serif;
-  --font-coquette: 'Charm', cursive;
-}
+        <rect width="400" height="400" fill="url(#puntosHalftone)" style="mix-blend-mode: overlay;" />
 
-[data-theme="pastel"] {
-  --anime-black: #FFF0F5;
-  --goth-charcoal: #FFDCE4;
-  --barbie-pink: #FEB1C7;
-  --porcelain-pink: #4B4B4B;
-  --bg-deep-velvet: #FFFDF9;
-  --surface-box: rgba(255, 240, 245, 0.9);
-  --text-main: #4B4B4B;
-  --input-bg: #FFFFFF;
-  --input-text: #4B4B4B;
-  --chat-header-bg: #FEB1C7;
+        <path d="M 160,210 Q 180,180 230,200 Q 250,220 230,260 Q 190,280 160,210 Z" fill="#FEB1C7" opacity="0.3" style="mix-blend-mode: color-dodge;" />
+        <ellipse cx="200" cy="225" rx="14" ry="22" fill="#000000" />
+        <ellipse cx="197" cy="218" rx="4" ry="7" fill="#ffffff" />
 
-  --evt-goth: #D3BBDD;
-  --evt-coquette: #FFC0CB;
-  --evt-destiny: #FFFACD;
-}
+        <path d="M0,0 L400,0 L400,400 L0,400 Z" fill="none" stroke="#FEB1C7" stroke-width="2" opacity="0.4"/>
 
-* { box-sizing: border-box; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+        <g fill="#000000" font-family="'Courier New', Courier, monospace" font-weight="bold" font-size="42" opacity="0.9">
+            <text x="35" y="110">I WILL</text>
+            <text x="35" y="165">KILL</text>
+            <text x="35" y="220">I WILL</text>
+            <text x="35" y="275">KILL</text>
+            <text x="35" y="330">I WILL</text>
+        </g>
+    </svg>
 
-body {
-  margin: 0; padding: 50px 0; 
-  background-color: var(--anime-black);
-  color: var(--text-main); 
-  font-family: var(--font-goth);
-  background-image: radial-gradient(circle at center, var(--goth-charcoal) 0%, var(--bg-deep-velvet) 100%);
-  display: flex; justify-content: center; overflow-x: hidden;
-}
-
-/* MARCOS DE ENCAJE KAOMOJI */
-body::before, body::after {
-  content: "o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o";
-  position: fixed; left: 0; width: 100%; text-align: center;
-  font-size: 11px; color: var(--barbie-pink); pointer-events: none; opacity: 0.4;
-  z-index: 50;
-}
-body::before { top: 10px; }
-body::after { bottom: 10px; }
-
-/* CONTENEDOR PRINCIPAL SEMIREDONDO */
-.rococo-cocoon-container {
-  width: 880px;
-  background: var(--anime-black);
-  border: 4px solid var(--barbie-pink);
-  outline: 8px solid var(--anime-black);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.6), inset 0 0 30px rgba(254,177,199,0.15);
-  position: relative;
-  padding: 24px;
-  border-radius: 16px;
-}
-.rococo-cocoon-container::before {
-  content: "}-v-{ (._.) }-v-{ (._.) }-v-{ (._.) }-v-{ (._.) }-v-{ (._.) }-v-{ (._.) }-v-{";
-  position: absolute; top: -18px; left: 0; width: 100%;
-  text-align: center; font-size: 11px; color: var(--barbie-pink);
-  letter-spacing: 4px; pointer-events: none;
-}
-
-/* PORTADA */
-.sanctuary-header-banner {
-  width: 100%; height: 210px;
-  background-color: var(--goth-charcoal);
-  border: 2px solid var(--barbie-pink);
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  border-radius: 12px;
-}
-.banner-title-frame {
-  background: var(--surface-box);
-  border: 1px dashed var(--barbie-pink);
-  outline: 5px solid var(--surface-box);
-  padding: 12px 30px; text-align: center;
-  border-radius: 24px;
-}
-.banner-title-frame h1 {
-  margin: 0; font-family: var(--font-coquette); font-size: 34px;
-  color: var(--barbie-pink); text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
-}
-
-/* CONSOLA SECRETA */
-.mel-admin-trigger {
-  position: absolute; top: 12px; right: 12px; z-index: 100;
-  background: var(--anime-black); border: 1px solid var(--barbie-pink);
-  color: var(--barbie-pink); padding: 6px 12px; font-size: 11px; cursor: pointer;
-  border-radius: 20px; font-family: var(--font-goth); font-weight: bold;
-}
-.mel-secret-panel {
-  display: none; background: var(--bg-deep-velvet);
-  border: 2px dashed var(--barbie-pink); padding: 20px; margin: 15px 0;
-  border-radius: 12px; font-size: 12px;
-}
-.panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.panel-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
-.panel-row input, .panel-row textarea, .panel-row select {
-  background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  color: var(--input-text); padding: 6px; font-family: var(--font-goth); font-size: 11px; border-radius: 6px;
-}
-
-/* MENÚ INTERNO DE PESTAÑAS */
-.rococo-menu-bar { display: flex; justify-content: space-between; margin: 20px 0; gap: 6px; }
-.rococo-menu-link {
-  flex: 1; text-align: center; padding: 9px; background: var(--goth-charcoal);
-  border: 1px solid var(--barbie-pink); color: var(--text-main);
-  font-family: var(--font-vintage); font-style: italic; font-size: 12px;
-  text-decoration: none; border-radius: 8px; cursor: pointer; white-space: nowrap;
-}
-.rococo-menu-link.active-tab { background: var(--barbie-pink); color: #000; font-weight: bold; }
-
-.tab-view { display: none; }
-.tab-view.active-view { display: block; }
-
-.rococo-grid { display: grid; grid-template-columns: 210px 390px 220px; gap: 15px; }
-
-/* BORDES SEMIREDONDOS EN MARCOS EN GENERAL */
-.rococo-frame-box {
-  background: var(--surface-box);
-  border: 1px solid var(--goth-charcoal);
-  outline: 1px solid var(--barbie-pink); outline-offset: -5px;
-  padding: 14px; position: relative; margin-bottom: 20px;
-  border-radius: 14px;
-}
-.rococo-frame-box::after {
-  content: "v--v--v--v";
-  position: absolute; bottom: -8px; left: 0; width: 100%; text-align: center;
-  font-size: 9px; color: var(--barbie-pink); opacity: 0.7;
-}
-.rococo-frame-title {
-  font-family: var(--font-vintage); font-style: italic; font-weight: bold;
-  text-align: center; color: var(--barbie-pink); font-size: 13px;
-  margin: 0 0 12px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 5px;
-}
-
-/* AVATAR CAMAFEO */
-.cameo-avatar-wrapper {
-  width: 110px; height: 110px; margin: 0 auto 10px auto;
-  border-radius: 50%; border: 3px double var(--barbie-pink); overflow: hidden;
-  background: var(--bg-deep-velvet); display: flex; align-items: center; justify-content: center; cursor: pointer;
-}
-.cameo-avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; display: none; }
-.cameo-avatar-wrapper .placeholder { font-size: 10px; text-align: center; color: var(--barbie-pink); }
-
-.music-user-input-row { display: flex; gap: 4px; margin-bottom: 8px; }
-.music-user-input-row input {
-  flex: 1; background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  color: var(--input-text); font-family: var(--font-goth); font-size: 10px; padding: 4px; border-radius: 4px;
-}
-
-/* QUAD HOLOGRAMAS */
-.holo-matrix-4x4 {
-  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-  gap: 6px; width: 100%; min-height: 240px;
-}
-.holo-slot {
-  background: #000000; border: 1px solid var(--barbie-pink);
-  border-radius: 8px; overflow: hidden; display: flex;
-  align-items: center; justify-content: center; padding: 2px; font-size: 20px;
-  color: var(--barbie-pink);
-}
-.holo-slot img, .holo-slot iframe, .holo-slot svg { width: 100%; height: 100%; object-fit: cover; border: 0; display: block; }
-
-/* FEED DEL MURO */
-.rococo-board-scroller { max-height: 380px; overflow-y: auto; padding-right: 4px; }
-.rococo-post-node {
-  background: var(--input-bg); border: 1px solid var(--barbie-pink);
-  padding: 12px; margin-bottom: 16px; font-size: 11px; border-radius: 10px;
-}
-.post-social-bar { display: flex; gap: 8px; margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--barbie-pink); }
-.react-btn { background: none; border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 2px 6px; cursor: pointer; border-radius: 4px; }
-.comment-box { margin-top: 8px; }
-.comment-stream { font-size: 10px; display: flex; flex-direction: column; gap: 4px; max-height: 90px; overflow-y: auto; margin-bottom: 5px; }
-.comment-line { padding: 3px; border-radius: 4px; background: rgba(0,0,0,0.15); border-left: 3px solid var(--barbie-pink); }
-.comment-input-row { display: flex; gap: 4px; }
-.comment-in { flex: 1; background: var(--anime-black); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 10px; padding: 4px; font-family: var(--font-goth); border-radius: 4px; }
-
-/* CAJA DE CONFESIONES ANÓNIMAS */
-.confession-scroller { max-height: 140px; overflow-y: auto; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
-.confession-card { background: rgba(254,177,199,0.05); border: 1px dashed var(--goth-charcoal); padding: 8px; border-radius: 8px; font-size: 10px; line-height: 1.4; }
-
-/* REJILLA DE FOTOS (ARCHIVO ESTELAR) */
-.stellar-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-height: 500px; overflow-y: auto; padding: 10px; }
-.stellar-photo-card { background: var(--input-bg); border: 1px solid var(--barbie-pink); padding: 6px; border-radius: 10px; text-align: center; }
-.stellar-photo-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 6px; border: 1px solid var(--goth-charcoal); }
-.stellar-photo-meta { font-size: 10px; margin-top: 4px; color: var(--barbie-pink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-/* ALMAS VINCULADAS */
-.friends-scroll-zone { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
-.friend-card { background: rgba(75, 75, 75, 0.1); border: 1px solid var(--barbie-pink); padding: 8px; border-radius: 8px; }
-.friend-name { color: var(--barbie-pink); font-weight: bold; font-size: 11px; display: flex; justify-content: space-between; }
-.friend-meta-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-size: 9px; padding: 3px; text-align: center; text-decoration: none; display: block; margin-top: 4px; border-radius: 4px; }
-
-/* CALENDARIO CRONOLÓGICO */
-.victorian-calendar-wrapper {
-  max-width: 520px; margin: 0 auto; background: rgba(0,0,0,0.2); border: 2px double var(--barbie-pink); padding: 20px; border-radius: 16px;
-}
-.calendar-header-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-family: var(--font-vintage); }
-.calendar-grid-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
-.calendar-day-header { font-size: 10px; font-weight: bold; color: var(--barbie-pink); padding-bottom: 5px; border-bottom: 1px dashed var(--goth-charcoal); }
-
-.calendar-cell-node {
-  background: var(--input-bg); border: 1px solid var(--goth-charcoal); padding: 12px 0; font-size: 10px; border-radius: 6px; cursor: pointer; position: relative;
-}
-.calendar-cell-node:hover { background: var(--goth-charcoal); border-color: var(--barbie-pink); }
-.calendar-cell-node.empty-cell { background: transparent; border: none; cursor: default; }
-
-.calendar-cell-node.evt-goth-style { background: rgba(162, 123, 202, 0.25); border: 1px solid var(--evt-goth); font-weight: bold; box-shadow: 0 0 8px var(--evt-goth); }
-.calendar-cell-node.evt-coquette-style { background: rgba(254, 177, 199, 0.25); border: 1px solid var(--evt-coquette); font-weight: bold; box-shadow: 0 0 8px var(--evt-coquette); }
-.calendar-cell-node.evt-destiny-style { background: rgba(243, 229, 171, 0.25); border: 1px solid var(--evt-destiny); font-weight: bold; box-shadow: 0 0 8px var(--evt-destiny); }
-
-.event-display-scroll { background: var(--input-bg); border: 1px dashed var(--barbie-pink); padding: 12px; margin-top: 15px; border-radius: 10px; font-size: 11px; font-family: var(--font-goth); text-align: center; }
-
-.rococo-btn { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); color: var(--text-main); font-family: var(--font-goth); font-size: 11px; padding: 5px; cursor: pointer; width: 100%; border-radius: 6px; }
-.rococo-btn:hover { background: var(--barbie-pink); color: #000; }
-.hidden-uploader { display: none; }
-
-/* GIFS FLOTANTES EN COSTADOS */
-.side-gif { position: fixed; top: 62%; transform: translateY(-50%); z-index: 40; width: 65px; height: auto; pointer-events: none; opacity: 0.8; }
-.left-gif { left: 20px; }
-.right-gif { right: 20px; }
-
-@media (max-width: 1024px) {
-  .side-gif { display: none; }
-}
-
-/* MENÚS DESPLEGABLES DE PLAYLISTS */
-.genre-dropdown { background: rgba(31, 31, 31, 0.5); margin-bottom: 8px; border-radius: 8px; overflow: hidden; border: 1px dashed var(--barbie-pink); }
-.genre-dropdown summary { padding: 10px; font-size: 11px; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-.genre-dropdown summary::-webkit-details-marker { display: none; }
-.genre-dropdown summary:hover { background: rgba(254, 177, 199, 0.15); }
-.genre-dropdown summary::after { content: "v"; font-size: 0.7rem; color: var(--barbie-pink); }
-.genre-dropdown[open] summary::after { transform: rotate(180deg); }
-.dropdown-content { padding: 10px; background: rgba(0,0,0,0.2); border-top: 1px dashed var(--barbie-pink); }
-.dropdown-content ul { list-style: "* "; padding-left: 15px; margin: 0; }
-.dropdown-content li { margin-bottom: 6px; font-size: 11px; }
-.dropdown-content a { color: var(--text-main); text-decoration: none; }
-.dropdown-content a:hover { text-decoration: underline; color: var(--barbie-pink); }
-
-/* PARTÍCULAS KAOMOJI */
-.kaomoji-particle { position: fixed; pointer-events: none; z-index: 9999; white-space: nowrap; font-family: Arial, sans-serif; }
-@keyframes fall { to { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
-@keyframes burst { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--mx), var(--my)) scale(0.4); opacity: 0; } }
-
-/* CHAT RETRO CON PERSISTENCIA */
-.chat-dock { position: fixed; bottom: 0; right: 40px; display: flex; align-items: flex-end; gap: 12px; z-index: 10000; }
-.chat-tab { background: var(--chat-header-bg); color: var(--text-main); padding: 8px 16px; border-radius: 8px 8px 0 0; font-family: var(--font-goth); font-size: 11px; font-weight: bold; cursor: pointer; border: 1px solid var(--barbie-pink); box-shadow: 0px -2px 6px rgba(0,0,0,0.3); }
-.chat-window { width: 260px; background: var(--anime-black); border: 2px solid var(--barbie-pink); border-radius: 8px 8px 0 0; font-family: var(--font-goth); box-shadow: -2px -2px 12px rgba(0,0,0,0.4); }
-.chat-header { background: var(--chat-header-bg); color: var(--text-main); padding: 8px; font-size: 11px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border-radius: 6px 6px 0 0; border-bottom: 1px solid var(--barbie-pink); }
-.chat-body { height: 230px; padding: 8px; overflow-y: auto; font-size: 11px; background: var(--bg-deep-velvet); display: flex; flex-direction: column; gap: 6px; }
-.chat-msg-line { margin: 0; padding: 6px 8px; border-radius: 6px; line-height: 1.3; word-wrap: break-word; }
-.chat-msg-line.friend { background: var(--goth-charcoal); border: 1px solid var(--barbie-pink); align-self: flex-start; max-width: 85%; color: var(--porcelain-pink); }
-.chat-msg-line.user { background: var(--surface-box); border: 1px dashed var(--barbie-pink); align-self: flex-end; max-width: 85%; color: var(--barbie-pink); }
-.chat-input-container { display: flex; border-top: 1px solid var(--barbie-pink); background: var(--input-bg); }
-.chat-nick { width: 60px; padding: 6px; border: none; border-right: 1px solid var(--barbie-pink); font-size: 10px; background: var(--anime-black); color: var(--barbie-pink); outline: none; text-align: center; }
-.chat-input { flex: 1; padding: 6px; border: none; font-size: 11px; background: var(--input-bg); color: var(--input-text); outline: none; }
-.hidden { display: none; }
-
-/* BARRA TAMAGOTCHI */
-progress { -webkit-appearance: none; appearance: none; width: 100%; height: 10px; margin-top: 4px; }
-progress::-webkit-progress-bar { background-color: rgba(0,0,0,0.3); border-radius: 4px; }
-progress::-webkit-progress-val { background-color: var(--barbie-pink); border-radius: 4px; }
-</style>
-</head>
-<body>
-
-<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif left-gif" alt="decoración loop">
-<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif right-gif" alt="decoración loop">
-
-<div class="rococo-cocoon-container">
-  <button class="mel-admin-trigger" onclick="toggleAdminPanel()">[-] Panel de Control Mel</button>
-
-  <!-- PANEL DE CONFIGURACIÓN -->
-  <div class="mel-secret-panel" id="secretPanel">
-    <h3 style="margin:0 0 12px 0; font-family:var(--font-vintage); color:var(--barbie-pink); text-align:center;">(o.o) Consola de Inyección & Modos Duales</h3>
-    <div style="text-align: center; margin-bottom: 15px; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px;">
-      <span style="color:var(--barbie-pink); font-weight:bold; margin-right:10px;">Cambiar Estética Visual:</span>
-      <select id="cfgThemeSelector" onchange="switchThemeMode(this.value)" style="background:var(--input-bg); color:var(--input-text); border:1px solid var(--barbie-pink); padding:3px;">
-        <option value="dark">+(-) Estilo Dark Goth</option>
-        <option value="pastel">+(v) Estilo Pastel Coquette</option>
-      </select>
-    </div>
-
-    <div class="panel-grid">
-      <div>
-        <h4 style="margin:5px 0; color:var(--barbie-pink);">Configuración Base</h4>
-        <div class="panel-row"><label>Título de la Matriz:</label><input type="text" id="cfgTitle" value="mel_sanctuary_matrix"></div>
-        <div class="panel-row"><label>Biografía:</label><textarea id="cfgBio" rows="2">𓏲ᵎ Rococó Goth & Pastel Dual // @_tomate_4</textarea></div>
-        <div class="panel-row"><label>Música Base (YouTube Link):</label><input type="text" id="cfgYoutubeId" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></div>
-        <button class="rococo-btn" style="background:var(--barbie-pink); color:#000; font-weight:bold;" onclick="saveConfigChanges()">Guardar Configuración Base</button>
-      </div>
-      <div>
-        <h4 style="margin:5px 0; color:var(--barbie-pink);">Inyección de Hologramas</h4>
-        <div class="panel-row"><label>Holograma 1 (Código SVG/Kaomoji):</label><input type="text" id="cfgHolo1" value="PROPIO"></div>
-        <div class="panel-row"><label>Holograma 2:</label><input type="text" id="cfgHolo2" value="+(o.o)+"></div>
-        <div class="panel-row"><label>Holograma 3:</label><input type="text" id="cfgHolo3" value="}-v-{"></div>
-        <div class="panel-row"><label>Holograma 4:</label><input type="text" id="cfgHolo4" value="(._.)"></div>
-        <button class="rococo-btn" onclick="saveHoloChanges()">Inyectar los 4 Hologramas</button>
-      </div>
-    </div>
-
-    <hr style="border:0; border-top:1px dashed var(--barbie-pink); margin:15px 0;">
-    <h4 style="margin:5px 0; color:var(--barbie-pink);">[+] Fijar Fecha con Motivo Estético</h4>
-    <div style="display:grid; grid-template-columns: 80px 100px 1fr; gap:6px; margin-bottom:8px;">
-      <input type="number" id="calInDay" placeholder="Día" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
-      <select id="calInMonth" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
-        <option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option>
-        <option value="3">Abril</option><option value="4">Mayo</option><option value="5">Junio</option>
-        <option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option>
-        <option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option>
-      </select>
-      <select id="calInReason" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
-        <option value="got
+</div>
