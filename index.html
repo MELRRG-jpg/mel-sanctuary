@@ -3,783 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santuario Conectado - Tako Retro v3.0 (Custom Engine)</title>
-    <link href="https://fonts.googleapis.com/css2?family=MS+PGothic&family=VT323&family=Cherry+Bomb+One&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <title>Santuario Conectado - Tako Retro v4.0 GitHub Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Cherry+Bomb+One&family=VT323&family=MS+PGothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        /* Seteo de Paletas y Estilos Base */
         :root {
-            --rosa-fondo: #FFEAEF;
-            --rosa-caja: #FFF5F7;
-            --cerezo-medio: #E8B4BC;
-            --cerezo-oscuro: #B47E86;
-            --texto-retro: #644D53;
-            --borde-punto: 2px dotted #E8B4BC;
+            --rosa-seda: #FFF0F2;
+            --encaje-oscuro: #2B1E20;
+            --cerezo-vivo: #E28492;
+            --oro-real: #D4AF37;
+            --vidrio-rosado: rgba(255, 235, 237, 0.65);
+            --fuente-pixel: 'VT323', monospace;
+            --fuente-base: 'Comfortaa', 'MS PGothic', cursive;
         }
 
-        /* Lienzo general con cuadrícula matemática retro */
+        /* CONFIGURACIÓN DE MODOS (Cute vs Dark) */
+        body.modo-cute {
+            --bg-page: var(--rosa-seda);
+            --bg-box: var(--vidrio-rosado);
+            --border-color: var(--cerezo-vivo);
+            --text-color: var(--encaje-oscuro);
+            --accent-color: var(--oro-real);
+        }
+        body.modo-dark {
+            --bg-page: #1A1213;
+            --bg-box: rgba(43, 30, 32, 0.85);
+            --border-color: #7A3E48;
+            --text-color: #F5E6E8;
+            --accent-color: #A37E36;
+        }
+
         body {
-            background-color: var(--rosa-fondo);
-            background-image: 
-                linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px),
-                linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px);
-            background-size: 20px 20px;
-            font-family: 'MS PGothic', 'Comfortaa', sans-serif;
-            color: var(--texto-retro);
+            background-color: var(--bg-page);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: var(--fuente-base);
+            color: var(--text-color);
             margin: 0;
-            padding: 20px 10px 60px 10px;
-            font-size: 13px;
+            padding: 20px;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
         }
 
-        /* CONTENEDOR CENTRAL SCRAPBOOK Layout de las imágenes */
-        .contenedor-santuario {
-            max-width: 900px;
-            margin: 20px auto;
-            background: #FFFFFF;
-            border: 12px double var(--cerezo-medio);
-            border-radius: 24px;
+        /* Capa del cielo para lluvia de Sakura / Estrellas */
+        #contenedor-particulas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* CONTENEDOR CENTRAL ESTILO SCRAPBOOK J-WEB */
+        .marco-santuario {
+            max-width: 950px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 8px double var(--border-color);
+            border-radius: 28px;
             padding: 25px;
-            box-shadow: 0px 0px 25px rgba(232, 180, 188, 0.45);
-            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
 
-        /* BANNER DE BIENVENIDA AUTO-EDITABLE */
-        .banner-header {
-            width: 100%;
-            height: 180px;
-            background: linear-gradient(180deg, #FDE3E7 0%, #FFEAEF 100%);
-            border: 3px dashed var(--cerezo-medio);
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            position: relative;
-            text-align: center;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        .banner-header h1 {
-            font-family: 'Cherry Bomb One', cursive;
-            font-size: 44px;
-            color: white;
-            text-shadow: 3px 3px 0px var(--cerezo-medio), -1px -1px 0px var(--cerezo-medio), 1px -1px 0px var(--cerezo-medio), -1px 1px 0px var(--cerezo-medio);
-            margin: 0;
-            letter-spacing: 2px;
-            outline: none;
-        }
-
-        .subtitulo-retro {
-            font-size: 11px;
-            letter-spacing: 1px;
-            margin-top: 8px;
-            color: var(--cerezo-oscuro);
-            background: rgba(255, 255, 255, 0.6);
-            padding: 2px 10px;
-            border-radius: 10px;
-            border: 1px dotted var(--cerezo-medio);
-            outline: none;
-        }
-
-        /* NAVEGACIÓN RETRO - SISTEMA DE PESTAÑAS INTEGRADO */
-        .nav-retro {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            border-bottom: 3px double var(--cerezo-medio);
-            padding-bottom: 15px;
-        }
-
+        /* MENÚS DESPLEGABLES REELABORADOS */
         .menu-desplegable {
             position: relative;
             display: inline-block;
         }
-
         .boton-retro {
-            background: var(--rosa-caja);
-            color: var(--texto-retro);
-            border: 2px dashed var(--cerezo-medio);
-            border-radius: 20px;
-            padding: 8px 18px;
-            font-family: inherit;
-            font-size: 12px;
+            padding: 10px 20px;
+            background: var(--border-color);
+            color: white;
+            border: 2px dashed var(--accent-color);
+            border-radius: 14px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            font-family: inherit;
+            font-size: 13px;
             font-weight: bold;
         }
-
-        .boton-retro:hover, .boton-retro.activo {
-            background: var(--cerezo-medio);
-            color: white;
-            border-style: solid;
-        }
-
         .contenido-desplegable {
             display: none;
             position: absolute;
-            background: #FFFFFF;
-            border: 2px dotted var(--cerezo-medio);
+            background: var(--bg-box);
+            border: 3px double var(--border-color);
             border-radius: 12px;
-            min-width: 170px;
-            box-shadow: 2px 4px 10px rgba(0,0,0,0.08);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
             z-index: 100;
-            top: 110%;
-            padding: 5px 0;
+            backdrop-filter: blur(5px);
         }
-
-        .contenido-desplegable a {
+        .contenido-desplegable a, .contenido-desplegable div {
             display: block;
-            padding: 8px 12px;
-            color: var(--texto-retro);
+            padding: 10px;
+            color: var(--text-color);
             text-decoration: none;
-            font-size: 11px;
+            font-size: 12px;
+            cursor: pointer;
         }
-
-        .contenido-desplegable a:hover {
-            background-color: var(--rosa-fondo);
-            color: var(--cerezo-oscuro);
+        .contenido-desplegable a:hover, .contenido-desplegable div:hover {
+            background: var(--border-color);
+            color: white;
         }
-
         .menu-desplegable:hover .contenido-desplegable {
             display: block;
         }
 
-        /* SISTEMA DE CAPAS OCULTABLES (VISTAS DINÁMICAS) */
-        .vista-seccion {
-            display: none;
-        }
-        .vista-seccion.activa {
+        /* INTERFAZ EN CUADRÍCULA ASIMÉTRICA */
+        .grid-santuario {
             display: grid;
-        }
-
-        /* GRID RETRO ASIMÉTRICO PRINCIPAL */
-        .layout-santuario {
-            grid-template-columns: 260px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: 20px;
+            margin-top: 20px;
         }
 
-        /* BLOQUES INDEPENDIENTES CON BORDE DE ENCAJE */
-        .bloque-retro {
-            background: var(--rosa-caja);
-            border: 2px solid var(--cerezo-medio);
-            border-radius: 16px;
-            padding: 18px;
+        .caja-publicacion {
+            background: var(--bg-box);
+            border: 3px dashed var(--border-color);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
             position: relative;
-            margin-top: 10px;
-            box-shadow: inset 0 0 10px rgba(232, 180, 188, 0.1);
         }
 
-        .etiqueta-bloque {
+        /* ETIQUETAS DE TEXTO INTEGRADO */
+        .mini-marcador {
             position: absolute;
-            top: -12px;
-            left: 15px;
-            background: #FFFFFF;
-            border: 1px solid var(--cerezo-medio);
-            border-radius: 10px;
-            padding: 2px 12px;
+            top: -12px; left: 15px;
+            background: var(--bg-page);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2px 10px;
             font-size: 11px;
             font-weight: bold;
-            color: var(--cerezo-oscuro);
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
-        /* AVATAR INTERACTIVO CON GUARDAPELO */
-        .avatar-contenedor {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 10px auto;
-        }
-
-        .avatar-retro {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 3px double var(--cerezo-medio);
-            object-fit: cover;
-            background: #fff;
-        }
-
-        .capa-cambiar-foto {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(232, 180, 188, 0.8);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 10px;
-            opacity: 0;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            text-align: center;
-            padding: 5px;
-            box-sizing: border-box;
-        }
-
-        .avatar-contenedor:hover .capa-cambiar-foto {
-            opacity: 1;
-        }
-
-        /* LISTADOS DE ESTADOS MODIFICABLES EN VIVO */
-        .estado-lista {
-            list-style: none;
-            padding: 0;
-            margin: 12px 0 0 0;
-            font-size: 11px;
-        }
-
-        .estado-lista li {
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px dotted var(--cerezo-medio);
-            padding-bottom: 4px;
-        }
-
-        .estado-lista span.valor-editable {
-            color: var(--cerezo-oscuro);
-            font-weight: bold;
-            outline: none;
-            border-bottom: 1px dashed transparent;
-        }
-        .estado-lista span.valor-editable:focus {
-            border-bottom-color: var(--texto-retro);
-            background: #fff;
-        }
-
-        /* BOTONES DE REDES SOCIALES VINTAGE */
-        .caja-redes {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .link-red {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: #FFFFFF;
-            border: 1px solid var(--cerezo-medio);
-            padding: 6px 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--texto-retro);
-            font-size: 11px;
-        }
-        .link-red:hover {
-            background: var(--rosa-fondo);
-            border-style: dashed;
-        }
-
-        /* PUBLICADOR INTELIGENTE */
-        .textarea-retro {
-            width: 100%;
-            height: 65px;
-            border: 1px solid var(--cerezo-medio);
-            border-radius: 8px;
-            background: var(--rosa-caja);
-            padding: 8px;
-            box-sizing: border-box;
-            font-family: inherit;
-            color: var(--texto-retro);
-            resize: none;
-            font-size: 12px;
-        }
-
-        /* REPRODUCTOR CASSETTE / MP3 */
-        .reproductor-mp3 {
-            background: var(--rosa-caja);
-            border: 2px solid var(--cerezo-medio);
-            border-radius: 12px;
-            padding: 8px;
-            margin-top: 5px;
-        }
-
+        /* REPRODUCTOR DE YOUTUBE IN-PAGE */
         .reproductor-youtube-marco {
             position: relative;
             padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-            border: 1px solid var(--cerezo-medio);
+            height: 0; overflow: hidden;
+            border-radius: 12px;
+            border: 2px solid var(--accent-color);
+            margin-top: 10px;
         }
-
         .reproductor-youtube-marco iframe {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        /* CUADRÍCULA DE RECUERDOS (GALERÍA MULTIMEDIA) */
-        .galeria-retro {
+        /* GALERÍA AUTOMÁTICA EN SELLOS */
+        .galeria-automatica {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 12px;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 15px;
         }
-
-        .item-multimedia-contenedor {
+        .item-multimedia-wrapper {
             position: relative;
-            border: 2px dashed var(--cerezo-medio);
+            border: 2px solid var(--border-color);
             border-radius: 8px;
-            background: white;
+            background: rgba(255,255,255,0.2);
             padding: 4px;
-            box-sizing: border-box;
         }
-
         .item-multimedia {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 4px;
-            display: block;
+            width: 100%; height: 110px;
+            object-fit: cover; border-radius: 6px;
         }
 
-        .btn-borrar-item {
-            position: absolute;
-            top: 2px; right: 2px;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid var(--cerezo-medio);
-            color: red; border-radius: 50%;
-            width: 16px; height: 16px; font-size: 9px;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
+        /* SISTEMA DE PESTAÑAS INTEGRADO */
+        .seccion-pestana { display: none; }
+        .seccion-pestana.activa { display: block; }
+
+        /* WIDGET DEL TAMAGOTCHI EVOLUCIONADO */
+        .tamagotchi-caja {
+            background: #111;
+            border: 6px double #333;
+            border-radius: 15px;
+            padding: 10px;
+            color: #0f0;
+            font-family: var(--fuente-pixel);
+            font-size: 16px;
+            text-align: center;
+        }
+        .tama-pantalla {
+            background: #a4b3a2;
+            color: #1a231a;
+            padding: 10px;
+            border-radius: 8px;
+            min-height: 60px;
+            margin-bottom: 8px;
+        }
+        .btn-tama {
+            background: #333; color: white; border: 1px solid #555;
+            padding: 3px 8px; font-size: 12px; border-radius: 4px; cursor: pointer;
         }
 
-        /* ==========================================================================
-           ESTILOS DE LA NUEVA PESTAÑA: AMIGOS SPACE (MYSPACE IN-PAGE)
-           ========================================================================== */
-        .grid-amigos-pestana {
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 20px;
+        /* BUCLES IMÁGENES PEQUEÑAS COSTADOS */
+        .contenedor-bucles {
+            display: flex; gap: 8px; justify-content: center; margin-top: 10px;
+        }
+        .buclocito {
+            width: 60px; height: 60px; object-fit: contain;
+            border: 1px dotted var(--border-color); border-radius: 6px;
         }
 
-        .tarjeta-amigo-muro {
-            background: var(--rosa-caja);
-            border: 2px dashed var(--cerezo-medio);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 12px;
-            display: flex;
-            gap: 12px;
-            position: relative;
+        /* COMPONENTES INSTA/MYSPACE/FB */
+        .barra-historias-insta {
+            display: flex; gap: 12px; overflow-x: auto; padding: 5px 0; margin-bottom: 15px;
         }
-
-        .avatar-amigo-muro {
-            width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--cerezo-medio); object-fit: cover;
+        .circulo-historia {
+            width: 55px; text-align: center; font-size: 10px; flex-shrink: 0; cursor: pointer;
         }
-
-        /* INDICADOR INGENIOSO DE EDICIÓN EN VIVO */
-        .aviso-click-edit {
-            text-align: center; font-size: 10px; color: var(--cerezo-oscuro);
-            background: #FFFFFF; padding: 4px; border-radius: 8px; border: 1px dashed var(--cerezo-medio);
-            margin-bottom: 15px; font-weight: bold;
+        .circulo-historia img {
+            width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--accent-color); object-fit: cover;
         }
-
-        .footer-creditos {
-            text-align: center; font-size: 10px; color: var(--cerezo-oscuro);
-            margin-top: 30px; padding-top: 15px; border-top: 1px dotted var(--cerezo-medio);
+        .top8-myspace-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; text-align: center; font-size: 10px;
+        }
+        .top8-amigo img {
+            width: 50px; height: 50px; border-radius: 8px; border: 1px solid var(--border-color); object-fit: cover;
+        }
+        .fb-comentario {
+            border-bottom: 1px dotted var(--border-color); padding: 5px 0; font-size: 11px;
+            color: var(--text-color);
+        }
+        .config-input {
+            width: 100%; padding: 6px; border-radius: 6px; border: 1px solid var(--border-color); box-sizing: border-box;
         }
     </style>
 </head>
-<body>
+<body class="modo-cute" onmousemove="generarEstampaCerezo(event)">
 
-    <div class="contenedor-santuario">
+    <div id="contenedor-particulas"></div>
+
+    <div class="marco-santuario">
         
-        <div class="aviso-click-edit">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> CONFIGURADOR INTEGRADO ACTIVADO: Haz clic en los textos del Banner o la Tabla para modificarlos directamente en vivo.
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:11px;">
+            <div>
+                <button onclick="cambiarModoEstetico('cute')" style="cursor:pointer; padding:3px 8px; border-radius:6px; border:1px solid var(--cerezo-vivo);">🎀 Modo Cute</button>
+                <button onclick="cambiarModoEstetico('dark')" style="cursor:pointer; padding:3px 8px; border-radius:6px; background:#2B1E20; color:white;">🖤 Modo Dark</button>
+            </div>
+            <div>
+                <strong>Tu Identidad en este Navegador:</strong> 
+                <input type="text" id="mi-nombre-perfil" value="Invitado" onchange="localStorage.setItem('mi-nombre-chat', this.value)" style="padding:2px; border:1px solid var(--border-color); font-size:11px; font-family:inherit; border-radius:4px; width:100px;">
+            </div>
         </div>
 
-        <div class="banner-header">
-            <h1 id="txt-titulo-banner" contenteditable="true" onblur="guardarTextoEstructura('txt-titulo-banner')">Arunyi</h1>
-            <div id="txt-subtitulo-banner" class="subtitulo-retro" contenteditable="true" onblur="guardarTextoEstructura('txt-subtitulo-banner')">WELCOME TO ARUNYI.ART! ENJOY YOUR STAY ✧*:.｡.</div>
-        </div>
-
-        <div class="nav-retro">
-            <button class="boton-retro activo" id="btn-pestana-me" onclick="conmutarVista('seccion-altar-me', 'btn-pestana-me')">
-                <i class="fa-solid fa-star"></i> mi altar (home)
-            </button>
+        <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+            <div class="menu-desplegable">
+                <button class="boton-retro">🌸 mi altar</button>
+                <div class="contenido-desplegable">
+                    <div onclick="abrirPestanaSantuario('pestana-altar')">ver mi sentir (Home)</div>
+                    <div onclick="abrirPestanaSantuario('pestana-amigos')">espejo de recuerdos & amigos</div>
+                </div>
+            </div>
 
             <div class="menu-desplegable">
-                <button class="boton-retro" id="btn-pestana-friends" onclick="conmutarVista('seccion-callejon-friends', 'btn-pestana-friends')">
-                    <i class="fa-solid fa-user-group"></i> callejón de amigos <i class="fa-solid fa-chevron-down" style="font-size: 8px; margin-left: 3px;"></i>
-                </button>
+                <button class="boton-retro">🖤 el callejón social</button>
                 <div class="contenido-desplegable">
-                    <a href="#" onclick="conmutarVista('seccion-callejon-friends', 'btn-pestana-friends')">ver espacio de almas</a>
-                    <a href="#" onclick="abrirConfiguradorRedes()">configurar mis enlaces</a>
+                    <div onclick="abrirPestanaSantuario('pestana-amigos')">muro de amistades</div>
+                    <div onclick="abrirPestanaSantuario('pestana-configuracion')">🔧 panel de control / fondos / urls</div>
+                </div>
+            </div>
+
+            <div class="menu-desplegable">
+                <button class="boton-retro" style="background:var(--accent-color);">🎵 mis playlists por género</button>
+                <div class="contenido-desplegable">
+                    <div onclick="actualizarMusicaContenedor('https://www.youtube.com/watch?v=kYJbyWfE2_M')">[Rock] Antología Distorsionada</div>
+                    <div onclick="actualizarMusicaContenedor('https://www.youtube.com/watch?v=eM213ZEnRco')">[V-Kei] Visual Kei Nostalgia</div>
+                    <div onclick="actualizarMusicaContenedor('https://www.youtube.com/watch?v=zR0X6_jZOK8')">[K-Pop] Cute & Retro Beats</div>
+                    <div onclick="actualizarMusicaContenedor('https://www.youtube.com/watch?v=M8-98eZ8E_4')">[Baladas] Melancolía Otoñal</div>
+                    <div onclick="actualizarMusicaContenedor('https://www.youtube.com/watch?v=07Zt0G9L7pM')">[Vocaloid] J-Web Classic Loops</div>
                 </div>
             </div>
         </div>
 
-        <div id="seccion-altar-me" class="vista-seccion layout-santuario activa">
+        <div id="pestana-altar" class="seccion-pestana activa grid-santuario">
             
-            <div class="columna-lateral">
-                
-                <div class="bloque-retro">
-                    <div class="etiqueta-bloque">🎀 profile</div>
+            <div>
+                <div class="caja-publicacion" style="padding:12px;">
+                    <div class="mini-marcador">👾 tamagotchi widget v2</div>
+                    <div class="tamagotchi-caja" style="margin-top:10px;">
+                        <div class="tama-pantalla" id="pantalla-tama-status">Takocito está durmiendo... zZz</div>
+                        <div style="display:flex; gap:4px; justify-content:center;">
+                            <button class="btn-tama" onclick="interactuarTamagotchi('alimentar')">🍗 Alimentar</button>
+                            <button class="btn-tama" onclick="interactuarTamagotchi('mimar')">💕 Mimar</button>
+                            <button class="btn-tama" onclick="interactuarTamagotchi('curar')">💉 Curar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="caja-publicacion" style="padding:12px;">
+                    <div class="mini-marcador">👥 mi top space aliados</div>
+                    <div class="top8-myspace-grid" id="contenedor-top8-myspace"></div>
+                </div>
+
+                <div class="caja-publicacion">
+                    <div class="mini-marcador">🎵 sintonía youtube</div>
+                    <div style="font-size:11px; margin-top:5px; margin-bottom:5px;">
+                        Pega ID o Link aquí:
+                        <input type="text" id="link-youtube" placeholder="pega id o link aquí..." onchange="actualizarMusicaContenedor(this.value)" style="padding:3px; border-radius:4px; border:1px solid var(--accent-color); font-size:10px; width:100%; box-sizing:border-box; margin-top:4px;">
+                    </div>
                     
-                    <div class="avatar-contenedor">
-                        <img id="imagen-avatar-perfil" src="https://i.pinimg.com/736x/8a/7e/8a/8a7e8a9fdfc4114ecb3d4f1cd111d40c.jpg" alt="Avatar" class="avatar-retro">
-                        <label for="input-archivo-avatar" class="capa-cambiar-foto">CAMBIAR<br>FOTO 📷</label>
-                        <input type="file" id="input-archivo-avatar" accept="image/*" style="display:none;" onchange="procesarCambioAvatar(event)">
+                    <div class="reproductor-youtube-marco">
+                        <iframe id="parlante-youtube" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
 
-                    <div style="text-align: center; font-weight: bold; margin-bottom: 10px;" id="txt-nombre-perfil" contenteditable="true" onblur="guardarTextoEstructura('txt-nombre-perfil')">arunyi ୨୧ artist</div>
+                    <div class="contenedor-bucles">
+                        <img src="https://i.pinimg.com/originals/e4/df/aa/e4dfaa0fd7db9f7435f1118126ef8e2e.gif" class="buclocito" alt="Bucle 1">
+                        <img src="https://i.pinimg.com/originals/60/df/31/60df3132bf6786a48fdfb6d6540c1157.gif" class="buclocito" alt="Bucle 2">
+                        <img src="https://i.pinimg.com/originals/81/fa/be/81fabe54cbe5e236bfa8ff1d11ca726c.gif" class="buclocito" alt="Bucle 3">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="caja-publicacion" style="padding:10px 15px;">
+                    <div class="mini-marcador">📸 historias de almas</div>
+                    <div class="barra-historias-insta" id="contenedor-historias-insta"></div>
+                </div>
+
+                <div class="caja-publicacion">
+                    <div class="mini-marcador">✍️ ¿qué vaga por tu mente hoy?</div>
+                    <textarea id="texto-sentir" placeholder="escribe tu sentir secreto aquí..." style="width:100%; height:80px; padding:10px; border-radius:8px; border:1px solid var(--border-color); font-family:inherit; box-sizing:border-box; margin-top:10px;"></textarea>
                     
-                    <ul class="estado-lista">
-                        <li><span>status:</span> <span id="est-status" class="valor-editable" contenteditable="true" onblur="guardarTextoEstructura('est-status')">doing comms</span></li>
-                        <li><span>feeling:</span> <span id="est-feeling" class="valor-editable" contenteditable="true" onblur="guardarTextoEstructura('est-feeling')">creative ✨</span></li>
-                        <li><span>playing:</span> <span id="est-playing" class="valor-editable" contenteditable="true" onblur="guardarTextoEstructura('est-playing')">mortal kombat</span></li>
-                    </ul>
-                </div>
-
-                <div class="bloque-retro">
-                    <div class="etiqueta-bloque">🎀 networks</div>
-                    <div class="caja-redes" id="contenedor-redes-enlaces">
-                        <a href="#" id="link-red-ig" class="link-red" target="_blank"><i class="fa-brands fa-instagram" style="color:#E1306C;"></i> Instagram</a>
-                        <a href="#" id="link-red-tt" class="link-red" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-                        <a href="#" id="link-red-tw" class="link-red" target="_blank"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
-                        <a href="#" id="link-red-ds" class="link-red" target="_blank"><i class="fa-brands fa-discord" style="color:#5865F2;"></i> Discord</a>
+                    <div style="margin-top: 10px; display:flex; gap: 10px; align-items:center; justify-content:space-between;">
+                        <label style="cursor:pointer; background:#fff; padding:5px 10px; border-radius:5px; border:1px solid #ccc; font-size:12px; color:black;">
+                            📷 añadir foto/video al altar
+                            <input type="file" id="subida-multimedia" accept="image/*,video/*" style="display:none;">
+                        </label>
+                        <button onclick="publicarAlAltarLocal()" style="background: var(--accent-color); color:white; border:none; padding:6px 15px; border-radius:5px; cursor:pointer; font-weight:bold;">manifestar</button>
                     </div>
                 </div>
 
-                <div class="bloque-retro">
-                    <div class="etiqueta-bloque">🎀 sintonía mp3</div>
-                    <div style="font-size:10px; margin-bottom:6px;">Inserta Link o ID de YouTube para re-programar la música:</div>
-                    <input type="text" id="campo-url-youtube" placeholder="pega el enlace aquí..." onchange="cambiarSintoníaGlobal(this.value)" style="width:100%; padding:5px; border-radius:6px; border:1px solid var(--cerezo-medio); font-size:11px; box-sizing: border-box;">
+                <div class="caja-publicacion">
+                    <div class="mini-marcador">⭐ espejo de recuerdos (galería automática)</div>
+                    <div class="galeria-automatica" id="galeria-dinamica"></div>
                 </div>
 
-            </div>
-
-            <div class="columna-principal">
-                
-                <div class="bloque-retro">
-                    <div class="etiqueta-bloque">💌 message board</div>
-                    <div style="background: #FFFFFF; border: 2px dashed var(--cerezo-medio); border-radius: 16px; padding: 15px;">
-                        <textarea id="campo-texto-post" placeholder="escribe tu sentir secreto aquí..." class="textarea-retro"></textarea>
-                        
-                        <div style="margin-top: 10px; display:flex; justify-content: space-between; align-items:center;">
-                            <label style="cursor:pointer; background:#fff; padding:5px 12px; border-radius:6px; border:1px dashed var(--cerezo-medio); font-size:11px; font-weight:bold;">
-                                📷 adjuntar captura / video
-                                <input type="file" id="input-archivo-multimedia" accept="image/*,video/*" style="display:none;">
-                            </label>
-                            <button onclick="ejecutarManifestacionAltar()" style="background: var(--cerezo-medio); color:white; border:none; padding:6px 16px; border-radius:6px; cursor:pointer; font-family: inherit; font-size: 11px; font-weight:bold;">manifestar ✦</button>
-                        </div>
+                <div class="caja-publicacion">
+                    <div class="mini-marcador">📝 tu bitácora / diario de pensamientos</div>
+                    <div style="margin-top:10px; display:flex; gap:5px;">
+                        <input type="text" id="fb-firma-msg" placeholder="Escribe un pensamiento para fijar en tu diario..." style="width:85%; padding:5px; border-radius:4px; border:1px solid var(--border-color); background: #fff; color: #000;">
+                        <button onclick="agregarFirmaMuroLocal()" style="background:var(--border-color); color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; width:15%;">Fijar</button>
                     </div>
+                    <div id="lista-comentarios-fb" style="margin-top:12px; max-height:150px; overflow-y:auto;"></div>
                 </div>
-
-                <div class="bloque-retro">
-                    <div class="etiqueta-bloque">🎵 active tracking</div>
-                    <p style="margin: 5px 0 10px 0; font-style: italic; font-size: 11px; color: var(--cerezo-oscuro);">"Sintonía melancólica fluyendo a través del reproductor del capullo..."</p>
-                    <div class="reproductor-mp3">
-                        <div class="reproductor-youtube-marco">
-                            <iframe id="parlante-core-yt" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bloque-retro">
-                    <div class="etiqueta-bloque">⭐ listings / espejo de recuerdos</div>
-                    <div class="galeria-retro" id="rejilla-galeria-dinamica">
-                        </div>
-                </div>
-
             </div>
 
         </div>
 
-        <div id="seccion-callejon-friends" class="vista-seccion vista-seccion-friends">
-            
-            <div class="grid-amigos-pestana">
-                
-                <div>
-                    <div class="bloque-retro">
-                        <div class="etiqueta-bloque">🖤 almas aliadas unidas</div>
-                        <h3 style="font-family:'VT323', monospace; font-size:32px; color:var(--cerezo-oscuro); margin-bottom:15px; text-align:center;">friends collective space</h3>
-                        
-                        <div id="contenedor-muro-amigos-lista">
-                            </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="bloque-retro">
-                        <div class="etiqueta-bloque">🎀 añadir amigo al santuario</div>
-                        <p style="font-size:11px; margin-bottom:12px; line-height:1.4;">Usa este mini-formulario integrado para agregar avatares de tus mejores amigos y sus mensajes dedicados a tu pestaña:</p>
-                        
-                        <div style="display:flex; flex-direction:column; gap:10px;">
-                            <input type="text" id="form-amigo-nombre" placeholder="Nombre/Apodo del amigo..." style="width:100%; padding:6px; font-family:inherit; border:1px solid var(--cerezo-medio); border-radius:6px; font-size:12px; box-sizing:border-box;">
-                            
-                            <textarea id="form-amigo-mensaje" placeholder="Mensaje místico o descripción que te dedica..." style="width:100%; height:55px; padding:6px; font-family:inherit; border:1px solid var(--cerezo-medio); border-radius:6px; font-size:11px; resize:none; box-sizing:border-box;"></textarea>
-                            
-                            <label style="background:#fff; border:1px dashed var(--cerezo-medio); padding:6px; border-radius:6px; font-size:11px; text-align:center; cursor:pointer; font-weight:bold;">
-                                📷 Cargar foto del amigo
-                                <input type="file" id="form-amigo-foto" accept="image/*" style="display:none;" onchange="alert('Foto del amigo cargada en el búfer con éxito.')">
-                            </label>
-
-                            <button onclick="registrarNuevoAmigoMuro()" style="background:var(--cerezo-oscuro); color:white; border:none; padding:8px; border-radius:6px; font-family:inherit; font-size:12px; cursor:pointer; font-weight:bold;">Añadir Alma al Muro ୨୧</button>
-                        </div>
-                    </div>
-                </div>
-
+        <div id="pestana-amigos" class="seccion-pestana">
+            <div class="caja-publicacion">
+                <div class="mini-marcador">🖤 almas enlazadas (red de contactos reales)</div>
+                <h3 style="margin-top:10px; text-align:center;">Tus Amigos & Enlaces Directos</h3>
+                <div id="cuadrícula-amigos-santuario" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:15px; margin-top:20px;"></div>
             </div>
-
         </div>
 
-        <div class="footer-creditos" id="txt-footer" contenteditable="true" onblur="guardarTextoEstructura('txt-footer')">
-            © arunyi 2026 ୨୧ engine custom layout ୨୧ hecho con devoción por los detalles retro
-        </div>
-
-    </div>
-
-    <script>
-        // Arranque inicial al cargar el dom del santuario
-        window.addEventListener('DOMContentLoaded', () => {
-            inicializarEstructurasGuardadas();
-            cargarGaleriaDesdeStorage();
-            cargarAmigosDesdeStorage();
-        });
-
-        // 1. CONMUTADOR DE VISTAS (Pestaña Principal y Pestaña de Amigos)
-        function conmutarVista(idSeccion, idBoton) {
-            document.getElementById('seccion-altar-me').classList.remove('activa');
-            document.getElementById('seccion-callejon-friends').classList.remove('activa');
-            document.getElementById('btn-pestana-me').classList.remove('activo');
-            document.getElementById('btn-pestana-friends').classList.remove('activo');
-
-            document.getElementById(idSeccion).classList.add('activa');
-            document.getElementById(idBoton).classList.add('activo');
-        }
-
-        // 2. SISTEMA CMS: Guardar textos automáticos editados in-page
-        function inicializarEstructurasGuardadas() {
-            const campos = ['txt-titulo-banner', 'txt-subtitulo-banner', 'txt-nombre-perfil', 'est-status', 'est-feeling', 'est-playing', 'txt-footer'];
-            campos.forEach(id => {
-                if(localStorage.getItem(id)) {
-                    document.getElementById(id).textContent = localStorage.getItem(id);
-                }
-            });
-
-            // Recuperar enlaces de redes si existen
-            if(localStorage.getItem('red-ig')) document.getElementById('link-red-ig').href = localStorage.getItem('red-ig');
-            if(localStorage.getItem('red-tt')) document.getElementById('link-red-tt').href = localStorage.getItem('red-tt');
-            if(localStorage.getItem('red-tw')) document.getElementById('link-red-tw').href = localStorage.getItem('red-tw');
-            if(localStorage.getItem('red-ds')) document.getElementById('link-red-ds').href = localStorage.getItem('red-ds');
-
-            // Recuperar Avatar e Iframe de música
-            if(localStorage.getItem('avatar-perfil-img')) {
-                document.getElementById('imagen-avatar-perfil').src = localStorage.getItem('avatar-perfil-img');
-            }
-            if(localStorage.getItem('musica-global-url')) {
-                document.getElementById('parlante-core-yt').src = localStorage.getItem('musica-global-url');
-            }
-        }
-
-        function guardarTextoEstructura(id) {
-            const contenido = document.getElementById(id).textContent;
-            localStorage.setItem(id, contenido);
-        }
-
-        // 3. CAMBIAR EL AVATAR EN VIVO DESDE LA MÁQUINA
-        function procesarCambioAvatar(event) {
-            const archivo = event.target.files[0];
-            if(!archivo) return;
-
-            const lector = new FileReader();
-            lector.onload = function(e) {
-                document.getElementById('imagen-avatar-perfil').src = e.target.result;
-                localStorage.setItem('avatar-perfil-img', e.target.result);
-            }
-            lector.readAsDataURL(archivo);
-        }
-
-        // 4. CONFIGURAR ENLACES DE REDES SOCIALES POR PROMPT INTERACTIVO
-        function abrirConfiguradorRedes() {
-            const ig = prompt("Inserta tu link completo de Instagram:", document.getElementById('link-red-ig').href);
-            if(ig) { localStorage.setItem('red-ig', ig); document.getElementById('link-red-ig').href = ig; }
-
-            const tt = prompt("Inserta tu link completo de TikTok:", document.getElementById('link-red-tt').href);
-            if(tt) { localStorage.setItem('red-tt', tt); document.getElementById('link-red-tt').href = tt; }
-
-            const tw = prompt("Inserta tu link completo de Twitter/X:", document.getElementById('link-red-tw').href);
-            if(tw) { localStorage.setItem('red-tw', tw); document.getElementById('link-red-tw').href = tw; }
-
-            const ds = prompt("Inserta tu link o ID de Servidor de Discord:", document.getElementById('link-red-ds').href);
-            if(ds) { localStorage.setItem('red-ds', ds); document.getElementById('link-red-ds').href = ds; }
-        }
-
-        // 5. CONTROLADOR DINÁMICO DE REPRODUCCIÓN DE YOUTUBE
-        function cambiarSintoníaGlobal(url) {
-            const iframe = document.getElementById('parlante-core-yt');
-            let videoId = '';
-            
-            if(url.includes('v=')) {
-                videoId = url.split('v=')[1].split('&')[0];
-            } else if(url.includes('youtu.be/')) {
-                videoId = url.split('youtu.be/')[1].split('?')[0];
-            } else {
-                videoId = url; 
-            }
-            
-            if(videoId) {
-                const finalEmbed = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
-                iframe.src = finalEmbed;
-                localStorage.setItem('musica-global-url', finalEmbed);
-            }
-        }
-
-        // 6. MOTOR DE RECUERDOS (PUBLICACIONES MULTIMEDIA DEL PROPIO ALTAR)
-        function ejecutarManifestacionAltar() {
-            const texto = document.getElementById('campo-texto-post').value;
-            const archivoInput = document.getElementById('input-archivo-multimedia');
-            
-            if(!texto && !archivoInput.files[0]) return;
-
-            if(archivoInput.files[0]) {
-                const lector = new FileReader();
-                lector.onload = function(e) {
-                    const postObjeto = {
-                        tipo: archivoInput.files[0].type.includes('video') ? 'video' : 'img',
-                        src: e.target.result,
-                        titulo: texto
-                    };
-                    salvarPostEnStorage(postObjeto);
-                };
-                lector.readAsDataURL(archivoInput.files[0]);
-            } else {
-                // Solo texto plano (Usamos imagen de respaldo tierna)
-                const postObjeto = {
-                    tipo: 'img',
-                    src: 'https://i.pinimg.com/236x/8d/ee/eb/8deeebb9bf11979313cf2996924b42b9.jpg',
-                    titulo: texto
-                };
-                salvarPostEnStorage(postObjeto);
-            }
-        }
-
-        function salvarPostEnStorage(objeto) {
-            let posts = JSON.parse(localStorage.getItem('altar-posts-galeria')) || [];
-            posts.unshift(objeto); // Añadir al inicio
-            localStorage.setItem('altar-posts-galeria', JSON.stringify(posts));
-            cargarGaleriaDesdeStorage();
-            
-            document.getElementById('campo-texto-post').value = '';
-            document.getElementById('input-archivo-multimedia').value = '';
-        }
-
-        function cargarGaleriaDesdeStorage() {
-            const contenedor = document.getElementById('rejilla-galeria-dinamica');
-            contenedor.innerHTML = '';
-            let posts = JSON.parse(localStorage.getItem('altar-posts-galeria')) || [];
-
-            posts.forEach((post, indice) => {
-                const bloque = document.createElement('div');
-                bloque.className = 'item-multimedia-contenedor';
+        <div id="pestana-configuracion" class="seccion-pestana">
+            <div class="caja-publicacion">
+                <div class="mini-marcador">🔧 panel de control / subida de fondos</div>
+                <h3 style="margin-top:10px;">Gestión de Fondos del Santuario</h3>
                 
-                let renderHtml = post.tipo === 'video' ? 
-                    `<video src="${post.src}" class="item-multimedia" controls></video>` :
-                    `<img src="${post.src}" class="item-multimedia" title="${post.titulo}">`;
-                
-                bloque.innerHTML = `
-                    ${renderHtml}
-                    <div style="font-size:10px; margin-top:4px; text-align:center; font-weight:bold; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${post.titulo || '୨୧'}</div>
-                    <button class="btn-borrar-item" onclick="eliminarPostGaleria(${indice})">×</button>
-                `;
-                contenedor.appendChild(bloque);
-            });
-        }
+                <div style="display:flex; flex-direction:column; gap:12px; margin-top:15px;">
+                    <label>
+                        <strong>Opción A: Cambiar fondo ingresando URL externa (Imagen o Video):</strong>
+                        <input type="text" id="cfg-fondo-url" class="config-input" placeholder="Pega el link de la imagen o video aquí..." onchange="aplicarFondoPorUrl(this.value)">
+                    </label>
 
-        function eliminarPostGaleria(indice) {
-            let posts = JSON.parse(localStorage.getItem('altar-posts-galeria')) || [];
-            posts.splice(indice, 1);
-            localStorage.setItem('altar-posts-galeria', JSON.stringify(posts));
-            cargarGaleriaDesdeStorage();
-        }
+                    <label style="background:white; border:2px dashed var(--border-color); padding:10px; border-radius:8px; text-align:center; cursor:pointer; display:block; color:black;">
+                        <strong>Opción B: Cargar fondo personalizado desde tu Galería Local 📷</strong>
+                        <input type="file" id="cfg-fondo-local" accept="image/*" style="display:none;" onchange="aplicarFondoLocal(event)">
+                    </label>
 
-        // ==========================================================================
-        // 7. LÓGICA DE PROGRAMACIÓN PARA LA PESTAÑA DE AMIGOS
-        // ==========================================================================
-        function registrarNuevoAmigoMuro() {
-            const nombre = document.getElementById('form-amigo-nombre').value;
-            const mensaje = document.getElementById('form-amigo-mensaje').value;
-            const fotoInput = document.getElementById('form-amigo-foto');
+                    <hr style="border:1px dotted var(--border-color); margin:15px 0;">
 
-            if(!nombre || !mensaje) {
-                alert("Por favor, dale un apodo místico y escribe el mensaje de tu amigo.");
-                return;
-            }
+                    <h3>Vincular un Nuevo Amigo Real</h3>
+                    <div style="display:flex; flex-direction:column; gap:10px; background:rgba(255,255,255,0.2); padding:15px; border-radius:10px;">
+                        <input type="text" id="add-amigo-nombre" placeholder="Nombre o Apodo..." class="config-input">
+                        
+                        <select id="add-amigo-red-tipo" class="config-input" style="height:32px;">
+                            <option value="Instagram">Instagram</option>
+                            <option value="TikTok">TikTok</option>
+                            <option value="WhatsApp">WhatsApp (Link o celular)</option>
+                            <option value="Discord">Discord (Enlace de invitación)</option>
+                        </select>
 
-            if(fotoInput.files[0]) {
-                const lector = new FileReader();
-                lector.onload = function(e) {
-                    const amigoObjeto = { nombre: nombre, mensaje: mensaje, foto: e.target.result };
-                    salvarAmigoEnStorage(amigoObjeto);
-                };
-                lector.readAsDataURL(fotoInput.files[0]);
-            } else {
-                // Foto por defecto kawaii si no adjuntas una
-                const amigoObjeto = { 
-                    nombre: nombre, 
-                    mensaje: mensaje, 
-                    foto: 'https://i.pinimg.com/236x/8d/62/1d/8d621d9600f681d431d1c8f498c41460.jpg' 
-                };
-                salvarAmigoEnStorage(amigoObjeto);
-            }
-        }
-
-        function salvarAmigoEnStorage(objeto) {
-            let amigos = JSON.parse(localStorage.getItem('santuario-amigos-lista')) || [];
-            amigos.unshift(objeto);
-            localStorage.setItem('santuario-amigos-lista', JSON.stringify(amigos));
-            cargarAmigosDesdeStorage();
-
-            // Limpiar inputs
-            document.getElementById('form-amigo-nombre').value = '';
-            document.getElementById('form-amigo-mensaje').value = '';
-            document.getElementById('form-amigo-foto').value = '';
-        }
-
-        function cargarAmigosDesdeStorage() {
-            const contenedor = document.getElementById('contenedor-muro-amigos-lista');
-            contenedor.innerHTML = '';
-            let amigos = JSON.parse(localStorage.getItem('santuario-amigos-lista')) || [];
-
-            if(amigos.length === 0) {
-                contenedor.innerHTML = `<p style="text-align:center; font-style:italic; font-size:12px; color:var(--cerezo-oscuro); margin-top:20px;">Aún no hay almas vinculadas en esta pestaña. ¡Añade tu primer amigo a la derecha! 🎀</p>`;
-                return;
-            }
-
-            amigos.forEach((amigo, indice) => {
-                const tarjeta = document.createElement('div');
-                tarjeta.className = 'tarjeta-amigo-muro';
-                tarjeta.innerHTML = `
-                    <img src="${amigo.foto}" class="avatar-amigo-muro">
-                    <div>
-                        <h4 style="margin:0 0 4px 0; color:var(--texto-retro); font-size:13px;">${amigo.nombre} ୨୧</h4>
-                        <p style="margin:0; font-size:11px; line-height:1.4; font-style:italic;">"${amigo.mensaje}"</p>
+                        <input type="text" id="add-amigo-red-link" placeholder="URL directa al perfil o chat (ej: https://instagram.com/usuario)" class="config-input">
+                        
+                        <label style="background:white; border:1px solid #ccc; padding:5px; border-radius:5px; font-size:11px; text-align:center; cursor:pointer; display:block; color:black;">
+                            Cargar Foto de Perfil
+                            <input type="file" id="add-amigo-foto" accept="image/*" style="display:none;">
+                        </label>
+                        
+                        <label style="font-size:11px;">
+                            <input type="checkbox" id="add-amigo-is-top8"> ¿Destacar en el Top 8 de MySpace?
+                        </label>
+                        
+                        <button onclick="guardarAmigoNuevoLocal()" style="background:var(--border-color); color:white; border:none; padding:8px; border-radius:6px; cursor:pointer; font-weight:bold;">Guardar Amigo en el Altar</button>
                     </div>
-                    <button class="btn-borrar-item" style="top:5px; right:5px;" onclick="eliminarAmigoMuro(${indice})">×</button>
-                `;
-                contenedor.appendChild(tarjeta);
-            });
-        }
-
-        function eliminarAmigoMuro(indice) {
-            let amigos = JSON.parse(localStorage.getItem('santuario-amigos-lista')) || [];
-            amigos.splice(indice, 1);
-            localStorage.setItem('santuario-amigos-lista', JSON.stringify(amigos));
-            cargarAmigosDesdeStorage();
-        }
-    </script>
-</body>
-</html>
