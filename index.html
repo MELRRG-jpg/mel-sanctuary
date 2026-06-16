@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>+ mel_sanctuary_ +</title>
+<title>+ mel_sanctuary_rococo_v7_kaomoji_calendar +</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Charm:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* --- PALETAS DE COLORES DUALES --- */
+/* --- 𓏲ᵎ * PALETAS DE COLORES DUALES * ᵎ𓏲 --- */
 :root {
   --anime-black: #1F1F1F;
   --goth-charcoal: #4B4B4B;
@@ -61,7 +61,7 @@ body {
   display: flex; justify-content: center; overflow-x: hidden;
 }
 
-/* MARCOS DE ENCAJE KAOMOJI GENERALES */
+/* MARCOS DE ENCAJE KAOMOJI */
 body::before, body::after {
   content: "o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o o.O 3 ✧ -+-[+]--+-- ✧ 3 O.o";
   position: fixed; left: 0; width: 100%; text-align: center;
@@ -144,12 +144,12 @@ body::after { bottom: 10px; }
 
 .rococo-grid { display: grid; grid-template-columns: 210px 390px 220px; gap: 15px; }
 
-/* BORDES Y SEPARACIONES AJUSTADOS */
+/* BORDES SEMIREDONDOS EN MARCOS EN GENERAL */
 .rococo-frame-box {
   background: var(--surface-box);
   border: 1px solid var(--goth-charcoal);
   outline: 1px solid var(--barbie-pink); outline-offset: -5px;
-  padding: 18px 14px 14px 14px; position: relative; margin-bottom: 20px;
+  padding: 14px; position: relative; margin-bottom: 20px;
   border-radius: 14px;
 }
 .rococo-frame-box::after {
@@ -157,13 +157,10 @@ body::after { bottom: 10px; }
   position: absolute; bottom: -8px; left: 0; width: 100%; text-align: center;
   font-size: 9px; color: var(--barbie-pink); opacity: 0.7;
 }
-
-/* SOLUCIÓN AL SOLAPAMIENTO DE TÍTULOS */
 .rococo-frame-title {
   font-family: var(--font-vintage); font-style: italic; font-weight: bold;
-  text-align: center; color: var(--barbie-pink); font-size: 14px;
-  margin: 5px 0 15px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 8px;
-  position: relative; z-index: 2;
+  text-align: center; color: var(--barbie-pink); font-size: 13px;
+  margin: 0 0 12px 0; border-bottom: 1px double var(--barbie-pink); padding-bottom: 5px;
 }
 
 /* AVATAR CAMAFEO */
@@ -248,7 +245,7 @@ body::after { bottom: 10px; }
 .rococo-btn:hover { background: var(--barbie-pink); color: #000; }
 .hidden-uploader { display: none; }
 
-/* GIFS FLOTANTES */
+/* GIFS FLOTANTES EN COSTADOS */
 .side-gif { position: fixed; top: 62%; transform: translateY(-50%); z-index: 40; width: 65px; height: auto; pointer-events: none; opacity: 0.8; }
 .left-gif { left: 20px; }
 .right-gif { right: 20px; }
@@ -257,7 +254,7 @@ body::after { bottom: 10px; }
   .side-gif { display: none; }
 }
 
-/* PLAYLISTS */
+/* MENÚS DESPLEGABLES DE PLAYLISTS */
 .genre-dropdown { background: rgba(31, 31, 31, 0.5); margin-bottom: 8px; border-radius: 8px; overflow: hidden; border: 1px dashed var(--barbie-pink); }
 .genre-dropdown summary { padding: 10px; font-size: 11px; font-weight: bold; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
 .genre-dropdown summary::-webkit-details-marker { display: none; }
@@ -270,12 +267,12 @@ body::after { bottom: 10px; }
 .dropdown-content a { color: var(--text-main); text-decoration: none; }
 .dropdown-content a:hover { text-decoration: underline; color: var(--barbie-pink); }
 
-/* PARTÍCULAS */
+/* PARTÍCULAS KAOMOJI */
 .kaomoji-particle { position: fixed; pointer-events: none; z-index: 9999; white-space: nowrap; font-family: Arial, sans-serif; }
 @keyframes fall { to { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
 @keyframes burst { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--mx), var(--my)) scale(0.4); opacity: 0; } }
 
-/* CHAT RETRO */
+/* CHAT RETRO CON PERSISTENCIA */
 .chat-dock { position: fixed; bottom: 0; right: 40px; display: flex; align-items: flex-end; gap: 12px; z-index: 10000; }
 .chat-tab { background: var(--chat-header-bg); color: var(--text-main); padding: 8px 16px; border-radius: 8px 8px 0 0; font-family: var(--font-goth); font-size: 11px; font-weight: bold; cursor: pointer; border: 1px solid var(--barbie-pink); box-shadow: 0px -2px 6px rgba(0,0,0,0.3); }
 .chat-window { width: 260px; background: var(--anime-black); border: 2px solid var(--barbie-pink); border-radius: 8px 8px 0 0; font-family: var(--font-goth); box-shadow: -2px -2px 12px rgba(0,0,0,0.4); }
@@ -289,6 +286,7 @@ body::after { bottom: 10px; }
 .chat-input { flex: 1; padding: 6px; border: none; font-size: 11px; background: var(--input-bg); color: var(--input-text); outline: none; }
 .hidden { display: none; }
 
+/* BARRA TAMAGOTCHI */
 progress { -webkit-appearance: none; appearance: none; width: 100%; height: 10px; margin-top: 4px; }
 progress::-webkit-progress-bar { background-color: rgba(0,0,0,0.3); border-radius: 4px; }
 progress::-webkit-progress-val { background-color: var(--barbie-pink); border-radius: 4px; }
@@ -296,8 +294,8 @@ progress::-webkit-progress-val { background-color: var(--barbie-pink); border-ra
 </head>
 <body>
 
-<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif left-gif" alt="decoración">
-<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif right-gif" alt="decoración">
+<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif left-gif" alt="decoración loop">
+<img src="https://c.neocities.org/assets/img/sparkles.gif" class="side-gif right-gif" alt="decoración loop">
 
 <div class="rococo-cocoon-container">
   <button class="mel-admin-trigger" onclick="toggleAdminPanel()">[-] Panel de Control Mel</button>
@@ -317,7 +315,7 @@ progress::-webkit-progress-val { background-color: var(--barbie-pink); border-ra
       <div>
         <h4 style="margin:5px 0; color:var(--barbie-pink);">Configuración Base</h4>
         <div class="panel-row"><label>Título de la Matriz:</label><input type="text" id="cfgTitle" value="mel_sanctuary_matrix"></div>
-        <div class="panel-row"><label>Biografía:</label><textarea id="cfgBio" rows="2">505 // @_tomate_4</textarea></div>
+        <div class="panel-row"><label>Biografía:</label><textarea id="cfgBio" rows="2">𓏲ᵎ Rococó Goth & Pastel Dual // @_tomate_4</textarea></div>
         <div class="panel-row"><label>Música Base (YouTube Link):</label><input type="text" id="cfgYoutubeId" value="https://www.youtube.com/watch?v=dQw4w9WgXcQ"></div>
         <button class="rococo-btn" style="background:var(--barbie-pink); color:#000; font-weight:bold;" onclick="saveConfigChanges()">Guardar Configuración Base</button>
       </div>
@@ -342,4 +340,4 @@ progress::-webkit-progress-val { background-color: var(--barbie-pink); border-ra
         <option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option>
       </select>
       <select id="calInReason" style="background:var(--input-bg); border:1px solid var(--barbie-pink); color:var(--input-text); padding:4px;">
-        <option value="goth">[-] Secreto / Pacto Goth</option
+        <option value="got
